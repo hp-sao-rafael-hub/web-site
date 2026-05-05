@@ -11,6 +11,7 @@ import "./globals.css"
 import { SITE_METADATA, SCHEMA_DATA, NAV_ITEMS, NAV_CTA } from "@/lib/constants"
 import { SiteHeader } from "@/components/organisms/site-header"
 import { getCtaMap, pickCta } from "@/lib/cms"
+import FacebookPixel from "@/components/FacebookPixel"
 
 // -----------------------------------------------------------------------------
 // FONTE — Montserrat com todos os pesos usados no Design System
@@ -124,7 +125,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <main id="main-content">
           {children}
         </main>
-
+      <FacebookPixel/>
       </body>
     </html>
   )
