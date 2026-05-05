@@ -9,5 +9,10 @@
 import { HomeTemplate } from "@/components/templates/home-template"
 
 export default function Home() {
-  return <HomeTemplate />
+  return (
+    <>
+      <div dangerouslySetInnerHTML={{ __html: "<!-- teste deploy 05/05 -->" }} />
+      <HomeTemplate />
+    </>
+  )
 }
