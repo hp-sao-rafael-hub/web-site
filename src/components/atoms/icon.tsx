@@ -140,7 +140,7 @@ export const ICON_MAP: Record<string, IconName> = {
   scan:               "Scan",
   scissors:           "Scissors",
   sparkles:           "Sparkles",
-  waves:              "Waves",
+  // waves:              "Waves",
   user:               "User",
   wind:               "Wind",
 
