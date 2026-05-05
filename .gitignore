@@ -58,4 +58,3 @@ scripts/seed-users.mjs
 supabase/.temp/
 supabase/.branches/
 
-.vercel

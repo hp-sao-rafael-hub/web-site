@@ -6,7 +6,7 @@ const meta: Meta<typeof CTABanner> = {
   component: CTABanner,
   tags: ["autodocs"],
   args: {
-    headline: "Pronto para agendar o seu procedimento? Pronto para agendar o seu procedimento?",
+    headline: "Pronto para agendar o seu procedimento? ",
     subtext: "Nossa equipe está disponível para orientar você em cada etapa.",
     ctaLabel: "Falar com Atendimento",
     ctaHref: "#contato",
