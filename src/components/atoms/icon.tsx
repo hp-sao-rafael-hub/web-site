@@ -103,7 +103,7 @@ export const ICON_MAP: Record<string, IconName> = {
   bed:           "BedDouble",
   microscope:    "Microscope",
   flask:         "FlaskConical",
-  activity:      "Activity",
+  activity:      "WavesHorizontal",
   presentation:  "Presentation",
   utensils:      "Utensils",
 
@@ -140,7 +140,7 @@ export const ICON_MAP: Record<string, IconName> = {
   scan:               "Scan",
   scissors:           "Scissors",
   sparkles:           "Sparkles",
-  // waves:              "Waves",
+  waves:              "WavesHorizontal",
   user:               "User",
   wind:               "Wind",
 
