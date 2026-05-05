@@ -65,6 +65,7 @@ export function ContactInfoBlock({
           <Link href={href} className={valueClasses} onClick={onClick}>
             {value}
           </Link>
+          
         ) : (
           <span className={valueClasses}>{value}</span>
         )}
