@@ -200,7 +200,7 @@ export const ESPECIALIDADES_DATA = {
       id: "ortopedia",
       title: "Ortopedia",
       description:
-        "Artroscopia, teste artroplastias de joelho e quadril e cirurgias de coluna com técnicas minimamente invasivas e protocolos de recuperação acelerada.",
+        "Artroscopia, artroplastias de joelho e quadril e cirurgias de coluna com técnicas minimamente invasivas e protocolos de recuperação acelerada.",
       icon: "bone",
       procedures: [
         "Artroplastia total de joelho",
