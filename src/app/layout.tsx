@@ -77,6 +77,12 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_METADATA.url,
   },
+
+  verification: {
+    other: {
+      "facebook-domain-verification": "n44vz2c3l4nzf8gujqbxh8chpx7bv2",
+    },
+  },
 }
 
 // -----------------------------------------------------------------------------
