@@ -26,7 +26,15 @@ export const dynamicParams = true
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  const service = await getServiceDataBySlug(slug)
+  console.log("[META] start", slug)
+  let service
+  try {
+    service = await getServiceDataBySlug(slug)
+  } catch (err) {
+    console.error("[META] " + slug + " threw:", err)
+    throw err
+  }
+  console.log("[META] got service?", slug, !!service)
 
   if (!service) {
     return {
@@ -54,11 +62,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ServicePage({ params }: PageProps) {
   const { slug } = await params
-  const service = await getServiceDataBySlug(slug)
+  let service
+  try {
+    service = await getServiceDataBySlug(slug)
+  } catch (err) {
+    console.error("[/servicos/" + slug + "] getServiceDataBySlug threw:", err)
+    throw err
+  }
 
   if (!service) {
+    console.error("[/servicos/" + slug + "] service is null/undefined — calling notFound()")
     notFound()
   }
 
-  return <ServiceDetailTemplate data={service} />
+  try {
+    return <ServiceDetailTemplate data={service} />
+  } catch (err) {
+    console.error("[/servicos/" + slug + "] template render threw:", err)
+    throw err
+  }
 }
