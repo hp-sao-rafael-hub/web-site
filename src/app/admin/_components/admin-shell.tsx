@@ -4,8 +4,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import {
   LayoutDashboard,
-  Link2,
-  HelpCircle,
   BarChart3,
   LogOut,
   ExternalLink,
@@ -33,8 +31,6 @@ const NAV = [
     section: "Conteúdo",
     master: false,
     items: [
-      { label: "CTAs", href: "/admin/ctas", icon: Link2 },
-      { label: "FAQ", href: "/admin/faq", icon: HelpCircle },
       { label: "Estrutura", href: "/admin/estrutura", icon: Building2 },
       { label: "Cliques", href: "/admin/cliques", icon: BarChart3 },
     ],

@@ -8,6 +8,7 @@
 "use client"
 
 import Link from "next/link"
+import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
 import { Logo } from "@/components/atoms/logo"
 import { ContactInfoBlock } from "@/components/molecules/contact-info-block"
@@ -28,13 +29,14 @@ interface FooterProps extends BaseComponentProps {
 // -----------------------------------------------------------------------------
 export function Footer({ data, className }: FooterProps) {
   const { description, stats, navigation, contact, social } = data
+  const t = useTranslations("footer")
 
   const currentYear = new Date().getFullYear()
 
   return (
     <footer
       id="contato"
-      aria-label="Rodapé"
+      aria-label={t("ariaLabel")}
       className={cn("w-full bg-charcoal text-white", className)}
     >
       {/* ------------------------------------------------------------------ */}
@@ -93,14 +95,14 @@ export function Footer({ data, className }: FooterProps) {
           {/* Coluna de contato */}
           <div className="flex flex-col gap-6">
             <h3 className="text-xs font-extrabold uppercase tracking-kicker text-white/40">
-              CONTATO
+              {t("contact.title")}
             </h3>
 
             <div className="flex flex-col gap-5">
               {/* Endereço */}
               <ContactInfoBlock
                 iconName="MapPin"
-                label="Endereço"
+                label={t("contact.addressLabel")}
                 value={`${contact.address.street}, ${contact.address.neighborhood} — ${contact.address.cep}`}
                 theme="dark"
               />
@@ -108,7 +110,7 @@ export function Footer({ data, className }: FooterProps) {
               {/* Telefone */}
               <ContactInfoBlock
                 iconName="Phone"
-                label="Telefone"
+                label={t("contact.phoneLabel")}
                 value={contact.phone}
                 href={`tel:${contact.phone.replace(/\D/g, "")}`}
                 theme="dark"
@@ -118,7 +120,7 @@ export function Footer({ data, className }: FooterProps) {
               {/* E-mail */}
               <ContactInfoBlock
                 iconName="Mail"
-                label="E-mail"
+                label={t("contact.emailLabel")}
                 value={contact.email}
                 href={`mailto:${contact.email}`}
                 theme="dark"
@@ -137,27 +139,27 @@ export function Footer({ data, className }: FooterProps) {
         <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
             <p className="text-xs text-white/30">
-              © {currentYear} Hospital São Rafael. Todos os direitos reservados.
+              {t("copyright", { year: currentYear })}
             </p>
             <div className="flex items-center gap-6">
               <Link
                 href="#"
                 className="text-xs text-white/30 hover:text-white/60 transition-colors"
               >
-                Política de Privacidade
+                {t("privacy")}
               </Link>
               <Link
                 href="#"
                 className="text-xs text-white/30 hover:text-white/60 transition-colors"
               >
-                Termos de Uso
+                {t("terms")}
               </Link>
               <Link
                 href="/admin/login"
                 className="text-xs text-white/20 hover:text-white/50 transition-colors"
-                aria-label="Área restrita da equipe"
+                aria-label={t("restrictedAreaAria")}
               >
-                Área restrita
+                {t("restrictedArea")}
               </Link>
             </div>
           </div>

@@ -8,6 +8,7 @@
 
 "use client"
 
+import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
 import { Kicker } from "@/components/atoms/kicker"
 import { Heading } from "@/components/atoms/heading"
@@ -27,6 +28,7 @@ interface JourneyTimelineProps extends BaseComponentProps {
 // COMPONENTE
 // -----------------------------------------------------------------------------
 export function JourneyTimeline({ data, className }: JourneyTimelineProps) {
+  const t = useTranslations("jornada")
   const { ref: headerRef, hasIntersected: headerVisible } = useIntersection({
     threshold: 0.2,
     once: true,
@@ -72,7 +74,7 @@ export function JourneyTimeline({ data, className }: JourneyTimelineProps) {
           ref={stepsRef as React.RefObject<HTMLDivElement>}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4"
           role="list"
-          aria-label="Etapas da jornada do paciente"
+          aria-label={t("stepsAriaLabel")}
         >
           {steps.map((step, index) => (
             <div

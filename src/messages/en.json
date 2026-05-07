@@ -1,0 +1,391 @@
+{
+  "hero": {
+    "kicker": "Private multi-specialty elective surgeries",
+    "headline": "High-performance healthcare with welcoming care that elevates your experience.",
+    "subheadline": [
+      "The largest and most complete elective surgery hospital in Brazil, with integrated hospital infrastructure and absolute focus on safety, comfort, and experience."
+    ],
+    "ctaLabel": "Talk to our team",
+    "videoAlt": "Modern facilities at Hospital São Rafael"
+  },
+  "nav": {
+    "items": {
+      "inicio": "Home",
+      "diferenciais": "Differentiators",
+      "servicos": "Services",
+      "especialidades": "Specialties",
+      "produtos": "Products",
+      "jornada": "Journey",
+      "medicos": "Physicians",
+      "faq": "FAQ"
+    },
+    "serviceItems": {
+      "inicio": "Home",
+      "estrutura": "Facilities",
+      "diferenciais": "Differentiators",
+      "depoimentos": "Testimonials",
+      "faq": "FAQ"
+    },
+    "ctaLabel": "Talk to our team",
+    "skipToContent": "Skip to content",
+    "logoAriaLabel": "Hospital São Rafael — go to start",
+    "primaryNavAriaLabel": "Primary navigation",
+    "linksAriaLabel": "Navigation links",
+    "languageAriaLabel": "Language",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "drawerAriaLabel": "Navigation menu",
+    "mobileNavAriaLabel": "Mobile menu"
+  },
+  "stats": {
+    "headline": "The safety of your surgery measured in real results.",
+    "items": {
+      "infeccao": {
+        "label": "Infection Rate",
+        "description": "A benchmark of strict clinical excellence, well below the national average, ensuring an ultra-safe environment for your procedure."
+      },
+      "cirurgias": {
+        "label": "Procedures successfully performed",
+        "description": "Proven experience of a highly skilled medical and multidisciplinary team."
+      },
+      "salas": {
+        "label": "Operating Rooms",
+        "description": "Equipped with state-of-the-art technology for low- to high-complexity procedures with full predictability."
+      },
+      "investimento": {
+        "label": "In innovation",
+        "description": "Invested in technology park and structural expansion for your comfort."
+      },
+      "hiperbarica": {
+        "label": "Hyperbaric Sessions",
+        "description": "Sessions performed to speed up recovery and prevent post-surgical complications using hyperbaric oxygen therapy."
+      }
+    }
+  },
+  "footer": {
+    "ariaLabel": "Footer",
+    "description": "Healthcare excellence with complete infrastructure and humanized care in Belo Horizonte.",
+    "stats": {
+      "leitos": "Beds",
+      "salas": "Operating Rooms"
+    },
+    "navigation": {
+      "pacientes": {
+        "title": "FOR PATIENTS",
+        "links": {
+          "consulta": "Book appointment",
+          "exame": "Book exam",
+          "resultado": "Exam results",
+          "emergencias": "Emergencies",
+          "medico": "Find a doctor"
+        }
+      },
+      "hospital": {
+        "title": "THE HOSPITAL",
+        "links": {
+          "historia": "Our history",
+          "especialidades": "Specialties",
+          "centro": "Medical center",
+          "qualidade": "Quality",
+          "trabalheConosco": "Careers",
+          "ouvidoria": "Ombudsman"
+        }
+      }
+    },
+    "contact": {
+      "title": "CONTACT",
+      "addressLabel": "Address",
+      "phoneLabel": "Phone",
+      "emailLabel": "E-mail"
+    },
+    "emergencyLabel": "24-hour Emergency",
+    "copyright": "© {year} Hospital São Rafael. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "restrictedArea": "Restricted area",
+    "restrictedAreaAria": "Staff restricted area"
+  },
+  "diferenciais": {
+    "kicker": "SCIENTIFIC RIGOR AND COMFORT",
+    "headline": "Proven excellence in every detail of care.",
+    "description": [
+      "At Hospital São Rafael, cutting-edge technology and technical rigor meet a complete hospital infrastructure to deliver safety, comfort, and precision at every stage.",
+      "With the support of our integrated Medical and Diagnostic Institute, you have appointments, exams, and procedures with fluidity, quality, and individualized attention."
+    ],
+    "ctas": {
+      "especialidades": "Discover our Specialties",
+      "servicos": "Discover the Surgical Center"
+    },
+    "imageAlt": "Hospital São Rafael technological infrastructure"
+  },
+  "servicos": {
+    "kicker": "HOSPITAL INFRASTRUCTURE",
+    "headline": "Complete infrastructure in a single integrated complex.",
+    "description": "Everything your procedure requires, integrated in the same complex — no dispersion, no transfers, no friction.",
+    "items": {
+      "centro-cirurgico": {
+        "title": "Surgical Center",
+        "description": "22 rooms equipped with state-of-the-art technology for high-complexity procedures."
+      },
+      "internacao": {
+        "title": "Inpatient Unit",
+        "description": "Accommodations designed for comfort and recovery, with continuous monitoring and a dedicated team."
+      },
+      "imd": {
+        "title": "IMD Medical and Diagnostic Institute",
+        "description": "Hospital São Rafael's IMD brings appointments and exams together in one place, with greater precision, agility, and much more comfort."
+      },
+      "laboratorio": {
+        "title": "Laboratory",
+        "description": "Clinical analyses with agility and precision, integrated into the pre- and post-operative flow."
+      },
+      "hiperbarica": {
+        "title": "Hyperbaric Therapy",
+        "description": "Cutting-edge technology to speed up recovery and prevent post-surgical complications."
+      },
+      "centro-convencoes": {
+        "title": "Convention Center",
+        "description": "Space dedicated to symposia, training, technical-scientific gatherings, and knowledge exchange."
+      },
+      "praca-alimentacao": {
+        "title": "Food Court",
+        "description": "Quality food for patients, companions, medical staff, and external visitors within the complex."
+      }
+    }
+  },
+  "b2b": {
+    "kicker": "FOR PARTNER SURGEONS",
+    "headline": "The perfect operational base to scale your practice.",
+    "subheadline": "A center of excellence focused on the efficiency of your surgical act and the comfort of your patient.",
+    "description": "",
+    "features": {
+      "giro-sala": {
+        "title": "Room Turnover",
+        "description": "Agile processes designed to reduce idle time and optimize your time between procedures."
+      },
+      "suporte-tecnico": {
+        "title": "Specialized Technical Support",
+        "description": "Highly trained surgical technicians and dedicated operational support via WhatsApp — from scheduling to discharge."
+      },
+      "ecossistema-medico": {
+        "title": "Medical Environment",
+        "description": "Access to a Convention Center for symposia, 24/7 fitness center, and exclusive lounge areas for partner physicians."
+      },
+      "gestao-processos": {
+        "title": "Integrated Process Management",
+        "description": "From IMD directly to the surgical block's medical record, with no information loss and full traceability."
+      }
+    },
+    "testimonials": {
+      "elogio-alexandre-melo-1": {
+        "quote": "I was in my room 18, so everything was great. Edmar a perfect 10 — we'd even like to keep working with him. Elisangela a perfect 10.",
+        "role": "Partner physician"
+      },
+      "elogio-aline-durao": {
+        "quote": "Good morning! Eluzangela a perfect 10, Edmar a perfect 10. Everything was excellent as always. Thank you!",
+        "role": "Partner physician"
+      },
+      "elogio-rafaela-nicholls": {
+        "quote": "Good morning! Everything was great. The surgery went very well and the patient transfer was faster than usual. Paloma and Rafaela were excellent professionals, a perfect 10 for both. Thank you very much!",
+        "role": "Partner physician"
+      },
+      "elogio-alexandre-melo-2": {
+        "quote": "Hello! Soraya's surgery went very well. We were in my room 18. Thanks to Emília and Lilian. Dr. Marcelo handled general anesthesia, a perfect 10. Michele a perfect 10. Isa brought the patient to the surgical center quickly and cheerfully.",
+        "role": "Partner physician"
+      },
+      "elogio-ricardo-couto": {
+        "quote": "Good morning. Since yesterday was my first time, I was still learning about the system, the hospital's workflow, and patient transfer. I liked everything. So far, no complaints — only praise!",
+        "role": "Partner physician"
+      }
+    },
+    "ctaLabel": "Talk to Institutional Medical Consulting",
+    "testimonialsKicker": "What our partner physicians say",
+    "prevTestimonial": "Previous testimonial",
+    "nextTestimonial": "Next testimonial"
+  },
+  "especialidades": {
+    "kicker": "SPECIALTIES",
+    "headline": "Excellence in every area of practice.",
+    "description": "Discover the specialties offered at Hospital São Rafael's Medical and Diagnostic Institute.",
+    "viewProcedures": "View procedures",
+    "modalProceduresTitle": "Procedures performed",
+    "modalProceduresPending": "[CLIENT PENDING] Procedure list will be available soon.",
+    "modalCtaLabel": "Book appointment",
+    "items": {
+      "ortopedia": {
+        "title": "Orthopedics",
+        "description": "Arthroscopy, knee and hip arthroplasties, and spine surgery using minimally invasive techniques and accelerated recovery protocols.",
+        "procedures": ["Total knee arthroplasty", "Total hip arthroplasty", "Knee and shoulder arthroscopy", "ACL reconstruction", "Spine surgery", "Treatment of complex fractures"]
+      },
+      "cardiologia": {
+        "title": "Cardiology",
+        "description": "Catheterization, coronary angioplasty, and high-complexity cardiac surgeries with continuous monitoring in a dedicated cardiac ICU.",
+        "procedures": ["Cardiac catheterization", "Coronary angioplasty", "Stent implantation", "Pacemaker implantation", "Catheter ablation", "Revascularization surgery"]
+      },
+      "neurocirurgia": {
+        "title": "Neurosurgery",
+        "description": "Brain tumor resection, spinal microsurgery, and neuropathy treatment using precision-assisted surgical navigation.",
+        "procedures": ["Brain tumor resection", "Minimally invasive spine surgery", "Microsurgery of disc herniation", "Ventriculoperitoneal shunt", "Cervical spine neurosurgery", "Spinal canal stenosis treatment"]
+      },
+      "urologia": {
+        "title": "Urology",
+        "description": "Prostatectomy, nephrectomy, and kidney stone treatment with laparoscopic and robotic access, ensuring high precision and reduced hospitalization.",
+        "procedures": ["Radical prostatectomy", "Laparoscopic nephrectomy", "Lithotripsy and ureteroscopy", "Cystoscopy and TURP", "Robotic urological surgery", "Incontinence treatment"]
+      },
+      "ginecologia": {
+        "title": "Gynecology",
+        "description": "Laparoscopic hysterectomy, myomectomy, and endometriosis treatment with minimally invasive precision and rapid recovery protocols.",
+        "procedures": ["Laparoscopic hysterectomy", "Myomectomy", "Endometriosis surgery", "Oophorectomy", "Pelvic prolapse repair", "Salpingectomy"]
+      },
+      "oftalmologia": {
+        "title": "Ophthalmology",
+        "description": "Cataract phacoemulsification, surgical treatment of glaucoma, and vitrectomy using state-of-the-art technology in a specialized ophthalmology center.",
+        "procedures": ["Phacoemulsification (cataract)", "Trabeculectomy (glaucoma)", "Posterior vitrectomy", "Laser refractive surgery", "Corneal transplant", "Strabismus correction"]
+      },
+      "dermatologia": {
+        "title": "Dermatology",
+        "description": "Lesion excision, Mohs surgery for carcinomas, and skin reconstruction with surgical precision and integrated histopathological diagnosis.",
+        "procedures": ["Skin lesion excision", "Mohs surgery", "Skin reconstruction", "Biopsies and histopathology", "Carcinoma resection", "Dermatological electrosurgery"]
+      },
+      "cirurgia-geral": {
+        "title": "General Surgery",
+        "description": "Cholecystectomy, herniorrhaphy, and laparoscopic intestinal resections with broad clinical experience and accelerated recovery protocols.",
+        "procedures": ["Laparoscopic cholecystectomy", "Appendectomy", "Inguinal and ventral herniorrhaphy", "Intestinal resection", "Fundoplication", "Gastroesophageal reflux surgery"]
+      },
+      "cirurgia-plastica": {
+        "title": "Plastic Surgery",
+        "description": "Mammoplasty, rhinoplasty, and post-oncological reconstruction with natural, safe results and integrated rehabilitation protocols.",
+        "procedures": ["Breast augmentation and reduction mammoplasty", "Rhinoplasty", "Liposuction", "Abdominoplasty", "Rhytidoplasty (facelift)", "Post-mastectomy breast reconstruction"]
+      },
+      "cirurgia-vascular": {
+        "title": "Vascular Surgery",
+        "description": "Arterial revascularization, aneurysm repair, and varicose vein treatment with endovascular approach and intraoperative imaging technology.",
+        "procedures": ["Arterial revascularization", "Aneurysm repair", "Saphenectomy and phlebectomy", "Arteriovenous fistula", "Peripheral angioplasty", "Thrombectomy"]
+      },
+      "cabeca-pescoco": {
+        "title": "Head and Neck",
+        "description": "Thyroidectomy, neck dissection, and craniofacial oncological resection with reconstruction via microvascular flaps.",
+        "procedures": ["Total and partial thyroidectomy", "Parathyroidectomy", "Neck dissection", "Parotid tumor resection", "Laryngectomy", "Microvascular flap reconstruction"]
+      },
+      "cirurgia-toracica": {
+        "title": "Thoracic Surgery",
+        "description": "Lobectomy, segmentectomy, and tumor resection by video-assisted thoracoscopic surgery (VATS), with a minimally invasive approach to the chest and mediastinum.",
+        "procedures": ["Pulmonary lobectomy (VATS)", "Segmentectomy", "Mediastinal resection", "Pneumothorax treatment", "Video-assisted pleural biopsy", "Empyemectomy"]
+      }
+    }
+  },
+  "produtos": {
+    "kicker": "PRODUCTS AND EXPERIENCES",
+    "headline": "Solutions that elevate every stage of your journey.",
+    "description": "Beyond hospital infrastructure, we offer products designed to maximize patient comfort and surgeon efficiency.",
+    "tabsAriaLabel": "Filter products by audience",
+    "categories": {
+      "paciente": {
+        "label": "For Patients",
+        "items": {
+          "upgrade-acomodacao": {
+            "title": "Accommodation Upgrade",
+            "description": "Comfort, privacy, and exclusive service. Turn the post-surgical period into a differentiated recovery experience."
+          },
+          "extensao-diaria": {
+            "title": "Stay Extension",
+            "description": "Flexibility in hospitalization time for an unhurried recovery with full medical support."
+          },
+          "unidade-transicao": {
+            "title": "Transition Unit",
+            "description": "The safe link between hospital discharge and the return home. Continuous monitoring and assisted rehabilitation."
+          },
+          "consulta-pre-anestesica": {
+            "title": "Pre-Anesthetic Consultation",
+            "description": "Specialized assessment before the procedure to mitigate risks and personalize the anesthesia protocol."
+          },
+          "tecnico-enfermagem": {
+            "title": "Exclusive Nursing Technician",
+            "description": "Nursing technician dedicated exclusively to your care, with continuous follow-up, safety, and personalized attention throughout your stay."
+          }
+        }
+      },
+      "medico": {
+        "label": "For Physicians",
+        "items": {
+          "instrumentador": {
+            "title": "Specialized Surgical Technician",
+            "description": "Professionals trained in the strictest protocols, ready to anticipate the needs of your procedure."
+          },
+          "academia": {
+            "title": "Fitness Center",
+            "description": "Exclusive physical activity and wellness space for physicians and surgical staff, with modern equipment and complete infrastructure within the complex."
+          },
+          "conforto-medico": {
+            "title": "Physician Lounge",
+            "description": "Exclusive rest and convenience area for physicians, with a structure designed for preparation and recovery between procedures with privacy and comfort."
+          },
+          "engenharia-clinica": {
+            "title": "Clinical Engineering",
+            "description": "Specialized technical support for the maintenance and operation of medical-hospital equipment, ensuring maximum availability and performance of surgical resources."
+          }
+        }
+      }
+    }
+  },
+  "jornada": {
+    "kicker": "THE INTEGRATED SÃO RAFAEL & IMD COMPLEX",
+    "headline": "From precision diagnosis to full recovery, without leaving our integrated complex.",
+    "description": "Discontinuity in medical care creates friction. Here, IMD and the surgical center operate as a single complete structure — predictable for your physician, safe and comfortable for you.",
+    "stepsAriaLabel": "Patient journey stages",
+    "steps": {
+      "consulta": {
+        "title": "Consultation and Diagnosis",
+        "subtitle": "IMD",
+        "description": "Precision diagnosis at IMD before any surgical decision.",
+        "links": ["Discover IMD"]
+      },
+      "preparo": {
+        "title": "Surgical Preparation",
+        "subtitle": "",
+        "description": "Integrated safety protocols to mitigate risks and reduce anxiety.",
+        "links": ["Pre-Anesthetic Consultation"]
+      },
+      "procedimento": {
+        "title": "The Procedure",
+        "subtitle": "",
+        "description": "Maximum clinical rigor in a high-performance center.",
+        "links": ["Surgical Center"]
+      },
+      "recuperacao": {
+        "title": "Accelerated Recovery",
+        "subtitle": "",
+        "description": "Integrated Hyperbaric Therapy to speed up recovery and reduce inactivity.",
+        "links": ["Hyperbaric Therapy", "Accommodation Upgrade"]
+      },
+      "alta": {
+        "title": "Transition Unit and Discharge",
+        "subtitle": "",
+        "description": "Continuous monitoring in the Transition Unit until safe return to routine.",
+        "links": ["Transition Unit", "Stay Extension"]
+      }
+    }
+  },
+  "faq": {
+    "kicker": "TRANSPARENCY AND CLARITY",
+    "headline": "What you need to know before your surgical decision.",
+    "items": {
+      "faq-1": {
+        "question": "How does the private care flow work?",
+        "answer": "Care at Hospital São Rafael follows an integrated flow from first contact to discharge. It all starts with scheduling through our service center, which organizes each stage according to your needs: appointments, exams, check-ups, and surgical preparation. Next, you have appointments and exams at IMD, the Medical and Diagnostic Institute, where all information is already entered digitally into the integrated medical record. With preparation completed, including the pre-anesthetic consultation when indicated, the procedure is performed in one of our 22 surgical centers. After surgery, you go through recovery with continuous team support and can rely on the Transition Unit until your safe return to routine. This entire journey happens without leaving our complex."
+      },
+      "faq-2": {
+        "question": "Can my surgeon operate at São Rafael?",
+        "answer": "Yes. Hospital São Rafael is an open medical staff hospital, which means any physician with active registration and good standing with the medical board can request credentialing to perform procedures in our facilities, without needing an employment relationship with the hospital. The process is conducted by our Institutional Medical Consulting team, which evaluates the professional's profile and aligns applicable specialties and protocols. Once credentialed, the surgeon has access to 22 surgical rooms equipped with state-of-the-art technology, specialized surgical technicians, dedicated technical support, and 40-minute room turnover, ensuring predictability and efficiency for their schedule. To begin the process, get in touch via the \"Talk to Institutional Medical Consulting\" button."
+      },
+      "faq-3": {
+        "question": "What is the real difference of the Accommodation Upgrade?",
+        "answer": "The Accommodation Upgrade turns the post-surgical period into a differentiated recovery experience. In addition to full clinical support, you get a room with greater privacy and comfort, exclusive and personalized service, and an environment designed for you to rest peacefully. It is the ideal choice for those who want a hospital stay with elevated hospitality standards, combining medical excellence and well-being in every detail."
+      },
+      "faq-4": {
+        "question": "How does IMD speed up my surgery?",
+        "answer": "IMD operates fully integrated with Hospital São Rafael's surgical block. Appointments, imaging exams, and reports performed at the Institute automatically feed the surgical center's digital medical record — without referrals, information repetition, or data loss. When surgery day comes, your physician already has access to everything they need, with full traceability. This model eliminates the wait and bureaucracy that usually exists between diagnosis and procedure, ensuring more agility, safety, and predictability for you and your surgeon."
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@
 "use client"
 
 import { useCallback, useEffect, useRef, useState } from "react"
+import { useTranslations } from "next-intl"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Kicker } from "@/components/atoms/kicker"
@@ -30,6 +31,7 @@ interface B2BSectionProps extends BaseComponentProps {
 // COMPONENTE
 // -----------------------------------------------------------------------------
 export function B2BSection({ data, className }: B2BSectionProps) {
+  const t = useTranslations("b2b")
   const { ref: headerRef, hasIntersected: headerVisible } = useIntersection({
     threshold: 0.15,
     once: true,
@@ -182,7 +184,7 @@ export function B2BSection({ data, className }: B2BSectionProps) {
               )}
             >
               <p className="text-xs font-extrabold uppercase tracking-kicker text-white/40">
-                O que dizem nossos médicos parceiros
+                {t("testimonialsKicker")}
               </p>
 
               {testimonials.length > 1 && (
@@ -190,7 +192,7 @@ export function B2BSection({ data, className }: B2BSectionProps) {
                   <button
                     type="button"
                     onClick={goPrev}
-                    aria-label="Depoimento anterior"
+                    aria-label={t("prevTestimonial")}
                     className={cn(
                       "w-10 h-10 rounded-full border border-white/20",
                       "flex items-center justify-center",
@@ -207,7 +209,7 @@ export function B2BSection({ data, className }: B2BSectionProps) {
                   <button
                     type="button"
                     onClick={goNext}
-                    aria-label="Próximo depoimento"
+                    aria-label={t("nextTestimonial")}
                     className={cn(
                       "w-10 h-10 rounded-full border border-white/20",
                       "flex items-center justify-center",

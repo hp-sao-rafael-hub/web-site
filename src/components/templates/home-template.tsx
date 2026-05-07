@@ -17,6 +17,8 @@
 //  10. Footer (O09)
 // =============================================================================
 
+import { getTranslations } from "next-intl/server"
+
 import { HeroSection } from "@/components/organisms/hero-section"
 import { StatsBar } from "@/components/organisms/stats-bar"
 import { ContentBlock } from "@/components/organisms/content-block"
@@ -40,7 +42,6 @@ import {
   FAQ_DATA,
   FOOTER_DATA,
 } from "@/lib/constants"
-import { getCtaMap, getActiveFaqs, pickCta } from "@/lib/cms"
 
 import type {
   HeroData,
@@ -59,30 +60,159 @@ import type {
 // COMPONENTE
 // -----------------------------------------------------------------------------
 export async function HomeTemplate() {
-  const [ctaMap, dbFaqs] = await Promise.all([getCtaMap(), getActiveFaqs()])
+  const [tHero, tStats, tFooter, tDiferenciais, tServicos, tB2B, tEspec, tProdutos, tJornada, tFaq] = await Promise.all([
+    getTranslations("hero"),
+    getTranslations("stats"),
+    getTranslations("footer"),
+    getTranslations("diferenciais"),
+    getTranslations("servicos"),
+    getTranslations("b2b"),
+    getTranslations("especialidades"),
+    getTranslations("produtos"),
+    getTranslations("jornada"),
+    getTranslations("faq"),
+  ])
 
-  const heroCta = pickCta(ctaMap, "atendimento_whatsapp", {
-    label: HERO_DATA.ctaPrimary.label,
-    href: HERO_DATA.ctaPrimary.href,
-  })
-  const b2bCta = pickCta(ctaMap, "consultoria_medica_whatsapp", {
-    label: B2B_DATA.cta.label,
-    href: B2B_DATA.cta.href,
-  })
+  const heroCta = { label: tHero("ctaLabel"), href: HERO_DATA.ctaPrimary.href }
+  const b2bCta = { label: tB2B("ctaLabel"), href: B2B_DATA.cta.href }
 
-  const heroData = { ...HERO_DATA, ctaPrimary: heroCta }
-  const b2bData = { ...B2B_DATA, cta: b2bCta }
-  const faqData =
-    dbFaqs.length > 0
-      ? {
-          ...FAQ_DATA,
-          items: dbFaqs.map((f) => ({
-            id: f.id,
-            question: f.question,
-            answer: f.answer,
-          })),
-        }
-      : FAQ_DATA
+  const heroData: HeroData = {
+    kicker: tHero("kicker"),
+    headline: tHero("headline"),
+    subheadline: tHero.raw("subheadline") as readonly string[],
+    ctaPrimary: heroCta,
+    video: { ...HERO_DATA.video, alt: tHero("videoAlt") },
+  }
+  const statsData: StatsData = {
+    headline: tStats("headline"),
+    items: STATS_DATA.items.map((item) => ({
+      ...item,
+      label: tStats(`items.${item.id}.label`),
+      description: tStats(`items.${item.id}.description`),
+    })),
+  }
+
+  const PACIENTES_LINK_KEYS = ["consulta", "exame", "resultado", "emergencias", "medico"] as const
+  const HOSPITAL_LINK_KEYS = ["historia", "especialidades", "centro", "qualidade", "trabalheConosco", "ouvidoria"] as const
+  const footerData: FooterData = {
+    description: tFooter("description"),
+    stats: [
+      { label: tFooter("stats.leitos"), value: FOOTER_DATA.stats[0].value },
+      { label: tFooter("stats.salas"), value: FOOTER_DATA.stats[1].value },
+    ],
+    navigation: {
+      pacientes: {
+        title: tFooter("navigation.pacientes.title"),
+        links: PACIENTES_LINK_KEYS.map((k, i) => ({
+          label: tFooter(`navigation.pacientes.links.${k}`),
+          href: FOOTER_DATA.navigation.pacientes.links[i].href,
+        })),
+      },
+      hospital: {
+        title: tFooter("navigation.hospital.title"),
+        links: HOSPITAL_LINK_KEYS.map((k, i) => ({
+          label: tFooter(`navigation.hospital.links.${k}`),
+          href: FOOTER_DATA.navigation.hospital.links[i].href,
+        })),
+      },
+    },
+    contact: FOOTER_DATA.contact,
+    social: [...FOOTER_DATA.social],
+    emergency: {
+      label: tFooter("emergencyLabel"),
+      href: FOOTER_DATA.emergency.href,
+    },
+  }
+
+  const diferenciaisData: ContentBlockData = {
+    kicker: tDiferenciais("kicker"),
+    headline: tDiferenciais("headline"),
+    description: tDiferenciais.raw("description") as readonly string[],
+    ctas: [
+      { label: tDiferenciais("ctas.especialidades"), href: DIFERENCIAIS_DATA.ctas[0].href },
+      { label: tDiferenciais("ctas.servicos"), href: DIFERENCIAIS_DATA.ctas[1].href },
+    ],
+    image: { ...DIFERENCIAIS_DATA.image, alt: tDiferenciais("imageAlt") },
+  }
+
+  const jornadaData: JornadaData = {
+    kicker: tJornada("kicker"),
+    headline: tJornada("headline"),
+    description: tJornada("description"),
+    steps: JORNADA_DATA.steps.map((step) => {
+      const labels = tJornada.raw(`steps.${step.id}.links`) as string[]
+      return {
+        ...step,
+        title: tJornada(`steps.${step.id}.title`),
+        subtitle: tJornada(`steps.${step.id}.subtitle`),
+        description: tJornada(`steps.${step.id}.description`),
+        relatedLinks: step.relatedLinks.map((link, i) => ({
+          label: labels[i] ?? link.label,
+          href: link.href,
+        })),
+      }
+    }),
+  }
+
+  const produtosData: ProdutosData = {
+    kicker: tProdutos("kicker"),
+    headline: tProdutos("headline"),
+    description: tProdutos("description"),
+    categories: PRODUTOS_DATA.categories.map((cat) => ({
+      id: cat.id,
+      label: tProdutos(`categories.${cat.id}.label`),
+      items: cat.items.map((it) => ({
+        ...it,
+        title: tProdutos(`categories.${cat.id}.items.${it.id}.title`),
+        description: tProdutos(`categories.${cat.id}.items.${it.id}.description`),
+      })),
+    })),
+  }
+
+  const especialidadesData: EspecialidadesData = {
+    kicker: tEspec("kicker"),
+    headline: tEspec("headline"),
+    description: tEspec("description"),
+    items: ESPECIALIDADES_DATA.items.map((item) => ({
+      ...item,
+      title: tEspec(`items.${item.id}.title`),
+      description: tEspec(`items.${item.id}.description`),
+      procedures: tEspec.raw(`items.${item.id}.procedures`) as string[],
+    })),
+  }
+
+  const servicosItems: ServiceItem[] = SERVICOS_DATA.items.map((item) => ({
+    ...item,
+    title: tServicos(`items.${item.id}.title`),
+    description: tServicos(`items.${item.id}.description`),
+  }))
+
+  const b2bData: B2BData = {
+    kicker: tB2B("kicker"),
+    headline: tB2B("headline"),
+    subheadline: tB2B("subheadline"),
+    description: tB2B("description"),
+    features: B2B_DATA.features.map((f) => ({
+      ...f,
+      title: tB2B(`features.${f.id}.title`),
+      description: tB2B(`features.${f.id}.description`),
+    })),
+    testimonials: B2B_DATA.testimonials.map((tst) => ({
+      ...tst,
+      quote: tB2B(`testimonials.${tst.id}.quote`),
+      role: tB2B(`testimonials.${tst.id}.role`),
+    })),
+    cta: b2bCta,
+  }
+  const faqData: FAQData = {
+    kicker: tFaq("kicker"),
+    headline: tFaq("headline"),
+    items: FAQ_DATA.items.map((item) => ({
+      id: item.id,
+      question: tFaq(`items.${item.id}.question`),
+      answer: tFaq(`items.${item.id}.answer`),
+    })),
+  }
 
   return (
     <>
@@ -90,16 +220,14 @@ export async function HomeTemplate() {
       {/* DOBRA 1 — HERO                                                    */}
       {/* Vídeo fullscreen, headline revisada, CTA principal                */}
       {/* ================================================================= */}
-      <HeroSection
-        data={heroData as unknown as HeroData}
-      />
+      <HeroSection data={heroData} />
 
       {/* ================================================================= */}
       {/* DOBRA 2 — NÚMEROS DE CREDIBILIDADE                                */}
       {/* Métricas com counter-up ao entrar no viewport                     */}
       {/* ================================================================= */}
       <StatsBar
-        data={STATS_DATA as unknown as StatsData}
+        data={statsData}
         theme="light"
       />
 
@@ -108,7 +236,7 @@ export async function HomeTemplate() {
       {/* Rigor científico + conforto + ecossistema IMD. Layout assimétrico */}
       {/* ================================================================= */}
       <ContentBlock
-        data={DIFERENCIAIS_DATA as unknown as ContentBlockData}
+        data={diferenciaisData}
         imagePosition="right"
         background="white"
         id="diferenciais"
@@ -120,10 +248,10 @@ export async function HomeTemplate() {
       {/* ================================================================= */}
       <CardGrid
         variant="services"
-        kicker={SERVICOS_DATA.kicker}
-        headline={SERVICOS_DATA.headline}
-        description={SERVICOS_DATA.description}
-        items={SERVICOS_DATA.items as unknown as ServiceItem[]}
+        kicker={tServicos("kicker")}
+        headline={tServicos("headline")}
+        description={tServicos("description")}
+        items={servicosItems}
         id="servicos"
         columns={3}
       />
@@ -133,7 +261,7 @@ export async function HomeTemplate() {
       {/* Grid com modais de detalhamento por especialidade                 */}
       {/* ================================================================= */}
       <SpecialtyGrid
-        data={ESPECIALIDADES_DATA as unknown as EspecialidadesData}
+        data={especialidadesData}
       />
 
       {/* ================================================================= */}
@@ -141,7 +269,7 @@ export async function HomeTemplate() {
       {/* Divididos por público (Paciente / Médico) com abas de filtro      */}
       {/* ================================================================= */}
       <ProductsSection
-        data={PRODUTOS_DATA as unknown as ProdutosData}
+        data={produtosData}
       />
 
       {/* ================================================================= */}
@@ -149,7 +277,7 @@ export async function HomeTemplate() {
       {/* Timeline do diagnóstico à alta. Links para serviços por etapa     */}
       {/* ================================================================= */}
       <JourneyTimeline
-        data={JORNADA_DATA as unknown as JornadaData}
+        data={jornadaData}
       />
 
       {/* ================================================================= */}
@@ -157,7 +285,7 @@ export async function HomeTemplate() {
       {/* Fundo charcoal. Feature cards + depoimentos + CTA consultoria     */}
       {/* ================================================================= */}
       <B2BSection
-        data={b2bData as unknown as B2BData}
+        data={b2bData}
       />
 
       {/* ================================================================= */}
@@ -165,7 +293,7 @@ export async function HomeTemplate() {
       {/* Layout 2 colunas: heading sticky + accordion                      */}
       {/* ================================================================= */}
       <FAQSection
-        data={faqData as unknown as FAQData}
+        data={faqData}
         background="creme"
       />
 
@@ -174,7 +302,7 @@ export async function HomeTemplate() {
       {/* Logo + descrição + navegação + contato + social + emergência      */}
       {/* ================================================================= */}
       <Footer
-        data={FOOTER_DATA as unknown as FooterData}
+        data={footerData}
       />
     </>
   )

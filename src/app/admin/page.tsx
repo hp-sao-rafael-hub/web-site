@@ -1,28 +1,25 @@
 import Link from "next/link"
 import { createClient } from "@/lib/supabase/server"
-import { Link2, HelpCircle, BarChart3, Users, MousePointerClick, Clock } from "lucide-react"
+import { BarChart3, Users, MousePointerClick, Clock } from "lucide-react"
 
 export default async function AdminDashboardPage() {
   const supabase = await createClient()
 
-  const [{ count: ctaCount }, { count: faqCount }, clicksNow, clicksPrev, topCtas] =
-    await Promise.all([
-      supabase.from("ctas").select("*", { count: "exact", head: true }),
-      supabase.from("faqs").select("*", { count: "exact", head: true }).eq("is_active", true),
-      supabase
-        .from("click_events")
-        .select("*", { count: "exact", head: true })
-        .gte("created_at", firstDayOfMonth(0).toISOString()),
-      supabase
-        .from("click_events")
-        .select("*", { count: "exact", head: true })
-        .gte("created_at", firstDayOfMonth(-1).toISOString())
-        .lt("created_at", firstDayOfMonth(0).toISOString()),
-      supabase
-        .from("click_events")
-        .select("cta_key")
-        .gte("created_at", firstDayOfMonth(0).toISOString()),
-    ])
+  const [clicksNow, clicksPrev, topCtas] = await Promise.all([
+    supabase
+      .from("click_events")
+      .select("*", { count: "exact", head: true })
+      .gte("created_at", firstDayOfMonth(0).toISOString()),
+    supabase
+      .from("click_events")
+      .select("*", { count: "exact", head: true })
+      .gte("created_at", firstDayOfMonth(-1).toISOString())
+      .lt("created_at", firstDayOfMonth(0).toISOString()),
+    supabase
+      .from("click_events")
+      .select("cta_key")
+      .gte("created_at", firstDayOfMonth(0).toISOString()),
+  ])
 
   const clicksThisMonth = clicksNow.count ?? 0
   const clicksLastMonth = clicksPrev.count ?? 0
@@ -38,9 +35,6 @@ export default async function AdminDashboardPage() {
     .sort((a, b) => b[1] - a[1])
     .slice(0, 5)
 
-  const { data: ctaLabels } = await supabase.from("ctas").select("key, label")
-  const labelMap = Object.fromEntries((ctaLabels ?? []).map((c) => [c.key, c.label]))
-
   return (
     <div className="flex flex-col gap-8">
       <header>
@@ -50,7 +44,7 @@ export default async function AdminDashboardPage() {
         </p>
       </header>
 
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         <KpiCard
           label="Cliques no mês"
           value={clicksThisMonth.toLocaleString("pt-BR")}
@@ -65,22 +59,17 @@ export default async function AdminDashboardPage() {
           accent={deltaPct !== null && deltaPct >= 0}
         />
         <KpiCard
-          label="CTAs ativos"
-          value={String(ctaCount ?? 0)}
-          hint="links editáveis"
-          icon={Link2}
-        />
-        <KpiCard
-          label="FAQs publicadas"
-          value={String(faqCount ?? 0)}
-          hint="perguntas ativas"
-          icon={HelpCircle}
-        />
-        <KpiCard
           label="Mês anterior"
           value={clicksLastMonth.toLocaleString("pt-BR")}
           hint="cliques comparado"
           icon={Clock}
+        />
+        <KpiCard
+          label="Variação"
+          value={deltaPct === null ? "—" : `${deltaPct >= 0 ? "+" : ""}${deltaPct}%`}
+          hint="vs mês passado"
+          icon={BarChart3}
+          accent={deltaPct !== null && deltaPct >= 0}
         />
       </section>
 
@@ -105,9 +94,7 @@ export default async function AdminDashboardPage() {
             <ul className="flex flex-col divide-y divide-neutral-100">
               {top5.map(([key, count]) => (
                 <li key={key} className="py-3 flex items-center justify-between gap-4">
-                  <span className="text-sm text-charcoal truncate">
-                    {labelMap[key] ?? key}
-                  </span>
+                  <span className="text-sm text-charcoal truncate">{key}</span>
                   <span className="text-sm font-bold text-marrom shrink-0">
                     {count.toLocaleString("pt-BR")}
                   </span>
@@ -122,8 +109,6 @@ export default async function AdminDashboardPage() {
             Atalhos
           </h2>
           <div className="grid grid-cols-2 gap-3">
-            <Shortcut href="/admin/ctas" icon={Link2} label="Editar CTAs" hint="Labels e URLs" />
-            <Shortcut href="/admin/faq" icon={HelpCircle} label="Gerenciar FAQ" hint="Novas perguntas" />
             <Shortcut href="/admin/cliques" icon={BarChart3} label="Cliques" hint="6 meses histórico" />
             <Shortcut href="/" icon={Users} label="Ver site" hint="Aba nova" external />
           </div>

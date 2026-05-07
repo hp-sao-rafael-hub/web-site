@@ -7,8 +7,14 @@
 
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useTransition } from "react"
 import { usePathname, useRouter } from "next/navigation"
+import { useLocale, useTranslations } from "next-intl"
+import {
+  usePathname as useIntlPathname,
+  useRouter as useIntlRouter,
+} from "@/i18n/navigation"
+import { routing } from "@/i18n/routing"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Logo } from "@/components/atoms/logo"
@@ -29,28 +35,50 @@ interface HeaderProps extends BaseComponentProps {
 }
 
 // -----------------------------------------------------------------------------
-// LANGUAGE TOGGLE — minimalista, sem redirecionamento
+// LANGUAGE TOGGLE — troca rota para o locale selecionado
 // -----------------------------------------------------------------------------
-function LangToggle() {
-  const [lang, setLang] = useState<"PT" | "EN">("PT")
+const LANG_LABELS: Record<(typeof routing.locales)[number], string> = {
+  pt: "PT",
+  en: "EN",
+}
+
+function LangToggle({ ariaLabel }: { ariaLabel: string }) {
+  const currentLocale = useLocale() as (typeof routing.locales)[number]
+  const intlPathname = useIntlPathname()
+  const intlRouter = useIntlRouter()
+  const [isPending, startTransition] = useTransition()
+
+  const handleSwitch = (target: (typeof routing.locales)[number]) => {
+    if (target === currentLocale) return
+    startTransition(() => {
+      intlRouter.replace(intlPathname, { locale: target })
+    })
+  }
 
   return (
-    <div className="flex items-center gap-1 text-xs font-semibold" aria-label="Idioma">
-      {(["PT", "EN"] as const).map((l, i) => (
+    <div
+      className="flex items-center gap-1 text-xs font-semibold"
+      aria-label={ariaLabel}
+      aria-busy={isPending}
+    >
+      {routing.locales.map((l, i) => (
         <span key={l} className="flex items-center gap-1">
           {i > 0 && (
             <span className="text-white/20 select-none">|</span>
           )}
           <button
             type="button"
-            onClick={() => setLang(l)}
+            onClick={() => handleSwitch(l)}
+            disabled={isPending}
             className={cn(
-              "transition-colors duration-200 px-1",
-              lang === l ? "text-white" : "text-white/35 hover:text-white/70"
+              "transition-colors duration-200 px-1 disabled:opacity-60",
+              l === currentLocale
+                ? "text-white"
+                : "text-white/35 hover:text-white/70"
             )}
-            aria-pressed={lang === l}
+            aria-pressed={l === currentLocale}
           >
-            {l}
+            {LANG_LABELS[l]}
           </button>
         </span>
       ))}
@@ -79,13 +107,13 @@ const SERVICE_SECTION_IDS = [
   "faq",
 ]
 
-// NavItems para páginas de serviço
-const SERVICE_NAV_ITEMS: NavItem[] = [
-  { label: "Início",       href: "/"            },
-  { label: "Estrutura",    href: "#estrutura"   },
-  { label: "Diferenciais", href: "#diferenciais"},
-  { label: "Depoimentos",  href: "#depoimentos" },
-  { label: "FAQ",          href: "#faq"         },
+// hrefs das páginas de serviço — labels vêm de useTranslations
+const SERVICE_NAV_HREFS: { key: string; href: string }[] = [
+  { key: "inicio",       href: "/"            },
+  { key: "estrutura",    href: "#estrutura"   },
+  { key: "diferenciais", href: "#diferenciais"},
+  { key: "depoimentos",  href: "#depoimentos" },
+  { key: "faq",          href: "#faq"         },
 ]
 
 // -----------------------------------------------------------------------------
@@ -102,9 +130,15 @@ export function Header({
 
   const pathname = usePathname()
   const router = useRouter()
+  const t = useTranslations("nav")
   const isServicePage = pathname.startsWith("/servicos/")
 
-  const activeNavItems = isServicePage ? SERVICE_NAV_ITEMS : navItems
+  const serviceNavItems: NavItem[] = SERVICE_NAV_HREFS.map((item) => ({
+    href: item.href,
+    label: t(`serviceItems.${item.key}`),
+  }))
+
+  const activeNavItems = isServicePage ? serviceNavItems : navItems
   const sectionIds = isServicePage ? SERVICE_SECTION_IDS : HOME_SECTION_IDS
 
   const { activeSection, scrollTo } = useScrollSpy({
@@ -155,7 +189,7 @@ export function Header({
         href="#hero"
         className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:bg-ouro focus:text-charcoal focus:font-bold"
       >
-        Ir para o conteúdo
+        {t("skipToContent")}
       </a>
 
       <header
@@ -178,13 +212,13 @@ export function Header({
             "flex items-center justify-between",
             "h-16 lg:h-20",
           )}
-          aria-label="Navegação principal"
+          aria-label={t("primaryNavAriaLabel")}
         >
           {/* Logo */}
           <a
             href={isServicePage ? "/" : "#hero"}
             onClick={(e) => { e.preventDefault(); handleNavClick(isServicePage ? "/" : "#hero") }}
-            aria-label="Hospital São Rafael — ir para o início"
+            aria-label={t("logoAriaLabel")}
             className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
           >
             <Logo variant="light" height={40} />
@@ -194,7 +228,7 @@ export function Header({
           <ul
             className="hidden lg:flex items-center gap-5"
             role="list"
-            aria-label="Links de navegação"
+            aria-label={t("linksAriaLabel")}
           >
             {activeNavItems.map((item) => {
               const sectionId = item.href.replace("#", "")
@@ -215,7 +249,7 @@ export function Header({
           {/* CTA desktop */}
           <div className="hidden lg:flex items-center gap-4">
             {/* Language switcher */}
-            <LangToggle />
+            <LangToggle ariaLabel={t("languageAriaLabel")} />
 
             <Button
               variant="primary"
@@ -234,7 +268,7 @@ export function Header({
           {/* Botão hamburger mobile */}
           <button
             type="button"
-            aria-label={drawerOpen ? "Fechar menu" : "Abrir menu"}
+            aria-label={drawerOpen ? t("closeMenu") : t("openMenu")}
             aria-expanded={drawerOpen}
             aria-controls="mobile-drawer"
             onClick={() => setDrawerOpen((prev) => !prev)}
@@ -268,7 +302,7 @@ export function Header({
         id="mobile-drawer"
         role="dialog"
         aria-modal="true"
-        aria-label="Menu de navegação"
+        aria-label={t("drawerAriaLabel")}
         className={cn(
           "fixed top-0 right-0 bottom-0 z-[30] w-[280px] lg:hidden",
           "bg-charcoal flex flex-col",
@@ -281,7 +315,7 @@ export function Header({
           <Logo variant="light" height={36} />
           <button
             type="button"
-            aria-label="Fechar menu"
+            aria-label={t("closeMenu")}
             onClick={() => setDrawerOpen(false)}
             className="p-2 text-white/60 hover:text-white transition-colors"
           >
@@ -290,7 +324,7 @@ export function Header({
         </div>
 
         {/* Links */}
-        <nav className="flex-1 overflow-y-auto py-6 px-6" aria-label="Menu mobile">
+        <nav className="flex-1 overflow-y-auto py-6 px-6" aria-label={t("mobileNavAriaLabel")}>
           <ul className="flex flex-col gap-1" role="list">
             {activeNavItems.map((item) => {
               const sectionId = item.href.replace("#", "")

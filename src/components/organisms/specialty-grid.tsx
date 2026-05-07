@@ -8,6 +8,7 @@
 "use client"
 
 import { useState } from "react"
+import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
 import { Kicker } from "@/components/atoms/kicker"
 import { Heading } from "@/components/atoms/heading"
@@ -29,6 +30,7 @@ interface SpecialtyGridProps extends BaseComponentProps {
 // CONTEÚDO INTERNO DO MODAL DE ESPECIALIDADE
 // -----------------------------------------------------------------------------
 function SpecialtyModalContent({ item }: { item: EspecialidadeItem }) {
+  const t = useTranslations("especialidades")
   return (
     <div className="flex flex-col gap-6">
       {/* Descrição */}
@@ -38,7 +40,7 @@ function SpecialtyModalContent({ item }: { item: EspecialidadeItem }) {
       {item.procedures && item.procedures.length > 0 ? (
         <div>
           <h3 className="text-sm font-extrabold uppercase tracking-kicker text-charcoal/50 mb-4">
-            Procedimentos realizados
+            {t("modalProceduresTitle")}
           </h3>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2" role="list">
             {item.procedures.map((procedure) => (
@@ -57,7 +59,7 @@ function SpecialtyModalContent({ item }: { item: EspecialidadeItem }) {
         </div>
       ) : (
         <p className="text-sm text-charcoal/40 italic">
-          [PENDENTE CLIENTE] Lista de procedimentos será disponibilizada em breve.
+          {t("modalProceduresPending")}
         </p>
       )}
 
@@ -75,7 +77,7 @@ function SpecialtyModalContent({ item }: { item: EspecialidadeItem }) {
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
           )}
         >
-          Agendar consulta
+          {t("modalCtaLabel")}
         </a>
       </div>
     </div>
@@ -86,6 +88,7 @@ function SpecialtyModalContent({ item }: { item: EspecialidadeItem }) {
 // COMPONENTE PRINCIPAL
 // -----------------------------------------------------------------------------
 export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
+  const t = useTranslations("especialidades")
   const [activeSpecialty, setActiveSpecialty] = useState<EspecialidadeItem | null>(null)
 
   const { ref, hasIntersected } = useIntersection({ threshold: 0.1, once: true })
@@ -137,7 +140,7 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
                   description={item.description}
                   icon={item.icon}
                   variant="icon-only"
-                  ctaLabel="Ver procedimentos"
+                  ctaLabel={t("viewProcedures")}
                   onLearnMore={() => setActiveSpecialty(item)}
                   underConstruction
                   className="h-full"

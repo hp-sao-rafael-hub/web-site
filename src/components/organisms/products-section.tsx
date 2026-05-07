@@ -8,6 +8,7 @@
 "use client"
 
 import { useState } from "react"
+import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
 import { Kicker } from "@/components/atoms/kicker"
 import { Heading } from "@/components/atoms/heading"
@@ -33,10 +34,11 @@ interface CategoryTabsProps {
 }
 
 function CategoryTabs({ categories, activeId, onChange }: CategoryTabsProps) {
+  const t = useTranslations("produtos")
   return (
     <div
       role="tablist"
-      aria-label="Filtrar produtos por público"
+      aria-label={t("tabsAriaLabel")}
       className="flex border-b border-charcoal/10"
     >
       {categories.map((cat) => (

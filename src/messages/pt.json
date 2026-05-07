@@ -1,0 +1,391 @@
+{
+  "hero": {
+    "kicker": "Cirurgias eletivas multiespecialidades particulares",
+    "headline": "Alta performance em saúde com acolhimento que eleva a sua experiência.",
+    "subheadline": [
+      "O maior e mais completo Hospital de cirurgias eletivas do Brasil, com estrutura hospitalar integrada e foco absoluto em segurança, conforto e experiência."
+    ],
+    "ctaLabel": "Falar com Atendimento",
+    "videoAlt": "Instalações modernas do Hospital São Rafael"
+  },
+  "nav": {
+    "items": {
+      "inicio": "Início",
+      "diferenciais": "Diferenciais",
+      "servicos": "Serviços",
+      "especialidades": "Especialidades",
+      "produtos": "Produtos",
+      "jornada": "Jornada",
+      "medicos": "Médicos",
+      "faq": "FAQ"
+    },
+    "serviceItems": {
+      "inicio": "Início",
+      "estrutura": "Estrutura",
+      "diferenciais": "Diferenciais",
+      "depoimentos": "Depoimentos",
+      "faq": "FAQ"
+    },
+    "ctaLabel": "Falar com Atendimento",
+    "skipToContent": "Ir para o conteúdo",
+    "logoAriaLabel": "Hospital São Rafael — ir para o início",
+    "primaryNavAriaLabel": "Navegação principal",
+    "linksAriaLabel": "Links de navegação",
+    "languageAriaLabel": "Idioma",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "drawerAriaLabel": "Menu de navegação",
+    "mobileNavAriaLabel": "Menu mobile"
+  },
+  "stats": {
+    "headline": "A segurança da sua cirurgia medida em resultados reais.",
+    "items": {
+      "infeccao": {
+        "label": "Taxa de Infecção",
+        "description": "Um índice de excelência clínica rigorosa, muito abaixo da média nacional, garantindo um ambiente ultrasseguro para o seu procedimento."
+      },
+      "cirurgias": {
+        "label": "Procedimentos realizados com sucesso",
+        "description": "Experiência comprovada de uma equipe médica e multidisciplinar altamente capacitada."
+      },
+      "salas": {
+        "label": "Salas Cirúrgicas",
+        "description": "Equipadas com tecnologia de última geração para atender da baixa à mais alta complexidade com total previsibilidade."
+      },
+      "investimento": {
+        "label": "De reais em inovação",
+        "description": "Aplicados em parque tecnológico e expansão estrutural para o seu conforto."
+      },
+      "hiperbarica": {
+        "label": "Sessões de Hiperbárica",
+        "description": "Sessões realizadas para acelerar a recuperação e prevenir complicações pós-cirúrgicas com tecnologia de oxigenoterapia hiperbárica."
+      }
+    }
+  },
+  "footer": {
+    "ariaLabel": "Rodapé",
+    "description": "Excelência em saúde com infraestrutura completa e atendimento humanizado em Belo Horizonte.",
+    "stats": {
+      "leitos": "Leitos",
+      "salas": "Salas Cirúrgicas"
+    },
+    "navigation": {
+      "pacientes": {
+        "title": "PARA PACIENTES",
+        "links": {
+          "consulta": "Marcar consulta",
+          "exame": "Marcar exame",
+          "resultado": "Resultado de exames",
+          "emergencias": "Emergências",
+          "medico": "Encontre um médico"
+        }
+      },
+      "hospital": {
+        "title": "O HOSPITAL",
+        "links": {
+          "historia": "Nossa história",
+          "especialidades": "Especialidades",
+          "centro": "Centro médico",
+          "qualidade": "Qualidade",
+          "trabalheConosco": "Trabalhe conosco",
+          "ouvidoria": "Ouvidoria"
+        }
+      }
+    },
+    "contact": {
+      "title": "CONTATO",
+      "addressLabel": "Endereço",
+      "phoneLabel": "Telefone",
+      "emailLabel": "E-mail"
+    },
+    "emergencyLabel": "Emergência 24 horas",
+    "copyright": "© {year} Hospital São Rafael. Todos os direitos reservados.",
+    "privacy": "Política de Privacidade",
+    "terms": "Termos de Uso",
+    "restrictedArea": "Área restrita",
+    "restrictedAreaAria": "Área restrita da equipe"
+  },
+  "diferenciais": {
+    "kicker": "RIGOR CIENTÍFICO E CONFORTO",
+    "headline": "Excelência comprovada em cada detalhe do cuidado.",
+    "description": [
+      "No Hospital São Rafael, tecnologia de ponta e rigor técnico se unem a uma estrutura hospitalar completa para oferecer segurança, conforto e precisão em todas as etapas.",
+      "Com o suporte do nosso Instituto Médico e Diagnóstico integrado, você realiza consultas, exames e procedimentos com fluidez, qualidade e atenção individualizada."
+    ],
+    "ctas": {
+      "especialidades": "Conheça nossas Especialidades",
+      "servicos": "Conheça o Centro Cirúrgico"
+    },
+    "imageAlt": "Infraestrutura tecnológica do Hospital São Rafael"
+  },
+  "servicos": {
+    "kicker": "ESTRUTURA HOSPITALAR",
+    "headline": "Infraestrutura completa em um único complexo integrado.",
+    "description": "Tudo o que o seu procedimento exige, integrado no mesmo complexo, sem dispersão, sem deslocamento, sem atrito.",
+    "items": {
+      "centro-cirurgico": {
+        "title": "Centro Cirúrgico",
+        "description": "22 salas equipadas com tecnologia de última geração para procedimentos de alta complexidade."
+      },
+      "internacao": {
+        "title": "Unidade de Internação",
+        "description": "Acomodações projetadas para conforto e recuperação, com monitoramento contínuo e equipe dedicada."
+      },
+      "imd": {
+        "title": "IMD Instituto Médico e Diagnóstico",
+        "description": "O IMD do Hospital São Rafael reúne consultas e exames em um só lugar, com mais precisão, agilidade e muito mais conforto."
+      },
+      "laboratorio": {
+        "title": "Laboratório",
+        "description": "Análises clínicas com agilidade e precisão, integradas ao fluxo pré e pós-operatório."
+      },
+      "hiperbarica": {
+        "title": "Terapia Hiperbárica",
+        "description": "Tecnologia de ponta para aceleração da recuperação e prevenção de complicações pós-cirúrgicas."
+      },
+      "centro-convencoes": {
+        "title": "Centro de Convenções",
+        "description": "Espaço dedicado a simpósios, treinamentos, confraternizações técnico-científicas e troca de conhecimento."
+      },
+      "praca-alimentacao": {
+        "title": "Praça de Alimentação",
+        "description": "Alimentação de qualidade para pacientes, acompanhantes, equipe médica e público externo dentro do complexo."
+      }
+    }
+  },
+  "b2b": {
+    "kicker": "PARA CIRURGIÕES PARCEIROS",
+    "headline": "A base operacional perfeita para a escalabilidade da sua agenda.",
+    "subheadline": "Um centro de excelência focado na eficiência do seu ato cirúrgico e no conforto do seu paciente.",
+    "description": "",
+    "features": {
+      "giro-sala": {
+        "title": "Giro de Sala",
+        "description": "Processos ágeis desenhados para reduzir a ociosidade e otimizar seu tempo entre procedimentos."
+      },
+      "suporte-tecnico": {
+        "title": "Suporte Técnico Especializado",
+        "description": "Equipe de instrumentadores altamente treinados e suporte operacional dedicado via WhatsApp — do agendamento à alta."
+      },
+      "ecossistema-medico": {
+        "title": "Ambiente Médico",
+        "description": "Acesso a Centro de Convenções para simpósios, Academia 24h e áreas de convivência exclusivas para médicos parceiros."
+      },
+      "gestao-processos": {
+        "title": "Gestão de Processos Integrados",
+        "description": "Do IMD direto para o prontuário do bloco cirúrgico, sem perda de informações e com rastreabilidade total."
+      }
+    },
+    "testimonials": {
+      "elogio-alexandre-melo-1": {
+        "quote": "Eu estava na minha sala 18, então tudo estava ótimo. Edmar nota 10, gostaríamos até de fixar com ele. Elisangela nota 10.",
+        "role": "Médico parceiro"
+      },
+      "elogio-aline-durao": {
+        "quote": "Bom dia! Eluzangela nota 10, Edmar nota 10. Foi tudo excelente como sempre. Obrigada!",
+        "role": "Médica parceira"
+      },
+      "elogio-rafaela-nicholls": {
+        "quote": "Bom dia! Foi tudo ótimo. A cirurgia transcorreu super bem e a descida também foi mais rápida que de outras vezes. Paloma e Rafaela foram ótimas profissionais, nota 10 para as duas. Muito obrigada!",
+        "role": "Médica parceira"
+      },
+      "elogio-alexandre-melo-2": {
+        "quote": "Olá! Na cirurgia da Soraya correu tudo muito bem. Estávamos na minha sala 18. Obrigado Emília e Lilian. Dr. Marcelo fez anestesia geral, nota 10. Michele nota 10. A Isa trouxe o paciente para o centro cirúrgico com rapidez e alegria.",
+        "role": "Médico parceiro"
+      },
+      "elogio-ricardo-couto": {
+        "quote": "Bom dia. Como ontem foi a minha primeira vez, ainda estava aprendendo sobre o sistema, o funcionamento do hospital e a descida do paciente. Gostei de tudo. Por enquanto, nenhuma reclamação, somente elogios!",
+        "role": "Médico parceiro"
+      }
+    },
+    "ctaLabel": "Falar com Consultoria Médica Institucional",
+    "testimonialsKicker": "O que dizem nossos médicos parceiros",
+    "prevTestimonial": "Depoimento anterior",
+    "nextTestimonial": "Próximo depoimento"
+  },
+  "especialidades": {
+    "kicker": "ESPECIALIDADES",
+    "headline": "Excelência em cada área de atuação.",
+    "description": "Conheça as especialidades atendidas no Instituto Médico e Diagnóstico do Hospital São Rafael.",
+    "viewProcedures": "Ver procedimentos",
+    "modalProceduresTitle": "Procedimentos realizados",
+    "modalProceduresPending": "[PENDENTE CLIENTE] Lista de procedimentos será disponibilizada em breve.",
+    "modalCtaLabel": "Agendar consulta",
+    "items": {
+      "ortopedia": {
+        "title": "Ortopedia",
+        "description": "Artroscopia, artroplastias de joelho e quadril e cirurgias de coluna com técnicas minimamente invasivas e protocolos de recuperação acelerada.",
+        "procedures": ["Artroplastia total de joelho", "Artroplastia total de quadril", "Artroscopia de joelho e ombro", "Reconstrução do LCA", "Cirurgia da coluna vertebral", "Tratamento de fraturas complexas"]
+      },
+      "cardiologia": {
+        "title": "Cardiologia",
+        "description": "Cateterismo, angioplastia coronária e cirurgias cardíacas de alta complexidade com monitorização contínua em UTI cardiológica dedicada.",
+        "procedures": ["Cateterismo cardíaco", "Angioplastia coronária", "Implante de stent", "Implante de marcapasso", "Ablação por cateter", "Cirurgia de revascularização"]
+      },
+      "neurocirurgia": {
+        "title": "Neurocirurgia",
+        "description": "Ressecção de tumores cerebrais, microcirurgia da coluna e tratamento de neuropatias com navegação cirúrgica assistida de precisão.",
+        "procedures": ["Ressecção de tumores cerebrais", "Cirurgia minimamente invasiva da coluna", "Microcirurgia de hérnia discal", "Derivação ventrículo-peritoneal", "Neurocirurgia da coluna cervical", "Tratamento de estenose do canal"]
+      },
+      "urologia": {
+        "title": "Urologia",
+        "description": "Prostatectomia, nefrectomia e tratamento de cálculos renais com acesso laparoscópico e robótico, garantindo alta precisão e internação reduzida.",
+        "procedures": ["Prostatectomia radical", "Nefrectomia laparoscópica", "Litotripsia e ureteroscopia", "Cistoscopia e RTU", "Cirurgia robótica urológica", "Tratamento de incontinência"]
+      },
+      "ginecologia": {
+        "title": "Ginecologia",
+        "description": "Histerectomia laparoscópica, miomectomia e tratamento da endometriose com precisão minimamente invasiva e protocolos de recuperação rápida.",
+        "procedures": ["Histerectomia laparoscópica", "Miomectomia", "Cirurgia de endometriose", "Ooforectomia", "Correção de prolapso pélvico", "Salpingectomia"]
+      },
+      "oftalmologia": {
+        "title": "Oftalmologia",
+        "description": "Facoemulsificação de catarata, tratamento cirúrgico de glaucoma e vitrectomia com tecnologia de última geração em centro oftalmológico especializado.",
+        "procedures": ["Facoemulsificação (catarata)", "Trabeculectomia (glaucoma)", "Vitrectomia posterior", "Cirurgia refrativa a laser", "Transplante de córnea", "Correção de estrabismo"]
+      },
+      "dermatologia": {
+        "title": "Dermatologia",
+        "description": "Exérese de lesões, cirurgia de Mohs para carcinomas e reconstruções cutâneas com precisão cirúrgica e diagnóstico histopatológico integrado.",
+        "procedures": ["Exérese de lesões cutâneas", "Cirurgia de Mohs", "Reconstrução cutânea", "Biópsias e histopatologia", "Ressecção de carcinomas", "Eletrocirurgia dermatológica"]
+      },
+      "cirurgia-geral": {
+        "title": "Cirurgia Geral",
+        "description": "Colecistectomia, herniorrafia e ressecções intestinais por laparoscopia com ampla experiência clínica e protocolos de recuperação acelerada.",
+        "procedures": ["Colecistectomia laparoscópica", "Apendicectomia", "Herniorrafia inguinal e ventral", "Ressecção intestinal", "Fundoplicatura", "Cirurgia de refluxo gastroesofágico"]
+      },
+      "cirurgia-plastica": {
+        "title": "Cirurgia Plástica",
+        "description": "Mamoplastias, rinoplastia e reconstrução pós-oncológica com resultados naturais, seguros e protocolos de reabilitação integrada.",
+        "procedures": ["Mamoplastia de aumento e redução", "Rinoplastia", "Lipoaspiração", "Abdominoplastia", "Ritidoplastia (lifting facial)", "Reconstrução mamária pós-mastectomia"]
+      },
+      "cirurgia-vascular": {
+        "title": "Cirurgia Vascular",
+        "description": "Revascularização arterial, correção de aneurismas e tratamento de varizes com abordagem endovascular e tecnologia de imagem intraoperatória.",
+        "procedures": ["Revascularização arterial", "Correção de aneurisma", "Safenectomia e flebectomia", "Fístula arteriovenosa", "Angioplastia periférica", "Trombectomia"]
+      },
+      "cabeca-pescoco": {
+        "title": "Cabeça e Pescoço",
+        "description": "Tireoidectomia, esvaziamento cervical e ressecção oncológica craniofacial com reconstrução por retalhos microvascularizados.",
+        "procedures": ["Tireoidectomia total e parcial", "Paratireoidectomia", "Esvaziamento cervical", "Ressecção de tumor parotídeo", "Laringectomia", "Reconstrução com retalhos microvascularizados"]
+      },
+      "cirurgia-toracica": {
+        "title": "Cirurgia Torácica",
+        "description": "Lobectomia, segmentectomia e ressecção de tumores por videoassistência (VATS), com abordagem minimamente invasiva do tórax e mediastino.",
+        "procedures": ["Lobectomia pulmonar (VATS)", "Segmentectomia", "Ressecção mediastinal", "Tratamento de pneumotórax", "Biópsia pleural videoassistida", "Empiemectomia"]
+      }
+    }
+  },
+  "produtos": {
+    "kicker": "PRODUTOS E EXPERIÊNCIAS",
+    "headline": "Soluções que elevam cada etapa da sua jornada.",
+    "description": "Além da infraestrutura hospitalar, oferecemos produtos pensados para maximizar o conforto do paciente e a eficiência do cirurgião.",
+    "tabsAriaLabel": "Filtrar produtos por público",
+    "categories": {
+      "paciente": {
+        "label": "Para Pacientes",
+        "items": {
+          "upgrade-acomodacao": {
+            "title": "Upgrade de Acomodação",
+            "description": "Conforto, privacidade e atendimento exclusivo. Transforme o período pós-cirúrgico em uma experiência de recuperação diferenciada."
+          },
+          "extensao-diaria": {
+            "title": "Extensão de Diária",
+            "description": "Flexibilidade no tempo de internação para uma recuperação sem pressa e com total suporte médico."
+          },
+          "unidade-transicao": {
+            "title": "Unidade de Transição",
+            "description": "O elo seguro entre a alta hospitalar e o regresso a casa. Monitorização contínua e reabilitação assistida."
+          },
+          "consulta-pre-anestesica": {
+            "title": "Consulta Pré-Anestésica",
+            "description": "Avaliação especializada antes do procedimento para mitigar riscos e personalizar o protocolo anestésico."
+          },
+          "tecnico-enfermagem": {
+            "title": "Técnico de Enfermagem Exclusivo",
+            "description": "Técnico de enfermagem dedicado exclusivamente ao seu cuidado, com acompanhamento contínuo, segurança e atenção personalizada durante toda a internação."
+          }
+        }
+      },
+      "medico": {
+        "label": "Para Médicos",
+        "items": {
+          "instrumentador": {
+            "title": "Instrumentador Especializado",
+            "description": "Profissionais treinados nos mais rigorosos protocolos, prontos para antecipar as necessidades do seu procedimento."
+          },
+          "academia": {
+            "title": "Academia",
+            "description": "Espaço de atividade física e bem-estar exclusivo para médicos e equipe cirúrgica, com equipamentos modernos e estrutura completa dentro do complexo."
+          },
+          "conforto-medico": {
+            "title": "Conforto Médico",
+            "description": "Área exclusiva de descanso e conveniência para médicos, com estrutura pensada para preparação e recuperação entre procedimentos com privacidade e comodidade."
+          },
+          "engenharia-clinica": {
+            "title": "Engenharia Clínica",
+            "description": "Suporte técnico especializado em manutenção e operação de equipamentos médico-hospitalares, garantindo máxima disponibilidade e performance dos recursos cirúrgicos."
+          }
+        }
+      }
+    }
+  },
+  "jornada": {
+    "kicker": "O COMPLEXO INTEGRADO SÃO RAFAEL & IMD",
+    "headline": "Do diagnóstico de precisão à recuperação total, sem sair do nosso complexo integrado.",
+    "description": "A descontinuidade do cuidado médico gera atrito. Aqui, o IMD e o centro cirúrgico operam como uma única estrutura completa — previsível para o seu médico, seguro e confortável para você.",
+    "stepsAriaLabel": "Etapas da jornada do paciente",
+    "steps": {
+      "consulta": {
+        "title": "Consulta e Diagnóstico",
+        "subtitle": "IMD",
+        "description": "Diagnóstico de precisão no IMD antes de qualquer decisão cirúrgica.",
+        "links": ["Conheça o IMD"]
+      },
+      "preparo": {
+        "title": "Preparo Cirúrgico",
+        "subtitle": "",
+        "description": "Protocolos de segurança integrados para mitigar riscos e reduzir a ansiedade.",
+        "links": ["Consulta Pré-Anestésica"]
+      },
+      "procedimento": {
+        "title": "O Procedimento",
+        "subtitle": "",
+        "description": "Rigor clínico máximo no centro de alta performance.",
+        "links": ["Centro Cirúrgico"]
+      },
+      "recuperacao": {
+        "title": "Recuperação Acelerada",
+        "subtitle": "",
+        "description": "Terapia Hiperbárica integrada para acelerar a recuperação e reduzir a inatividade.",
+        "links": ["Terapia Hiperbárica", "Upgrade de Acomodação"]
+      },
+      "alta": {
+        "title": "Unidade de Transição e Alta",
+        "subtitle": "",
+        "description": "Monitorização contínua na Unidade de Transição até o regresso seguro à rotina.",
+        "links": ["Unidade de Transição", "Extensão de Diária"]
+      }
+    }
+  },
+  "faq": {
+    "kicker": "TRANSPARÊNCIA E CLAREZA",
+    "headline": "O que você precisa saber antes da sua decisão cirúrgica.",
+    "items": {
+      "faq-1": {
+        "question": "Como funciona o fluxo de atendimento particular?",
+        "answer": "O atendimento no Hospital São Rafael segue um fluxo integrado do primeiro contato até a alta. Tudo começa com o agendamento pela nossa central de atendimento, que organiza cada etapa de acordo com a sua necessidade: consultas, exames, check-ups e preparação cirúrgica. Na sequência, você realiza consultas e exames no IMD, Instituto Médico e Diagnóstico, onde todas as informações já são inseridas digitalmente no prontuário integrado. Com o preparo concluído, incluindo a consulta pré-anestésica quando indicada, o procedimento é realizado em um de nossos 22 centros cirúrgicos. Após a cirurgia, você passa pela recuperação com suporte contínuo da equipe, podendo contar com a Unidade de Transição até o retorno seguro à rotina. Todo esse trajeto acontece sem sair do nosso complexo."
+      },
+      "faq-2": {
+        "question": "Meu cirurgião pode operar no São Rafael?",
+        "answer": "Sim. O Hospital São Rafael é um hospital de corpo clínico aberto, o que significa que qualquer médico com registro ativo e em situação regular no conselho pode solicitar credenciamento para realizar procedimentos em nossas instalações, sem a necessidade de vínculo empregatício com o hospital. O processo é conduzido pela nossa Consultoria Médica Institucional, que avalia o perfil do profissional e alinha as especialidades e protocolos aplicáveis. Uma vez credenciado, o cirurgião conta com 22 salas cirúrgicas equipadas com tecnologia de última geração, instrumentadores especializados, suporte técnico dedicado e giro de sala de 40 minutos, garantindo previsibilidade e eficiência para a sua agenda. Para iniciar o processo, entre em contato pelo botão \"Falar com Consultoria Médica Institucional\"."
+      },
+      "faq-3": {
+        "question": "Qual a real diferença do Upgrade de Acomodação?",
+        "answer": "O Upgrade de Acomodação transforma o período pós-cirúrgico em uma experiência de recuperação diferenciada. Além de todo o suporte clínico, você conta com quarto de maior privacidade e conforto, atendimento exclusivo e personalizado e um ambiente pensado para que você descanse com tranquilidade. É a escolha ideal para quem deseja uma internação com padrão elevado de hotelaria hospitalar, unindo excelência médica e bem-estar em cada detalhe."
+      },
+      "faq-4": {
+        "question": "Como o IMD agiliza minha cirurgia?",
+        "answer": "O IMD funciona de forma totalmente integrada ao bloco cirúrgico do Hospital São Rafael. Consultas, exames de imagem e laudos realizados no Instituto alimentam automaticamente o prontuário digital do centro cirúrgico — sem reencaminhamentos, repetição de informações ou perda de dados. Quando chega o dia da cirurgia, seu médico já tem acesso a tudo que precisa, com rastreabilidade total. Esse modelo elimina a espera e a burocracia que normalmente existe entre diagnóstico e procedimento, garantindo mais agilidade, segurança e previsibilidade para você e para o seu cirurgião."
+      }
+    }
+  }
+}
