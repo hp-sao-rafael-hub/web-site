@@ -8,7 +8,7 @@
 "use client"
 
 import { useState, useEffect, useTransition } from "react"
-import { usePathname, useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import { useLocale, useTranslations } from "next-intl"
 import {
   usePathname as useIntlPathname,
@@ -128,10 +128,10 @@ export function Header({
   const [isScrolled, setIsScrolled] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
 
-  const pathname = usePathname()
+  const intlPathname = useIntlPathname()
   const router = useRouter()
   const t = useTranslations("nav")
-  const isServicePage = pathname.startsWith("/servicos/")
+  const isServicePage = intlPathname.startsWith("/servicos/")
 
   const serviceNavItems: NavItem[] = SERVICE_NAV_HREFS.map((item) => ({
     href: item.href,

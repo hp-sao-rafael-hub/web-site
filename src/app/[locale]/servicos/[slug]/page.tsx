@@ -1,40 +1,35 @@
 // =============================================================================
-// /servicos/[slug]/page.tsx — Página dinâmica de serviço | Hospital São Rafael
+// /[locale]/servicos/[slug]/page.tsx — Página dinâmica de serviço | HSR
 // =============================================================================
-// Lookup em hospital_structure (Supabase) primeiro; fallback para
-// SERVICES_CONTENT estático. notFound() se nenhum cobre o slug.
+// Lookup em SERVICES_CONTENT estático. notFound() se slug não existir.
 // =============================================================================
 
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
+import { setRequestLocale } from "next-intl/server"
 import { ServiceDetailTemplate } from "@/components/templates/service-detail-template"
 import {
   getAllServiceSlugs,
   getServiceDataBySlug,
 } from "@/lib/structure-service-data"
+import { routing } from "@/i18n/routing"
 
 interface PageProps {
-  params: Promise<{ slug: string }>
+  params: Promise<{ locale: string; slug: string }>
 }
 
 export async function generateStaticParams() {
   const slugs = await getAllServiceSlugs()
-  return slugs.map((slug) => ({ slug }))
+  return routing.locales.flatMap((locale) =>
+    slugs.map((slug) => ({ locale, slug }))
+  )
 }
 
 export const dynamicParams = true
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params
-  console.log("[META] start", slug)
-  let service
-  try {
-    service = await getServiceDataBySlug(slug)
-  } catch (err) {
-    console.error("[META] " + slug + " threw:", err)
-    throw err
-  }
-  console.log("[META] got service?", slug, !!service)
+  const service = await getServiceDataBySlug(slug)
 
   if (!service) {
     return {
@@ -61,24 +56,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 export default async function ServicePage({ params }: PageProps) {
-  const { slug } = await params
-  let service
-  try {
-    service = await getServiceDataBySlug(slug)
-  } catch (err) {
-    console.error("[/servicos/" + slug + "] getServiceDataBySlug threw:", err)
-    throw err
-  }
+  const { locale, slug } = await params
+  setRequestLocale(locale)
+
+  const service = await getServiceDataBySlug(slug)
 
   if (!service) {
-    console.error("[/servicos/" + slug + "] service is null/undefined — calling notFound()")
     notFound()
   }
 
-  try {
-    return <ServiceDetailTemplate data={service} />
-  } catch (err) {
-    console.error("[/servicos/" + slug + "] template render threw:", err)
-    throw err
-  }
+  return <ServiceDetailTemplate data={service} />
 }

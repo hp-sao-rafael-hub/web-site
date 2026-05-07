@@ -133,7 +133,8 @@ export async function createStructureAction(formData: FormData) {
   revalidatePath("/admin/estrutura")
   revalidatePath("/admin")
   revalidatePath("/")
-  revalidatePath(`/servicos/${slug}`)
+  revalidatePath(`/pt/servicos/${slug}`)
+  revalidatePath(`/en/servicos/${slug}`)
   return { success: true, id: data.id }
 }
 
@@ -199,9 +200,11 @@ export async function updateStructureAction(formData: FormData) {
 
   revalidatePath("/admin/estrutura")
   revalidatePath("/")
-  revalidatePath(`/servicos/${slug}`)
+  revalidatePath(`/pt/servicos/${slug}`)
+  revalidatePath(`/en/servicos/${slug}`)
   if (before?.slug && before.slug !== slug) {
-    revalidatePath(`/servicos/${before.slug}`)
+    revalidatePath(`/pt/servicos/${before.slug}`)
+    revalidatePath(`/en/servicos/${before.slug}`)
   }
   return { success: true }
 }
@@ -227,7 +230,10 @@ export async function deleteStructureAction(formData: FormData) {
   revalidatePath("/admin/estrutura")
   revalidatePath("/admin")
   revalidatePath("/")
-  if (before?.slug) revalidatePath(`/servicos/${before.slug}`)
+  if (before?.slug) {
+    revalidatePath(`/pt/servicos/${before.slug}`)
+    revalidatePath(`/en/servicos/${before.slug}`)
+  }
   return { success: true }
 }
 
