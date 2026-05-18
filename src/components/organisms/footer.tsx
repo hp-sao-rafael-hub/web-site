@@ -143,7 +143,7 @@ export function Footer({ data, className }: FooterProps) {
             </p>
             <div className="flex items-center gap-6">
               <Link
-                href="#"
+                href="/privacidade"
                 className="text-xs text-white/30 hover:text-white/60 transition-colors"
               >
                 {t("privacy")}
