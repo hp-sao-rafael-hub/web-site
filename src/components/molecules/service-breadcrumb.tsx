@@ -1,56 +1,65 @@
 // =============================================================================
-// SERVICE-BREADCRUMB.TSX — Breadcrumb | Hospital São Rafael
+// SERVICE-BREADCRUMB.TSX — Molécula | Hospital São Rafael
 // =============================================================================
-// Navegação hierárquica sobre fundo charcoal. Usado em páginas internas
-// (serviços, legais). Último item sem link, em destaque.
+// Trilha de navegação para páginas de serviço.
+// Inclui schema BreadcrumbList via JSON-LD (renderizado separado).
 // =============================================================================
 
 import Link from "next/link"
+import { ChevronRight } from "lucide-react"
+import { cn } from "@/lib/utils"
+import type { BaseComponentProps } from "@/types"
 
+// -----------------------------------------------------------------------------
+// TYPES
+// -----------------------------------------------------------------------------
 export interface BreadcrumbItem {
   label: string
   href: string
 }
 
-interface ServiceBreadcrumbProps {
+interface ServiceBreadcrumbProps extends BaseComponentProps {
   items: BreadcrumbItem[]
-  className?: string
 }
 
-export function ServiceBreadcrumb({ items, className = "" }: ServiceBreadcrumbProps) {
+// -----------------------------------------------------------------------------
+// COMPONENTE
+// -----------------------------------------------------------------------------
+export function ServiceBreadcrumb({ items, className }: ServiceBreadcrumbProps) {
+  if (items.length === 0) return null
+
   return (
     <nav
-      aria-label="Navegação estrutural"
-      className={`w-full bg-charcoal border-b border-white/10 ${className}`}
+      aria-label="Trilha de navegação"
+      className={cn(
+        "w-full bg-charcoal/95 backdrop-blur-sm border-b border-white/10",
+        className
+      )}
     >
-      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <ol className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[13px] text-white/70">
-          {items.map((item, i) => {
-            const isLast = i === items.length - 1
-            return (
-              <li key={item.href} className="flex items-center gap-2">
-                {isLast ? (
-                  <span aria-current="page" className="text-white font-semibold">
-                    {item.label}
-                  </span>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className="hover:text-ouro transition-colors"
-                  >
-                    {item.label}
-                  </Link>
-                )}
-                {!isLast && (
-                  <span aria-hidden className="text-ouro/60">
-                    /
-                  </span>
-                )}
-              </li>
-            )
-          })}
-        </ol>
-      </div>
+      <ol className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center gap-1 text-xs text-white/60">
+        {items.map((item, index) => {
+          const isLast = index === items.length - 1
+          return (
+            <li key={`${item.href}-${index}`} className="flex items-center gap-1">
+              {isLast ? (
+                <span aria-current="page" className="font-semibold text-white">
+                  {item.label}
+                </span>
+              ) : (
+                <Link
+                  href={item.href}
+                  className="hover:text-ouro transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro rounded"
+                >
+                  {item.label}
+                </Link>
+              )}
+              {!isLast && (
+                <ChevronRight size={12} className="text-white/30" aria-hidden />
+              )}
+            </li>
+          )
+        })}
+      </ol>
     </nav>
   )
 }
