@@ -604,7 +604,415 @@ const INTERNACAO: ServiceDetailData = {
 // MAPA DE SERVIÇOS — indexado por slug
 // -----------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------
+// CONTEÚDO — Imd
+// -----------------------------------------------------------------------------
+
+const IMD: ServiceDetailData = {
+  slug: "imd",
+  meta: {
+    title: "IMD — Consultas e Exames Particulares em Belo Horizonte",
+    description:
+      "Instituto Médico e Diagnóstico do Hospital São Rafael: consultas com especialistas, exames de imagem e laboratoriais integrados ao centro cirúrgico. Atendimento exclusivamente particular em BH.",
+  },
+  navSections: [
+    { id: "intro", label: "O IMD" },
+    { id: "indicacoes", label: "Serviços" },
+    { id: "para-o-medico", label: "Para o médico" },
+    { id: "infraestrutura", label: "Infraestrutura" },
+    { id: "equipamentos", label: "Tecnologia" },
+    { id: "numeros", label: "Números" },
+    { id: "protocolos", label: "Protocolos" },
+    { id: "jornada", label: "Como funciona" },
+    { id: "depoimentos", label: "Depoimentos" },
+    { id: "faq", label: "Dúvidas" },
+  ],
+  hero: {
+    kicker: "IMD — INSTITUTO MÉDICO E DIAGNÓSTICO",
+    headline: "Consultas e exames particulares com a precisão e o conforto do São Rafael.",
+    subheadline:
+      "Especialistas com agenda ágil, exames de imagem e laboratoriais integrados ao centro cirúrgico. Tudo em um único complexo, com atendimento exclusivamente particular.",
+    backgroundImage: "/assets/images/servicos/imd.jpg",
+    pills: [
+      "Consulta com especialistas",
+      "Imagem e laboratório",
+      "Integrado ao cirúrgico",
+      "Atendimento particular",
+    ],
+  },
+  intro: {
+    kicker: "O QUE É",
+    headline: "O Instituto Médico e Diagnóstico do Hospital São Rafael",
+    paragraphs: [
+      "O IMD é o braço de consultas, exames de imagem e diagnósticos do Hospital São Rafael. Foi pensado para reunir, em um único endereço, o que normalmente exige deslocamento entre consultórios, laboratórios e centros de imagem — entregando ao paciente e ao médico assistente uma experiência integrada, com agilidade e segurança clínica.",
+      "Por estar dentro do mesmo complexo do centro cirúrgico, da unidade de internação e da UTI, o IMD oferece um diferencial clínico raro: o exame que apoia uma decisão cirúrgica chega ao prontuário em minutos, e o paciente pode passar do diagnóstico ao tratamento sem fragmentação ou retrabalho.",
+      "Atendimento exclusivamente particular, com agenda ágil para consultas e exames eletivos. Pacientes acompanhados por médicos próprios ou por médicos parceiros que utilizam o IMD como apoio diagnóstico.",
+    ],
+  },
+  indications: {
+    kicker: "SERVIÇOS",
+    headline: "O que você encontra no IMD",
+    intro:
+      "Diferentes serviços diagnósticos e ambulatoriais reunidos em um único endereço, com integração total ao prontuário hospitalar.",
+    items: [
+      {
+        id: "pre-op",
+        icon: "clipboard-check",
+        title: "Avaliação pré-operatória completa",
+        description:
+          "Exames laboratoriais, de imagem e avaliação cardiológica/anestésica em um único agendamento.",
+        highlighted: true,
+      },
+      {
+        id: "consulta",
+        icon: "stethoscope",
+        title: "Consultas com especialistas",
+        description:
+          "Agenda ágil em diversas especialidades médicas, com integração ao centro cirúrgico quando indicado.",
+      },
+      {
+        id: "ressonancia",
+        icon: "activity",
+        title: "Ressonância magnética",
+        description:
+          "Equipamento moderno para diagnósticos neurológicos, ortopédicos, abdominais e cardíacos.",
+      },
+      {
+        id: "tomografia",
+        icon: "scan",
+        title: "Tomografia computadorizada",
+        description:
+          "Tomógrafo multislice de alta resolução para diagnósticos rápidos e precisos.",
+      },
+      {
+        id: "ultrassom",
+        icon: "activity",
+        title: "Ultrassonografia",
+        description:
+          "USG abdominal, vascular, obstétrica e musculoesquelética com profissionais especializados.",
+      },
+      {
+        id: "lab",
+        icon: "flask",
+        title: "Laboratório clínico",
+        description:
+          "Análises clínicas com agilidade e integração direta ao prontuário hospitalar.",
+      },
+      {
+        id: "cardio",
+        icon: "heart-handshake",
+        title: "Avaliação cardiológica",
+        description:
+          "ECG, ecocardiograma, MAPA, Holter e teste ergométrico conduzidos por equipe especializada.",
+      },
+      {
+        id: "raiox",
+        icon: "scan",
+        title: "Radiografia digital",
+        description:
+          "Raio-X digital com laudo rápido integrado ao prontuário eletrônico.",
+      },
+    ],
+    note: "[REVISAR DIRETORIA] lista exata de modalidades disponíveis hoje no IMD.",
+  },
+  medico: {
+    kicker: "PARA O MÉDICO ASSISTENTE",
+    headline: "Apoio diagnóstico ágil e integrado para o seu paciente",
+    description:
+      "O IMD foi pensado também para o médico assistente que indica exames ou consultas e quer um parceiro confiável, com laudo digital ágil e canal direto para alinhamento clínico.",
+    benefits: [
+      {
+        icon: "clipboard-check",
+        title: "Laudo digital em prazo curto",
+        description:
+          "Exames de imagem e laboratoriais com laudos disponíveis no portal e prontuário em prazo curto.",
+      },
+      {
+        icon: "git-merge",
+        title: "Integração com cirurgia",
+        description:
+          "Se o caso evoluir para cirurgia eletiva no HSR, todo o histórico migra automaticamente para o pré-op.",
+      },
+      {
+        icon: "headset",
+        title: "Canal direto com radiologista",
+        description:
+          "Discussão de casos complexos com radiologista responsável pelo laudo, quando necessário.",
+      },
+      {
+        icon: "shield-check",
+        title: "Equipe especializada",
+        description:
+          "Profissionais com experiência em laudos cirúrgicos e oncológicos, alinhados às demandas do médico solicitante.",
+      },
+    ],
+    ctaLabel: "Falar com a Consultoria Médica",
+  },
+  galleryBlock: {
+    kicker: "INFRAESTRUTURA",
+    headline: "Um diagnóstico tão cuidado quanto o tratamento",
+    description:
+      "Salas de exame e consultórios projetados para conforto e privacidade, com equipamentos de referência e fluxos otimizados para reduzir tempo de espera e ansiedade do paciente.",
+    images: [
+      {
+        src: "/assets/images/servicos/imd.jpg",
+        alt: "Recepção do IMD — Hospital São Rafael, Belo Horizonte",
+      },
+      {
+        src: "/assets/images/servicos/imd.jpg",
+        alt: "Sala de exame de imagem do IMD HSR",
+      },
+      {
+        src: "/assets/images/servicos/imd.jpg",
+        alt: "Consultório de especialista no IMD HSR",
+      },
+    ],
+    features: [
+      {
+        icon: "check-circle",
+        title: "Equipamentos modernos",
+        description: "Imagem em alta resolução e laboratório com automação completa.",
+      },
+      {
+        icon: "check-circle",
+        title: "Agenda ágil",
+        description: "Atendimento com horários otimizados e baixa espera para consulta e exame.",
+      },
+      {
+        icon: "check-circle",
+        title: "Prontuário único integrado",
+        description: "Resultados disponíveis no mesmo prontuário do centro cirúrgico e da internação.",
+      },
+      {
+        icon: "check-circle",
+        title: "Equipe especializada",
+        description: "Radiologistas, técnicos e enfermagem treinados em demandas clínicas e cirúrgicas.",
+      },
+    ],
+    cta: { label: "Falar no WhatsApp", href: "https://wa.me/message/NZIPXRZ4SKUHM1" },
+  },
+  highlights: {
+    kicker: "NÚMEROS",
+    headline: "O IMD em dados",
+    items: [
+      {
+        id: "especialidades",
+        metric: "+20",
+        icon: "stethoscope",
+        title: "Especialidades médicas",
+        description:
+          "[REVISAR DIRETORIA] confirmar número de especialidades clínicas disponíveis no IMD.",
+      },
+      {
+        id: "modalidades",
+        metric: "+10",
+        icon: "scan",
+        title: "Modalidades de exame",
+        description:
+          "Imagem, laboratório, cardiológicos e endoscópicos em um mesmo endereço.",
+      },
+      {
+        id: "integracao",
+        metric: "100%",
+        icon: "git-merge",
+        title: "Integração com cirurgia",
+        description:
+          "Resultados disponíveis automaticamente no prontuário cirúrgico do HSR.",
+      },
+      {
+        id: "tempo",
+        metric: "Curto",
+        icon: "timer",
+        title: "Tempo médio de laudo",
+        description:
+          "[REVISAR DIRETORIA] confirmar SLA real de laudo por modalidade.",
+      },
+    ],
+  },
+  protocols: {
+    kicker: "QUALIDADE",
+    headline: "Padrões de qualidade em diagnóstico",
+    intro:
+      "Cada exame e consulta segue protocolos institucionais alinhados a referências brasileiras e internacionais.",
+    items: [
+      {
+        id: "calibracao",
+        icon: "settings-2",
+        title: "Calibração e manutenção rigorosa",
+        description:
+          "Equipamentos mantidos pela engenharia clínica em ciclos rígidos de calibração e validação.",
+      },
+      {
+        id: "biosseguranca",
+        icon: "shield-check",
+        title: "Biossegurança",
+        description:
+          "Protocolos rigorosos de antissepsia, descarte e fluxo de pacientes em todas as salas.",
+      },
+      {
+        id: "rastreabilidade",
+        icon: "git-merge",
+        title: "Rastreabilidade do exame",
+        description:
+          "Cada exame tem registro completo: técnico, equipamento, parâmetros e laudo arquivados no prontuário.",
+      },
+      {
+        id: "laudo",
+        icon: "clipboard-check",
+        title: "Dupla checagem em laudos críticos",
+        description:
+          "Casos oncológicos e cirúrgicos passam por revisão por segundo radiologista, quando indicado.",
+      },
+    ],
+    certifications: [
+      "ANVISA",
+      "CFM — Conselho Federal de Medicina",
+      "[PENDENTE CLIENTE] CBR — Colégio Brasileiro de Radiologia",
+      "[PENDENTE CLIENTE] Acreditação ONA / outros selos",
+    ],
+  },
+  journey: {
+    kicker: "COMO FUNCIONA",
+    headline: "Seu atendimento no IMD, em 5 passos",
+    intro:
+      "Do agendamento ao laudo, organizamos o processo para reduzir tempo de espera e dar clareza em cada etapa.",
+    steps: [
+      {
+        number: "1",
+        title: "Agendamento direto",
+        description:
+          "Solicite consulta ou exame pelo WhatsApp. Equipe de relacionamento orienta sobre preparo, documentos e horário.",
+      },
+      {
+        number: "2",
+        title: "Preparo orientado",
+        description:
+          "Você recebe instruções claras de jejum, medicação, vestimenta e demais cuidados específicos do exame.",
+      },
+      {
+        number: "3",
+        title: "Atendimento no IMD",
+        description:
+          "Recepção ágil, salas confortáveis, equipe técnica especializada e tempo de exame conforme protocolo clínico.",
+      },
+      {
+        number: "4",
+        title: "Laudo e integração",
+        description:
+          "Laudo elaborado por especialista e disponibilizado no portal. Em caso de cirurgia futura no HSR, dados migram automaticamente.",
+      },
+      {
+        number: "5",
+        title: "Continuidade do cuidado",
+        description:
+          "Se houver indicação cirúrgica, agendamos próximas etapas (consulta pré-anestésica, cirurgia eletiva) no mesmo complexo.",
+      },
+    ],
+  },
+  testimonials: {
+    headline: "O que dizem nossos pacientes e médicos",
+    items: [
+      {
+        id: "t1",
+        quote:
+          "Fiz toda a investigação no IMD e a cirurgia depois no mesmo complexo. Foi muito mais rápido do que eu esperava — e tudo conversava entre si.",
+        author: "Paciente HSR",
+        role: "Investigação cardiológica e cirurgia",
+        image: "",
+      },
+      {
+        id: "t2",
+        quote:
+          "Como cardiologista, encaminho meus pacientes ao IMD pela qualidade do laudo e pela integração com o centro cirúrgico — economiza tempo e evita retrabalho.",
+        author: "Médico parceiro HSR",
+        role: "Cardiologista",
+        image: "",
+      },
+      {
+        id: "t3",
+        quote:
+          "O atendimento foi rápido e os resultados saíram no prazo. Me senti acolhida em todos os exames.",
+        author: "Paciente HSR",
+        role: "Avaliação pré-operatória",
+        image: "",
+      },
+    ],
+  },
+  faq: {
+    kicker: "PERGUNTAS FREQUENTES",
+    headline: "Dúvidas frequentes sobre o IMD",
+    items: [
+      {
+        id: "imd-faq-1",
+        question: "Como funciona o atendimento no IMD?",
+        answer:
+          "O IMD oferece consultas com especialistas, exames de imagem e laboratoriais em regime exclusivamente particular. O agendamento é feito diretamente pela nossa equipe de relacionamento, com agenda ágil e atendimento humanizado.",
+      },
+      {
+        id: "imd-faq-2",
+        question: "O IMD aceita convênios ou planos de saúde?",
+        answer:
+          "Não. O Hospital São Rafael e seus serviços, incluindo o IMD, são exclusivamente particulares. Os valores são apresentados de forma clara no agendamento, com pagamento à vista ou conforme condições combinadas.",
+      },
+      {
+        id: "imd-faq-3",
+        question: "Quais especialidades atendem no IMD?",
+        answer:
+          "[REVISAR DIRETORIA] Atendemos diversas especialidades médicas. Consulte nossa equipe para confirmar disponibilidade da especialidade que você precisa.",
+      },
+      {
+        id: "imd-faq-4",
+        question: "Quais exames o IMD realiza?",
+        answer:
+          "Ressonância magnética, tomografia, ultrassonografia, raio-X digital, exames laboratoriais, ECG, ecocardiograma, MAPA, Holter, teste ergométrico e outros. [REVISAR DIRETORIA] confirmar lista exata.",
+      },
+      {
+        id: "imd-faq-5",
+        question: "Quanto tempo demora o laudo?",
+        answer:
+          "Depende da modalidade. Exames laboratoriais e de rotina costumam ter resultado no mesmo dia. Imagens e laudos especializados seguem prazos clínicos rigorosos. Sua equipe de relacionamento informa o prazo no agendamento.",
+      },
+      {
+        id: "imd-faq-6",
+        question: "Posso fazer pré-operatório completo no IMD?",
+        answer:
+          "Sim. O IMD foi planejado especialmente para pacientes que farão cirurgia no Hospital São Rafael — exames laboratoriais, de imagem, cardiológicos e a consulta pré-anestésica em um único agendamento integrado.",
+      },
+      {
+        id: "imd-faq-7",
+        question: "Meu médico pode receber o laudo direto?",
+        answer:
+          "Sim. Disponibilizamos laudos pelo portal e enviamos cópia ao médico solicitante, com canal direto ao radiologista para discussão de casos quando necessário.",
+      },
+      {
+        id: "imd-faq-8",
+        question: "Como agendo consulta ou exame no IMD?",
+        answer:
+          "Pelo WhatsApp da nossa equipe de relacionamento. Você recebe orientação completa de preparo, documentos necessários, horário e estimativa de duração.",
+      },
+    ],
+  },
+  schemaType: "MedicalProcedure",
+  lastReviewed: "2026-04-28",
+  references: [
+    {
+      label: "ANVISA — Boas práticas em diagnóstico por imagem",
+      href: "https://www.gov.br/anvisa/pt-br",
+    },
+    {
+      label: "CFM — Resoluções sobre exames complementares",
+      href: "https://portal.cfm.org.br/",
+    },
+    {
+      label: "Colégio Brasileiro de Radiologia (CBR)",
+      href: "https://cbr.org.br/",
+    },
+  ],
+}
+
 export const SERVICES_CONTENT: Record<string, ServiceDetailData> = {
   "centro-cirurgico": CENTRO_CIRURGICO,
   "internacao": INTERNACAO,
+  "imd": IMD,
 }
