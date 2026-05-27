@@ -69,17 +69,185 @@ export interface ServiceTestimonialsData {
   items: ServiceTestimonialItem[]
 }
 
+// -----------------------------------------------------------------------------
+// TYPES — novos blocos (SEO expansion)
+// -----------------------------------------------------------------------------
+
+export interface ServiceNavSection {
+  id: string
+  label: string
+}
+
+export interface ServiceIntroSubsection {
+  id: string
+  title: string
+  paragraphs: string[]
+}
+
+export interface ServiceIntroBlockData {
+  kicker: string
+  headline: string
+  paragraphs: string[]
+  subsections?: ServiceIntroSubsection[]
+}
+
+export interface ServiceIndicationItem {
+  id: string
+  icon: string
+  title: string
+  description: string
+  highlighted?: boolean
+}
+
+export interface ServiceIndicationsData {
+  kicker: string
+  headline: string
+  intro?: string
+  items: ServiceIndicationItem[]
+  note?: string
+}
+
+export interface ServiceEquipmentItem {
+  icon: string
+  title: string
+  description: string
+}
+
+export interface ServiceEquipmentData {
+  kicker: string
+  headline: string
+  description?: string
+  items: ServiceEquipmentItem[]
+}
+
+export interface ServiceProtocolItem {
+  id: string
+  icon: string
+  title: string
+  description: string
+}
+
+export interface ServiceProtocolsData {
+  kicker: string
+  headline: string
+  intro?: string
+  items: ServiceProtocolItem[]
+  certifications?: string[]
+}
+
+export interface ServiceJourneyStep {
+  number: string
+  title: string
+  description: string
+}
+
+export interface ServiceJourneyData {
+  kicker: string
+  headline: string
+  intro?: string
+  steps: ServiceJourneyStep[]
+}
+
+export interface ServiceRelatedItem {
+  slug: string
+  title: string
+  description: string
+  image: string
+  icon: string
+}
+
+export interface ServiceRelatedData {
+  kicker?: string
+  headline: string
+  items: ServiceRelatedItem[]
+}
+
+// -----------------------------------------------------------------------------
+// TYPES — blocos híbridos de persona (médico assistente / acompanhante)
+// -----------------------------------------------------------------------------
+
+export interface ServicePersonaBenefit {
+  icon: string
+  title: string
+  description: string
+}
+
+export interface ServiceMedicoBlockData {
+  /** Kicker default: "PARA O MÉDICO ASSISTENTE" */
+  kicker: string
+  headline: string
+  description?: string
+  benefits: ServicePersonaBenefit[]
+  /** Bloco opcional com lista de documentos (ex: credenciamento) */
+  documentation?: {
+    title: string
+    items: string[]
+  }
+  /** Label do CTA secundário do bloco. Default: "Falar com Consultoria Médica" */
+  ctaLabel?: string
+  /** Canal exclusivo p/ médico parceiro. Default: WhatsApp comercial padrão */
+  ctaHref?: string
+  note?: string
+}
+
+export interface ServiceAcompanhanteBlockData {
+  /** Kicker default: "PARA QUEM ESTÁ COM VOCÊ" */
+  kicker: string
+  headline: string
+  description?: string
+  amenities: ServicePersonaBenefit[]
+  /** Linha extra (ex: regra de voucher, horário visitação) */
+  note?: string
+}
+
+// -----------------------------------------------------------------------------
+// TYPES — E-E-A-T (referências + revisão clínica)
+// -----------------------------------------------------------------------------
+
+export interface ServiceReferenceItem {
+  label: string
+  href: string
+}
+
+// -----------------------------------------------------------------------------
+// TYPE PRINCIPAL — campos novos opcionais (retrocompat)
+// -----------------------------------------------------------------------------
+
 export interface ServiceDetailData {
   slug: string
   meta: {
     title: string
     description: string
   }
+  /** Seções para sidebar scroll-spy. Se undefined, sidebar esconde. */
+  navSections?: ServiceNavSection[]
   hero: ServiceHeroData
+  /** Bloco long-form "O que é" — 300-500 palavras */
+  intro?: ServiceIntroBlockData
+  /** Indicações/aplicações do serviço (grid) */
+  indications?: ServiceIndicationsData
+  /** Bloco híbrido p/ médico assistente — captura persona secundária em páginas B2C */
+  medico?: ServiceMedicoBlockData
   galleryBlock: ServiceGalleryBlockData
+  /** Equipamentos e tecnologia */
+  equipment?: ServiceEquipmentData
   highlights: ServiceHighlightsData
+  /** Protocolos, segurança e certificações */
+  protocols?: ServiceProtocolsData
+  /** Jornada passo-a-passo do paciente */
+  journey?: ServiceJourneyData
+  /** Bloco p/ acompanhante/família — decisor sombra, principal em internação/alimentação */
+  acompanhante?: ServiceAcompanhanteBlockData
   testimonials: ServiceTestimonialsData
   faq: FAQData
+  /** Conteúdo relacionado (cross-link outros serviços) */
+  related?: ServiceRelatedData
+  /** Tipo do schema principal — MedicalProcedure p/ tratamento, MedicalClinic p/ infraestrutura */
+  schemaType?: "MedicalProcedure" | "MedicalClinic"
+  /** Data ISO da última revisão clínica (E-E-A-T YMYL) */
+  lastReviewed?: string
+  /** Fontes externas/referências (E-E-A-T YMYL) */
+  references?: ServiceReferenceItem[]
 }
 
 // -----------------------------------------------------------------------------
