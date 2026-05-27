@@ -257,172 +257,560 @@ export interface ServiceDetailData {
 const CENTRO_CIRURGICO: ServiceDetailData = {
   slug: "centro-cirurgico",
   meta: {
-    title: "Centro Cirúrgico | Hospital São Rafael — 22 Salas para Cirurgias Eletivas",
+    title: "Centro Cirúrgico Particular em Belo Horizonte | Cirurgias Eletivas",
     description:
-      "22 salas cirúrgicas com tecnologia robótica, laparoscopia avançada e taxa de infecção de 0,33%. Conheça o Centro Cirúrgico do Hospital São Rafael em BH.",
+      "22 salas para cirurgias eletivas particulares no Hospital São Rafael, BH. Tecnologia robótica, laparoscopia avançada, taxa de infecção 0,33% e atendimento exclusivamente particular.",
   },
+  navSections: [
+    { id: "intro", label: "O Centro Cirúrgico" },
+    { id: "indicacoes", label: "Especialidades" },
+    { id: "para-o-medico", label: "Para o médico" },
+    { id: "infraestrutura", label: "Infraestrutura" },
+    { id: "equipamentos", label: "Tecnologia" },
+    { id: "numeros", label: "Números" },
+    { id: "protocolos", label: "Protocolos" },
+    { id: "jornada", label: "Como funciona" },
+    { id: "acompanhante", label: "Acompanhante" },
+    { id: "depoimentos", label: "Depoimentos" },
+    { id: "faq", label: "Dúvidas" },
+  ],
   hero: {
     kicker: "CENTRO CIRÚRGICO",
-    headline: "22 salas para o mais alto padrão em cirurgias eletivas.",
+    headline: "Cirurgia eletiva particular onde cada detalhe é planejado para o seu sucesso.",
     subheadline:
-      "Tecnologia robótica, laparoscopia avançada e equipe multidisciplinar integrada para o sucesso do seu procedimento.",
+      "22 salas integradas, tecnologia robótica e laparoscopia avançada, equipe multidisciplinar e taxa de infecção entre as mais baixas do país. Atendimento exclusivamente particular.",
     backgroundImage: "/assets/images/servicos/centro-cirurgico-v2.jpg",
     pills: [
-      "22 Salas Cirúrgicas",
-      "Tecnologia Robótica",
-      "Giro de Sala 40min",
-      "0,33% Taxa de Infecção",
+      "22 salas integradas",
+      "Robótica e laparoscopia",
+      "Taxa de infecção 0,33%",
+      "Atendimento particular",
     ],
   },
-  galleryBlock: {
-    kicker: "ESTRUTURA",
-    headline: "Projetado para zero imprevistos.",
+  intro: {
+    kicker: "O QUE É",
+    headline: "Um centro cirúrgico planejado para procedimentos eletivos de alta complexidade",
+    paragraphs: [
+      "O Centro Cirúrgico do Hospital São Rafael foi projetado para oferecer aos pacientes e médicos parceiros um ambiente de altíssima qualidade técnica, com 22 salas equipadas para cirurgias de baixa, média e alta complexidade. Cada detalhe — do fluxo de admissão à recuperação pós-anestésica — segue protocolos rigorosos validados internacionalmente, com foco em previsibilidade, segurança e experiência diferenciada.",
+      "Como hospital exclusivamente particular dedicado a cirurgias eletivas, organizamos o complexo para reduzir desperdício de tempo do cirurgião e ansiedade do paciente. Salas integradas a sistemas de imagem, monitorização anestésica avançada, instrumentadores especializados e giro de sala otimizado em 40 minutos são alguns dos elementos que sustentam essa promessa.",
+      "Nossa taxa de infecção de 0,33% — muito abaixo da média nacional de hospitais de grande porte — reflete uma cultura de segurança implementada em cada protocolo: antissepsia, esterilização, controle de fluxo de pessoas, manutenção da temperatura e umidade das salas, e checklists obrigatórios pré-incisão validados pela equipe.",
+    ],
+    subsections: [
+      {
+        id: "complexo-integrado",
+        title: "Um complexo integrado, sem fragmentação do cuidado",
+        paragraphs: [
+          "Centro cirúrgico, IMD (consultas e exames), unidade de internação, UTI, terapia hiperbárica e estrutura para acompanhante operam como um único organismo. O paciente faz exames pré-operatórios, é admitido, operado, internado e recebe alta dentro do mesmo complexo — sem deslocamentos, sem perda de informação clínica, sem retrabalho de prontuário.",
+          "Para o cirurgião, isso significa previsibilidade total: a sala marcada estará pronta, o instrumentador chegará treinado no procedimento, os exames pré-op estarão integrados ao prontuário e a equipe de internação receberá o paciente já com plano cirúrgico em mãos.",
+        ],
+      },
+    ],
+  },
+  indications: {
+    kicker: "ESPECIALIDADES",
+    headline: "Cirurgias eletivas multiespecialidades em alta complexidade",
+    intro:
+      "Atendemos cirurgias eletivas particulares de baixa, média e alta complexidade em diversas especialidades. As mais comuns no nosso centro:",
+    items: [
+      {
+        id: "ortopedia",
+        icon: "bone",
+        title: "Ortopedia",
+        description:
+          "Artroplastia de joelho e quadril, artroscopia, reconstrução ligamentar, cirurgia de coluna minimamente invasiva.",
+        highlighted: true,
+      },
+      {
+        id: "cardio",
+        icon: "activity",
+        title: "Cardiovascular",
+        description:
+          "Procedimentos eletivos cardíacos com equipe multidisciplinar e suporte de UTI no mesmo complexo.",
+      },
+      {
+        id: "bariatrica",
+        icon: "scalpel",
+        title: "Bariátrica e metabólica",
+        description:
+          "Bypass gástrico, sleeve e cirurgias metabólicas conduzidas por equipe especializada e protocolo ERAS.",
+      },
+      {
+        id: "urologia",
+        icon: "shield-check",
+        title: "Urologia",
+        description:
+          "Cirurgias urológicas robóticas e laparoscópicas, incluindo prostatectomia radical e nefrectomia parcial.",
+      },
+      {
+        id: "ginecologia",
+        icon: "heart-handshake",
+        title: "Ginecologia",
+        description:
+          "Histerectomias, laparoscopia ginecológica e cirurgias de assoalho pélvico com técnicas minimamente invasivas.",
+      },
+      {
+        id: "oncologica",
+        icon: "shield-check",
+        title: "Oncológica",
+        description:
+          "Procedimentos oncológicos eletivos integrados a serviços de patologia e diagnóstico do IMD.",
+      },
+      {
+        id: "coluna",
+        icon: "bone",
+        title: "Coluna",
+        description:
+          "Cirurgias de coluna com técnicas percutâneas, neuromonitorização intraoperatória e equipe dedicada.",
+      },
+      {
+        id: "oftalmo",
+        icon: "sparkles",
+        title: "Oftalmológica",
+        description:
+          "Catarata, refrativa e procedimentos oculares de alta precisão com equipamentos modernos.",
+      },
+      {
+        id: "otorrino",
+        icon: "headset",
+        title: "Otorrinolaringologia",
+        description:
+          "Cirurgias endoscópicas nasais, septoplastias e procedimentos otológicos eletivos.",
+      },
+    ],
+    note: "[REVISAR DIRETORIA] lista de especialidades para alinhamento com a oferta atual da casa.",
+  },
+  medico: {
+    kicker: "PARA O MÉDICO ASSISTENTE",
+    headline: "A estrutura que o cirurgião precisa para operar no seu melhor.",
     description:
-      "Cada detalhe das nossas salas foi planejado para dar ao cirurgião controle total sobre o ambiente e ao paciente máxima segurança. Da entrada no centro cirúrgico à sala de recuperação, tudo é gerenciado por protocolos rígidos de qualidade.",
+      "Médicos credenciados e não credenciados podem operar no Hospital São Rafael. Nossa Consultoria Médica Institucional acompanha cada cirurgião em todas as etapas — do credenciamento à execução — com canais diretos, instrumentadores treinados, salas robóticas e suporte de engenharia clínica 24/7.",
+    benefits: [
+      {
+        icon: "clipboard-check",
+        title: "Credenciamento ágil",
+        description:
+          "Processo de habilitação simplificado, com acompanhamento da Consultoria Médica do início ao fim.",
+      },
+      {
+        icon: "scalpel",
+        title: "Sala robótica e laparoscopia",
+        description:
+          "Tecnologia disponível e instrumentadores especializados em cada procedimento minimamente invasivo.",
+      },
+      {
+        icon: "timer",
+        title: "Giro de sala em 40 minutos",
+        description:
+          "Processos otimizados que aumentam previsibilidade da sua agenda e reduzem ociosidade.",
+      },
+      {
+        icon: "wrench",
+        title: "Instrumentador exclusivo",
+        description:
+          "Profissionais treinados nos seus protocolos, prontos para antecipar cada movimento da cirurgia.",
+      },
+      {
+        icon: "settings-2",
+        title: "Engenharia clínica 24/7",
+        description:
+          "Equipamentos sempre disponíveis e calibrados, com suporte técnico imediato em qualquer turno.",
+      },
+      {
+        icon: "sofa",
+        title: "Conforto Médico",
+        description:
+          "Área exclusiva de descanso, preparação e conveniência entre procedimentos, com privacidade.",
+      },
+    ],
+    documentation: {
+      title: "Documentação para credenciamento médico",
+      items: [
+        "Ficha de cadastro preenchida e assinada",
+        "Contrato HSR",
+        "Foto de rosto atual (digital)",
+        "Carteira do CRM digitalizada (frente e verso)",
+        "Certidão de quitação da anuidade do conselho",
+        "Título de especialista (RQE)",
+        "Comprovante de endereço residencial",
+        "Cartão de vacina atualizado",
+      ],
+    },
+    ctaLabel: "Falar com a Consultoria Médica",
+    note: "Para informações sobre credenciamento, agenda cirúrgica e parceria, fale com a Consultoria Médica Institucional.",
+  },
+  galleryBlock: {
+    kicker: "INFRAESTRUTURA",
+    headline: "Cada sala projetada para zero imprevistos.",
+    description:
+      "22 salas distribuídas em fluxos otimizados — entrada de paciente, área limpa, área contaminada, recuperação pós-anestésica — com controle ambiental rigoroso, sistemas de imagem integrados e tecnologia para procedimentos de baixa a altíssima complexidade.",
     images: [
       {
+        // [PENDENTE CLIENTE] foto real da sala equipada
         src: "/assets/images/servicos/centro-cirurgico-v2.jpg",
-        alt: "Sala cirúrgica equipada com tecnologia de última geração",
+        alt: "Sala cirúrgica equipada com tecnologia de última geração no Hospital São Rafael",
       },
       {
+        // [PENDENTE CLIENTE] foto da equipe em procedimento
         src: "/assets/images/servicos/centro-cirurgico-v2.jpg",
-        alt: "Bloco cirúrgico com equipe médica",
+        alt: "Equipe multidisciplinar em procedimento eletivo no Centro Cirúrgico HSR",
       },
       {
+        // [PENDENTE CLIENTE] foto da recuperação pós-anestésica
         src: "/assets/images/servicos/centro-cirurgico-v2.jpg",
-        alt: "Área de recuperação pós-operatória",
+        alt: "Sala de recuperação pós-anestésica do Hospital São Rafael",
       },
     ],
     features: [
       {
         icon: "check-circle",
         title: "Salas para laparoscopia e cirurgia robótica",
-        description: "Equipamentos de última geração integrados ao fluxo cirúrgico",
+        description: "Equipamentos de última geração integrados ao fluxo cirúrgico.",
       },
       {
         icon: "check-circle",
         title: "Monitorização intraoperatória contínua",
-        description: "Segurança máxima durante todo o ato cirúrgico",
+        description: "Sinais vitais e parâmetros anestésicos em tempo real durante todo o procedimento.",
       },
       {
         icon: "check-circle",
-        title: "Giro de sala de 40 minutos",
-        description: "Processos ágeis que otimizam a agenda do cirurgião",
+        title: "Controle ambiental rigoroso",
+        description: "Pressão, temperatura e umidade controladas conforme normas internacionais.",
       },
       {
         icon: "check-circle",
-        title: "Equipe de instrumentadores exclusiva",
-        description: "Suporte técnico especializado em cada procedimento",
+        title: "Recuperação pós-anestésica integrada",
+        description: "Saída da sala direto para área de monitorização especializada antes da internação.",
       },
     ],
-    cta: {
-      label: "Falar com Atendimento",
-      href: "#contato",
-    },
+    cta: { label: "Falar no WhatsApp", href: "https://wa.me/message/NZIPXRZ4SKUHM1" },
+  },
+  equipment: {
+    kicker: "TECNOLOGIA",
+    headline: "Equipamentos e recursos cirúrgicos de referência",
+    description:
+      "Tecnologia escolhida para dar ao cirurgião precisão e ao paciente segurança. Cada equipamento é mantido pela engenharia clínica do HSR e revisado em ciclos rígidos de calibração.",
+    items: [
+      {
+        icon: "scalpel",
+        title: "Plataforma robótica [modelo a confirmar]",
+        description:
+          "[REVISAR DIRETORIA] confirmar modelo. Cirurgias robóticas em urologia, ginecologia e cirurgia geral com precisão sub-milimétrica.",
+      },
+      {
+        icon: "activity",
+        title: "Torres de laparoscopia em alta definição",
+        description:
+          "Imagem 4K, fontes de luz LED e equipamentos de coagulação avançada para cirurgias minimamente invasivas.",
+      },
+      {
+        icon: "shield-check",
+        title: "Monitorização anestésica completa",
+        description:
+          "Capnografia, BIS, monitorização hemodinâmica e neuromuscular em todas as salas.",
+      },
+      {
+        icon: "clipboard-check",
+        title: "Imagem intraoperatória",
+        description:
+          "Arco em C, fluoroscopia digital e neuromonitorização disponíveis conforme procedimento.",
+      },
+      {
+        icon: "settings-2",
+        title: "Esterilização CME própria",
+        description:
+          "Central de Material e Esterilização integrada ao bloco, com rastreabilidade ponta a ponta.",
+      },
+    ],
   },
   highlights: {
     kicker: "NÚMEROS QUE COMPROVAM",
-    headline: "Excelência que se mede em dados.",
+    headline: "Excelência cirúrgica medida em dados.",
     items: [
       {
         id: "salas",
         metric: "22",
         icon: "building-2",
-        title: "Salas Cirúrgicas",
+        title: "Salas cirúrgicas",
         description:
-          "Todas equipadas com tecnologia de última geração para procedimentos de baixa a altíssima complexidade.",
+          "Estrutura para procedimentos de baixa, média e alta complexidade em diversas especialidades.",
       },
       {
         id: "giro",
         metric: "40min",
         icon: "timer",
-        title: "Giro de Sala",
+        title: "Giro de sala",
         description:
-          "Processos ágeis que reduzem a ociosidade e maximizam a previsibilidade da sua agenda cirúrgica.",
+          "Processos ágeis que aumentam previsibilidade da agenda e reduzem ociosidade do cirurgião.",
       },
       {
         id: "infeccao",
         metric: "0,33%",
         icon: "shield-check",
-        title: "Taxa de Infecção",
+        title: "Taxa de infecção",
         description:
-          "Um dos indicadores mais rigorosos do setor, muito abaixo da média nacional de hospitais de grande porte.",
+          "Indicador entre os mais rigorosos do setor, muito abaixo da média nacional de hospitais de grande porte.",
       },
       {
         id: "experiencia",
         metric: "+12.000",
         icon: "activity",
-        title: "Procedimentos Realizados",
+        title: "Procedimentos realizados",
         description:
-          "Uma base de experiência clínica sólida que sustenta cada decisão do nosso time médico e operacional.",
+          "Base de experiência clínica que sustenta cada decisão da nossa equipe.",
       },
     ],
   },
+  protocols: {
+    kicker: "SEGURANÇA",
+    headline: "Protocolos validados, segurança em cada etapa",
+    intro:
+      "Da admissão à alta, cada etapa segue protocolos institucionais alinhados a referências internacionais de segurança cirúrgica.",
+    items: [
+      {
+        id: "checklist",
+        icon: "clipboard-check",
+        title: "Checklist de cirurgia segura",
+        description:
+          "Protocolo OMS de cirurgia segura aplicado em 100% dos procedimentos, com confirmação ativa da equipe.",
+      },
+      {
+        id: "antibiotico",
+        icon: "shield-check",
+        title: "Antibioticoprofilaxia padronizada",
+        description:
+          "Administração rigorosa do antibiótico no tempo correto, reduzindo risco de infecção do sítio cirúrgico.",
+      },
+      {
+        id: "rastreabilidade",
+        icon: "git-merge",
+        title: "Rastreabilidade total",
+        description:
+          "Cada material, instrumento e profissional registrado no prontuário digital — auditoria completa por procedimento.",
+      },
+      {
+        id: "emergencia",
+        icon: "activity",
+        title: "Resposta rápida integrada",
+        description:
+          "UTI, banco de sangue e equipe de hemodinâmica disponíveis no mesmo complexo para qualquer intercorrência.",
+      },
+      {
+        id: "pos-anestesica",
+        icon: "heart-handshake",
+        title: "Recuperação pós-anestésica especializada",
+        description:
+          "Equipe dedicada e monitorização contínua até alta para o quarto de internação ou domiciliar.",
+      },
+      {
+        id: "controle-ambiental",
+        icon: "sparkles",
+        title: "Controle ambiental das salas",
+        description:
+          "Pressão positiva, filtragem HEPA, temperatura e umidade monitoradas continuamente.",
+      },
+    ],
+    certifications: [
+      "ANVISA",
+      "CFM — Conselho Federal de Medicina",
+      "OMS — Cirurgia Segura Salva Vidas",
+      "[PENDENTE CLIENTE] Acreditação ONA / outros selos",
+    ],
+  },
+  journey: {
+    kicker: "COMO FUNCIONA",
+    headline: "Sua jornada cirúrgica, passo a passo",
+    intro:
+      "Da indicação do seu médico ao retorno para casa, cada etapa é coordenada por uma equipe dedicada para que você se concentre apenas em se recuperar.",
+    steps: [
+      {
+        number: "1",
+        title: "Indicação e exames pré-operatórios",
+        description:
+          "Após a indicação do seu médico, agendamos consultas e exames pré-op no IMD, integrados ao centro cirúrgico, sem deslocamento externo.",
+      },
+      {
+        number: "2",
+        title: "Avaliação pré-anestésica",
+        description:
+          "Consulta com anestesiologista para revisão do histórico, otimização clínica e definição do protocolo anestésico personalizado.",
+      },
+      {
+        number: "3",
+        title: "Admissão hospitalar",
+        description:
+          "Recebimento na unidade de internação, conferência de documentos e exames, orientações finais ao paciente e ao acompanhante.",
+      },
+      {
+        number: "4",
+        title: "Procedimento cirúrgico",
+        description:
+          "Cirurgia conduzida pelo seu cirurgião com nossa equipe multidisciplinar de apoio. Comunicação contínua com o acompanhante na sala de espera.",
+      },
+      {
+        number: "5",
+        title: "Recuperação e alta",
+        description:
+          "Sala de recuperação pós-anestésica, internação no quarto, acompanhamento médico e alta com plano de cuidado domiciliar e retorno agendado.",
+      },
+    ],
+  },
+  acompanhante: {
+    kicker: "PARA QUEM ESTÁ COM VOCÊ",
+    headline: "Acompanhante informado, paciente mais tranquilo.",
+    description:
+      "Sabemos que quem está com você vive a cirurgia ao seu lado. Por isso, organizamos a estrutura para que o acompanhante tenha conforto durante a espera, comunicação ativa com a equipe e suporte em cada etapa.",
+    amenities: [
+      {
+        icon: "sofa",
+        title: "Sala de espera dedicada",
+        description:
+          "Ambiente climatizado, com Wi-Fi e estação de café, próximo ao bloco cirúrgico.",
+      },
+      {
+        icon: "headset",
+        title: "Comunicação ativa durante a cirurgia",
+        description:
+          "Equipe dá retornos periódicos e contato direto em qualquer mudança de cronograma.",
+      },
+      {
+        icon: "heart-handshake",
+        title: "Aviso assim que sair da sala",
+        description:
+          "Notificação imediata na recuperação pós-anestésica e orientação sobre quando ir ao quarto.",
+      },
+      {
+        icon: "utensils",
+        title: "Voucher de alimentação para o acompanhante",
+        description:
+          "Cada paciente internado recebe automaticamente 1 voucher por internação, válido por todo o período. O voucher dá direito a 1 refeição completa, 1 sobremesa (bombom ou brigadeiro) e 1 açaí na Praça de Alimentação do complexo.",
+      },
+      {
+        icon: "bed",
+        title: "Pernoite no quarto",
+        description:
+          "Quartos individuais com poltrona reclinável, banheiro privativo e Wi-Fi para o acompanhante.",
+      },
+      {
+        icon: "shield-check",
+        title: "Suporte se algo mudar",
+        description:
+          "Acesso direto à equipe médica e à UTI no mesmo complexo, em qualquer intercorrência.",
+      },
+    ],
+    note: "As refeições do paciente já estão incluídas. O voucher é um benefício adicional para o acompanhante e é entregue na admissão.",
+  },
   testimonials: {
-    headline: "O que dizem nossos pacientes",
+    headline: "O que dizem nossos pacientes e médicos",
     items: [
       {
         id: "t1",
+        // [PENDENTE CLIENTE] testimonials reais autorizados
         quote:
-          "A estrutura do Hospital São Rafael é impressionante. Me senti seguro e bem cuidado em todas as etapas, do pré-operatório à alta. A equipe foi extraordinária.",
-        author: "Carlos Eduardo M.",
-        role: "Paciente — Cirurgia de Joelho",
+          "A estrutura do Hospital São Rafael é impressionante. Me senti seguro e bem cuidado em todas as etapas, do pré-operatório à alta.",
+        author: "Paciente HSR",
+        role: "Cirurgia ortopédica",
         image: "",
       },
       {
         id: "t2",
         quote:
-          "Minha cirurgia foi realizada com total tranquilidade. A integração entre o IMD e o centro cirúrgico fez toda a diferença no meu processo de preparo e recuperação.",
-        author: "Ana Lucia S.",
-        role: "Paciente — Cirurgia Abdominal",
+          "Como cirurgião, encontro aqui a infraestrutura que preciso para operar com confiança: tecnologia, equipe treinada e processos previsíveis.",
+        author: "Cirurgião parceiro HSR",
+        role: "Especialista urológico",
         image: "",
       },
       {
         id: "t3",
         quote:
-          "Como cirurgião, encontrei aqui tudo que preciso para operar com confiança: infraestrutura moderna, equipe treinada e um giro de sala que me permite atender mais pacientes com qualidade.",
-        author: "Dr. Rodrigo F.",
-        role: "Cirurgião Ortopédico Parceiro",
+          "Minha cirurgia foi conduzida com total tranquilidade. O acolhimento da equipe e o conforto do quarto fizeram toda a diferença.",
+        author: "Paciente HSR",
+        role: "Cirurgia ginecológica",
         image: "",
       },
     ],
   },
   faq: {
     kicker: "PERGUNTAS FREQUENTES",
-    headline: "Perguntas frequentes sobre o Centro Cirúrgico",
+    headline: "Dúvidas frequentes sobre cirurgias eletivas particulares no HSR",
     items: [
       {
         id: "cc-faq-1",
         question: "O que são cirurgias eletivas particulares?",
         answer:
-          "São procedimentos cirúrgicos planejados com antecedência, que não necessitam de urgência, realizados em regime particular. No Hospital São Rafael, o agendamento é ágil e a internação ocorre em um ambiente confortável e seguro, sem filas ou imprevistos burocráticos.",
+          "São procedimentos cirúrgicos planejados com antecedência, sem caráter de urgência, realizados em regime exclusivamente particular. No Hospital São Rafael, o agendamento é ágil e a internação ocorre em ambiente confortável, sem filas ou intermediários.",
       },
       {
         id: "cc-faq-2",
-        question: "Como funciona o agendamento de uma cirurgia?",
+        question: "Como funciona o atendimento e o pagamento das cirurgias no HSR?",
         answer:
-          "Após a indicação do seu médico, nossa equipe de relacionamento coordena todos os detalhes: agendamento da sala cirúrgica, exames pré-operatórios no IMD integrado e reserva de acomodação. Um único ponto de contato para todo o processo.",
+          "O Hospital São Rafael é uma instituição exclusivamente particular. Não trabalhamos com convênios, planos de saúde ou SUS. Os valores e formas de pagamento são apresentados de forma clara durante a avaliação, junto ao plano cirúrgico e à estimativa de internação.",
       },
       {
         id: "cc-faq-3",
-        question: "Meu cirurgião pode realizar o procedimento no HSR?",
+        question: "Meu cirurgião pode operar no Hospital São Rafael?",
         answer:
-          "Sim. Médicos credenciados e não credenciados podem operar em nosso centro. Entre em contato com nossa Consultoria Médica Institucional para conhecer o processo de credenciamento e os recursos disponíveis para cada especialidade.",
+          "Sim. Médicos credenciados e não credenciados podem operar no nosso centro cirúrgico. Nossa Consultoria Médica Institucional conduz o processo de credenciamento e orienta sobre os recursos disponíveis para cada especialidade.",
       },
       {
         id: "cc-faq-4",
         question: "Quais especialidades são atendidas no Centro Cirúrgico?",
         answer:
-          "Atendemos cirurgias eletivas de Ortopedia, Cardiologia, Neurologia, Urologia, Ginecologia, Oftalmologia e outras especialidades. Nossas 22 salas estão preparadas para procedimentos de baixa a altíssima complexidade, incluindo cirurgias robóticas e laparoscópicas.",
+          "Atendemos cirurgias eletivas de Ortopedia, Cardiologia, Neurocirurgia, Urologia, Ginecologia, Bariátrica, Oncológica, Coluna, Oftalmologia, Otorrinolaringologia e outras. As 22 salas suportam procedimentos de baixa a altíssima complexidade, incluindo robótica e laparoscópica.",
       },
       {
         id: "cc-faq-5",
-        question: "Qual é o suporte disponível no pós-operatório?",
+        question: "Como é feita a avaliação pré-operatória?",
         answer:
-          "Contamos com internação confortável, Unidade de Transição para acompanhamento pós-cirúrgico, Terapia Hiperbárica para recuperação acelerada e protocolo de alta segura. Cada etapa é monitorada pela nossa equipe multidisciplinar.",
+          "Os exames pré-op podem ser feitos no IMD, integrado ao Centro Cirúrgico. A consulta pré-anestésica avalia o histórico, otimiza condições clínicas e define o protocolo anestésico personalizado.",
+      },
+      {
+        id: "cc-faq-6",
+        question: "Quanto tempo dura a internação após a cirurgia?",
+        answer:
+          "Depende do tipo de procedimento e da evolução clínica. Cirurgias minimamente invasivas costumam ter alta em 24 a 48 horas; procedimentos de maior complexidade podem exigir 3 a 7 dias. Seu cirurgião informará a estimativa no pré-operatório.",
+      },
+      {
+        id: "cc-faq-7",
+        question: "Existe estrutura para o meu acompanhante?",
+        answer:
+          "Sim. Quartos individuais com poltrona reclinável e banheiro privativo, sala de espera durante a cirurgia, Wi-Fi e Praça de Alimentação no complexo. Cada paciente internado recebe automaticamente 1 voucher por internação para o acompanhante, com direito a 1 refeição, 1 sobremesa (bombom ou brigadeiro) e 1 açaí.",
+      },
+      {
+        id: "cc-faq-8",
+        question: "Como funciona o suporte se houver intercorrência?",
+        answer:
+          "UTI, banco de sangue, hemodinâmica e equipe de resposta rápida estão disponíveis no mesmo complexo, com transferência ágil e equipe já familiarizada com o caso pelo prontuário único.",
+      },
+      {
+        id: "cc-faq-9",
+        question: "Quais protocolos de segurança são aplicados?",
+        answer:
+          "Aplicamos checklist de cirurgia segura da OMS, antibioticoprofilaxia padronizada, rastreabilidade total de materiais, controle ambiental rigoroso das salas e protocolos institucionais alinhados a referências internacionais.",
+      },
+      {
+        id: "cc-faq-10",
+        question: "Como agendo uma cirurgia no Hospital São Rafael?",
+        answer:
+          "Entre em contato com nossa equipe pelo WhatsApp. Após a indicação do seu médico, agendamos exames pré-op no IMD, consulta pré-anestésica e a data da cirurgia, coordenando todas as etapas em um único ponto de contato.",
       },
     ],
   },
+  schemaType: "MedicalProcedure",
+  lastReviewed: "2026-04-28",
+  references: [
+    {
+      label: "OMS — Cirurgia Segura Salva Vidas (Checklist)",
+      href: "https://www.who.int/teams/integrated-health-services/patient-safety/research/safe-surgery",
+    },
+    {
+      label: "ANVISA — Boas práticas em centro cirúrgico",
+      href: "https://www.gov.br/anvisa/pt-br",
+    },
+    {
+      label: "CFM — Conselho Federal de Medicina",
+      href: "https://portal.cfm.org.br/",
+    },
+  ],
 }
 
 // -----------------------------------------------------------------------------
