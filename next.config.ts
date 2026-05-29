@@ -4,8 +4,10 @@ import createNextIntlPlugin from 'next-intl/plugin'  // ← acrescentar
 const withNextIntl = createNextIntlPlugin()  // ← acrescentar
 
 const nextConfig: NextConfig = {
+  output: "export",
   images: {
-    formats: ["image/avif", "image/webp"],
+    // Static export não roda otimizador de imagem no servidor.
+    unoptimized: true,
     remotePatterns: [],
   },
 }

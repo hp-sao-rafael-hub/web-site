@@ -154,13 +154,6 @@ export function Footer({ data, className }: FooterProps) {
               >
                 {t("terms")}
               </Link>
-              <Link
-                href="/admin/login"
-                className="text-xs text-white/20 hover:text-white/50 transition-colors"
-                aria-label={t("restrictedAreaAria")}
-              >
-                {t("restrictedArea")}
-              </Link>
             </div>
           </div>
         </div>

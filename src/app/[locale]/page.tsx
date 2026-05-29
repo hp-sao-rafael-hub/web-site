@@ -6,13 +6,21 @@
 // Header está em layout.tsx (renderizado fora do <main>).
 // =============================================================================
 
+import { setRequestLocale } from "next-intl/server"
 import { HomeTemplate } from "@/components/templates/home-template"
+import { routing } from "@/i18n/routing"
 
-export default function Home() {
-  return (
-    <>
-      <div dangerouslySetInnerHTML={{ __html: "<!-- teste deploy 05/05 -->" }} />
-      <HomeTemplate />
-    </>
-  )
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
+
+interface PageProps {
+  params: Promise<{ locale: string }>
+}
+
+export default async function Home({ params }: PageProps) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
+  return <HomeTemplate />
 }

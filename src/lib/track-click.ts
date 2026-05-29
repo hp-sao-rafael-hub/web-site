@@ -1,18 +1,4 @@
-export function trackClick(ctaKey: string) {
-  if (typeof window === "undefined") return
-  try {
-    const blob = new Blob([JSON.stringify({ cta_key: ctaKey })], {
-      type: "application/json",
-    })
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon("/api/track-click", blob)
-      return
-    }
-    fetch("/api/track-click", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ cta_key: ctaKey }),
-      keepalive: true,
-    }).catch(() => {})
-  } catch {}
-}
+// No-op: backend de tracking (Supabase/API) removido na migração para site
+// estático. Mantido como stub para não quebrar os componentes que chamam.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function trackClick(_ctaKey: string) {}
