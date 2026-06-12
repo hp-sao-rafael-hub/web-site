@@ -74,6 +74,7 @@ export function ServiceDetailTemplate({
     galleryBlock,
     equipment,
     highlights,
+    highlightsAfterJourney,
     protocols,
     journey,
     acompanhante,
@@ -155,10 +156,12 @@ export function ServiceDetailTemplate({
         <ServiceEquipmentBlock data={equipment} sectionId="equipamentos" />
       )}
 
-      {/* 5. Highlights / métricas */}
-      <div id="numeros" className="scroll-mt-24">
-        <ServiceHighlights data={highlights} reserveRightGutter />
-      </div>
+      {/* 5. Highlights / métricas — posição padrão (antes da jornada) */}
+      {!highlightsAfterJourney && (
+        <div id="numeros" className="scroll-mt-24">
+          <ServiceHighlights data={highlights} reserveRightGutter />
+        </div>
+      )}
 
       {/* 6. Protocolos */}
       {protocols && (
@@ -184,6 +187,13 @@ export function ServiceDetailTemplate({
           data={acompanhante}
           sectionId="acompanhante"
         />
+      )}
+
+      {/* 7c. Highlights ao final — quando highlightsAfterJourney=true */}
+      {highlightsAfterJourney && (
+        <div id="numeros" className="scroll-mt-24">
+          <ServiceHighlights data={highlights} reserveRightGutter />
+        </div>
       )}
 
       {/* 8. Testimonials */}

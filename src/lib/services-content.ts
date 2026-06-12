@@ -242,6 +242,8 @@ export interface ServiceDetailData {
   faq: FAQData
   /** Conteúdo relacionado (cross-link outros serviços) */
   related?: ServiceRelatedData
+  /** Quando true, renderiza highlights após jornada em vez de após equipamentos */
+  highlightsAfterJourney?: boolean
   /** Tipo do schema principal — MedicalProcedure p/ tratamento, MedicalClinic p/ infraestrutura */
   schemaType?: "MedicalProcedure" | "MedicalClinic"
   /** Data ISO da última revisão clínica (E-E-A-T YMYL) */
@@ -259,12 +261,14 @@ const CENTRO_CIRURGICO: ServiceDetailData = {
   navSections: [
     { id: "para-o-medico", label: "Para o médico" },
     { id: "infraestrutura", label: "Estrutura" },
-    { id: "numeros", label: "Números" },
     { id: "protocolos", label: "Protocolos" },
     { id: "jornada", label: "Como funciona" },
+    { id: "acompanhante", label: "Acompanhante" },
+    { id: "numeros", label: "Números" },
     { id: "depoimentos", label: "Depoimentos" },
     { id: "faq", label: "Perguntas frequentes" },
   ],
+  highlightsAfterJourney: true,
   meta: {
     title: "Centro Cirúrgico | Hospital São Rafael, 22 salas para cirurgias eletivas",
     description:
@@ -474,6 +478,18 @@ const CENTRO_CIRURGICO: ServiceDetailData = {
       },
     ],
   },
+  acompanhante: {
+    kicker: "PARA QUEM ESTÁ COM VOCÊ",
+    headline: "O acompanhante informado em cada etapa.",
+    description: "Enquanto o procedimento acontece no bloco, o acompanhante tem suporte, conforto e comunicação ativa da nossa equipe.",
+    amenities: [
+      { icon: "clock", title: "Atualização a cada 2 horas", description: "Nossa equipe entra em contato com o acompanhante a cada 2 horas para informar o andamento do procedimento cirúrgico." },
+      { icon: "sofa", title: "Sala de espera confortável", description: "Ambiente dedicado para aguardar com conforto e privacidade durante o procedimento." },
+      { icon: "utensils", title: "Acesso às comodidades", description: "Praça de alimentação e demais comodidades do complexo disponíveis durante a espera." },
+      { icon: "phone", title: "Canal direto com a equipe", description: "Contato disponível para esclarecer dúvidas durante o procedimento, sem precisar aguardar atualizações passivamente." },
+    ],
+    note: "O acompanhante é acionado imediatamente quando o paciente é transferido do bloco para a internação.",
+  },
 }
 
 // -----------------------------------------------------------------------------
@@ -483,6 +499,7 @@ const CENTRO_CIRURGICO: ServiceDetailData = {
 const INTERNACAO: ServiceDetailData = {
   slug: "internacao",
   navSections: [
+    { id: "intro", label: "Prepare-se" },
     { id: "infraestrutura", label: "Estrutura" },
     { id: "numeros", label: "Números" },
     { id: "protocolos", label: "Protocolos" },
@@ -495,6 +512,29 @@ const INTERNACAO: ServiceDetailData = {
     title: "Internação | Hospital São Rafael, conforto e segurança na recuperação",
     description:
       "Acomodações individuais projetadas para recuperação pós-cirúrgica com acompanhamento próximo da equipe de enfermagem e protocolos rigorosos de segurança. Internação particular no Hospital São Rafael, BH.",
+  },
+  intro: {
+    kicker: "PREPARE-SE PARA A INTERNAÇÃO",
+    headline: "Tudo o que você precisa saber antes de chegar.",
+    paragraphs: [
+      "Nossa equipe de relacionamento entra em contato antes da sua chegada para orientar sobre documentos, horário de admissão e o que trazer. Com tudo organizado com antecedência, a admissão é rápida e o cuidado começa sem atraso.",
+    ],
+    subsections: [
+      {
+        id: "preparo",
+        title: "Como se preparar",
+        paragraphs: [
+          "Traga documentos pessoais (RG e CPF) e o pedido médico de internação. Roupas confortáveis são recomendadas. Itens de higiene pessoal e entretenimento podem ser trazidos. Para cirurgias com jejum, siga rigorosamente as instruções do seu médico — nossa equipe reforça as orientações no contato prévio.",
+        ],
+      },
+      {
+        id: "visitacao",
+        title: "Regras de visitação",
+        paragraphs: [
+          "Cada paciente pode ter um acompanhante durante toda a internação, com espaço e comodidades dedicados. Visitas adicionais são bem-vindas nos horários estabelecidos pela equipe. Em situações que exijam restrição por critério clínico, a enfermagem orienta o acompanhante com clareza e antecedência.",
+        ],
+      },
+    ],
   },
   hero: {
     kicker: "INTERNAÇÃO",
@@ -616,7 +656,8 @@ const INTERNACAO: ServiceDetailData = {
       { number: "03", title: "Centro cirúrgico", description: "Encaminhamento ao bloco para o seu procedimento, no mesmo complexo." },
       { number: "04", title: "Recuperação (SRPA)", description: "Acompanhamento na sala de recuperação pós-anestésica." },
       { number: "05", title: "Retorno à internação", description: "Volta ao quarto para a recuperação, com a equipe de enfermagem por perto." },
-      { number: "06", title: "Alta", description: "Alta com orientações claras para a continuidade do cuidado em casa." },
+      { number: "06", title: "Unidade de Transição e Hiperbárica (quando indicada)", description: "Quando indicado pelo médico, o paciente segue para a Unidade de Transição e pode realizar sessões de Terapia Hiperbárica para acelerar a recuperação — tudo no mesmo complexo, sem deslocamento." },
+      { number: "07", title: "Alta", description: "Alta com orientações claras para a continuidade do cuidado em casa." },
     ],
   },
   acompanhante: {
