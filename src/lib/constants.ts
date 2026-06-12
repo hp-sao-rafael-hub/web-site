@@ -758,7 +758,7 @@ export const FOOTER_DATA = {
     { platform: "tiktok", url: "https://www.tiktok.com/@hospitalsaorafaelmg", icon: "tiktok" },
   ],
   emergency: {
-    label: "Emergência 24 horas",
+    label: "Urgências pós-cirúrgicas", // [PENDENTE CLIENTE] Validar texto — hospital eletivo, sem pronto-socorro
     href: "tel:+553125170000",
   },
 } as const

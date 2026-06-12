@@ -380,12 +380,16 @@ const CENTRO_CIRURGICO: ServiceDetailData = {
   },
   journey: {
     kicker: "COMO FUNCIONA",
-    headline: "Um complexo integrado, do acolhimento à alta.",
+    headline: "Da consulta à alta, cada etapa coordenada.",
     steps: [
-      { number: "01", title: "Admissão", description: "Você é admitido e preparado para o procedimento com calma e segurança." },
-      { number: "02", title: "Cirurgia", description: "A cirurgia é realizada em uma das 22 salas, com equipe alinhada ao procedimento." },
-      { number: "03", title: "Recuperação", description: "Acompanhamento na sala de recuperação pós-anestésica (SRPA), no mesmo complexo." },
-      { number: "04", title: "Alta", description: "Após a recuperação, você recebe alta com orientações claras para casa." },
+      { number: "01", title: "Consulta e indicação médica", description: "Seu médico indica o procedimento e orienta sobre os próximos passos e documentação necessária." },
+      { number: "02", title: "Indicação e exames pré-operatórios", description: "Realização dos exames necessários no IMD integrado, sem deslocamento entre endereços." },
+      { number: "03", title: "Avaliação pré-anestésica", description: "Consulta com o anestesiologista para personalizar o protocolo anestésico e mitigar riscos." },
+      { number: "04", title: "Admissão", description: "Você é recebido e preparado para o procedimento com calma e segurança." },
+      { number: "05", title: "Procedimento cirúrgico", description: "A cirurgia é realizada em uma das 22 salas equipadas, com equipe alinhada ao seu procedimento." },
+      { number: "06", title: "SRPA", description: "Acompanhamento na sala de recuperação pós-anestésica, ainda no bloco cirúrgico." },
+      { number: "07", title: "Internação", description: "Transferência para acomodação individual, com equipe de enfermagem presente." },
+      { number: "08", title: "Alta", description: "Alta com orientações claras para a continuidade do cuidado em casa." },
     ],
   },
   medico: {
@@ -454,7 +458,7 @@ const CENTRO_CIRURGICO: ServiceDetailData = {
         id: "cc-faq-3",
         question: "Meu cirurgião pode realizar o procedimento no HSR?",
         answer:
-          "Sim. Médicos credenciados e não credenciados podem operar em nosso centro. Entre em contato com nossa equipe de Relacionamento Médico para conhecer o processo de credenciamento e os recursos disponíveis para cada especialidade.",
+          "Apenas médicos credenciados podem realizar procedimentos no Hospital São Rafael. Médicos ainda não credenciados podem entrar em contato com nossa equipe de Relacionamento Médico para iniciar o processo de credenciamento e conhecer os recursos disponíveis para cada especialidade.",
       },
       {
         id: "cc-faq-4",
@@ -481,6 +485,7 @@ const INTERNACAO: ServiceDetailData = {
   navSections: [
     { id: "infraestrutura", label: "Estrutura" },
     { id: "numeros", label: "Números" },
+    { id: "protocolos", label: "Protocolos" },
     { id: "jornada", label: "Sua jornada" },
     { id: "acompanhante", label: "Acompanhante" },
     { id: "depoimentos", label: "Depoimentos" },
@@ -588,6 +593,19 @@ const INTERNACAO: ServiceDetailData = {
       },
     ],
   },
+  protocols: {
+    kicker: "PROTOCOLOS DE SEGURANÇA",
+    headline: "Padrões internacionais aplicados em cada detalhe.",
+    intro: "A internação no Hospital São Rafael segue protocolos baseados em referências internacionais, com foco em segurança clínica e conforto.",
+    items: [
+      { id: "infeccao", icon: "shield-check", title: "Controle de infecção", description: "Protocolos rigorosos de higienização, paramentação e controle de fluxo para zero tolerância a infecções relacionadas à assistência." },
+      { id: "quedas", icon: "alert-triangle", title: "Prevenção de quedas", description: "Avaliação de risco na admissão, sinalização visual e barreiras físicas para proteger o paciente em todos os momentos." },
+      { id: "lesao-pressao", icon: "layers", title: "Prevenção de lesão por pressão", description: "Escala de avaliação aplicada a cada paciente, com reposicionamento programado e superfícies especiais quando indicadas." },
+      { id: "medicamentos", icon: "flask", title: "Segurança medicamentosa", description: "Dispensação via farmácia satélite com dupla checagem e registro integrado ao prontuário digital, eliminando erros de medicação." },
+      { id: "hotelaria", icon: "sparkles", title: "Higienização e hotelaria premium", description: "Equipe treinada em protocolos da Anvisa para higienização de superfícies e enxoval. Limpeza terminal entre internações." },
+      { id: "referencias", icon: "book-open", title: "Referências internacionais", description: "Protocolos alinhados às recomendações do Joint Commission International (JCI), ANVISA e melhores práticas da medicina baseada em evidências." },
+    ],
+  },
   journey: {
     kicker: "SUA JORNADA",
     headline: "Cada etapa pensada para a sua recuperação.",
@@ -630,7 +648,7 @@ const INTERNACAO: ServiceDetailData = {
         quote:
           "O quarto era muito confortável e tinha espaço para minha esposa ficar comigo. A integração com o centro cirúrgico foi perfeita: do pós-operatório direto para a internação, sem burocracia.",
         author: "Marcos Paulo V.",
-        role: "Paciente, Cirurgia Cardíaca Eletiva",
+        role: "Paciente, Cirurgia de Coluna", // [PENDENTE CLIENTE] Substituir por depoimento aprovado
         image: "",
       },
       {
@@ -657,7 +675,7 @@ const INTERNACAO: ServiceDetailData = {
         id: "int-faq-2",
         question: "Acompanhante pode ficar durante toda a internação?",
         answer:
-          "Sim. Nossos quartos individuais são projetados para acomodar um acompanhante com conforto, incluindo poltrona reclinável para descanso. O acompanhante tem acesso a alimentação, Wi-Fi e todas as comodidades do hospital. Em casos especiais, a equipe médica pode indicar restrições por critério clínico.",
+          "Sim. Nossos quartos individuais são projetados para acomodar um acompanhante com conforto: as suítes luxo contam com sofá-cama, e as acomodações standard com poltrona reclinável. O acompanhante tem acesso a alimentação, Wi-Fi e todas as comodidades do hospital. Em casos especiais, a equipe médica pode indicar restrições por critério clínico.",
       },
       {
         id: "int-faq-3",
@@ -698,6 +716,7 @@ const IMD: ServiceDetailData = {
     { id: "para-o-medico", label: "Para o médico" },
     { id: "infraestrutura", label: "Estrutura" },
     { id: "numeros", label: "Números" },
+    { id: "jornada", label: "Como funciona" },
     { id: "depoimentos", label: "Depoimentos" },
     { id: "faq", label: "Perguntas frequentes" },
   ],
@@ -789,6 +808,18 @@ const IMD: ServiceDetailData = {
       { id: "integracao", metric: "100%", icon: "git-merge", title: "Integração com o Bloco", description: "Exames e laudos no mesmo prontuário do centro cirúrgico, com rastreabilidade total." },
     ],
   },
+  journey: {
+    kicker: "COMO FUNCIONA",
+    headline: "Do agendamento ao laudo, sem complicação.",
+    intro: "Um fluxo pensado para integrar diagnóstico e procedimento em uma jornada contínua.",
+    steps: [
+      { number: "01", title: "Agendamento direto", description: "Agende pelo WhatsApp ou pelo time de relacionamento. Nossa equipe orienta sobre preparo, documentos e horário." },
+      { number: "02", title: "Preparo orientado", description: "Você recebe todas as instruções específicas para cada consulta ou exame, com clareza e antecedência." },
+      { number: "03", title: "Atendimento no IMD", description: "Consultas com especialistas e exames realizados no mesmo instituto, sem deslocamento entre endereços." },
+      { number: "04", title: "Laudo e integração", description: "Resultados disponíveis em até 24 horas, registrados no prontuário digital e acessíveis ao médico assistente." },
+      { number: "05", title: "Continuidade do cuidado", description: "Diagnóstico conectado ao centro cirúrgico: do IMD direto para o planejamento cirúrgico, sem retrabalho." },
+    ],
+  },
   testimonials: {
     headline: "O que dizem nossos pacientes",
     items: [
@@ -806,6 +837,9 @@ const IMD: ServiceDetailData = {
       { id: "imd-faq-3", question: "Como agendar uma consulta ou exame?", answer: "O agendamento é feito pelo WhatsApp. Nossa equipe de relacionamento orienta sobre o preparo necessário, os documentos e o melhor horário para você." },
       { id: "imd-faq-4", question: "O IMD é integrado ao centro cirúrgico?", answer: "Sim. O IMD funciona dentro do mesmo complexo do centro cirúrgico. Consultas, exames e laudos alimentam o prontuário digital, sem repetição de exames e sem deslocamento entre endereços." },
       { id: "imd-faq-5", question: "Quais especialidades são atendidas?", answer: "São 14 especialidades: Cardiologia, Cabeça e Pescoço, Dermatologia, Urologia, Ginecologia, Mastologia, Cirurgia Geral, Neurocirurgia, Ortopedia, Cirurgia Plástica, Cirurgia Vascular, Otorrinolaringologia, Oftalmologia e Clínica da Dor." },
+      { id: "imd-faq-6", question: "Quais exames o IMD realiza?", answer: "O IMD realiza tomografia computadorizada, ultrassonografia, raio-X digital, exames laboratoriais, ECG, ecocardiograma, teste ergométrico e outros exames conforme indicação médica. Todos os resultados são integrados ao prontuário digital." },
+      { id: "imd-faq-7", question: "Posso fazer o pré-operatório no IMD?", answer: "Sim. O IMD é o local ideal para a avaliação pré-operatória: consultas com especialistas e todos os exames necessários são realizados no mesmo instituto, com os resultados integrados ao prontuário do centro cirúrgico. Nossa equipe coordena o agendamento de cada etapa." },
+      { id: "imd-faq-8", question: "Meu médico pode receber o laudo direto?", answer: "Sim. Os laudos ficam disponíveis no prontuário digital compartilhado, acessíveis ao médico assistente em até 24 horas. O médico também pode solicitar que a equipe envie os resultados por canais diretos. A integração elimina a necessidade de o paciente transportar exames físicos." },
     ],
   },
   related: {
@@ -838,6 +872,9 @@ const HIPERBARICA: ServiceDetailData = {
     { id: "equipamentos", label: "As câmaras" },
     { id: "infraestrutura", label: "Estrutura" },
     { id: "numeros", label: "Números" },
+    { id: "jornada", label: "Como funciona" },
+    { id: "para-o-medico", label: "Para o médico" },
+    { id: "acompanhante", label: "Acompanhante" },
     { id: "depoimentos", label: "Depoimentos" },
     { id: "faq", label: "Perguntas frequentes" },
   ],
@@ -902,6 +939,8 @@ const HIPERBARICA: ServiceDetailData = {
       { icon: "check-circle", title: "Sessão de 90 minutos a até 2,4 atm", description: "Protocolo conduzido por equipe capacitada" },
       { icon: "check-circle", title: "Integrada ao complexo", description: "Conectada ao centro cirúrgico, à internação e ao IMD" },
       { icon: "check-circle", title: "Equipe de enfermagem e técnicos", description: "Acompanhamento próximo durante toda a sessão" },
+      { icon: "check-circle", title: "Certificação SBMH e Anvisa", description: "Câmaras e protocolos em conformidade com a Sociedade Brasileira de Medicina Hiperbárica e normas da Anvisa" },
+      { icon: "check-circle", title: "Leito de estabilização integrado", description: "Em caso de intercorrência, transferência ágil para a unidade de estabilização dentro do próprio complexo" },
     ],
     cta: { label: "Falar com Atendimento", href: "#contato" },
   },
@@ -914,6 +953,43 @@ const HIPERBARICA: ServiceDetailData = {
       { id: "pressao", metric: "2,4 atm", icon: "activity", title: "Pressão Máxima", description: "Pressurização conduzida com segurança por equipe capacitada." },
       { id: "indicacoes", metric: "14", icon: "clipboard-check", title: "Indicações (CFM)", description: "Indicações reconhecidas pelo Conselho Federal de Medicina, sempre definidas pelo seu médico." },
     ],
+  },
+  journey: {
+    kicker: "COMO FUNCIONA",
+    headline: "Cada sessão, passo a passo.",
+    intro: "A partir da indicação do seu médico, a jornada é simples e organizada.",
+    steps: [
+      { number: "01", title: "Indicação médica", description: "Seu médico avalia o quadro clínico e indica a oxigenoterapia hiperbárica, definindo o número de sessões." },
+      { number: "02", title: "Orientação pré-tratamento", description: "Nossa equipe orienta sobre o preparo, itens não permitidos na câmara e o que esperar durante a sessão." },
+      { number: "03", title: "Recepção e apresentação", description: "Na chegada, você é recebido, troca a vestimenta adequada e conhece a câmara antes do início da sessão." },
+      { number: "04", title: "Sessão de 90 minutos", description: "Você permanece na câmara por cerca de 90 minutos, com orientações de manobras para equalizar o ouvido e equipe acompanhando ao lado." },
+      { number: "05", title: "Avaliação pós-sessão e retorno", description: "Ao final, a equipe avalia como você se sentiu e orienta sobre a próxima sessão e eventuais cuidados." },
+    ],
+  },
+  medico: {
+    kicker: "PARA O MÉDICO",
+    headline: "Integração completa para o seu paciente cirúrgico.",
+    description: "A Terapia Hiperbárica do Hospital São Rafael é integrada ao pós-operatório e à internação, com agendamento ágil e protocolos reconhecidos.",
+    benefits: [
+      { icon: "git-merge", title: "Integração com pós-operatório e internação", description: "Pacientes internados ou em recuperação têm acesso direto à terapia, sem necessidade de deslocamento externo." },
+      { icon: "clipboard-check", title: "Protocolos SBMH e Anvisa", description: "14 indicações reconhecidas pelo CFM, com protocolos em conformidade com a Sociedade Brasileira de Medicina Hiperbárica e a Anvisa." },
+      { icon: "clock", title: "Agendamento ágil", description: "Atendimento de segunda a segunda com agendamento coordenado pela equipe de relacionamento." },
+      { icon: "users", title: "Público interno e externo", description: "Atende pacientes do próprio complexo e pacientes externos, sempre a partir da indicação médica." },
+      { icon: "shield-check", title: "Leito de estabilização integrado", description: "Em caso de intercorrência, o paciente é transferido com agilidade para a unidade de estabilização dentro do mesmo complexo." },
+    ],
+    ctaLabel: "Falar com Relacionamento Médico",
+  },
+  acompanhante: {
+    kicker: "PARA QUEM ESTÁ COM VOCÊ",
+    headline: "Sessões previsíveis com tranquilidade para o acompanhante.",
+    description: "Cada sessão dura cerca de 90 minutos. Enquanto isso, o acompanhante tem estrutura e conforto no complexo.",
+    amenities: [
+      { icon: "sofa", title: "Sala de espera dedicada", description: "Espaço confortável e reservado para o acompanhante durante a sessão." },
+      { icon: "clock", title: "Sessões previsíveis", description: "90 minutos de duração permitem planejar a visita com clareza e sem imprevistos." },
+      { icon: "utensils", title: "Refeições na praça de alimentação", description: "Acesso à praça de alimentação do complexo durante a espera." },
+      { icon: "shield-check", title: "Segurança em caso de intercorrência", description: "Em situações que exijam suporte adicional, a unidade de estabilização está dentro do próprio hospital." },
+    ],
+    note: "A equipe orienta o acompanhante antes de cada sessão sobre o protocolo e o que esperar.",
   },
   testimonials: {
     headline: "O que dizem nossos pacientes",
@@ -932,6 +1008,7 @@ const HIPERBARICA: ServiceDetailData = {
       { id: "hb-faq-3", question: "Quanto tempo dura cada sessão?", answer: "Cada sessão dura cerca de 90 minutos, com pressão de até 2,4 atmosferas e uma descompressão suave de 15 a 20 minutos ao final. O número de sessões é definido pelo seu médico, conforme a sua condição." },
       { id: "hb-faq-4", question: "O que devo evitar antes da sessão?", answer: "Por segurança, alguns itens não são permitidos dentro da câmara, como adornos metálicos, cílios postiços, mega hair e unhas de gel. A equipe orienta com antecedência tudo o que você precisa saber para a sua sessão." },
       { id: "hb-faq-5", question: "E se faltar energia durante a sessão?", answer: "A unidade conta com gerador próprio, garantindo a continuidade e a segurança da sessão mesmo em caso de queda de energia. Toda a sessão é acompanhada por equipe de enfermagem e técnicos capacitados." },
+      { id: "hb-faq-6", question: "Quantas sessões são necessárias?", answer: "O número de sessões é definido pelo médico solicitante conforme a condição clínica. Para casos agudos, o protocolo costuma ser mais curto. Para condições crônicas, ciclos de 20 a 40 sessões são comuns, com acompanhamento e reavaliação periódica. Nossa equipe coordena o agendamento de todo o ciclo." },
     ],
   },
   related: {
