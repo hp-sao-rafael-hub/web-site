@@ -13,7 +13,12 @@ import { SiteHeader } from "@/components/organisms/site-header"
 import FacebookPixel from "@/components/FacebookPixel"
 import { LangSuggestBanner } from "@/components/molecules/lang-suggest-banner"
 import { NextIntlClientProvider } from 'next-intl'
-import { getMessages, getTranslations } from 'next-intl/server'
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server'
+import { routing } from "@/i18n/routing"
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }))
+}
 
 const BCP47: Record<string, string> = { pt: "pt-BR", en: "en-US" }
 
@@ -140,6 +145,7 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+  setRequestLocale(locale)
   const messages = await getMessages()
   const tNav = await getTranslations("nav")
 
