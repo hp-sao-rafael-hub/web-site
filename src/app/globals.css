@@ -1,0 +1,301 @@
+/* =============================================================================
+   GLOBALS.CSS — Hospital São Rafael
+   =============================================================================
+   Tailwind directives + CSS Custom Properties (Design Tokens)
+   Paleta oficial: azul-primario #0094c0 | azul-medio #035f7e | azul-escuro #0f283c
+   ============================================================================= */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================================
+   FONT FACE — Artegra Sans (self-hosted)
+   Arquivos .woff2 devem estar em /public/fonts/
+   Fallback automático para Proxima Nova → Montserrat → sistema
+   ============================================================================= */
+@font-face {
+  font-family: 'Artegra Sans';
+  src: url('/fonts/artegra-sans-400.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Artegra Sans';
+  src: url('/fonts/artegra-sans-500.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Artegra Sans';
+  src: url('/fonts/artegra-sans-600.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Artegra Sans';
+  src: url('/fonts/artegra-sans-700.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Artegra Sans';
+  src: url('/fonts/artegra-sans-800.woff2') format('woff2');
+  font-weight: 800; font-style: normal; font-display: swap;
+}
+
+/* =============================================================================
+   LAYER BASE — CSS Variables (Design Tokens)
+   ============================================================================= */
+@layer base {
+  :root {
+    /* ── Paleta HSR oficial ──────────────────────────────────────────────── */
+    --color-azul-primario:  #0094c0;   /* Logo + apresentação oficial        */
+    --color-azul-medio:     #035f7e;   /* Gradientes, hover, borda           */
+    --color-azul-escuro:    #0f283c;   /* Fundo seções escuras, charcoal     */
+    --color-cinza:          #3e3935;   /* Texto em fundo claro               */
+    --color-branco:         #FFFFFF;
+
+    /* ── Tokens legados (remapeados para HSR — sem quebrar classes) ──────── */
+    --color-creme:          #f0f7fb;   /* Superfície clara azulada (paciente) */
+    --color-charcoal:       #0f283c;   /* → azul-escuro                       */
+    --color-ouro:           #0094c0;   /* → azul-primario (CTAs, destaques)   */
+    --color-ouro-hover:     #007da3;   /* → azul-medio hover                  */
+    --color-azul:           #0094c0;   /* alias azul-primario                 */
+    --color-cobre:          #035f7e;   /* → azul-medio                        */
+
+    /* ── Semânticas ──────────────────────────────────────────────────────── */
+    --color-success:  #2D8F4E;
+    --color-warning:  #FFB800;
+    --color-error:    #D94040;
+    --color-info:     #0094c0;
+
+    /* ── Superfícies ─────────────────────────────────────────────────────── */
+    --surface-primary:        #FFFFFF;        /* Site paciente = branco        */
+    --surface-secondary:      #FFFFFF;
+    --surface-tertiary:       #0f283c;        /* Seções escuras = azul-escuro  */
+    --surface-overlay:        rgba(15,40,60,0.75);  /* Overlay oficial HSR    */
+    --surface-overlay-dark:   rgba(15,40,60,0.85);
+    --surface-overlay-light:  rgba(15,40,60,0.40);
+    --surface-glass:          rgba(255,255,255,0.15);
+    --surface-glass-border:   rgba(255,255,255,0.20);
+
+    /* ── Gradientes HSR ──────────────────────────────────────────────────── */
+    --gradient-hero: linear-gradient(
+      180deg,
+      rgba(15,40,60,0.85) 0%,
+      rgba(15,40,60,0.40) 100%
+    );
+    --gradient-azul: linear-gradient(
+      90deg, var(--color-azul-medio), var(--color-azul-primario)
+    );
+    --gradient-dark: linear-gradient(
+      135deg, #081c2e 0%, #0f283c 50%, #143450 100%
+    );
+
+    /* ── Transições ──────────────────────────────────────────────────────── */
+    --transition-fast:   150ms ease;
+    --transition-base:   300ms ease;
+    --transition-slow:   500ms ease;
+    --transition-spring: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* ── Efeitos ─────────────────────────────────────────────────────────── */
+    --glass-blur:  15px;
+    --hover-lift:  -5px;
+    --header-height: 80px;
+
+    /* ── shadcn/ui (remapeado para HSR azul) ─────────────────────────────── */
+    --background:           200 0% 100%;
+    --foreground:           205 57% 15%;     /* azul-escuro como texto        */
+    --card:                 0 0% 100%;
+    --card-foreground:      205 57% 15%;
+    --popover:              0 0% 100%;
+    --popover-foreground:   205 57% 15%;
+    --primary:              196 100% 38%;    /* azul-primario                 */
+    --primary-foreground:   0 0% 100%;
+    --secondary:            200 60% 96%;    /* azul-fundo suave              */
+    --secondary-foreground: 205 57% 15%;
+    --muted:                0 0% 96%;
+    --muted-foreground:     0 0% 45%;
+    --accent:               196 100% 38%;
+    --accent-foreground:    0 0% 100%;
+    --destructive:          0 65% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border:               196 30% 88%;
+    --input:                196 30% 88%;
+    --ring:                 196 100% 38%;
+    --radius:               4px;
+  }
+
+  /* ── Reset e base ─────────────────────────────────────────────────────── */
+  * {
+    border-color: theme("colors.neutral.200");
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+  }
+
+  body {
+    background-color: var(--surface-primary);       /* Branco — site paciente */
+    color: var(--color-cinza);
+    font-family: 'Artegra Sans', 'Proxima Nova', 'Montserrat',
+                 theme("fontFamily.sans");
+    font-size: theme("fontSize.lg");
+    line-height: theme("lineHeight.relaxed");
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ── Tipografia global ────────────────────────────────────────────────── */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-azul-escuro);
+    line-height: theme("lineHeight.tight");
+    font-weight: theme("fontWeight.bold");
+  }
+
+  h1 {
+    font-size: theme("fontSize.3xl");
+    font-weight: theme("fontWeight.extrabold");
+    letter-spacing: theme("letterSpacing.tight");
+  }
+
+  h2 {
+    font-size: theme("fontSize.2xl");
+    font-weight: theme("fontWeight.bold");
+  }
+
+  @media (min-width: theme("screens.lg")) {
+    h1 { font-size: theme("fontSize.6xl"); }
+    h2 { font-size: theme("fontSize.4xl"); }
+  }
+
+  /* ── Links ────────────────────────────────────────────────────────────── */
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-base);
+  }
+
+  /* ── Focus visible ────────────────────────────────────────────────────── */
+  :focus-visible {
+    outline: 2px solid var(--color-azul-primario);
+    outline-offset: 2px;
+  }
+
+  /* ── Seleção de texto ─────────────────────────────────────────────────── */
+  ::selection {
+    background-color: var(--color-azul-primario);
+    color: var(--color-branco);
+  }
+}
+
+/* =============================================================================
+   LAYER COMPONENTS
+   ============================================================================= */
+@layer components {
+  /* ── Kicker (overline label) ──────────────────────────────────────────── */
+  .kicker {
+    font-size: theme("fontSize.sm");
+    font-weight: theme("fontWeight.extrabold");
+    text-transform: uppercase;
+    letter-spacing: theme("letterSpacing.kicker");
+    line-height: theme("lineHeight.normal");
+  }
+
+  /* ── Container padrão HSR ─────────────────────────────────────────────── */
+  .container-hsr {
+    width: 100%;
+    max-width: theme("screens.xl");
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: theme("spacing.4");
+    padding-right: theme("spacing.4");
+  }
+
+  @media (min-width: theme("screens.md")) {
+    .container-hsr {
+      padding-left: theme("spacing.8");
+      padding-right: theme("spacing.8");
+    }
+  }
+
+  @media (min-width: theme("screens.xl")) {
+    .container-hsr {
+      padding-left: theme("spacing.16");
+      padding-right: theme("spacing.16");
+    }
+  }
+
+  /* ── Respiro entre seções ─────────────────────────────────────────────── */
+  .section-spacing {
+    padding-top: theme("spacing.20");
+    padding-bottom: theme("spacing.20");
+  }
+
+  @media (min-width: theme("screens.lg")) {
+    .section-spacing {
+      padding-top: theme("spacing.30");
+      padding-bottom: theme("spacing.30");
+    }
+  }
+
+  /* ── Glassmorphism ────────────────────────────────────────────────────── */
+  .glass {
+    background: var(--surface-glass);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--surface-glass-border);
+  }
+
+  .overlay {
+    background: var(--surface-overlay);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+  }
+
+  /* ── Hero gradient overlay ────────────────────────────────────────────── */
+  .hero-overlay {
+    background: var(--gradient-hero);
+  }
+
+  /* ── Card hover lift ──────────────────────────────────────────────────── */
+  .hover-lift {
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(var(--hover-lift));
+    box-shadow: theme("boxShadow.lg");
+  }
+
+  /* ── Gradiente HSR azul (seções de destaque) ──────────────────────────── */
+  .bg-gradient-hsr {
+    background: var(--gradient-azul);
+  }
+
+  /* ── Fundo escuro HSR (seções dark — ex: B2B) ────────────────────────── */
+  .bg-dark-hsr {
+    background: var(--gradient-dark);
+  }
+}
+
+/* =============================================================================
+   LAYER UTILITIES
+   ============================================================================= */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+  .text-on-dark { color: var(--color-branco); }
+  .text-on-dark h1,
+  .text-on-dark h2,
+  .text-on-dark h3,
+  .text-on-dark h4 { color: var(--color-branco); }
+
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+}
