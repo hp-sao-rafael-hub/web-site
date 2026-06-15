@@ -1,8 +1,7 @@
 // =============================================================================
 // SERVICE-GALLERY-BLOCK.TSX — Organismo | Hospital São Rafael
 // =============================================================================
-// Layout 2 colunas: esquerda = carrossel de imagens auto-rotativo,
-// direita = kicker + H2 + descrição + lista de features + CTA.
+// Layout split full-bleed: imagem esquerda (carrossel) + conteúdo direito.
 // =============================================================================
 
 "use client"
@@ -29,69 +28,49 @@ interface ServiceGalleryBlockProps extends BaseComponentProps {
 }
 
 // -----------------------------------------------------------------------------
-// COMPONENTE — Carrossel de imagens
+// COMPONENTE — Carrossel full-bleed
 // -----------------------------------------------------------------------------
-function ImageCarousel({
-  images,
-  className,
-}: {
-  images: ServiceGalleryBlockData["images"]
-  className?: string
-}) {
+function ImageCarousel({ images }: { images: ServiceGalleryBlockData["images"] }) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isVisible, setIsVisible] = useState(true)
 
-  const goTo = useCallback(
-    (index: number) => {
-      setIsVisible(false)
-      setTimeout(() => {
-        setActiveIndex(index)
-        setIsVisible(true)
-      }, 250)
-    },
-    []
-  )
+  const goTo = useCallback((index: number) => {
+    setIsVisible(false)
+    setTimeout(() => {
+      setActiveIndex(index)
+      setIsVisible(true)
+    }, 250)
+  }, [])
 
-  // Auto-avanço a cada 3.5s
   useEffect(() => {
     if (images.length <= 1) return
-
     const interval = setInterval(() => {
       goTo((activeIndex + 1) % images.length)
     }, 3500)
-
     return () => clearInterval(interval)
   }, [activeIndex, images.length, goTo])
 
   const currentImage = images[activeIndex]
 
   return (
-    <div className={cn("flex flex-col gap-4", className)}>
-      {/* Imagem principal */}
-      <div className="relative rounded-xl overflow-hidden aspect-[4/3] w-full bg-neutral-100">
-        {currentImage && (
-          <Image
-            src={currentImage.src}
-            alt={currentImage.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className={cn(
-              "object-cover transition-opacity duration-500",
-              isVisible ? "opacity-100" : "opacity-0"
-            )}
-          />
-        )}
-        {/* Overlay suave no canto inferior */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent"
+    <div className="relative w-full h-full">
+      {currentImage && (
+        <Image
+          src={currentImage.src}
+          alt={currentImage.alt}
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className={cn(
+            "object-cover transition-opacity duration-500",
+            isVisible ? "opacity-100" : "opacity-0"
+          )}
         />
-      </div>
-
-      {/* Dot indicators */}
+      )}
+      {/* dots overlay */}
       {images.length > 1 && (
         <div
-          className="flex items-center justify-center gap-2"
+          className="absolute bottom-5 left-0 right-0 flex items-center justify-center gap-2 z-10"
           role="tablist"
           aria-label="Navegação de imagens"
         >
@@ -100,13 +79,13 @@ function ImageCarousel({
               key={`${img.src}-${i}`}
               role="tab"
               aria-selected={i === activeIndex}
-              aria-label={`Ver imagem ${i + 1}: ${img.alt}`}
+              aria-label={`Ver imagem ${i + 1}`}
               onClick={() => goTo(i)}
               className={cn(
-                "rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro",
+                "rounded-full transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white",
                 i === activeIndex
-                  ? "w-6 h-2 bg-ouro"
-                  : "w-2 h-2 bg-neutral-300 hover:bg-neutral-400"
+                  ? "w-6 h-2 bg-white"
+                  : "w-2 h-2 bg-white/50 hover:bg-white/70"
               )}
             />
           ))}
@@ -119,9 +98,12 @@ function ImageCarousel({
 // -----------------------------------------------------------------------------
 // COMPONENTE PRINCIPAL
 // -----------------------------------------------------------------------------
-export function ServiceGalleryBlock({ data, className, reserveRightGutter = false }: ServiceGalleryBlockProps) {
+export function ServiceGalleryBlock({
+  data,
+  className,
+  reserveRightGutter = false,
+}: ServiceGalleryBlockProps) {
   const { ref, hasIntersected } = useIntersection({ threshold: 0.1, once: true })
-
   const { kicker, headline, description, images, features, cta } = data
 
   return (
@@ -129,89 +111,80 @@ export function ServiceGalleryBlock({ data, className, reserveRightGutter = fals
       id="estrutura"
       ref={ref as React.RefObject<HTMLElement>}
       aria-labelledby="gallery-block-heading"
-      className={cn("w-full py-20 lg:py-30 bg-white", className)}
+      className={cn(
+        "relative w-full flex flex-col lg:grid lg:grid-cols-2 min-h-[85vh]",
+        className
+      )}
     >
-      <div className={cn(
-        "max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8",
-        reserveRightGutter && "xl:pr-[260px] 2xl:pr-[300px]"
-      )}>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      {/* LEFT: imagem full-bleed */}
+      <div className="relative min-h-[56vw] lg:min-h-0">
+        <ImageCarousel images={images} />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/20 pointer-events-none"
+        />
+      </div>
 
-          {/* Coluna esquerda — carrossel */}
-          <div
-            className={cn(
-              "transition-all duration-700",
-              hasIntersected ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-6"
-            )}
-          >
-            <ImageCarousel images={images} />
+      {/* RIGHT: conteúdo */}
+      <div className="bg-white flex flex-col justify-center px-8 sm:px-12 lg:px-14 xl:px-16 py-14 lg:py-20">
+        <div
+          className={cn(
+            "max-w-[520px] flex flex-col gap-5 transition-all duration-700",
+            reserveRightGutter && "xl:max-w-[420px]",
+            hasIntersected ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          )}
+        >
+          <Kicker color="azul" as="span">{kicker}</Kicker>
+
+          <Heading as="h2" id="gallery-block-heading" className="!leading-tight">
+            {headline}
+          </Heading>
+
+          <BodyText color="muted" size="base">
+            {description}
+          </BodyText>
+
+          <span aria-hidden className="block w-12 h-0.5 bg-azul" />
+
+          {/* Feature list */}
+          <ul className="flex flex-col gap-4" role="list">
+            {features.map((feature, index) => (
+              <li
+                key={feature.title}
+                className={cn(
+                  "flex gap-4 items-start transition-all duration-700",
+                  hasIntersected ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+                )}
+                style={{
+                  transitionDelay: hasIntersected ? `${200 + index * 80}ms` : "0ms",
+                }}
+              >
+                <div className="flex-shrink-0 mt-0.5">
+                  <Icon
+                    name={resolveIconName(feature.icon)}
+                    size={20}
+                    color="azul"
+                    strokeWidth={2}
+                  />
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <span className="text-sm font-semibold text-charcoal">
+                    {feature.title}
+                  </span>
+                  <span className="text-sm text-charcoal/60 leading-relaxed">
+                    {feature.description}
+                  </span>
+                </div>
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA */}
+          <div className="pt-1">
+            <Button variant="primary" size="lg" href={cta.href}>
+              {cta.label}
+            </Button>
           </div>
-
-          {/* Coluna direita — conteúdo */}
-          <div
-            className={cn(
-              "flex flex-col gap-6",
-              "transition-all duration-700 delay-150",
-              hasIntersected ? "opacity-100 translate-x-0" : "opacity-0 translate-x-6"
-            )}
-          >
-            <Kicker color="marrom" as="span">{kicker}</Kicker>
-
-            <Heading as="h2" id="gallery-block-heading">
-              {headline}
-            </Heading>
-
-            <BodyText color="muted">
-              {description}
-            </BodyText>
-
-            {/* Lista de features */}
-            <ul className="flex flex-col gap-4 mt-2" role="list">
-              {features.map((feature, index) => (
-                <li
-                  key={feature.title}
-                  className={cn(
-                    "flex gap-4 items-start",
-                    "transition-all duration-700",
-                    hasIntersected
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-4"
-                  )}
-                  style={{
-                    transitionDelay: hasIntersected ? `${300 + index * 80}ms` : "0ms",
-                  }}
-                >
-                  {/* Ícone */}
-                  <div className="flex-shrink-0 mt-0.5 text-ouro">
-                    <Icon
-                      name={resolveIconName(feature.icon)}
-                      size={20}
-                      color="ouro"
-                      strokeWidth={2}
-                    />
-                  </div>
-
-                  {/* Texto */}
-                  <div className="flex flex-col gap-0.5">
-                    <span className="text-sm font-semibold text-charcoal">
-                      {feature.title}
-                    </span>
-                    <span className="text-sm text-charcoal/60 leading-relaxed">
-                      {feature.description}
-                    </span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-
-            {/* CTA */}
-            <div className="mt-2">
-              <Button variant="primary" size="lg" href={cta.href}>
-                {cta.label}
-              </Button>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
