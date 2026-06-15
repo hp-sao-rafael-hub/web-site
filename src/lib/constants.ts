@@ -126,6 +126,7 @@ export const SERVICOS_DATA = {
         "22 salas equipadas com tecnologia de última geração para os mais diversos procedimentos cirúrgicos eletivos.",
       icon: "scalpel",
       image: "/assets/images/servicos/centro-cirurgico-v2.jpg",
+      href: "/servicos/centro-cirurgico",
     },
     {
       id: "internacao",
@@ -134,6 +135,7 @@ export const SERVICOS_DATA = {
         "Acomodações projetadas para conforto e recuperação, com monitoramento contínuo e equipe dedicada.",
       icon: "bed",
       image: "/assets/images/servicos/internacao.jpg",
+      href: "/servicos/internacao",
     },
     {
       id: "imd",
@@ -142,6 +144,7 @@ export const SERVICOS_DATA = {
         "O IMD do Hospital São Rafael reúne consultas e exames em um só lugar, com mais precisão, agilidade e muito mais conforto.",
       icon: "microscope",
       image: "/assets/images/servicos/imd.jpg",
+      href: "/servicos/imd",
     },
     {
       id: "laboratorio",
@@ -158,6 +161,7 @@ export const SERVICOS_DATA = {
         "Tecnologia de ponta para aceleração da recuperação e prevenção de complicações pós-cirúrgicas.",
       icon: "activity",
       image: "/assets/images/servicos/hiperbarica_2.jpg",
+      href: "/servicos/hiperbarica",
     },
     {
       id: "centro-convencoes",

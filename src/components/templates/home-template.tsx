@@ -23,6 +23,7 @@ import { HeroSection } from "@/components/organisms/hero-section"
 import { StatsBar } from "@/components/organisms/stats-bar"
 import { ContentBlock } from "@/components/organisms/content-block"
 import { CardGrid } from "@/components/organisms/card-grid"
+import { ServicosCarousel } from "@/components/organisms/servicos-carousel"
 import { SpecialtyGrid } from "@/components/organisms/specialty-grid"
 import { ProductsSection } from "@/components/organisms/products-section"
 import { JourneyTimeline } from "@/components/organisms/journey-timeline"
@@ -246,14 +247,12 @@ export async function HomeTemplate() {
       {/* DOBRA 4 — SERVIÇOS                                                */}
       {/* Infraestrutura do hospital: CC, IMD, laboratório, hiperbárica...  */}
       {/* ================================================================= */}
-      <CardGrid
-        variant="services"
+      <ServicosCarousel
         kicker={tServicos("kicker")}
         headline={tServicos("headline")}
         description={tServicos("description")}
         items={servicosItems}
         id="servicos"
-        columns={3}
       />
 
       {/* ================================================================= */}

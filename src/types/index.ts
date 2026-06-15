@@ -74,6 +74,7 @@ export interface ServiceItem {
   description: string
   icon: string
   image: string
+  href?: string
 }
 
 export interface ServicosData {
