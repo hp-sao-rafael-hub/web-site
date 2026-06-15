@@ -95,7 +95,7 @@ export function ServiceMedicoBlock({
 
           {/* Coluna direita — grid de benefícios */}
           <ul
-            className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5"
+            className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-5 [&>li:last-child:nth-child(odd)]:sm:col-span-2 [&>li:last-child:nth-child(odd)]:sm:max-w-[calc(50%-10px)] [&>li:last-child:nth-child(odd)]:sm:mx-auto"
             role="list"
           >
             {benefits.map((b) => (

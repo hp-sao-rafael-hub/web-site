@@ -57,7 +57,7 @@ export function ServiceAcompanhanteBlock({
 
         <ul
           className={cn(
-            "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
+            "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 [&>li:last-child:nth-child(3n+1)]:lg:col-span-3 [&>li:last-child:nth-child(3n+1)]:lg:max-w-[calc(33.333%-14px)] [&>li:last-child:nth-child(3n+1)]:lg:mx-auto"
           )}
           role="list"
         >
