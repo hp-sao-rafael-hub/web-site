@@ -7,7 +7,8 @@
 
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
 import { Kicker } from "@/components/atoms/kicker"
@@ -17,6 +18,9 @@ import { ServiceCard } from "@/components/molecules/service-card"
 import { ModalOverlay } from "@/components/organisms/modal-overlay"
 import { useIntersection } from "@/hooks/use-intersection"
 import type { BaseComponentProps, EspecialidadesData, EspecialidadeItem } from "@/types"
+
+const VISIBLE = 3
+const INTERVAL_MS = 6000
 
 // -----------------------------------------------------------------------------
 // TYPES
@@ -88,10 +92,39 @@ function SpecialtyModalContent({ item }: { item: EspecialidadeItem }) {
 export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
   const t = useTranslations("especialidades")
   const [activeSpecialty, setActiveSpecialty] = useState<EspecialidadeItem | null>(null)
+  const [current, setCurrent] = useState(0)
+  const [fading, setFading] = useState(false)
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
   const { ref, hasIntersected } = useIntersection({ threshold: 0.1, once: true })
 
   const { kicker, headline, description, items } = data
+  const total = items.length
+
+  const navigate = useCallback(
+    (delta: number) => {
+      setFading(true)
+      setTimeout(() => {
+        setCurrent(c => ((c + delta) % total + total) % total)
+        setFading(false)
+      }, 200)
+    },
+    [total]
+  )
+
+  const resetTimer = useCallback(() => {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    intervalRef.current = setInterval(() => navigate(1), INTERVAL_MS)
+  }, [navigate])
+
+  useEffect(() => {
+    resetTimer()
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
+  }, [resetTimer])
+
+  const visibleItems = Array.from({ length: VISIBLE }, (_, i) =>
+    items[(current + i) % total]
+  )
 
   return (
     <>
@@ -120,20 +153,33 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
             )}
           </div>
 
-          {/* Grid de especialidades */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {items.map((item, index) => (
-              <div
-                key={item.id}
-                className={cn(
-                  "transition-all duration-700",
-                  hasIntersected
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                )}
-                style={{ transitionDelay: hasIntersected ? `${index * 80}ms` : "0ms" }}
-              >
+          {/* Carrossel de especialidades */}
+          <div className="relative px-10 lg:px-12">
+            {/* Seta esquerda */}
+            <button
+              onClick={() => { navigate(-1); resetTimer() }}
+              aria-label="Especialidade anterior"
+              className={cn(
+                "absolute left-0 top-1/2 -translate-y-1/2 z-10",
+                "w-10 h-10 flex items-center justify-center",
+                "rounded-full bg-white border border-neutral-200 shadow-sm",
+                "hover:bg-neutral-50 transition-colors duration-200"
+              )}
+            >
+              <ChevronLeft size={20} className="text-charcoal" />
+            </button>
+
+            {/* Cards */}
+            <div
+              className={cn(
+                "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6",
+                "transition-opacity duration-200",
+                fading ? "opacity-0" : "opacity-100"
+              )}
+            >
+              {visibleItems.map((item, index) => (
                 <ServiceCard
+                  key={`${item.id}-${index}`}
                   title={item.title}
                   description={item.description}
                   icon={item.icon}
@@ -143,9 +189,28 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
                   underConstruction
                   className="h-full"
                 />
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Seta direita */}
+            <button
+              onClick={() => { navigate(1); resetTimer() }}
+              aria-label="Próxima especialidade"
+              className={cn(
+                "absolute right-0 top-1/2 -translate-y-1/2 z-10",
+                "w-10 h-10 flex items-center justify-center",
+                "rounded-full bg-white border border-neutral-200 shadow-sm",
+                "hover:bg-neutral-50 transition-colors duration-200"
+              )}
+            >
+              <ChevronRight size={20} className="text-charcoal" />
+            </button>
           </div>
+
+          {/* Contador de posição */}
+          <p className="text-center text-xs text-charcoal/40 mt-6">
+            {current + 1} – {Math.min(current + VISIBLE, total)} de {total}
+          </p>
         </div>
       </section>
 

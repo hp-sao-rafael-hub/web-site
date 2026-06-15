@@ -2,12 +2,13 @@
 // PRODUCTS-SECTION.TSX — Organismo (extensão O05) | Hospital São Rafael
 // =============================================================================
 // Dobra 6 — Produtos divididos por público com abas de filtro.
-// Composição: Kicker + H2 + CategoryTabs + CardGrid (filtrado)
+// Composição: Kicker + H2 + CategoryTabs + Carousel (filtrado por aba)
 // =============================================================================
 
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useCallback } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
 import { Kicker } from "@/components/atoms/kicker"
@@ -16,6 +17,8 @@ import { BodyText } from "@/components/atoms/body-text"
 import { ProductCard } from "@/components/molecules/product-card"
 import { useIntersection } from "@/hooks/use-intersection"
 import type { BaseComponentProps, ProdutosData, ProductCategory } from "@/types"
+
+const VISIBLE = 3
 
 // -----------------------------------------------------------------------------
 // TYPES
@@ -70,12 +73,40 @@ function CategoryTabs({ categories, activeId, onChange }: CategoryTabsProps) {
 // -----------------------------------------------------------------------------
 export function ProductsSection({ data, className }: ProductsSectionProps) {
   const [activeTab, setActiveTab] = useState(data.categories[0]?.id ?? "")
+  const [current, setCurrent] = useState(0)
+  const [fading, setFading] = useState(false)
 
   const { ref, hasIntersected } = useIntersection({ threshold: 0.1, once: true })
 
   const { kicker, headline, description, categories } = data
   const activeCategory = categories.find((c) => c.id === activeTab)
   const audience = activeTab === "medico" ? "medico" : "paciente"
+  const total = activeCategory?.items.length ?? 0
+
+  // Reset carousel position when tab changes
+  useEffect(() => {
+    setCurrent(0)
+    setFading(false)
+  }, [activeTab])
+
+  const navigate = useCallback(
+    (delta: number) => {
+      setFading(true)
+      setTimeout(() => {
+        setCurrent(c => ((c + delta) % total + total) % total)
+        setFading(false)
+      }, 200)
+    },
+    [total]
+  )
+
+  const visibleItems = activeCategory
+    ? Array.from({ length: Math.min(VISIBLE, total) }, (_, i) =>
+        activeCategory.items[(current + i) % total]
+      )
+    : []
+
+  const showArrows = total > VISIBLE
 
   return (
     <section
@@ -113,34 +144,96 @@ export function ProductsSection({ data, className }: ProductsSectionProps) {
           />
         </div>
 
-        {/* Grid de produtos — muda conforme aba ativa */}
+        {/* Carrossel de produtos */}
         {activeCategory && (
           <div
-            key={activeTab}
             id={`tabpanel-${activeTab}`}
             role="tabpanel"
             aria-labelledby={`tab-${activeTab}`}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+            className={cn("relative", showArrows && "px-10 lg:px-12")}
           >
-            {activeCategory.items.map((item, index) => (
-              <div
-                key={item.id}
+            {/* Seta esquerda */}
+            {showArrows && (
+              <button
+                onClick={() => navigate(-1)}
+                aria-label="Produto anterior"
                 className={cn(
-                  "transition-all duration-500",
-                  hasIntersected
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-6"
+                  "absolute left-0 top-1/2 -translate-y-1/2 z-10",
+                  "w-10 h-10 flex items-center justify-center",
+                  "rounded-full bg-white border border-neutral-200 shadow-sm",
+                  "hover:bg-neutral-50 transition-colors duration-200"
                 )}
-                style={{ transitionDelay: `${index * 80 + 200}ms` }}
               >
-                <ProductCard
-                  product={item as unknown as import("@/types").ProductItem}
-                  audience={audience}
-                  hideCta
-                  className="h-full"
-                />
+                <ChevronLeft size={20} className="text-charcoal" />
+              </button>
+            )}
+
+            {/* Cards */}
+            <div
+              key={activeTab}
+              className={cn(
+                "grid gap-6 transition-opacity duration-200",
+                visibleItems.length === 1 && "grid-cols-1",
+                visibleItems.length === 2 && "grid-cols-1 sm:grid-cols-2",
+                visibleItems.length >= 3 && "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
+                fading ? "opacity-0" : "opacity-100"
+              )}
+            >
+              {visibleItems.map((item, index) => (
+                <div
+                  key={`${item.id}-${index}`}
+                  className={cn(
+                    "transition-all duration-500",
+                    hasIntersected
+                      ? "opacity-100 translate-y-0"
+                      : "opacity-0 translate-y-6"
+                  )}
+                  style={{ transitionDelay: `${index * 80 + 200}ms` }}
+                >
+                  <ProductCard
+                    product={item as unknown as import("@/types").ProductItem}
+                    audience={audience}
+                    hideCta
+                    className="h-full"
+                  />
+                </div>
+              ))}
+            </div>
+
+            {/* Seta direita */}
+            {showArrows && (
+              <button
+                onClick={() => navigate(1)}
+                aria-label="Próximo produto"
+                className={cn(
+                  "absolute right-0 top-1/2 -translate-y-1/2 z-10",
+                  "w-10 h-10 flex items-center justify-center",
+                  "rounded-full bg-white border border-neutral-200 shadow-sm",
+                  "hover:bg-neutral-50 transition-colors duration-200"
+                )}
+              >
+                <ChevronRight size={20} className="text-charcoal" />
+              </button>
+            )}
+
+            {/* Dots */}
+            {showArrows && (
+              <div className="flex justify-center gap-2 mt-8">
+                {Array.from({ length: total }, (_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => { if (i !== current) navigate(i - current) }}
+                    aria-label={`Ir para item ${i + 1}`}
+                    className={cn(
+                      "h-2 rounded-full transition-all duration-300",
+                      i === current
+                        ? "w-6 bg-ouro"
+                        : "w-2 bg-neutral-300 hover:bg-neutral-400"
+                    )}
+                  />
+                ))}
               </div>
-            ))}
+            )}
           </div>
         )}
       </div>
