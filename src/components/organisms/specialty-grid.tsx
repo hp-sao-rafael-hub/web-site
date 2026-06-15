@@ -178,7 +178,7 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
               )}
             >
               {visibleItems.map((item, index) => (
-                <div key={`${item.id}-${index}`} className="h-[260px] overflow-hidden">
+                <div key={`${item.id}-${index}`} className="h-[280px] overflow-hidden">
                   <ServiceCard
                     title={item.title}
                     description={item.description}
