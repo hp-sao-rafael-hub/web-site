@@ -12,6 +12,7 @@
 
 import { forwardRef } from "react"
 import { cn } from "@/lib/utils"
+import { Link } from "@/i18n/navigation"
 import type { ButtonVariant, ButtonSize } from "@/types"
 
 // -----------------------------------------------------------------------------
@@ -119,21 +120,36 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       className
     )
 
-    // Se tem href, renderiza como <a>
+    // Se tem href, renderiza como link
     if (href) {
       const isExternal = href.startsWith("http")
+      if (isExternal) {
+        return (
+          <a
+            href={href}
+            className={baseStyles}
+            onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
+            aria-disabled={disabled || isLoading}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {isLoading ? <LoadingSpinner /> : leftIcon}
+            {children}
+            {!isLoading && rightIcon}
+          </a>
+        )
+      }
       return (
-        <a
+        <Link
           href={href}
           className={baseStyles}
           onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
           aria-disabled={disabled || isLoading}
-          {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
         >
           {isLoading ? <LoadingSpinner /> : leftIcon}
           {children}
           {!isLoading && rightIcon}
-        </a>
+        </Link>
       )
     }
 
