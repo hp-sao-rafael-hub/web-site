@@ -10,6 +10,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 import { Heading } from "@/components/atoms/heading"
 import { useIntersection } from "@/hooks/use-intersection"
@@ -117,9 +118,9 @@ export function TestimonialsCarousel({ data, className, reserveRightGutter = fal
               <div className="w-12 h-0.5 bg-ouro" aria-hidden="true" />
             </div>
 
-            {/* Botões de navegação */}
+            {/* Botões de navegação — desktop only */}
             {items.length > 1 && (
-              <div className="flex items-center gap-3">
+              <div className="hidden lg:flex items-center gap-3">
                 <button
                   type="button"
                   onClick={goPrev}
@@ -189,17 +190,28 @@ export function TestimonialsCarousel({ data, className, reserveRightGutter = fal
                 {/* Autor */}
                 <footer className="flex items-center gap-4 mt-2">
                   {/* Avatar */}
-                  <div
-                    className={cn(
-                      "w-12 h-12 rounded-full flex-shrink-0",
-                      "flex items-center justify-center",
-                      "bg-ouro/20 border border-ouro/30",
-                      "text-sm font-bold text-ouro"
-                    )}
-                    aria-hidden="true"
-                  >
-                    {getInitials(currentItem.author)}
-                  </div>
+                  {currentItem.image ? (
+                    <div className="relative w-12 h-12 rounded-full flex-shrink-0 overflow-hidden border border-ouro/30">
+                      <Image
+                        src={currentItem.image}
+                        alt={currentItem.author}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className={cn(
+                        "w-12 h-12 rounded-full flex-shrink-0",
+                        "flex items-center justify-center",
+                        "bg-ouro/20 border border-ouro/30",
+                        "text-sm font-bold text-ouro"
+                      )}
+                      aria-hidden="true"
+                    >
+                      {getInitials(currentItem.author)}
+                    </div>
+                  )}
 
                   {/* Nome e papel */}
                   <div className="flex flex-col gap-0.5">
@@ -211,6 +223,43 @@ export function TestimonialsCarousel({ data, className, reserveRightGutter = fal
                     </span>
                   </div>
                 </footer>
+
+                {/* Botões de navegação — mobile only */}
+                {items.length > 1 && (
+                  <div className="flex lg:hidden items-center gap-3 mt-2">
+                    <button
+                      type="button"
+                      onClick={goPrev}
+                      aria-label="Depoimento anterior"
+                      className={cn(
+                        "w-12 h-12 rounded-full border border-white/20",
+                        "flex items-center justify-center",
+                        "text-white/60 hover:text-white hover:border-white/60",
+                        "transition-all duration-300",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
+                      )}
+                    >
+                      <ChevronLeft size={20} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={goNext}
+                      aria-label="Próximo depoimento"
+                      className={cn(
+                        "w-12 h-12 rounded-full border border-white/20",
+                        "flex items-center justify-center",
+                        "text-white/60 hover:text-white hover:border-white/60",
+                        "transition-all duration-300",
+                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
+                      )}
+                    >
+                      <ChevronRight size={20} />
+                    </button>
+                    <span className="text-sm text-white/40 ml-2">
+                      {activeIndex + 1} / {items.length}
+                    </span>
+                  </div>
+                )}
               </blockquote>
             )}
           </div>
