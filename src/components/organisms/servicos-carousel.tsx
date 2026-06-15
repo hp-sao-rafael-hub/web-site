@@ -110,17 +110,18 @@ export function ServicosCarousel({
             )}
           >
             {visibleItems.map((item, index) => (
-              <ServiceCard
-                key={`${item.id}-${index}`}
-                title={item.title}
-                description={item.description}
-                icon={item.icon}
-                image={item.image}
-                href={item.href}
-                ctaLabel="Clique para saber mais"
-                hideCta={!item.href}
-                className="h-full"
-              />
+              <div key={`${item.id}-${index}`} className="h-[400px] overflow-hidden">
+                <ServiceCard
+                  title={item.title}
+                  description={item.description}
+                  icon={item.icon}
+                  image={item.image}
+                  href={item.href}
+                  ctaLabel="Clique para saber mais"
+                  hideCta={!item.href}
+                  className="h-full"
+                />
+              </div>
             ))}
           </div>
 

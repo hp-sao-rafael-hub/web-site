@@ -178,17 +178,18 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
               )}
             >
               {visibleItems.map((item, index) => (
-                <ServiceCard
-                  key={`${item.id}-${index}`}
-                  title={item.title}
-                  description={item.description}
-                  icon={item.icon}
-                  variant="icon-only"
-                  ctaLabel={t("viewProcedures")}
-                  onLearnMore={() => setActiveSpecialty(item)}
-                  underConstruction
-                  className="h-full"
-                />
+                <div key={`${item.id}-${index}`} className="h-[260px] overflow-hidden">
+                  <ServiceCard
+                    title={item.title}
+                    description={item.description}
+                    icon={item.icon}
+                    variant="icon-only"
+                    ctaLabel={t("viewProcedures")}
+                    onLearnMore={() => setActiveSpecialty(item)}
+                    underConstruction
+                    className="h-full"
+                  />
+                </div>
               ))}
             </div>
 

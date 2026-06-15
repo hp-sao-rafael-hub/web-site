@@ -183,6 +183,7 @@ export function ProductsSection({ data, className }: ProductsSectionProps) {
                 <div
                   key={`${item.id}-${index}`}
                   className={cn(
+                    "h-[360px] overflow-hidden",
                     "transition-all duration-500",
                     hasIntersected
                       ? "opacity-100 translate-y-0"
