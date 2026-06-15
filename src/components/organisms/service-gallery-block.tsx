@@ -121,10 +121,10 @@ export function ServiceGalleryBlock({
           <ImageCarousel images={images} />
         </div>
 
-        {/* RIGHT: conteúdo */}
+        {/* RIGHT: conteúdo — fundo escuro igual referência */}
         <div
           className={cn(
-            "bg-white flex flex-col gap-6",
+            "bg-charcoal flex flex-col gap-6",
             "px-8 sm:px-12 lg:px-14 xl:px-16 py-16 lg:py-20",
             reserveRightGutter && "xl:pr-[280px] 2xl:pr-[320px]"
           )}
@@ -138,11 +138,11 @@ export function ServiceGalleryBlock({
           >
             <Kicker color="azul" as="span">{kicker}</Kicker>
 
-            <Heading as="h2" id="gallery-block-heading">
+            <Heading as="h2" color="light" id="gallery-block-heading">
               {headline}
             </Heading>
 
-            <BodyText color="muted" size="base">
+            <BodyText color="light-muted" size="base">
               {description}
             </BodyText>
           </div>
@@ -168,10 +168,10 @@ export function ServiceGalleryBlock({
                   aria-hidden
                 />
                 <div className="flex flex-col gap-1">
-                  <span className="text-base font-semibold text-charcoal leading-snug">
+                  <span className="text-base font-semibold text-white leading-snug">
                     {feature.title}
                   </span>
-                  <span className="text-sm text-charcoal/60 leading-relaxed">
+                  <span className="text-sm text-white/60 leading-relaxed">
                     {feature.description}
                   </span>
                 </div>
