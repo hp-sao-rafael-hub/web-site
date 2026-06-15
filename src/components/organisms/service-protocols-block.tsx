@@ -75,7 +75,7 @@ export function ServiceProtocolsBlock({
               <Heading as="h3" color="light" className="!text-lg lg:!text-xl">
                 {item.title}
               </Heading>
-              <BodyText color="light-muted" size="sm">
+              <BodyText color="light-muted" size="sm" className="line-clamp-3">
                 {item.description}
               </BodyText>
             </li>

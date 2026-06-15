@@ -98,7 +98,7 @@ export function ServiceHighlights({ data, className, reserveRightGutter = false 
               </h3>
 
               {/* Descrição */}
-              <p className="text-sm text-charcoal/60 leading-relaxed">
+              <p className="text-sm text-charcoal/60 leading-relaxed line-clamp-3">
                 {item.description}
               </p>
             </article>

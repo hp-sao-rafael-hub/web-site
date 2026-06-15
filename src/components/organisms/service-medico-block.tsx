@@ -119,7 +119,7 @@ export function ServiceMedicoBlock({
                 <span className="text-sm lg:text-base font-bold text-white leading-snug">
                   {b.title}
                 </span>
-                <span className="text-sm text-white/65 leading-relaxed">
+                <span className="text-sm text-white/65 leading-relaxed line-clamp-3">
                   {b.description}
                 </span>
               </li>

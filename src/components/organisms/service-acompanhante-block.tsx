@@ -85,7 +85,7 @@ export function ServiceAcompanhanteBlock({
               <span className="text-base font-bold text-charcoal leading-snug">
                 {item.title}
               </span>
-              <span className="text-sm text-charcoal/65 leading-relaxed">
+              <span className="text-sm text-charcoal/65 leading-relaxed line-clamp-3">
                 {item.description}
               </span>
             </li>

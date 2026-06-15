@@ -89,7 +89,7 @@ export function ServiceRelatedBlock({
                   <Heading as="h3" className="!text-lg lg:!text-xl">
                     {item.title}
                   </Heading>
-                  <BodyText color="muted" size="sm" className="flex-1">
+                  <BodyText color="muted" size="sm" className="flex-1 line-clamp-3">
                     {item.description}
                   </BodyText>
                   <span className="inline-flex items-center gap-1 text-sm font-bold text-ouro mt-2 group-hover:gap-2 transition-all">
