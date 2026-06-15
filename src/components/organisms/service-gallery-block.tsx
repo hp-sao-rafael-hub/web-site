@@ -2,18 +2,19 @@
 // SERVICE-GALLERY-BLOCK.TSX — Organismo | Hospital São Rafael
 // =============================================================================
 // Layout split full-bleed: imagem esquerda (carrossel) + conteúdo direito.
+// Altura natural determinada pelo painel de conteúdo.
 // =============================================================================
 
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
+import { CheckCircle2 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Kicker } from "@/components/atoms/kicker"
 import { Heading } from "@/components/atoms/heading"
 import { BodyText } from "@/components/atoms/body-text"
 import { Button } from "@/components/atoms/button"
-import { Icon, resolveIconName } from "@/components/atoms/icon"
 import { useIntersection } from "@/hooks/use-intersection"
 import type { BaseComponentProps } from "@/types"
 import type { ServiceGalleryBlockData } from "@/lib/services-content"
@@ -23,12 +24,11 @@ import type { ServiceGalleryBlockData } from "@/lib/services-content"
 // -----------------------------------------------------------------------------
 interface ServiceGalleryBlockProps extends BaseComponentProps {
   data: ServiceGalleryBlockData
-  /** Reservar gutter direito para TOC sidebar (xl+) */
   reserveRightGutter?: boolean
 }
 
 // -----------------------------------------------------------------------------
-// COMPONENTE — Carrossel full-bleed
+// CARROSSEL — imagem preenche o container via absolute inset-0
 // -----------------------------------------------------------------------------
 function ImageCarousel({ images }: { images: ServiceGalleryBlockData["images"] }) {
   const [activeIndex, setActiveIndex] = useState(0)
@@ -53,7 +53,7 @@ function ImageCarousel({ images }: { images: ServiceGalleryBlockData["images"] }
   const currentImage = images[activeIndex]
 
   return (
-    <div className="relative w-full h-full">
+    <>
       {currentImage && (
         <Image
           src={currentImage.src}
@@ -67,6 +67,7 @@ function ImageCarousel({ images }: { images: ServiceGalleryBlockData["images"] }
           )}
         />
       )}
+
       {/* dots overlay */}
       {images.length > 1 && (
         <div
@@ -91,7 +92,7 @@ function ImageCarousel({ images }: { images: ServiceGalleryBlockData["images"] }
           ))}
         </div>
       )}
-    </div>
+    </>
   )
 }
 
@@ -111,43 +112,45 @@ export function ServiceGalleryBlock({
       id="estrutura"
       ref={ref as React.RefObject<HTMLElement>}
       aria-labelledby="gallery-block-heading"
-      className={cn(
-        "relative w-full flex flex-col lg:grid lg:grid-cols-2 min-h-[85vh]",
-        className
-      )}
+      className={cn("relative w-full scroll-mt-24", className)}
     >
-      {/* LEFT: imagem full-bleed */}
-      <div className="relative min-h-[56vw] lg:min-h-0">
-        <ImageCarousel images={images} />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-white/20 pointer-events-none"
-        />
-      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2">
 
-      {/* RIGHT: conteúdo */}
-      <div className="bg-white flex flex-col justify-center px-8 sm:px-12 lg:px-14 xl:px-16 py-14 lg:py-20">
+        {/* LEFT: imagem full-bleed — altura igual ao painel direito */}
+        <div className="relative min-h-[60vw] lg:min-h-0 overflow-hidden">
+          <ImageCarousel images={images} />
+        </div>
+
+        {/* RIGHT: conteúdo */}
         <div
           className={cn(
-            "max-w-[520px] flex flex-col gap-5 transition-all duration-700",
-            reserveRightGutter && "xl:max-w-[420px]",
-            hasIntersected ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            "bg-white flex flex-col gap-6",
+            "px-8 sm:px-12 lg:px-14 xl:px-16 py-16 lg:py-20",
+            reserveRightGutter && "xl:pr-[280px] 2xl:pr-[320px]"
           )}
         >
-          <Kicker color="azul" as="span">{kicker}</Kicker>
+          {/* Bloco de texto animado */}
+          <div
+            className={cn(
+              "flex flex-col gap-5 transition-all duration-700",
+              hasIntersected ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            )}
+          >
+            <Kicker color="azul" as="span">{kicker}</Kicker>
 
-          <Heading as="h2" id="gallery-block-heading" className="!leading-tight">
-            {headline}
-          </Heading>
+            <Heading as="h2" id="gallery-block-heading">
+              {headline}
+            </Heading>
 
-          <BodyText color="muted" size="base">
-            {description}
-          </BodyText>
+            <BodyText color="muted" size="base">
+              {description}
+            </BodyText>
+          </div>
 
           <span aria-hidden className="block w-12 h-0.5 bg-azul" />
 
-          {/* Feature list */}
-          <ul className="flex flex-col gap-4" role="list">
+          {/* Features */}
+          <ul className="flex flex-col gap-5" role="list">
             {features.map((feature, index) => (
               <li
                 key={feature.title}
@@ -156,19 +159,16 @@ export function ServiceGalleryBlock({
                   hasIntersected ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
                 )}
                 style={{
-                  transitionDelay: hasIntersected ? `${200 + index * 80}ms` : "0ms",
+                  transitionDelay: hasIntersected ? `${150 + index * 80}ms` : "0ms",
                 }}
               >
-                <div className="flex-shrink-0 mt-0.5">
-                  <Icon
-                    name={resolveIconName(feature.icon)}
-                    size={20}
-                    color="azul"
-                    strokeWidth={2}
-                  />
-                </div>
-                <div className="flex flex-col gap-0.5">
-                  <span className="text-sm font-semibold text-charcoal">
+                <CheckCircle2
+                  size={22}
+                  className="text-azul flex-shrink-0 mt-0.5"
+                  aria-hidden
+                />
+                <div className="flex flex-col gap-1">
+                  <span className="text-base font-semibold text-charcoal leading-snug">
                     {feature.title}
                   </span>
                   <span className="text-sm text-charcoal/60 leading-relaxed">
@@ -180,12 +180,21 @@ export function ServiceGalleryBlock({
           </ul>
 
           {/* CTA */}
-          <div className="pt-1">
+          <div
+            className={cn(
+              "pt-2 transition-all duration-700",
+              hasIntersected ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+            )}
+            style={{
+              transitionDelay: hasIntersected ? `${150 + features.length * 80}ms` : "0ms",
+            }}
+          >
             <Button variant="primary" size="lg" href={cta.href}>
               {cta.label}
             </Button>
           </div>
         </div>
+
       </div>
     </section>
   )
