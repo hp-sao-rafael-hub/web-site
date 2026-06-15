@@ -6,8 +6,6 @@
 // =============================================================================
 
 import type { Metadata, Viewport } from "next"
-import { Montserrat } from "next/font/google"
-import "../globals.css"
 import { SITE_METADATA, SCHEMA_DATA, NAV_ITEMS, NAV_CTA } from "@/lib/constants"
 import { SiteHeader } from "@/components/organisms/site-header"
 import FacebookPixel from "@/components/FacebookPixel"
@@ -32,16 +30,6 @@ const NAV_KEY_BY_HREF: Record<string, string> = {
   "#medicos": "medicos",
   "#faq": "faq",
 }
-
-// -----------------------------------------------------------------------------
-// FONTE — Montserrat com todos os pesos usados no Design System
-// -----------------------------------------------------------------------------
-const montserrat = Montserrat({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-montserrat",
-  display: "swap",
-})
 
 // -----------------------------------------------------------------------------
 // METADATA — SEO (Next.js App Router)
@@ -156,29 +144,23 @@ export default async function RootLayout({
   const navCta = { label: tNav("ctaLabel"), href: NAV_CTA.href }
 
   return (
-    <html lang={BCP47[locale] ?? locale} className={montserrat.variable}>
-      <head>
-        <SchemaJsonLd />
-      </head>
-      <body className={`${montserrat.className} bg-creme text-charcoal antialiased`}>
-        <NextIntlClientProvider messages={messages}>
+    <NextIntlClientProvider messages={messages}>
+      <SchemaJsonLd />
 
-          {/* Header — fora do <main> para semântica correta. Oculto em /admin */}
-          <SiteHeader
-            navItems={translatedNavItems}
-            cta={navCta}
-          />
+      {/* Header — fora do <main> para semântica correta */}
+      <SiteHeader
+        navItems={translatedNavItems}
+        cta={navCta}
+      />
 
-          {/* Conteúdo principal */}
-          <main id="main-content">
-            {children}
-          </main>
+      {/* Conteúdo principal */}
+      <main id="main-content">
+        {children}
+      </main>
 
-          <FacebookPixel />
-          <LangSuggestBanner />
+      <FacebookPixel />
+      <LangSuggestBanner />
 
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    </NextIntlClientProvider>
   )
 }
