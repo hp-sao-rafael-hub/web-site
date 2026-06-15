@@ -128,7 +128,7 @@ export function CardGrid(props: CardGridProps) {
                   image={item.image}
                   href={`/servicos/${item.id}`}
                   onLearnMore={() => (props as CardGridServicesProps).onCardClick?.(item.id)}
-                  hideCta
+                  ctaLabel="Saiba mais"
                   className="h-full"
                 />
               </div>
