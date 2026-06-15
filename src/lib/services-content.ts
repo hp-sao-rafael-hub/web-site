@@ -17,6 +17,8 @@ export interface ServiceHeroData {
   subheadline: string
   backgroundImage: string
   pills: string[]
+  /** Quando presente, ativa layout split: imagem esquerda + conteúdo direito */
+  features?: string[]
 }
 
 export interface ServiceGalleryImage {
@@ -286,6 +288,12 @@ const CENTRO_CIRURGICO: ServiceDetailData = {
       "Multiespecialidades Eletivas",
       "Engenharia Clínica",
     ],
+    features: [
+      "22 salas cirúrgicas integradas com sistemas de imagem e torre de vídeo",
+      "Monitorização anestésica avançada durante todo o ato cirúrgico",
+      "Equipe de enfermagem alinhada ao protocolo de cada procedimento",
+      "CME própria e intervalo entre cirurgias otimizado por processos dedicados",
+    ],
   },
   galleryBlock: {
     kicker: "ESTRUTURA",
@@ -548,6 +556,12 @@ const INTERNACAO: ServiceDetailData = {
       "Estrutura para Acompanhante",
       "Prontuário Único",
     ],
+    features: [
+      "56 leitos individuais: 30 suítes luxo e 26 standard com frigobar e TV",
+      "Acompanhamento próximo da equipe de enfermagem 24 horas por dia",
+      "Profissionais treinados em cuidados individualizados para cada paciente",
+      "Integração total com o centro cirúrgico e o IMD, sem perda de informação",
+    ],
   },
   galleryBlock: {
     kicker: "ESTRUTURA",
@@ -773,6 +787,12 @@ const IMD: ServiceDetailData = {
       "Laudo em até 24h",
       "Atendimento Particular",
     ],
+    features: [
+      "14 especialidades médicas reunidas em um único instituto",
+      "Exames de imagem com laudo em até 24 horas",
+      "Integração completa com o centro cirúrgico e a internação",
+      "Atendimento exclusivamente particular, com agendamento ágil",
+    ],
   },
   intro: {
     kicker: "O QUE É O IMD",
@@ -930,6 +950,12 @@ const HIPERBARICA: ServiceDetailData = {
       "Sessão de 90 min",
       "Até 2,4 atm",
       "14 Indicações (CFM)",
+    ],
+    features: [
+      "5 câmaras individuais transparentes com pressurização de até 2,4 atm",
+      "Sessões de 90 minutos com monitorização contínua e equipe de plantão",
+      "14 indicações reconhecidas pelo Conselho Federal de Medicina",
+      "Integração com centro cirúrgico, internação e IMD para protocolo unificado",
     ],
   },
   intro: {
