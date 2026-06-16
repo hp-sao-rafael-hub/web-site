@@ -17,7 +17,7 @@ interface KickerProps extends BaseComponentProps {
   /** Texto do kicker (será automaticamente convertido para uppercase) */
   children: React.ReactNode
   /** Cor do kicker — adapta para fundo claro ou escuro */
-  color?: "ouro" | "light" | "charcoal" | "azul" | "cobre" | "marrom"
+  color?: "ouro" | "light" | "charcoal" | "azul" | "azul-claro" | "cobre" | "marrom"
   /** Tag HTML a renderizar */
   as?: "span" | "p" | "div"
 }
@@ -30,6 +30,7 @@ const colorStyles: Record<NonNullable<KickerProps["color"]>, string> = {
   light: "text-white/80",
   charcoal: "text-charcoal",
   azul: "text-azul",
+  "azul-claro": "text-azul-claro",
   cobre: "text-cobre",
   marrom: "text-marrom",
 }

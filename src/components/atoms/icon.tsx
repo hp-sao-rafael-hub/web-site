@@ -72,7 +72,7 @@ interface IconProps extends BaseComponentProps {
   /** Tamanho em pixels */
   size?: number
   /** Cor do ícone */
-  color?: "current" | "ouro" | "charcoal" | "azul" | "cobre" | "marrom" | "light" | "muted"
+  color?: "current" | "ouro" | "charcoal" | "azul" | "azul-claro" | "cobre" | "marrom" | "light" | "muted"
   /** strokeWidth customizado */
   strokeWidth?: number
   /** aria-label para acessibilidade */
@@ -83,14 +83,15 @@ interface IconProps extends BaseComponentProps {
 // CORES
 // -----------------------------------------------------------------------------
 const colorStyles: Record<NonNullable<IconProps["color"]>, string> = {
-  current:  "text-current",
-  ouro:     "text-ouro",
-  charcoal: "text-charcoal",
-  azul:     "text-azul",
-  cobre:    "text-cobre",
-  marrom:   "text-marrom",
-  light:    "text-white",
-  muted:    "text-charcoal/50",
+  current:      "text-current",
+  ouro:         "text-ouro",
+  charcoal:     "text-charcoal",
+  azul:         "text-azul",
+  "azul-claro": "text-azul-claro",
+  cobre:        "text-cobre",
+  marrom:       "text-marrom",
+  light:        "text-white",
+  muted:        "text-charcoal/50",
 }
 
 // -----------------------------------------------------------------------------

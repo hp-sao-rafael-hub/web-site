@@ -108,7 +108,7 @@ export function B2BSection({ data, className }: B2BSectionProps) {
         >
           {/* Texto */}
           <div className="flex flex-col gap-4 max-w-[600px]">
-            <Kicker color="marrom">{kicker}</Kicker>
+            <Kicker color="azul-claro">{kicker}</Kicker>
 
             <Heading as="h2" id="medicos-heading" color="light">
               {headline}

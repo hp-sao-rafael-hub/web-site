@@ -91,7 +91,7 @@ export function HeroSection({ data, onCtaClick, className }: HeroSectionProps) {
         )}
       >
         {/* Kicker */}
-        <Kicker color="marrom" className="animate-fade-in-up">
+        <Kicker color="azul-claro" className="animate-fade-in-up">
           {kicker}
         </Kicker>
 

@@ -35,6 +35,7 @@ import {
   HERO_DATA,
   STATS_DATA,
   DIFERENCIAIS_DATA,
+  IMD_SECTION_DATA,
   SERVICOS_DATA,
   ESPECIALIDADES_DATA,
   PRODUTOS_DATA,
@@ -244,8 +245,33 @@ export async function HomeTemplate() {
       />
 
       {/* ================================================================= */}
-      {/* DOBRA 4 — SERVIÇOS                                                */}
-      {/* Infraestrutura do hospital: CC, IMD, laboratório, hiperbárica...  */}
+      {/* DOBRA 4 — IMD                                                     */}
+      {/* Instituto Médico e Diagnóstico + Especialidades                   */}
+      {/* ================================================================= */}
+      <ContentBlock
+        data={{
+          kicker: IMD_SECTION_DATA.kicker,
+          headline: IMD_SECTION_DATA.headline,
+          description: IMD_SECTION_DATA.description as unknown as readonly string[],
+          ctas: IMD_SECTION_DATA.ctas as unknown as readonly { label: string; href: string }[],
+          image: { ...IMD_SECTION_DATA.image },
+        }}
+        imagePosition="left"
+        background="white"
+        id="imd"
+      />
+
+      {/* ================================================================= */}
+      {/* DOBRA 5 — ESPECIALIDADES (parte do IMD)                           */}
+      {/* Grid com modais de detalhamento por especialidade                 */}
+      {/* ================================================================= */}
+      <SpecialtyGrid
+        data={especialidadesData}
+      />
+
+      {/* ================================================================= */}
+      {/* DOBRA 6 — COMPLEXO INTEGRADO (Serviços)                           */}
+      {/* São Rafael & IMD — infraestrutura hospitalar completa             */}
       {/* ================================================================= */}
       <ServicosCarousel
         kicker={tServicos("kicker")}
@@ -253,14 +279,6 @@ export async function HomeTemplate() {
         description={tServicos("description")}
         items={servicosItems}
         id="servicos"
-      />
-
-      {/* ================================================================= */}
-      {/* DOBRA 5 — ESPECIALIDADES                                          */}
-      {/* Grid com modais de detalhamento por especialidade                 */}
-      {/* ================================================================= */}
-      <SpecialtyGrid
-        data={especialidadesData}
       />
 
       {/* ================================================================= */}

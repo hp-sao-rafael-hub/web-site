@@ -15,7 +15,7 @@ import {
   useRouter as useIntlRouter,
 } from "@/i18n/navigation"
 import { routing } from "@/i18n/routing"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Logo } from "@/components/atoms/logo"
 import { Button } from "@/components/atoms/button"
@@ -89,8 +89,9 @@ function LangToggle({ ariaLabel }: { ariaLabel: string }) {
 const HOME_SECTION_IDS = [
   "hero",
   "diferenciais",
-  "servicos",
+  "imd",
   "especialidades",
+  "servicos",
   "produtos",
   "jornada",
   "medicos",
@@ -126,6 +127,8 @@ export function Header({
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null)
 
   const intlPathname = useIntlPathname()
   const router = useRouter()
@@ -193,23 +196,23 @@ export function Header({
 
       <header
         className={cn(
-          // Posicionamento sticky
-          "fixed top-0 left-0 right-0 z-[20]",
+          // Pill flutuante centralizado
+          "fixed top-4 left-1/2 -translate-x-1/2 z-[20]",
+          "w-[calc(100%-2rem)] max-w-5xl",
           // Transição suave
           "transition-all duration-500 ease-in-out",
-          // Estado transparente (no hero)
-          !isScrolled && "bg-transparent",
-          // Estado sólido (após scroll)
-          isScrolled && "bg-charcoal/95 backdrop-blur-sm shadow-lg",
+          // Background sempre visível
+          "bg-charcoal/90 backdrop-blur-md",
+          "border border-white/10 rounded-full shadow-lg",
           className
         )}
         role="banner"
       >
         <nav
           className={cn(
-            "max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8",
+            "px-4 sm:px-6",
             "flex items-center justify-between",
-            "h-16 lg:h-20",
+            "h-14 lg:h-16",
           )}
           aria-label={t("primaryNavAriaLabel")}
         >
@@ -231,15 +234,38 @@ export function Header({
           >
             {activeNavItems.map((item) => {
               const sectionId = item.href.replace("#", "")
+              const hasChildren = item.children && item.children.length > 0
               return (
-                <li key={item.href}>
+                <li
+                  key={item.href}
+                  className="relative"
+                  onMouseEnter={() => hasChildren ? setOpenDropdown(item.href) : undefined}
+                  onMouseLeave={() => setOpenDropdown(null)}
+                >
                   <NavLink
                     href={item.href}
                     isActive={activeSection === sectionId}
                     onClick={() => handleNavClick(item.href)}
+                    className={hasChildren ? "flex items-center gap-1" : undefined}
                   >
                     {item.label}
+                    {hasChildren && <ChevronDown size={12} className={cn("transition-transform duration-200", openDropdown === item.href && "rotate-180")} />}
                   </NavLink>
+                  {hasChildren && openDropdown === item.href && (
+                    <ul className="absolute top-full left-0 mt-2 bg-charcoal/95 backdrop-blur-md border border-white/10 rounded-xl shadow-lg min-w-[160px] py-1 z-10">
+                      {item.children!.map((child) => (
+                        <li key={child.href}>
+                          <a
+                            href={child.href}
+                            onClick={(e) => { e.preventDefault(); setOpenDropdown(null); handleNavClick(child.href) }}
+                            className="block px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+                          >
+                            {child.label}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               )
             })}
@@ -327,22 +353,56 @@ export function Header({
             {activeNavItems.map((item) => {
               const sectionId = item.href.replace("#", "")
               const isActive = activeSection === sectionId
+              const hasChildren = item.children && item.children.length > 0
+              const isExpanded = expandedMobileItem === item.href
               return (
                 <li key={item.href}>
-                  <a
-                    href={item.href}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(item.href) }}
-                    className={cn(
-                      "block px-4 py-3 text-sm font-semibold",
-                      "transition-colors duration-200 rounded-sm",
-                      isActive
-                        ? "text-ouro bg-ouro/10"
-                        : "text-white/70 hover:text-white hover:bg-white/5"
-                    )}
-                    aria-current={isActive ? "page" : undefined}
-                  >
-                    {item.label}
-                  </a>
+                  {hasChildren ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setExpandedMobileItem(isExpanded ? null : item.href)}
+                        className={cn(
+                          "w-full flex items-center justify-between px-4 py-3 text-sm font-semibold",
+                          "transition-colors duration-200 rounded-sm",
+                          isActive ? "text-ouro bg-ouro/10" : "text-white/70 hover:text-white hover:bg-white/5"
+                        )}
+                      >
+                        {item.label}
+                        <ChevronDown size={14} className={cn("transition-transform duration-200", isExpanded && "rotate-180")} />
+                      </button>
+                      {isExpanded && (
+                        <ul className="pl-4 mt-1 flex flex-col gap-1">
+                          {item.children!.map((child) => (
+                            <li key={child.href}>
+                              <a
+                                href={child.href}
+                                onClick={(e) => { e.preventDefault(); handleNavClick(child.href) }}
+                                className="block px-4 py-2 text-sm text-white/60 hover:text-white hover:bg-white/5 transition-colors rounded-sm"
+                              >
+                                {child.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </>
+                  ) : (
+                    <a
+                      href={item.href}
+                      onClick={(e) => { e.preventDefault(); handleNavClick(item.href) }}
+                      className={cn(
+                        "block px-4 py-3 text-sm font-semibold",
+                        "transition-colors duration-200 rounded-sm",
+                        isActive
+                          ? "text-ouro bg-ouro/10"
+                          : "text-white/70 hover:text-white hover:bg-white/5"
+                      )}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               )
             })}

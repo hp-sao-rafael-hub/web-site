@@ -26,9 +26,9 @@ export function FeatureCard({ feature, className }: FeatureCardProps) {
   return (
     <article
       className={cn(
-        "flex flex-col gap-4 p-8 rounded-xl",
+        "group flex flex-col gap-4 p-8 rounded-xl",
         "bg-charcoal border border-white/10",
-        "transition-all duration-300 hover:border-ouro/40",
+        "transition-all duration-300 hover:border-azul-claro/40",
         className
       )}
     >
@@ -39,8 +39,8 @@ export function FeatureCard({ feature, className }: FeatureCardProps) {
             {metric}
           </span>
         ) : (
-          <div className="p-2 border border-ouro/30 rounded-lg inline-flex">
-            <Icon name={resolveIconName(icon)} size={22} color="marrom" />
+          <div className="p-2 border border-azul-claro/30 rounded-lg inline-flex group-hover:border-azul-claro/60 transition-colors">
+            <Icon name={resolveIconName(icon)} size={22} color="azul-claro" />
           </div>
         )}
       </div>

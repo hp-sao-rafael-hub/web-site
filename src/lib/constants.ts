@@ -13,7 +13,7 @@ export const NAV_ITEMS = [
   { label: "Início", href: "#hero" },
   { label: "Diferenciais", href: "#diferenciais" },
   { label: "Serviços", href: "#servicos" },
-  { label: "Especialidades", href: "#especialidades" },
+  { label: "IMD", href: "#imd", children: [{ label: "Especialidades", href: "#especialidades" }] },
   { label: "Produtos", href: "#produtos" },
   { label: "Jornada", href: "#jornada" },
   { label: "Médicos", href: "#medicos" },
@@ -105,6 +105,26 @@ export const DIFERENCIAIS_DATA = {
   image: {
     src: "/assets/images/diferenciais-hsr-v2.png",
     alt: "Infraestrutura tecnológica do Hospital São Rafael",
+  },
+} as const
+
+// -----------------------------------------------------------------------------
+// IMD — Seção Instituto Médico e Diagnóstico (home)
+// -----------------------------------------------------------------------------
+export const IMD_SECTION_DATA = {
+  kicker: "INSTITUTO MÉDICO E DIAGNÓSTICO",
+  headline: "Consultas e exames reunidos em um só lugar, integrados à sua cirurgia.",
+  description: [
+    "O Instituto Médico e Diagnóstico (IMD) do Hospital São Rafael reúne consultas, exames de imagem, laboratório e check-up em um mesmo espaço, com atendimento exclusivamente particular.",
+    "Por funcionar dentro do mesmo complexo do centro cirúrgico, o IMD conecta avaliação, diagnóstico e procedimento em uma jornada contínua: resultados e laudos alimentam o prontuário digital, sem repetição de exames e sem deslocamento entre endereços.",
+  ],
+  ctas: [
+    { label: "Conheça o IMD", href: "/servicos/imd" },
+    { label: "Ver Especialidades", href: "#especialidades" },
+  ],
+  image: {
+    src: "/assets/images/servicos/imd.jpg",
+    alt: "Instituto Médico e Diagnóstico do Hospital São Rafael",
   },
 } as const
 
