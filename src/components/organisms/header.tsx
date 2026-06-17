@@ -207,9 +207,9 @@ export function Header({
       >
         <nav
           className={cn(
-            "px-4 sm:px-6",
+            "px-6 sm:px-8",
             "flex items-center justify-between",
-            "h-14 lg:h-16",
+            "h-[60px]",
           )}
           aria-label={t("primaryNavAriaLabel")}
         >
@@ -218,14 +218,14 @@ export function Header({
             href={isServicePage ? "/" : "#hero"}
             onClick={(e) => { e.preventDefault(); handleNavClick(isServicePage ? "/" : "#hero") }}
             aria-label={t("logoAriaLabel")}
-            className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
+            className="flex items-center flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
           >
-            <Logo variant="light" height={40} />
+            <Logo variant="light" height={36} />
           </a>
 
           {/* Navegação desktop */}
           <ul
-            className="hidden lg:flex items-center gap-5"
+            className="hidden lg:flex items-center gap-0.5"
             role="list"
             aria-label={t("linksAriaLabel")}
           >
@@ -243,25 +243,27 @@ export function Header({
                     href={item.href}
                     isActive={activeSection === sectionId}
                     onClick={() => handleNavClick(item.href)}
-                    className={hasChildren ? "flex items-center gap-1" : undefined}
+                    className={cn("px-3 py-1.5 rounded-lg", hasChildren ? "flex items-center gap-1" : undefined)}
                   >
                     {item.label}
                     {hasChildren && <ChevronDown size={12} className={cn("transition-transform duration-200", openDropdown === item.href && "rotate-180")} />}
                   </NavLink>
                   {hasChildren && openDropdown === item.href && (
-                    <ul className="absolute top-full left-0 mt-2 bg-charcoal/95 backdrop-blur-md border border-white/10 rounded-xl shadow-lg min-w-[160px] py-1 z-10">
-                      {item.children!.map((child) => (
-                        <li key={child.href}>
-                          <a
-                            href={child.href}
-                            onClick={(e) => { e.preventDefault(); setOpenDropdown(null); handleNavClick(child.href) }}
-                            className="block px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors"
-                          >
-                            {child.label}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-10">
+                      <ul className="bg-charcoal/85 backdrop-blur-[18px] border border-azul-claro/20 rounded-[20px] shadow-lg min-w-[180px] py-2 overflow-hidden">
+                        {item.children!.map((child) => (
+                          <li key={child.href}>
+                            <a
+                              href={child.href}
+                              onClick={(e) => { e.preventDefault(); setOpenDropdown(null); handleNavClick(child.href) }}
+                              className="block px-5 py-2.5 text-sm font-medium text-white/70 hover:text-white hover:bg-azul-claro/10 transition-colors"
+                            >
+                              {child.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   )}
                 </li>
               )
