@@ -245,7 +245,19 @@ export async function HomeTemplate() {
       />
 
       {/* ================================================================= */}
-      {/* DOBRA 4 — IMD                                                     */}
+      {/* DOBRA 4 — COMPLEXO INTEGRADO (Serviços)                           */}
+      {/* São Rafael & IMD — infraestrutura hospitalar completa             */}
+      {/* ================================================================= */}
+      <ServicosCarousel
+        kicker={tServicos("kicker")}
+        headline={tServicos("headline")}
+        description={tServicos("description")}
+        items={servicosItems}
+        id="servicos"
+      />
+
+      {/* ================================================================= */}
+      {/* DOBRA 5 — IMD                                                     */}
       {/* Instituto Médico e Diagnóstico + Especialidades                   */}
       {/* ================================================================= */}
       <ContentBlock
@@ -262,23 +274,11 @@ export async function HomeTemplate() {
       />
 
       {/* ================================================================= */}
-      {/* DOBRA 5 — ESPECIALIDADES (parte do IMD)                           */}
+      {/* DOBRA 6 — ESPECIALIDADES (parte do IMD)                           */}
       {/* Grid com modais de detalhamento por especialidade                 */}
       {/* ================================================================= */}
       <SpecialtyGrid
         data={especialidadesData}
-      />
-
-      {/* ================================================================= */}
-      {/* DOBRA 6 — COMPLEXO INTEGRADO (Serviços)                           */}
-      {/* São Rafael & IMD — infraestrutura hospitalar completa             */}
-      {/* ================================================================= */}
-      <ServicosCarousel
-        kicker={tServicos("kicker")}
-        headline={tServicos("headline")}
-        description={tServicos("description")}
-        items={servicosItems}
-        id="servicos"
       />
 
       {/* ================================================================= */}
