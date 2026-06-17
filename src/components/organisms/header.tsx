@@ -196,14 +196,11 @@ export function Header({
 
       <header
         className={cn(
-          // Pill flutuante centralizado
           "fixed top-4 left-1/2 -translate-x-1/2 z-[20]",
-          "w-[calc(100%-2rem)] max-w-5xl",
-          // Transição suave
+          "w-[calc(100%-3rem)] max-w-[1200px]",
           "transition-all duration-500 ease-in-out",
-          // Background sempre visível
-          "bg-charcoal/90 backdrop-blur-md",
-          "border border-white/10 rounded-full shadow-lg",
+          "bg-charcoal/85 backdrop-blur-[18px]",
+          "border border-azul-claro/20 rounded-[20px] shadow-lg",
           className
         )}
         role="banner"

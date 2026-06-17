@@ -23,6 +23,7 @@ const BCP47: Record<string, string> = { pt: "pt-BR", en: "en-US" }
 const NAV_KEY_BY_HREF: Record<string, string> = {
   "#hero": "inicio",
   "#diferenciais": "diferenciais",
+  "#imd": "imd",
   "#servicos": "servicos",
   "#especialidades": "especialidades",
   "#produtos": "produtos",
@@ -140,6 +141,12 @@ export default async function RootLayout({
   const translatedNavItems = NAV_ITEMS.map((item) => ({
     href: item.href,
     label: tNav(`items.${NAV_KEY_BY_HREF[item.href] ?? "inicio"}`),
+    ...(item.children ? {
+      children: item.children.map((child) => ({
+        href: child.href,
+        label: tNav(`items.${NAV_KEY_BY_HREF[child.href] ?? child.label}`),
+      })),
+    } : {}),
   }))
   const navCta = { label: tNav("ctaLabel"), href: NAV_CTA.href }
 
