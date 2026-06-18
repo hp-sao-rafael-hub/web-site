@@ -13,6 +13,6 @@
   },
   "navigationFallback": {
     "rewrite": "/pt/index.html",
-    "exclude": ["/_next/*", "/assets/*", "/images/*", "/*.{png,jpg,jpeg,gif,svg,webp,avif,ico,css,js,json,xml,txt,woff,woff2}"]
+    "exclude": ["/_next/**", "/assets/**", "/images/**", "/fonts/**", "/para-cirurgioes-parceiros/**", "/*.{png,jpg,jpeg,gif,svg,webp,avif,ico,css,js,json,xml,txt,woff,woff2}"]
   }
 }
