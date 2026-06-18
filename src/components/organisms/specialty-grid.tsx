@@ -145,7 +145,7 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
             )}
           >
             <Kicker color="marrom">{kicker}</Kicker>
-            <Heading as="h2" id="especialidades-heading">
+            <Heading as="h2" id="especialidades-heading" className="whitespace-nowrap">
               {headline}
             </Heading>
             {description && (
