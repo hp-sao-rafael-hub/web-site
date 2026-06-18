@@ -76,7 +76,7 @@ export const B2B_DATA = {
     },
   ],
   ctaPrimary: {
-    label: "Seja um médico parceiro",
+    label: "Saiba mais",
     href: "/para-cirurgioes-parceiros/",
   },
   cta: {

@@ -665,6 +665,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
+  p,li,blockquote{text-wrap:pretty}
   body{
     background:var(--bg-0);color:var(--txt);
     font-family:'Montserrat','Inter',system-ui,sans-serif;
@@ -1091,6 +1092,8 @@
     .dif-body .tag { color: var(--azul); }
     .dif-body h3 { color: #0d2235; }
     .dif-body p { color: #22536e; }
+    .dif-foot .tag { color: var(--azul) !important; }
+    .dif-foot h3 { color: #0d2235 !important; }
 
     /* ── Oferta pills ── */
     .oferta { background: var(--bg-1); }
@@ -1140,6 +1143,8 @@
     .como { background: var(--bg-1); }
     .step h3 { color: #0d2235; }
     .step p { color: #22536e; }
+    .step:hover h3 { color: var(--azul); }
+    .step:hover p { color: #22536e; }
     .steps::before { background: linear-gradient(90deg,transparent,rgba(0,100,150,.25),transparent); }
 
     /* ── FAQ ── */
