@@ -132,7 +132,7 @@ export function B2BSection({ data, className }: B2BSectionProps) {
                 {ctaPrimary.label}
               </Button>
             )}
-            <Button variant="ghost" size="md" href={cta.href}>
+            <Button variant="outline" size="md" href={cta.href}>
               {cta.label}
             </Button>
           </div>
