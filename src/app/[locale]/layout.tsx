@@ -141,7 +141,7 @@ export default async function RootLayout({
   const translatedNavItems = NAV_ITEMS.map((item) => ({
     href: item.href,
     label: tNav(`items.${NAV_KEY_BY_HREF[item.href] ?? "inicio"}`),
-    ...(item.children ? {
+    ...('children' in item && item.children ? {
       children: item.children.map((child) => ({
         href: child.href,
         label: tNav(`items.${NAV_KEY_BY_HREF[child.href] ?? child.label}`),

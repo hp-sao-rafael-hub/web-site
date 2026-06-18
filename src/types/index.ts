@@ -11,7 +11,7 @@
 export interface NavItem {
   label: string
   href: string
-  children?: { label: string; href: string }[]
+  children?: readonly { label: string; href: string }[]
 }
 
 export interface NavCTA {

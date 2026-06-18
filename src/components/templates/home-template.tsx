@@ -56,6 +56,7 @@ import type {
   FAQData,
   FooterData,
   ServiceItem,
+  NavCTA,
 } from "@/types"
 
 // -----------------------------------------------------------------------------
@@ -263,7 +264,7 @@ export async function HomeTemplate() {
           kicker: IMD_SECTION_DATA.kicker,
           headline: IMD_SECTION_DATA.headline,
           description: IMD_SECTION_DATA.description as unknown as readonly string[],
-          ctas: IMD_SECTION_DATA.ctas as unknown as readonly { label: string; href: string }[],
+          ctas: IMD_SECTION_DATA.ctas as unknown as NavCTA[],
           image: { ...IMD_SECTION_DATA.image },
         }}
         imagePosition="left"
