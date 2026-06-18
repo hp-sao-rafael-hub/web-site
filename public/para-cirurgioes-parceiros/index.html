@@ -2022,7 +2022,6 @@
 <script>
 (function(){
   /* ── Depoimentos: crossfade suave com direção ── */
-  var total=5, cur=0, timer, transitioning=false;
   var dotsEl=document.getElementById('depoDots');
   var prevBtn=document.getElementById('depoPrev');
   var nextBtn=document.getElementById('depoNext');
@@ -2030,6 +2029,7 @@
   if(!dotsEl||!prevBtn||!nextBtn||!wrap) return;
 
   var slides=wrap.querySelectorAll('.depo-slide');
+  var total=slides.length, cur=0, timer, transitioning=false;
 
   /* Inicializa estado limpo — garante slide 0 visível independente do mobile/desktop */
   slides.forEach(function(s,i){

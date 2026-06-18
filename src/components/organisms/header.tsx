@@ -92,8 +92,8 @@ const HOME_SECTION_IDS = [
   "produtos",
   "imd",
   "especialidades",
-  "servicos",
   "jornada",
+  "servicos",
   "medicos",
   "faq",
 ]

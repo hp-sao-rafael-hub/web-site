@@ -281,7 +281,15 @@ export async function HomeTemplate() {
       />
 
       {/* ================================================================= */}
-      {/* DOBRA 7 — COMPLEXO INTEGRADO (Serviços)                           */}
+      {/* DOBRA 7 — COMPLEXO INTEGRADO (Jornada)                           */}
+      {/* Timeline do diagnóstico à alta. Links para serviços por etapa     */}
+      {/* ================================================================= */}
+      <JourneyTimeline
+        data={jornadaData}
+      />
+
+      {/* ================================================================= */}
+      {/* DOBRA 8 — ESTRUTURA HOSPITALAR (Serviços)                         */}
       {/* São Rafael & IMD — infraestrutura hospitalar completa             */}
       {/* ================================================================= */}
       <ServicosCarousel
@@ -290,14 +298,6 @@ export async function HomeTemplate() {
         description={tServicos("description")}
         items={servicosItems}
         id="servicos"
-      />
-
-      {/* ================================================================= */}
-      {/* DOBRA 7 — JORNADA DO PACIENTE                                     */}
-      {/* Timeline do diagnóstico à alta. Links para serviços por etapa     */}
-      {/* ================================================================= */}
-      <JourneyTimeline
-        data={jornadaData}
       />
 
       {/* ================================================================= */}
