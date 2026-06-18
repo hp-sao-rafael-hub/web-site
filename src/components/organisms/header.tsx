@@ -89,10 +89,10 @@ function LangToggle({ ariaLabel }: { ariaLabel: string }) {
 const HOME_SECTION_IDS = [
   "hero",
   "diferenciais",
+  "produtos",
   "imd",
   "especialidades",
   "servicos",
-  "produtos",
   "jornada",
   "medicos",
   "faq",

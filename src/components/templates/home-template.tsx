@@ -245,15 +245,11 @@ export async function HomeTemplate() {
       />
 
       {/* ================================================================= */}
-      {/* DOBRA 4 — COMPLEXO INTEGRADO (Serviços)                           */}
-      {/* São Rafael & IMD — infraestrutura hospitalar completa             */}
+      {/* DOBRA 4 — PRODUTOS                                                */}
+      {/* Divididos por público (Paciente / Médico) com abas de filtro      */}
       {/* ================================================================= */}
-      <ServicosCarousel
-        kicker={tServicos("kicker")}
-        headline={tServicos("headline")}
-        description={tServicos("description")}
-        items={servicosItems}
-        id="servicos"
+      <ProductsSection
+        data={produtosData}
       />
 
       {/* ================================================================= */}
@@ -282,11 +278,15 @@ export async function HomeTemplate() {
       />
 
       {/* ================================================================= */}
-      {/* DOBRA 6 — PRODUTOS                                                */}
-      {/* Divididos por público (Paciente / Médico) com abas de filtro      */}
+      {/* DOBRA 7 — COMPLEXO INTEGRADO (Serviços)                           */}
+      {/* São Rafael & IMD — infraestrutura hospitalar completa             */}
       {/* ================================================================= */}
-      <ProductsSection
-        data={produtosData}
+      <ServicosCarousel
+        kicker={tServicos("kicker")}
+        headline={tServicos("headline")}
+        description={tServicos("description")}
+        items={servicosItems}
+        id="servicos"
       />
 
       {/* ================================================================= */}

@@ -12,9 +12,9 @@
 export const NAV_ITEMS = [
   { label: "Início", href: "#hero" },
   { label: "Diferenciais", href: "#diferenciais" },
-  { label: "Serviços", href: "#servicos" },
-  { label: "IMD", href: "#imd", children: [{ label: "Especialidades", href: "#especialidades" }] },
   { label: "Produtos", href: "#produtos" },
+  { label: "IMD", href: "#imd", children: [{ label: "Especialidades", href: "#especialidades" }] },
+  { label: "Serviços", href: "#servicos" },
   { label: "Jornada", href: "#jornada" },
   { label: "Médicos", href: "#medicos" },
   { label: "FAQ", href: "#faq" },
