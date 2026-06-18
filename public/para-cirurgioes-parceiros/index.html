@@ -1259,7 +1259,7 @@
 <!-- HEADER STICKY -->
 <header class="nav" style="background: rgba(8, 28, 46, 0.82); box-shadow: rgba(0, 0, 0, 0.35) 0px 8px 40px;">
   <div class="nav-inner">
-    <a href="#hero" class="logo" aria-label="Hospital São Rafael — para médicos">
+    <a href="/" class="logo" aria-label="Hospital São Rafael — para médicos">
       <svg width="160" height="36" style="display:block;max-width:100%" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 957.69 213.35">
   <defs>
     <style>
@@ -1454,7 +1454,7 @@
   <div class="solucao-bg-overlay"></div>
   <div class="container">
     <div class="block-title">
-      <div class="kicker">Por que o HSR</div>
+      <div class="kicker">Por que o HSR?</div>
       <h2>Construído para <em>cirurgia eletiva</em>, e para quem opera nela.</h2>
       <p>Hospital de grande porte, foco radical em qualidade cirúrgica, conforto e performance.</p>
     </div>
@@ -1573,7 +1573,7 @@
   <div style="max-width:1160px;margin:0 auto;padding:0 40px;">
     <div style="text-align:center;margin-bottom:48px;">
       <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#0094c0;margin-bottom:12px;">Cirurgião parceiro</div>
-      <h2 style="font-size:clamp(22px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.15;margin:0;text-wrap:balance">Quem já faz parte do corpo clínico do <em style="color:#00b8e8;font-style:normal;">Hospital São Rafael</em> fala por nós.</h2>
+      <h2 style="font-size:clamp(22px,3vw,36px);font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.15;margin:0;text-wrap:balance">Quem já faz parte do corpo clínico do <em style="color:#0094c0;font-style:normal;">Hospital São Rafael</em> fala por nós.</h2>
     </div>
 
     <div class="depo-carousel" id="depoCarousel">
@@ -1581,7 +1581,7 @@
       <button class="depo-arrow depo-next" id="depoNext" aria-label="Próximo depoimento">→</button>
 
       <div class="depo-slide-wrap" id="depoWrap" style="">
-      <div class="depo-slide active" id="dslide-0" style="display: none;">
+      <div class="depo-slide active" id="dslide-0">
         <div class="depo-glass-card">
           <div class="depo-label">Depoimento</div>
           <blockquote>"Eu estava na minha sala 18, então tudo estava ótimo. Edmar nota 10, gostaríamos até de fixar com ele. Elisangela nota 10."</blockquote>
@@ -1595,7 +1595,7 @@
         </div>
       </div>
 
-      <div class="depo-slide active" id="dslide-1" style="display: none;">
+      <div class="depo-slide" id="dslide-1">
         <div class="depo-glass-card">
           <div class="depo-label">Depoimento</div>
           <blockquote>"Bom dia! Eluzangela nota 10, Edmar nota 10. Foi tudo excelente como sempre. Obrigada!"</blockquote>
@@ -1609,7 +1609,7 @@
         </div>
       </div>
 
-      <div class="depo-slide active" id="dslide-2" style="display: block;">
+      <div class="depo-slide" id="dslide-2">
         <div class="depo-glass-card">
           <div class="depo-label">Depoimento</div>
           <blockquote>"Bom dia! Foi tudo ótimo. A cirurgia transcorreu super bem. Paloma e Rafaela foram ótimas profissionais, nota 10 para as duas. Muito obrigada!"</blockquote>
@@ -1639,7 +1639,7 @@
       </div><!-- /.depo-slide-wrap -->
     </div>
 
-    <div class="depo-dots" id="depoDots"><button class="depo-dot" aria-label="Depoimento 1"></button><button class="depo-dot" aria-label="Depoimento 2"></button><button class="depo-dot on" aria-label="Depoimento 3"></button><button class="depo-dot" aria-label="Depoimento 4"></button><button class="depo-dot" aria-label="Depoimento 5"></button></div>
+    <div class="depo-dots" id="depoDots"></div>
   </div>
 </section>
 
@@ -1767,7 +1767,7 @@
   </div>
 </section>
 <!-- FAQ -->
-<section class="block faq tight">
+<section class="block faq tight" id="faq">
   <div class="container">
     <div class="block-title">
       <div class="kicker">Dúvidas frequentes</div>
@@ -2026,6 +2026,12 @@
   if(!dotsEl||!prevBtn||!nextBtn||!wrap) return;
 
   var slides=wrap.querySelectorAll('.depo-slide');
+
+  /* Inicializa estado limpo — garante slide 0 visível independente do mobile/desktop */
+  slides.forEach(function(s,i){
+    s.style.display=(i===0)?'block':'none';
+    if(i===0){s.classList.add('active');}else{s.classList.remove('active');}
+  });
 
   /* ── Altura fixa no mobile: mede todos os slides e fixa no maior ── */
   function isMobile(){ return window.innerWidth <= 700; }
