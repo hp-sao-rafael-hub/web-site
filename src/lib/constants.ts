@@ -686,6 +686,10 @@ export const B2B_DATA = {
       image: "",
     },
   ],
+  ctaPrimary: {
+    label: "Seja um médico parceiro",
+    href: "https://hp-sao-rafael-hub.github.io/landing-page-medicos/",
+  },
   cta: {
     label: "Falar com Relacionamento Médico",
     href: "https://wa.me/message/SN2SK7HN3IUDH1",
