@@ -10,7 +10,7 @@ export const IMD_SECTION_DATA = {
     { label: "Ver Especialidades", href: "#especialidades" },
   ],
   image: {
-    src: "/assets/images/servicos/imd.jpg",
+    src: "/assets/images/servicos/imd2.png",
     alt: "Instituto Médico e Diagnóstico do Hospital São Rafael",
   },
 } as const

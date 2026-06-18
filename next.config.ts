@@ -11,6 +11,12 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [],
   },
+  async redirects() {
+    if (process.env.NODE_ENV !== "production") {
+      return [{ source: "/", destination: "/pt", permanent: false }]
+    }
+    return []
+  },
 }
 
 export default withNextIntl(nextConfig)  // ← era: export default nextConfig

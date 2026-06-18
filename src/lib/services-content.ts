@@ -766,7 +766,7 @@ const IMD: ServiceDetailData = {
     headline: "Consultas e exames reunidos em um só lugar, integrados à sua cirurgia.",
     subheadline:
       "Consultas com especialistas, exames de imagem, laboratório, check-up e terapia hiperbárica em um único instituto, integrado ao centro cirúrgico e com atendimento exclusivamente particular.",
-    backgroundImage: "/assets/images/servicos/imd.jpg",
+    backgroundImage: "/assets/images/servicos/imd2.png",
     pills: [
       "14 Especialidades",
       "Consultas e Exames",
@@ -827,9 +827,9 @@ const IMD: ServiceDetailData = {
     description:
       "Ambientes confortáveis para consultas e exames, com equipe dedicada e tecnologia integrada ao centro cirúrgico.",
     images: [
-      { src: "/assets/images/servicos/imd.jpg", alt: "Recepção do Instituto Médico e Diagnóstico" },
-      { src: "/assets/images/servicos/imd.jpg", alt: "Sala de exames de imagem do IMD" },
-      { src: "/assets/images/servicos/imd.jpg", alt: "Consultório do IMD" },
+      { src: "/assets/images/servicos/imd2.png", alt: "Recepção do Instituto Médico e Diagnóstico" },
+      { src: "/assets/images/servicos/imd2.png", alt: "Sala de exames de imagem do IMD" },
+      { src: "/assets/images/servicos/imd2.png", alt: "Consultório do IMD" },
     ],
     features: [
       { icon: "check-circle", title: "14 especialidades atendidas", description: "Consultas com especialistas reunidas em um único instituto" },
@@ -1058,7 +1058,7 @@ const HIPERBARICA: ServiceDetailData = {
     items: [
       { slug: "centro-cirurgico", title: "Centro Cirúrgico", description: "22 salas para procedimentos eletivos multiespecialidades.", image: "/assets/images/servicos/centro-cirurgico-v2.jpg", icon: "building-2" },
       { slug: "internacao", title: "Internação", description: "56 leitos individuais para uma recuperação confortável e segura.", image: "/assets/images/servicos/internacao.jpg", icon: "bed" },
-      { slug: "imd", title: "IMD", description: "Consultas, exames e check-up integrados ao centro cirúrgico.", image: "/assets/images/servicos/imd.jpg", icon: "stethoscope" },
+      { slug: "imd", title: "IMD", description: "Consultas, exames e check-up integrados ao centro cirúrgico.", image: "/assets/images/servicos/imd2.png", icon: "stethoscope" },
     ],
   },
   schemaType: "MedicalProcedure",
