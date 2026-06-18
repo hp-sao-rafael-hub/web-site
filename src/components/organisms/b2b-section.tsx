@@ -128,7 +128,7 @@ export function B2BSection({ data, className }: B2BSectionProps) {
           {/* CTAs alinhados à direita no desktop */}
           <div className="flex-shrink-0 flex items-center gap-3">
             {ctaPrimary && (
-              <Button variant="primary" size="md" href={ctaPrimary.href}>
+              <Button variant="primary" size="md" href={ctaPrimary.href} asAnchor>
                 {ctaPrimary.label}
               </Button>
             )}
