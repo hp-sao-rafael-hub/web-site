@@ -10,7 +10,7 @@ export const ESPECIALIDADES_DATA = {
       id: "ortopedia",
       title: "Ortopedia",
       description:
-        "Artroscopia, artroplastias de joelho e quadril e cirurgias de coluna com técnicas minimamente invasivas e protocolos de recuperação acelerada.",
+        "Equipe especializada em artroscopia, artroplastias totais e cirurgias da coluna vertebral com técnicas minimamente invasivas. Centro cirúrgico equipado com arcos cirúrgicos dedicados, implantes de última geração e protocolos de recuperação acelerada (ERAS). Indicado para cirurgias eletivas de joelho, quadril, ombro e tratamento de fraturas complexas.",
       icon: "bone",
       procedures: [
         "Artroplastia total de joelho",
@@ -25,7 +25,7 @@ export const ESPECIALIDADES_DATA = {
       id: "cardiologia",
       title: "Cardiologia",
       description:
-        "Avaliação cardiológica, exames e acompanhamento clínico para a sua segurança no pré e no pós-operatório.",
+        "Suporte cardiológico completo para avaliação de risco pré-operatório, monitoramento durante a internação e acompanhamento pós-cirúrgico. A equipe realiza cateterismo, angioplastia, implante de marcapasso e cirurgia de revascularização miocárdica. Estrutura com centro cirúrgico cardiovascular e UTI de alta complexidade.",
       icon: "heart-pulse",
       procedures: [
         "Cateterismo cardíaco",
@@ -40,7 +40,7 @@ export const ESPECIALIDADES_DATA = {
       id: "neurocirurgia",
       title: "Neurocirurgia",
       description:
-        "Diagnóstico e tratamento de condições da coluna e do sistema nervoso, com cuidado individualizado.",
+        "Tratamento cirúrgico de patologias do sistema nervoso central e periférico, com foco em hérnia discal, tumores cerebrais e estenose do canal vertebral. Abordagem minimamente invasiva sempre que possível, com monitoração neurofisiológica intraoperatória. Referência para casos de coluna cervical, lombar e neurocirurgia oncológica.",
       icon: "brain",
       procedures: [
         "Ressecção de tumores cerebrais",
@@ -55,7 +55,7 @@ export const ESPECIALIDADES_DATA = {
       id: "urologia",
       title: "Urologia",
       description:
-        "Diagnóstico e tratamento de condições urológicas, com foco em segurança e recuperação confortável.",
+        "Diagnóstico e tratamento endoscópico e laparoscópico de patologias urológicas — próstata, rins, bexiga e vias urinárias. Estrutura completa para prostatectomia, nefrectomia, cistoscopia e litotripsia com equipamentos de última geração. Abordagem minimamente invasiva com foco em recuperação rápida e qualidade de vida.",
       icon: "stethoscope",
       procedures: [
         "Prostatectomia",
@@ -70,7 +70,7 @@ export const ESPECIALIDADES_DATA = {
       id: "ginecologia",
       title: "Ginecologia",
       description:
-        "Histerectomia laparoscópica, miomectomia e tratamento da endometriose com precisão minimamente invasiva e protocolos de recuperação rápida.",
+        "Cirurgias ginecológicas por via laparoscópica com mínima invasão e recuperação acelerada. Especialidade completa para histerectomia, miomectomia, tratamento cirúrgico de endometriose e correção de prolapso pélvico. Ambiente hospitalar estruturado para cirurgias de alta complexidade com cuidado humanizado.",
       icon: "uterus",
       procedures: [
         "Histerectomia laparoscópica",
@@ -85,7 +85,7 @@ export const ESPECIALIDADES_DATA = {
       id: "oftalmologia",
       title: "Oftalmologia",
       description:
-        "Facoemulsificação de catarata, tratamento cirúrgico de glaucoma e vitrectomia com tecnologia de última geração em centro oftalmológico especializado.",
+        "Centro oftalmológico com tecnologia de ponta para facoemulsificação de catarata, cirurgia refrativa a laser e vitreoretina. Equipe experiente em trabeculectomia para glaucoma, vitrectomia posterior e transplante de córnea. Sala cirúrgica dedicada com microscópios e equipamentos de imagem de alta resolução.",
       icon: "eye",
       procedures: [
         "Facoemulsificação (catarata)",
@@ -100,7 +100,7 @@ export const ESPECIALIDADES_DATA = {
       id: "dermatologia",
       title: "Dermatologia",
       description:
-        "Exérese de lesões, cirurgia de Mohs para carcinomas e reconstruções cutâneas com precisão cirúrgica e diagnóstico histopatológico integrado.",
+        "Cirurgia dermatológica com diagnóstico histopatológico integrado no próprio complexo hospitalar. Especialidade indicada para exérese de lesões cutâneas, cirurgia de Mohs para carcinomas e reconstruções cutâneas após ressecção oncológica. Fluxo ágil entre diagnóstico, biópsia e procedimento cirúrgico.",
       icon: "scan",
       procedures: [
         "Exérese de lesões cutâneas",
@@ -115,7 +115,7 @@ export const ESPECIALIDADES_DATA = {
       id: "cirurgia-geral",
       title: "Cirurgia Geral",
       description:
-        "Avaliação e tratamento de condições cirúrgicas do abdome, com protocolos de recuperação cuidadosos.",
+        "Cirurgias abdominais de média e alta complexidade por via laparoscópica e aberta. Do planejamento ao pós-operatório, a equipe cobre colecistectomia, herniorrafias, ressecções intestinais e cirurgia antirrefluxo. Integração com UTI e equipe de anestesiologia para casos complexos.",
       icon: "scissors",
       procedures: [
         "Colecistectomia",
@@ -130,7 +130,7 @@ export const ESPECIALIDADES_DATA = {
       id: "cirurgia-plastica",
       title: "Cirurgia Plástica",
       description:
-        "Mamoplastias, rinoplastia e reconstrução pós-oncológica com resultados naturais, seguros e protocolos de reabilitação integrada.",
+        "Procedimentos estéticos e reconstrutivos com resultados naturais e seguros em ambiente hospitalar de alta complexidade. Equipe especializada em mamoplastias, rinoplastia, lipoaspiração e reconstrução mamária pós-mastectomia. Integração com mastologia e oncologia para abordagem oncoplástica completa.",
       icon: "sparkles",
       procedures: [
         "Mamoplastia de aumento e redução",
@@ -145,7 +145,7 @@ export const ESPECIALIDADES_DATA = {
       id: "cirurgia-vascular",
       title: "Cirurgia Vascular",
       description:
-        "Revascularização arterial, correção de aneurismas e tratamento de varizes com abordagem endovascular e tecnologia de imagem intraoperatória.",
+        "Tratamento de patologias arteriais e venosas com abordagem endovascular e cirurgia aberta. Estrutura com angiógrafo intraoperatório para revascularização de membros, correção de aneurismas e tratamento de insuficiência venosa crônica. Equipe experiente em fístulas arteriovenosas e angioplastia periférica.",
       icon: "waves",
       procedures: [
         "Revascularização arterial",
@@ -160,7 +160,7 @@ export const ESPECIALIDADES_DATA = {
       id: "cabeca-pescoco",
       title: "Cabeça e Pescoço",
       description:
-        "Tireoidectomia, esvaziamento cervical e ressecção oncológica craniofacial com reconstrução por retalhos microvascularizados.",
+        "Ressecções oncológicas e reconstruções complexas da região craniofacial com equipe multidisciplinar integrada. Especialidade completa para tireoidectomia, paratireoidectomia, esvaziamento cervical e tumores parotídeos. Reconstrução por retalhos microvascularizados com suporte de microcirurgia no próprio complexo.",
       icon: "user",
       procedures: [
         "Tireoidectomia total e parcial",
@@ -175,7 +175,7 @@ export const ESPECIALIDADES_DATA = {
       id: "mastologia",
       title: "Mastologia",
       description:
-        "Diagnóstico e tratamento de doenças da mama, com cuidado dedicado e acompanhamento em cada etapa.",
+        "Diagnóstico e tratamento cirúrgico de patologias da mama com abordagem oncoplástica que preserva forma e função. Equipe integrada com oncologia para nodulectomia, mastectomia, biópsia guiada e reconstrução mamária. Ambiente humanizado com suporte psicológico e acompanhamento em cada etapa do tratamento.",
       icon: "ribbon",
       procedures: [
         "Nodulectomia",
@@ -190,7 +190,7 @@ export const ESPECIALIDADES_DATA = {
       id: "otorrinolaringologia",
       title: "Otorrinolaringologia",
       description:
-        "Avaliação e tratamento de condições do ouvido, nariz e garganta, com cuidado individualizado.",
+        "Cirurgias do ouvido, nariz e garganta com técnicas modernas e estrutura hospitalar completa. Indicada para septoplastia, amigdalectomia, cirurgias endoscópicas nasossinusais (CENS) e procedimentos otológicos como timpanoplastia. Foco em resultados funcionais com mínimo tempo de internação.",
       icon: "ear",
       procedures: [
         "Septoplastia",
@@ -205,7 +205,7 @@ export const ESPECIALIDADES_DATA = {
       id: "clinica-dor",
       title: "Clínica da Dor",
       description:
-        "Avaliação e tratamento de dores crônicas e agudas, com abordagem individualizada para o seu bem-estar.",
+        "Avaliação multidisciplinar e tratamento intervencionista de dores agudas e crônicas refratárias. Procedimentos guiados por imagem como bloqueios anestésicos, infiltrações, radiofrequência e neuroestimulação. Indicada para dor lombar, neuropatias, fibromialgia e manejo pós-cirúrgico de dor persistente.",
       icon: "syringe",
       procedures: [
         "Bloqueios anestésicos",

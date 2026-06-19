@@ -186,7 +186,6 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
                     variant="icon-only"
                     ctaLabel={t("viewProcedures")}
                     onLearnMore={() => setActiveSpecialty(item)}
-                    underConstruction
                     className="h-full"
                   />
                 </div>
