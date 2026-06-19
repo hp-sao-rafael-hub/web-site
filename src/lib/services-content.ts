@@ -1,4 +1,4 @@
-// =============================================================================
+﻿// =============================================================================
 // SERVICES-CONTENT.TS — Dados das páginas de serviço | Hospital São Rafael
 // =============================================================================
 // Fonte de verdade para todas as páginas /servicos/[slug].
@@ -753,13 +753,14 @@ const IMD: ServiceDetailData = {
   },
   navSections: [
     { id: "intro", label: "O que é o IMD" },
+    { id: "especialidades", label: "Especialidades" },
     { id: "equipamentos", label: "O que oferecemos" },
-    { id: "para-o-medico", label: "Para o médico" },
     { id: "infraestrutura", label: "Estrutura" },
     { id: "numeros", label: "Números" },
     { id: "jornada", label: "Como funciona" },
     { id: "depoimentos", label: "Depoimentos" },
     { id: "faq", label: "Perguntas frequentes" },
+    { id: "para-o-medico", label: "Para o médico" },
   ],
   hero: {
     kicker: "INSTITUTO MÉDICO E DIAGNÓSTICO",
@@ -781,15 +782,6 @@ const IMD: ServiceDetailData = {
       "O Instituto Médico e Diagnóstico (IMD) do Hospital São Rafael reúne consultas, exames de imagem, laboratório e check-up em um mesmo espaço, com atendimento exclusivamente particular.",
       "Por funcionar dentro do mesmo complexo do centro cirúrgico, o IMD conecta avaliação, diagnóstico e procedimento em uma jornada contínua: os resultados e laudos alimentam o prontuário digital, sem repetição de exames e sem deslocamento entre endereços.",
       "Os laudos ficam disponíveis em até 24 horas, dando agilidade para a próxima etapa do seu cuidado.",
-    ],
-    subsections: [
-      {
-        id: "especialidades",
-        title: "14 especialidades atendidas",
-        paragraphs: [
-          "Cardiologia, Cabeça e Pescoço, Dermatologia, Urologia, Ginecologia, Mastologia, Cirurgia Geral, Neurocirurgia, Ortopedia, Cirurgia Plástica, Cirurgia Vascular, Otorrinolaringologia, Oftalmologia e Clínica da Dor.",
-        ],
-      },
     ],
   },
   equipment: {
@@ -881,15 +873,6 @@ const IMD: ServiceDetailData = {
       { id: "imd-faq-6", question: "Quais exames o IMD realiza?", answer: "O IMD realiza tomografia computadorizada, ultrassonografia, raio-X digital, exames laboratoriais, ECG, ecocardiograma, teste ergométrico e outros exames conforme indicação médica. Todos os resultados são integrados ao prontuário digital." },
       { id: "imd-faq-7", question: "Posso fazer o pré-operatório no IMD?", answer: "Sim. O IMD é o local ideal para a avaliação pré-operatória: consultas com especialistas e todos os exames necessários são realizados no mesmo instituto, com os resultados integrados ao prontuário do centro cirúrgico. Nossa equipe coordena o agendamento de cada etapa." },
       { id: "imd-faq-8", question: "Meu médico pode receber o laudo direto?", answer: "Sim. Os laudos ficam disponíveis no prontuário digital compartilhado, acessíveis ao médico assistente em até 24 horas. O médico também pode solicitar que a equipe envie os resultados por canais diretos. A integração elimina a necessidade de o paciente transportar exames físicos." },
-    ],
-  },
-  related: {
-    kicker: "EXPLORE O COMPLEXO",
-    headline: "Conheça as outras estruturas do Hospital São Rafael",
-    items: [
-      { slug: "centro-cirurgico", title: "Centro Cirúrgico", description: "22 salas para procedimentos eletivos multiespecialidades.", image: "/assets/images/servicos/centro-cirurgico-v2.jpg", icon: "building-2" },
-      { slug: "internacao", title: "Internação", description: "56 leitos individuais para uma recuperação confortável e segura.", image: "/assets/images/servicos/internacao.jpg", icon: "bed" },
-      { slug: "hiperbarica", title: "Terapia Hiperbárica", description: "Oxigenoterapia que apoia a sua recuperação.", image: "/assets/images/servicos/hiperbarica.jpeg", icon: "waves" },
     ],
   },
   schemaType: "MedicalClinic",

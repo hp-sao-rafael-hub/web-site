@@ -42,7 +42,8 @@ import { ServiceReferencesBlock } from "@/components/organisms/service-reference
 import { ServiceStickyCta } from "@/components/molecules/service-sticky-cta"
 import { ServiceSchema } from "@/components/atoms/service-schema"
 
-import { FOOTER_DATA } from "@/lib/constants"
+import { FOOTER_DATA, ESPECIALIDADES_DATA } from "@/lib/constants"
+import { SpecialtyGrid } from "@/components/organisms/specialty-grid"
 import type { ServiceDetailData } from "@/lib/services-content"
 import type { FooterData } from "@/types"
 
@@ -128,6 +129,11 @@ export function ServiceDetailTemplate({
       {/* 1. Intro long-form */}
       {intro && <ServiceIntroBlock data={intro} sectionId="intro" />}
 
+      {/* 1b. Especialidades com modal — apenas IMD */}
+      {data.slug === "imd" && (
+        <SpecialtyGrid data={ESPECIALIDADES_DATA} />
+      )}
+
       {/* 2. Indicações */}
       {indications && (
         <>
@@ -139,11 +145,6 @@ export function ServiceDetailTemplate({
             variant="creme"
           />
         </>
-      )}
-
-      {/* 2b. Bloco híbrido p/ médico assistente (opcional) */}
-      {medico && (
-        <ServiceMedicoBlock data={medico} sectionId="para-o-medico" />
       )}
 
       {/* 3. Gallery + features (infraestrutura HSR) */}
@@ -216,6 +217,11 @@ export function ServiceDetailTemplate({
 
       {/* 10. Conteúdo relacionado */}
       {related && <ServiceRelatedBlock data={related} sectionId="relacionados" />}
+
+      {/* 10b. Para o médico — última seção de conteúdo */}
+      {medico && (
+        <ServiceMedicoBlock data={medico} sectionId="para-o-medico" />
+      )}
 
       {/* 11. Referências e revisão clínica (E-E-A-T) */}
       {(references || lastReviewed) && (

@@ -27,6 +27,7 @@ const INTERVAL_MS = 6000
 // -----------------------------------------------------------------------------
 interface SpecialtyGridProps extends BaseComponentProps {
   data: EspecialidadesData
+  hideCta?: boolean
 }
 
 // -----------------------------------------------------------------------------
@@ -89,7 +90,7 @@ function SpecialtyModalContent({ item }: { item: EspecialidadeItem }) {
 // -----------------------------------------------------------------------------
 // COMPONENTE PRINCIPAL
 // -----------------------------------------------------------------------------
-export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
+export function SpecialtyGrid({ data, hideCta, className }: SpecialtyGridProps) {
   const t = useTranslations("especialidades")
   const [activeSpecialty, setActiveSpecialty] = useState<EspecialidadeItem | null>(null)
   const [current, setCurrent] = useState(0)
@@ -186,6 +187,7 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
                     variant="icon-only"
                     ctaLabel={t("viewProcedures")}
                     onLearnMore={() => setActiveSpecialty(item)}
+                    hideCta={hideCta}
                     className="h-full"
                   />
                 </div>
