@@ -127,7 +127,7 @@ export function ModalOverlay({
           // Glassmorphism conforme token
           "bg-white/[0.96] backdrop-blur-[15px]",
           "border border-white/20",
-          "shadow-xl",
+          "rounded-2xl shadow-xl overflow-hidden",
           // Animação de entrada
           "animate-fade-in-up",
           className
