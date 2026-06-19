@@ -45,7 +45,9 @@ import { ServiceSchema } from "@/components/atoms/service-schema"
 import { FOOTER_DATA, ESPECIALIDADES_DATA } from "@/lib/constants"
 import { SpecialtyGrid } from "@/components/organisms/specialty-grid"
 import type { ServiceDetailData } from "@/lib/services-content"
-import type { FooterData } from "@/types"
+import type { FooterData, EspecialidadesData } from "@/types"
+
+const IMD_ESPECIALIDADES = ESPECIALIDADES_DATA as unknown as EspecialidadesData
 
 // -----------------------------------------------------------------------------
 // TYPES
@@ -131,7 +133,7 @@ export function ServiceDetailTemplate({
 
       {/* 1b. Especialidades com modal — apenas IMD */}
       {data.slug === "imd" && (
-        <SpecialtyGrid data={ESPECIALIDADES_DATA} />
+        <SpecialtyGrid data={IMD_ESPECIALIDADES} />
       )}
 
       {/* 2. Indicações */}
