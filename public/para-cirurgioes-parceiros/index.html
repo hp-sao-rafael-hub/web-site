@@ -224,9 +224,9 @@
     inset: 0;
     background: linear-gradient(
       to top,
-      rgba(0,0,0,.76) 0%,
-      rgba(0,0,0,.26) 45%,
-      rgba(0,0,0,.04) 100%
+      rgba(0,0,0,.92) 0%,
+      rgba(0,0,0,.52) 45%,
+      rgba(0,0,0,.08) 100%
     );
     z-index: 1;
     transition: background .3s;
@@ -234,9 +234,9 @@
   .dif-card:hover .dif-overlay {
     background: linear-gradient(
       to top,
-      rgba(0,0,0,.84) 0%,
-      rgba(0,0,0,.36) 50%,
-      rgba(0,0,0,.07) 100%
+      rgba(0,0,0,.96) 0%,
+      rgba(0,0,0,.62) 50%,
+      rgba(0,0,0,.10) 100%
     );
   }
   .dif-body {
@@ -405,7 +405,7 @@
   .dif-desc{
     font-size:13px;color:rgba(255,255,255,.82) !important;line-height:1.65;
     max-height:0;overflow:hidden;opacity:0;
-    margin-bottom:0;
+    margin-bottom:0;text-wrap:balance;
     transform:translateY(8px);
     transition:max-height .45s cubic-bezier(0.4,0,.2,1),
                opacity .38s cubic-bezier(0.25,0.46,0.45,0.94) .06s,
@@ -420,12 +420,12 @@
   }
   .dif-foot .tag{
     font-size:10px !important;font-weight:700;letter-spacing:.12em;
-    text-transform:uppercase;color:#4de3ff !important;
+    text-transform:uppercase;color:#fff !important;
     margin-bottom:8px;display:block;
   }
   .dif-foot h3{
     color:#fff !important;
-    margin-bottom:0;font-size:18px;line-height:1.2;
+    margin-bottom:0;font-size:18px;line-height:1.2;text-wrap:balance;
   }
 
   /* ── Oferta: focus-zoom — hovered grows, others shrink ── */
@@ -808,6 +808,7 @@
   .stats-band::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--ouro),transparent)}
   .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;text-align:center}
   .stats-grid .n{font-size:54px;font-weight:800;color:var(--ouro-light);line-height:1;letter-spacing:-0.02em}
+  .stats-grid .n-pre{display:block;font-size:11px;font-weight:700;color:var(--ouro-light);letter-spacing:.12em;text-transform:uppercase;line-height:1;margin-bottom:4px;opacity:.75}
   .stats-grid .l{font-size:12px;text-transform:uppercase;letter-spacing:0.18em;color:var(--txt-soft);margin-top:10px;font-weight:600}
 
   /* ===== DIFERENCIAIS (3 CARDS) ===== */
@@ -1504,7 +1505,7 @@
       <div><div class="n" data-count="170" data-prefix="R$" data-suffix="M">R$0M</div><div class="l">Investidos em tecnologia</div></div>
       <div><div class="n" data-count="1100" data-thou="." data-suffix="">0</div><div class="l">Projeção cirurgias/mês</div></div>
       <div><div class="n" data-count="0.33" data-dec="2" data-sep="," data-suffix="%">0,00%</div><div class="l">Taxa de infecção</div></div>
-      <div><div class="n" data-count="60" data-prefix="aprox. " data-suffix="%">aprox. 0%</div><div class="l">Ocupação média</div></div>
+      <div><small class="n-pre">aprox.</small><div class="n" data-count="60" data-suffix="%">0%</div><div class="l">Ocupação média</div></div>
     </div>
   </div>
 </section>
@@ -1686,7 +1687,7 @@
     <div class="block-title">
       <div class="kicker">Três pilares não negociáveis</div>
       <h2>Tudo se sustenta em <em>segurança, experiência e conforto</em>.</h2>
-      <p>Os mesmos princípios que dão previsibilidade ao seu ato cirúrgico garantem uma jornada tranquila ao seu paciente.</p>
+      <p>Os mesmos princípios que dão previsibilidade ao seu<br>ato cirúrgico garantem uma jornada tranquila ao seu paciente.</p>
     </div>
     <div class="pillars pillars-3">
       <div class="pillar animate-in tilt-3d" style="opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;">
@@ -1760,7 +1761,7 @@
         <div class="dif-img"><img class="dif-img-fill" src="images/para-medico/credenciamento.png" alt="Credenciamento" style="object-position:center 15%;transform:scale(1.4);" /></div>
         <div class="dif-overlay"></div>
         <div class="dif-body">
-          <p class="dif-desc">Processo simplificado e conduzido pela equipe comercial. Sem burocracia desnecessária — do primeiro contato à primeira&nbsp;cirurgia.</p>
+          <p class="dif-desc">Processo simplificado e conduzido pela equipe comercial. Sem burocracia desnecessária: do primeiro contato à primeira&nbsp;cirurgia.</p>
           <div class="dif-foot">
             <div class="tag">Agilidade</div>
             <h3>Credenciamento direto</h3>
@@ -1967,9 +1968,9 @@
       <span class="copy">© 2026 Hospital São Rafael · CNPJ 41.952.659/0001-25</span>
     </div>
     <div class="links">
-      <a href="https://hsr-git-preview-lp-medicos-accelleras-projects.vercel.app/medicos.html?_vercel_share=UaHN8svIstxWiCscdnX4L7ypJmyqvnyD#">Política de Privacidade</a>
-      <a href="https://hsr-git-preview-lp-medicos-accelleras-projects.vercel.app/medicos.html?_vercel_share=UaHN8svIstxWiCscdnX4L7ypJmyqvnyD#">LGPD</a>
-      <a href="https://hsr-git-preview-lp-medicos-accelleras-projects.vercel.app/medicos.html?_vercel_share=UaHN8svIstxWiCscdnX4L7ypJmyqvnyD#">Contato Institucional</a>
+      <a href="/pt/privacidade">Política de Privacidade</a>
+      <a href="/pt/privacidade">LGPD</a>
+      <a href="/pt">Contato Institucional</a>
     </div>
   </div>
 </footer>
