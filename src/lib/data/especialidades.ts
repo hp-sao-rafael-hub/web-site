@@ -82,21 +82,6 @@ export const ESPECIALIDADES_DATA = {
       ],
     },
     {
-      id: "oftalmologia",
-      title: "Oftalmologia",
-      description:
-        "Centro oftalmológico com tecnologia de ponta para facoemulsificação de catarata, cirurgia refrativa a laser e vitreoretina. Equipe experiente em trabeculectomia para glaucoma, vitrectomia posterior e transplante de córnea. Sala cirúrgica dedicada com microscópios e equipamentos de imagem de alta resolução.",
-      icon: "eye",
-      procedures: [
-        "Facoemulsificação (catarata)",
-        "Trabeculectomia (glaucoma)",
-        "Vitrectomia posterior",
-        "Cirurgia refrativa a laser",
-        "Transplante de córnea",
-        "Correção de estrabismo",
-      ],
-    },
-    {
       id: "dermatologia",
       title: "Dermatologia",
       description:
