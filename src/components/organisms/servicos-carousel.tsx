@@ -117,8 +117,7 @@ export function ServicosCarousel({
                   icon={item.icon}
                   image={item.image}
                   href={item.href}
-                  ctaLabel="Clique para saber mais"
-                  hideCta={!item.href}
+                  hideCta
                   className="h-full"
                 />
               </div>
