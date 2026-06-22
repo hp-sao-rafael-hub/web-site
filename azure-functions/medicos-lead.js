@@ -41,6 +41,15 @@ app.http('medicos-lead', {
             });
             const txt = await r.text();
             context.log('DataCrazy:', r.status, txt);
+
+            if (r.ok && process.env.DATACRAZY_WEBHOOK) {
+                fetch(process.env.DATACRAZY_WEBHOOK, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(lead)
+                }).catch(e => context.log.error('Webhook error:', e.message));
+            }
+
             return {
                 status: r.ok ? 200 : 502,
                 headers: cors,
