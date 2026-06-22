@@ -48,7 +48,7 @@ export function ServiceJourneyBlock({
           </Heading>
           <span aria-hidden className="block w-12 h-0.5 bg-cobre" />
           {intro && (
-            <BodyText color="muted" size="base">
+            <BodyText color="muted" size="base" className="text-pretty">
               {intro}
             </BodyText>
           )}
