@@ -40,7 +40,7 @@ export function ServiceRelatedBlock({
     <section
       id={sectionId}
       aria-labelledby={`${sectionId}-heading`}
-      className={cn("py-16 lg:py-24 bg-creme", className)}
+      className={cn("py-20 lg:py-30 bg-creme", className)}
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 xl:pr-[260px] 2xl:pr-[300px]">
         <header className="flex flex-col gap-4 max-w-[760px] mb-10 lg:mb-14">

@@ -35,7 +35,7 @@ export function ServiceIntroBlock({
     <section
       id={sectionId}
       aria-labelledby={`${sectionId}-heading`}
-      className={cn("w-full py-20 lg:py-28 bg-white scroll-mt-24", className)}
+      className={cn("w-full py-20 lg:py-30 bg-white scroll-mt-24", className)}
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 xl:pr-[260px] 2xl:pr-[300px]">
         <div className="flex flex-col gap-10 max-w-[760px]">
