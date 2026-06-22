@@ -53,7 +53,7 @@ export function ServiceHighlights({ data, className, reserveRightGutter = false 
           )}
         >
           <Kicker color="marrom" as="span">{kicker}</Kicker>
-          <Heading as="h2" id="highlights-heading">
+          <Heading as="h2" id="highlights-heading" className="text-balance">
             {headline}
           </Heading>
           <div className="w-12 h-0.5 bg-cobre" aria-hidden="true" />

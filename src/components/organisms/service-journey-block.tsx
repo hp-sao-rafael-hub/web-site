@@ -43,7 +43,7 @@ export function ServiceJourneyBlock({
         {/* Header */}
         <header className="flex flex-col gap-4 max-w-[760px] mb-14 lg:mb-20">
           <Kicker color="cobre">{kicker}</Kicker>
-          <Heading as="h2" id={`${sectionId}-heading`}>
+          <Heading as="h2" id={`${sectionId}-heading`} className="text-balance">
             {headline}
           </Heading>
           <span aria-hidden className="block w-12 h-0.5 bg-cobre" />

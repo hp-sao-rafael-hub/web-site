@@ -179,7 +179,7 @@ export function SpecialtyGrid({ data, hideCta, className }: SpecialtyGridProps) 
               )}
             >
               {visibleItems.map((item, index) => (
-                <div key={`${item.id}-${index}`} className="h-[340px] overflow-hidden">
+                <div key={`${item.id}-${index}`}>
                   <ServiceCard
                     title={item.title}
                     description={item.description}
@@ -188,7 +188,6 @@ export function SpecialtyGrid({ data, hideCta, className }: SpecialtyGridProps) 
                     ctaLabel={t("viewProcedures")}
                     onLearnMore={() => setActiveSpecialty(item)}
                     hideCta={hideCta}
-                    className="h-full"
                   />
                 </div>
               ))}
