@@ -2013,8 +2013,11 @@
     window.dataLayer=window.dataLayer||[];
     window.dataLayer.push({event:'lead_form_b2b_submit',...payload});
 
-    // fetch placeholder — Pedro H conecta CRM Marcelo
-    // fetch('/api/medicos-lead',{method:'POST',body:JSON.stringify(payload)});
+    fetch('https://lp-medicos-leads-hsr-ewdgh3bzhscvaedt.brazilsouth-01.azurewebsites.net/api/medicos-lead',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    }).catch(function(e){console.error('[lead_crm_error]',e)});
 
     form.querySelector('.success-msg').classList.add('show');
     form.querySelectorAll('input,select,button').forEach(el=>el.disabled=true);
