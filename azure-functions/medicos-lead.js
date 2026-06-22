@@ -14,7 +14,8 @@ app.http('medicos-lead', {
         }
 
         let body;
-        try { body = await request.json(); } catch { body = {}; }
+        try { body = await request.json(); }
+        catch { try { body = JSON.parse(await request.text()); } catch { body = {}; } }
 
         const { nome, whatsapp, especialidade, cidade, utm_source } = body;
 

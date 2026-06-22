@@ -2015,7 +2015,8 @@
 
     fetch('https://lp-medicos-leads-hsr-ewdgh3bzhscvaedt.brazilsouth-01.azurewebsites.net/api/medicos-lead',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      mode:'no-cors',
+      headers:{'Content-Type':'text/plain'},
       body:JSON.stringify(payload)
     }).catch(function(e){console.error('[lead_crm_error]',e)});
 
