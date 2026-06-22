@@ -148,6 +148,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className={baseStyles}
           onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
           aria-disabled={disabled || isLoading}
+          target={href.startsWith("/") ? "_blank" : undefined}
+          rel={href.startsWith("/") ? "noopener noreferrer" : undefined}
         >
           {isLoading ? <LoadingSpinner /> : leftIcon}
           {children}

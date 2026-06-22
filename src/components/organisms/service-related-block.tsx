@@ -59,6 +59,8 @@ export function ServiceRelatedBlock({
             <li key={item.slug}>
               <Link
                 href={`/servicos/${item.slug}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className={cn(
                   "group flex flex-col h-full rounded-xl overflow-hidden bg-white",
                   "border border-charcoal/5",
