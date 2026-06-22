@@ -17,6 +17,7 @@ export interface ServiceHeroData {
   subheadline: string
   backgroundImage: string
   pills: string[]
+  overlayClassName?: string
 }
 
 export interface ServiceGalleryImage {
@@ -768,6 +769,7 @@ const IMD: ServiceDetailData = {
     subheadline:
       "Consultas com especialistas, exames de imagem, laboratório, check-up e terapia hiperbárica em um único instituto, integrado ao centro cirúrgico e com atendimento exclusivamente particular.",
     backgroundImage: "/assets/images/servicos/imd2.png",
+    overlayClassName: "bg-gradient-to-b from-charcoal/50 via-charcoal/40 to-charcoal/65",
     pills: [
       "14 Especialidades",
       "Consultas e Exames",
