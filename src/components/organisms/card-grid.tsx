@@ -151,8 +151,7 @@ export function CardGrid(props: CardGridProps) {
                   description={item.description}
                   icon={item.icon}
                   variant="icon-only"
-                  onLearnMore={() => (props as CardGridSpecialtiesProps).onCardClick?.(item.id)}
-                  ctaLabel="Ver procedimentos"
+                  hideCta
                   className="h-full"
                 />
               </div>
