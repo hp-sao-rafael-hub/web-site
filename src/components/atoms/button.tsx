@@ -27,6 +27,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean
   /** URL de destino (se asChild ou se for um link) */
   href?: string
+  /** Forçar <a> nativo em vez de next-intl Link (para rotas fora do App Router) */
+  asAnchor?: boolean
   /** Se o botão está em estado de carregamento */
   isLoading?: boolean
   /** Ícone à esquerda do texto */
@@ -87,6 +89,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant = "primary",
       size = "md",
       href,
+      asAnchor = false,
       isLoading = false,
       leftIcon,
       rightIcon,
@@ -123,15 +126,15 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // Se tem href, renderiza como link
     if (href) {
       const isExternal = href.startsWith("http")
-      if (isExternal) {
+      if (isExternal || asAnchor) {
         return (
           <a
             href={href}
             className={baseStyles}
             onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
             aria-disabled={disabled || isLoading}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
           >
             {isLoading ? <LoadingSpinner /> : leftIcon}
             {children}
@@ -145,6 +148,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className={baseStyles}
           onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
           aria-disabled={disabled || isLoading}
+          target={href.startsWith("/") ? "_blank" : undefined}
+          rel={href.startsWith("/") ? "noopener noreferrer" : undefined}
         >
           {isLoading ? <LoadingSpinner /> : leftIcon}
           {children}

@@ -44,7 +44,7 @@ export function B2BSection({ data, className }: B2BSectionProps) {
     once: true,
   })
 
-  const { kicker, headline, subheadline, features, testimonials, cta } = data
+  const { kicker, headline, subheadline, features, testimonials, ctaPrimary, cta } = data
 
   // --- Carrossel de depoimentos --------------------------------------------
   const [activeIndex, setActiveIndex] = useState(0)
@@ -108,7 +108,7 @@ export function B2BSection({ data, className }: B2BSectionProps) {
         >
           {/* Texto */}
           <div className="flex flex-col gap-4 max-w-[600px]">
-            <Kicker color="marrom">{kicker}</Kicker>
+            <Kicker color="azul-claro">{kicker}</Kicker>
 
             <Heading as="h2" id="medicos-heading" color="light">
               {headline}
@@ -125,13 +125,14 @@ export function B2BSection({ data, className }: B2BSectionProps) {
             )}
           </div>
 
-          {/* CTA alinhado à direita no desktop */}
-          <div className="flex-shrink-0">
-            <Button
-              variant="primary"
-              size="md"
-              href={cta.href}
-            >
+          {/* CTAs alinhados à direita no desktop */}
+          <div className="flex-shrink-0 flex items-center gap-3">
+            {ctaPrimary && (
+              <Button variant="primary" size="md" href={ctaPrimary.href} asAnchor>
+                {ctaPrimary.label}
+              </Button>
+            )}
+            <Button variant="outline" size="md" href={cta.href}>
               {cta.label}
             </Button>
           </div>

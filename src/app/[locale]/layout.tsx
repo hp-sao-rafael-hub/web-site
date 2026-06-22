@@ -6,8 +6,6 @@
 // =============================================================================
 
 import type { Metadata, Viewport } from "next"
-import { Montserrat } from "next/font/google"
-import "../globals.css"
 import { SITE_METADATA, SCHEMA_DATA, NAV_ITEMS, NAV_CTA } from "@/lib/constants"
 import { SiteHeader } from "@/components/organisms/site-header"
 import FacebookPixel from "@/components/FacebookPixel"
@@ -25,6 +23,7 @@ const BCP47: Record<string, string> = { pt: "pt-BR", en: "en-US" }
 const NAV_KEY_BY_HREF: Record<string, string> = {
   "#hero": "inicio",
   "#diferenciais": "diferenciais",
+  "#imd": "imd",
   "#servicos": "servicos",
   "#especialidades": "especialidades",
   "#produtos": "produtos",
@@ -32,16 +31,6 @@ const NAV_KEY_BY_HREF: Record<string, string> = {
   "#medicos": "medicos",
   "#faq": "faq",
 }
-
-// -----------------------------------------------------------------------------
-// FONTE — Montserrat com todos os pesos usados no Design System
-// -----------------------------------------------------------------------------
-const montserrat = Montserrat({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-montserrat",
-  display: "swap",
-})
 
 // -----------------------------------------------------------------------------
 // METADATA — SEO (Next.js App Router)
@@ -91,7 +80,7 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.png",
   },
 
   alternates: {
@@ -152,33 +141,33 @@ export default async function RootLayout({
   const translatedNavItems = NAV_ITEMS.map((item) => ({
     href: item.href,
     label: tNav(`items.${NAV_KEY_BY_HREF[item.href] ?? "inicio"}`),
+    ...('children' in item && item.children ? {
+      children: item.children.map((child) => ({
+        href: child.href,
+        label: tNav(`items.${NAV_KEY_BY_HREF[child.href] ?? child.label}`),
+      })),
+    } : {}),
   }))
   const navCta = { label: tNav("ctaLabel"), href: NAV_CTA.href }
 
   return (
-    <html lang={BCP47[locale] ?? locale} className={montserrat.variable}>
-      <head>
-        <SchemaJsonLd />
-      </head>
-      <body className={`${montserrat.className} bg-creme text-charcoal antialiased`}>
-        <NextIntlClientProvider messages={messages}>
+    <NextIntlClientProvider messages={messages}>
+      <SchemaJsonLd />
 
-          {/* Header — fora do <main> para semântica correta. Oculto em /admin */}
-          <SiteHeader
-            navItems={translatedNavItems}
-            cta={navCta}
-          />
+      {/* Header — fora do <main> para semântica correta */}
+      <SiteHeader
+        navItems={translatedNavItems}
+        cta={navCta}
+      />
 
-          {/* Conteúdo principal */}
-          <main id="main-content">
-            {children}
-          </main>
+      {/* Conteúdo principal */}
+      <main id="main-content">
+        {children}
+      </main>
 
-          <FacebookPixel />
-          <LangSuggestBanner />
+      <FacebookPixel />
+      <LangSuggestBanner />
 
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    </NextIntlClientProvider>
   )
 }

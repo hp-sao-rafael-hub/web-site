@@ -27,6 +27,7 @@ const INTERVAL_MS = 6000
 // -----------------------------------------------------------------------------
 interface SpecialtyGridProps extends BaseComponentProps {
   data: EspecialidadesData
+  hideCta?: boolean
 }
 
 // -----------------------------------------------------------------------------
@@ -89,7 +90,7 @@ function SpecialtyModalContent({ item }: { item: EspecialidadeItem }) {
 // -----------------------------------------------------------------------------
 // COMPONENTE PRINCIPAL
 // -----------------------------------------------------------------------------
-export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
+export function SpecialtyGrid({ data, hideCta, className }: SpecialtyGridProps) {
   const t = useTranslations("especialidades")
   const [activeSpecialty, setActiveSpecialty] = useState<EspecialidadeItem | null>(null)
   const [current, setCurrent] = useState(0)
@@ -145,7 +146,7 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
             )}
           >
             <Kicker color="marrom">{kicker}</Kicker>
-            <Heading as="h2" id="especialidades-heading">
+            <Heading as="h2" id="especialidades-heading" className="whitespace-nowrap">
               {headline}
             </Heading>
             {description && (
@@ -178,7 +179,7 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
               )}
             >
               {visibleItems.map((item, index) => (
-                <div key={`${item.id}-${index}`} className="h-[280px] overflow-hidden">
+                <div key={`${item.id}-${index}`} className="h-[340px] overflow-hidden">
                   <ServiceCard
                     title={item.title}
                     description={item.description}
@@ -186,7 +187,7 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
                     variant="icon-only"
                     ctaLabel={t("viewProcedures")}
                     onLearnMore={() => setActiveSpecialty(item)}
-                    underConstruction
+                    hideCta={hideCta}
                     className="h-full"
                   />
                 </div>

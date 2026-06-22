@@ -1,4 +1,4 @@
-// =============================================================================
+﻿// =============================================================================
 // SERVICES-CONTENT.TS — Dados das páginas de serviço | Hospital São Rafael
 // =============================================================================
 // Fonte de verdade para todas as páginas /servicos/[slug].
@@ -753,20 +753,21 @@ const IMD: ServiceDetailData = {
   },
   navSections: [
     { id: "intro", label: "O que é o IMD" },
+    { id: "especialidades", label: "Especialidades" },
     { id: "equipamentos", label: "O que oferecemos" },
-    { id: "para-o-medico", label: "Para o médico" },
     { id: "infraestrutura", label: "Estrutura" },
     { id: "numeros", label: "Números" },
     { id: "jornada", label: "Como funciona" },
     { id: "depoimentos", label: "Depoimentos" },
     { id: "faq", label: "Perguntas frequentes" },
+    { id: "para-o-medico", label: "Para o médico" },
   ],
   hero: {
     kicker: "INSTITUTO MÉDICO E DIAGNÓSTICO",
     headline: "Consultas e exames reunidos em um só lugar, integrados à sua cirurgia.",
     subheadline:
       "Consultas com especialistas, exames de imagem, laboratório, check-up e terapia hiperbárica em um único instituto, integrado ao centro cirúrgico e com atendimento exclusivamente particular.",
-    backgroundImage: "/assets/images/servicos/imd.jpg",
+    backgroundImage: "/assets/images/servicos/imd2.png",
     pills: [
       "14 Especialidades",
       "Consultas e Exames",
@@ -781,15 +782,6 @@ const IMD: ServiceDetailData = {
       "O Instituto Médico e Diagnóstico (IMD) do Hospital São Rafael reúne consultas, exames de imagem, laboratório e check-up em um mesmo espaço, com atendimento exclusivamente particular.",
       "Por funcionar dentro do mesmo complexo do centro cirúrgico, o IMD conecta avaliação, diagnóstico e procedimento em uma jornada contínua: os resultados e laudos alimentam o prontuário digital, sem repetição de exames e sem deslocamento entre endereços.",
       "Os laudos ficam disponíveis em até 24 horas, dando agilidade para a próxima etapa do seu cuidado.",
-    ],
-    subsections: [
-      {
-        id: "especialidades",
-        title: "14 especialidades atendidas",
-        paragraphs: [
-          "Cardiologia, Cabeça e Pescoço, Dermatologia, Urologia, Ginecologia, Mastologia, Cirurgia Geral, Neurocirurgia, Ortopedia, Cirurgia Plástica, Cirurgia Vascular, Otorrinolaringologia, Oftalmologia e Clínica da Dor.",
-        ],
-      },
     ],
   },
   equipment: {
@@ -827,9 +819,9 @@ const IMD: ServiceDetailData = {
     description:
       "Ambientes confortáveis para consultas e exames, com equipe dedicada e tecnologia integrada ao centro cirúrgico.",
     images: [
-      { src: "/assets/images/servicos/imd.jpg", alt: "Recepção do Instituto Médico e Diagnóstico" },
-      { src: "/assets/images/servicos/imd.jpg", alt: "Sala de exames de imagem do IMD" },
-      { src: "/assets/images/servicos/imd.jpg", alt: "Consultório do IMD" },
+      { src: "/assets/images/servicos/imd2.png", alt: "Recepção do Instituto Médico e Diagnóstico" },
+      { src: "/assets/images/servicos/imd2.png", alt: "Sala de exames de imagem do IMD" },
+      { src: "/assets/images/servicos/imd2.png", alt: "Consultório do IMD" },
     ],
     features: [
       { icon: "check-circle", title: "14 especialidades atendidas", description: "Consultas com especialistas reunidas em um único instituto" },
@@ -881,15 +873,6 @@ const IMD: ServiceDetailData = {
       { id: "imd-faq-6", question: "Quais exames o IMD realiza?", answer: "O IMD realiza tomografia computadorizada, ultrassonografia, raio-X digital, exames laboratoriais, ECG, ecocardiograma, teste ergométrico e outros exames conforme indicação médica. Todos os resultados são integrados ao prontuário digital." },
       { id: "imd-faq-7", question: "Posso fazer o pré-operatório no IMD?", answer: "Sim. O IMD é o local ideal para a avaliação pré-operatória: consultas com especialistas e todos os exames necessários são realizados no mesmo instituto, com os resultados integrados ao prontuário do centro cirúrgico. Nossa equipe coordena o agendamento de cada etapa." },
       { id: "imd-faq-8", question: "Meu médico pode receber o laudo direto?", answer: "Sim. Os laudos ficam disponíveis no prontuário digital compartilhado, acessíveis ao médico assistente em até 24 horas. O médico também pode solicitar que a equipe envie os resultados por canais diretos. A integração elimina a necessidade de o paciente transportar exames físicos." },
-    ],
-  },
-  related: {
-    kicker: "EXPLORE O COMPLEXO",
-    headline: "Conheça as outras estruturas do Hospital São Rafael",
-    items: [
-      { slug: "centro-cirurgico", title: "Centro Cirúrgico", description: "22 salas para procedimentos eletivos multiespecialidades.", image: "/assets/images/servicos/centro-cirurgico-v2.jpg", icon: "building-2" },
-      { slug: "internacao", title: "Internação", description: "56 leitos individuais para uma recuperação confortável e segura.", image: "/assets/images/servicos/internacao.jpg", icon: "bed" },
-      { slug: "hiperbarica", title: "Terapia Hiperbárica", description: "Oxigenoterapia que apoia a sua recuperação.", image: "/assets/images/servicos/hiperbarica.jpeg", icon: "waves" },
     ],
   },
   schemaType: "MedicalClinic",
@@ -971,9 +954,9 @@ const HIPERBARICA: ServiceDetailData = {
     description:
       "Câmaras individuais transparentes, equipe capacitada e integração com os demais setores do hospital tornam a sua sessão segura e confortável.",
     images: [
-      { src: "/assets/images/servicos/hiperbarica.jpeg", alt: "Câmara hiperbárica monoplace transparente" },
-      { src: "/assets/images/servicos/hiperbarica.jpeg", alt: "Sala de terapia hiperbárica do Hospital São Rafael" },
-      { src: "/assets/images/servicos/hiperbarica.jpeg", alt: "Equipe de enfermagem acompanhando a sessão" },
+      { src: "/para-cirurgioes-parceiros/images/hiperbarica.jpg", alt: "Câmara hiperbárica monoplace transparente" },
+      { src: "/para-cirurgioes-parceiros/images/hiperbarica.jpg", alt: "Sala de terapia hiperbárica do Hospital São Rafael" },
+      { src: "/para-cirurgioes-parceiros/images/hiperbarica.jpg", alt: "Equipe de enfermagem acompanhando a sessão" },
     ],
     features: [
       { icon: "check-circle", title: "5 câmaras monoplace transparentes", description: "Câmaras individuais com visão ampla do ambiente" },
@@ -1058,7 +1041,7 @@ const HIPERBARICA: ServiceDetailData = {
     items: [
       { slug: "centro-cirurgico", title: "Centro Cirúrgico", description: "22 salas para procedimentos eletivos multiespecialidades.", image: "/assets/images/servicos/centro-cirurgico-v2.jpg", icon: "building-2" },
       { slug: "internacao", title: "Internação", description: "56 leitos individuais para uma recuperação confortável e segura.", image: "/assets/images/servicos/internacao.jpg", icon: "bed" },
-      { slug: "imd", title: "IMD", description: "Consultas, exames e check-up integrados ao centro cirúrgico.", image: "/assets/images/servicos/imd.jpg", icon: "stethoscope" },
+      { slug: "imd", title: "IMD", description: "Consultas, exames e check-up integrados ao centro cirúrgico.", image: "/assets/images/servicos/imd2.png", icon: "stethoscope" },
     ],
   },
   schemaType: "MedicalProcedure",

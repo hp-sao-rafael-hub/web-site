@@ -1,4 +1,4 @@
-// =============================================================================
+﻿// =============================================================================
 // HOME-TEMPLATE.TSX — Template T01 | Hospital São Rafael
 // =============================================================================
 // Composição das 10 dobras na ordem aprovada em reunião.
@@ -35,6 +35,7 @@ import {
   HERO_DATA,
   STATS_DATA,
   DIFERENCIAIS_DATA,
+  IMD_SECTION_DATA,
   SERVICOS_DATA,
   ESPECIALIDADES_DATA,
   PRODUTOS_DATA,
@@ -55,6 +56,7 @@ import type {
   FAQData,
   FooterData,
   ServiceItem,
+  NavCTA,
 } from "@/types"
 
 // -----------------------------------------------------------------------------
@@ -75,6 +77,7 @@ export async function HomeTemplate() {
   ])
 
   const heroCta = { label: tHero("ctaLabel"), href: HERO_DATA.ctaPrimary.href }
+  const b2bCtaPrimary = { label: tB2B("ctaPrimaryLabel"), href: B2B_DATA.ctaPrimary.href }
   const b2bCta = { label: tB2B("ctaLabel"), href: B2B_DATA.cta.href }
 
   const heroData: HeroData = {
@@ -203,6 +206,7 @@ export async function HomeTemplate() {
       quote: tB2B(`testimonials.${tst.id}.quote`),
       role: tB2B(`testimonials.${tst.id}.role`),
     })),
+    ctaPrimary: b2bCtaPrimary,
     cta: b2bCta,
   }
   const faqData: FAQData = {
@@ -244,27 +248,7 @@ export async function HomeTemplate() {
       />
 
       {/* ================================================================= */}
-      {/* DOBRA 4 — SERVIÇOS                                                */}
-      {/* Infraestrutura do hospital: CC, IMD, laboratório, hiperbárica...  */}
-      {/* ================================================================= */}
-      <ServicosCarousel
-        kicker={tServicos("kicker")}
-        headline={tServicos("headline")}
-        description={tServicos("description")}
-        items={servicosItems}
-        id="servicos"
-      />
-
-      {/* ================================================================= */}
-      {/* DOBRA 5 — ESPECIALIDADES                                          */}
-      {/* Grid com modais de detalhamento por especialidade                 */}
-      {/* ================================================================= */}
-      <SpecialtyGrid
-        data={especialidadesData}
-      />
-
-      {/* ================================================================= */}
-      {/* DOBRA 6 — PRODUTOS                                                */}
+      {/* DOBRA 4 — PRODUTOS                                                */}
       {/* Divididos por público (Paciente / Médico) com abas de filtro      */}
       {/* ================================================================= */}
       <ProductsSection
@@ -272,11 +256,49 @@ export async function HomeTemplate() {
       />
 
       {/* ================================================================= */}
-      {/* DOBRA 7 — JORNADA DO PACIENTE                                     */}
+      {/* DOBRA 5 — IMD                                                     */}
+      {/* Instituto Médico e Diagnóstico + Especialidades                   */}
+      {/* ================================================================= */}
+      <ContentBlock
+        data={{
+          kicker: IMD_SECTION_DATA.kicker,
+          headline: IMD_SECTION_DATA.headline,
+          description: IMD_SECTION_DATA.description as unknown as readonly string[],
+          ctas: IMD_SECTION_DATA.ctas as unknown as NavCTA[],
+          image: { ...IMD_SECTION_DATA.image },
+        }}
+        imagePosition="left"
+        background="white"
+        id="imd"
+      />
+
+      {/* ================================================================= */}
+      {/* DOBRA 6 — ESPECIALIDADES (parte do IMD)                           */}
+      {/* Grid com modais de detalhamento por especialidade                 */}
+      {/* ================================================================= */}
+      <SpecialtyGrid
+        data={especialidadesData}
+        hideCta
+      />
+
+      {/* ================================================================= */}
+      {/* DOBRA 7 — COMPLEXO INTEGRADO (Jornada)                           */}
       {/* Timeline do diagnóstico à alta. Links para serviços por etapa     */}
       {/* ================================================================= */}
       <JourneyTimeline
         data={jornadaData}
+      />
+
+      {/* ================================================================= */}
+      {/* DOBRA 8 — ESTRUTURA HOSPITALAR (Serviços)                         */}
+      {/* São Rafael & IMD — infraestrutura hospitalar completa             */}
+      {/* ================================================================= */}
+      <ServicosCarousel
+        kicker={tServicos("kicker")}
+        headline={tServicos("headline")}
+        description={tServicos("description")}
+        items={servicosItems}
+        id="servicos"
       />
 
       {/* ================================================================= */}

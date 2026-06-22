@@ -12,6 +12,7 @@
     "items": {
       "inicio": "Início",
       "diferenciais": "Diferenciais",
+      "imd": "IMD",
       "servicos": "Serviços",
       "especialidades": "Especialidades",
       "produtos": "Produtos",
@@ -194,7 +195,8 @@
         "role": "Médico parceiro"
       }
     },
-    "ctaLabel": "Falar com Relacionamento Médico",
+    "ctaPrimaryLabel": "Seja um médico parceiro",
+    "ctaLabel": "Falar no WhatsApp",
     "testimonialsKicker": "O que dizem nossos médicos parceiros",
     "prevTestimonial": "Depoimento anterior",
     "nextTestimonial": "Próximo depoimento"

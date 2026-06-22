@@ -81,7 +81,7 @@ function ServiceCardImage({ title, description, image, imageAlt, onLearnMore, ct
 
       {/* Conteúdo */}
       <div className="flex flex-col flex-1 p-6 gap-3">
-        <Heading as="h3" color="default">
+        <Heading as="h3" color="default" className="line-clamp-2">
           {title}
         </Heading>
         <BodyText color="muted" size="sm" className="flex-1 line-clamp-3">

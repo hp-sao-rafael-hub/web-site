@@ -15,7 +15,7 @@ import {
   useRouter as useIntlRouter,
 } from "@/i18n/navigation"
 import { routing } from "@/i18n/routing"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ChevronDown } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Logo } from "@/components/atoms/logo"
 import { Button } from "@/components/atoms/button"
@@ -89,10 +89,11 @@ function LangToggle({ ariaLabel }: { ariaLabel: string }) {
 const HOME_SECTION_IDS = [
   "hero",
   "diferenciais",
-  "servicos",
-  "especialidades",
   "produtos",
+  "imd",
+  "especialidades",
   "jornada",
+  "servicos",
   "medicos",
   "faq",
 ]
@@ -126,6 +127,8 @@ export function Header({
 }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const [expandedMobileItem, setExpandedMobileItem] = useState<string | null>(null)
 
   const intlPathname = useIntlPathname()
   const router = useRouter()
@@ -193,23 +196,20 @@ export function Header({
 
       <header
         className={cn(
-          // Posicionamento sticky
-          "fixed top-0 left-0 right-0 z-[20]",
-          // Transição suave
+          "fixed top-4 left-1/2 -translate-x-1/2 z-[20]",
+          "w-[calc(100%-3rem)] max-w-[1200px]",
           "transition-all duration-500 ease-in-out",
-          // Estado transparente (no hero)
-          !isScrolled && "bg-transparent",
-          // Estado sólido (após scroll)
-          isScrolled && "bg-charcoal/95 backdrop-blur-sm shadow-lg",
+          "bg-charcoal/85 backdrop-blur-[18px]",
+          "border border-azul-claro/20 rounded-[20px] shadow-lg",
           className
         )}
         role="banner"
       >
         <nav
           className={cn(
-            "max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8",
+            "px-6 sm:px-8",
             "flex items-center justify-between",
-            "h-16 lg:h-20",
+            "h-[60px]",
           )}
           aria-label={t("primaryNavAriaLabel")}
         >
@@ -218,28 +218,53 @@ export function Header({
             href={isServicePage ? "/" : "#hero"}
             onClick={(e) => { e.preventDefault(); handleNavClick(isServicePage ? "/" : "#hero") }}
             aria-label={t("logoAriaLabel")}
-            className="flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
+            className="flex items-center flex-shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
           >
-            <Logo variant="light" height={40} />
+            <Logo variant="light" height={36} />
           </a>
 
           {/* Navegação desktop */}
           <ul
-            className="hidden lg:flex items-center gap-5"
+            className="hidden lg:flex items-center gap-0.5"
             role="list"
             aria-label={t("linksAriaLabel")}
           >
             {activeNavItems.map((item) => {
               const sectionId = item.href.replace("#", "")
+              const hasChildren = item.children && item.children.length > 0
               return (
-                <li key={item.href}>
+                <li
+                  key={item.href}
+                  className="relative"
+                  onMouseEnter={() => hasChildren ? setOpenDropdown(item.href) : undefined}
+                  onMouseLeave={() => setOpenDropdown(null)}
+                >
                   <NavLink
                     href={item.href}
                     isActive={activeSection === sectionId}
                     onClick={() => handleNavClick(item.href)}
+                    className={cn("px-3 py-1.5 rounded-lg", hasChildren ? "inline-flex items-center gap-1" : undefined)}
                   >
                     {item.label}
+                    {hasChildren && <ChevronDown size={12} className={cn("transition-transform duration-200", openDropdown === item.href && "rotate-180")} />}
                   </NavLink>
+                  {hasChildren && openDropdown === item.href && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-10">
+                      <ul className="bg-charcoal/85 backdrop-blur-[18px] border border-azul-claro/20 rounded-[20px] shadow-lg min-w-[180px] py-2 overflow-hidden">
+                        {item.children!.map((child) => (
+                          <li key={child.href}>
+                            <a
+                              href={child.href}
+                              onClick={(e) => { e.preventDefault(); setOpenDropdown(null); handleNavClick(child.href) }}
+                              className="block px-5 py-2.5 text-sm font-medium text-white/70 hover:text-white hover:bg-azul-claro/10 transition-colors"
+                            >
+                              {child.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </li>
               )
             })}
@@ -327,22 +352,56 @@ export function Header({
             {activeNavItems.map((item) => {
               const sectionId = item.href.replace("#", "")
               const isActive = activeSection === sectionId
+              const hasChildren = item.children && item.children.length > 0
+              const isExpanded = expandedMobileItem === item.href
               return (
                 <li key={item.href}>
-                  <a
-                    href={item.href}
-                    onClick={(e) => { e.preventDefault(); handleNavClick(item.href) }}
-                    className={cn(
-                      "block px-4 py-3 text-sm font-semibold",
-                      "transition-colors duration-200 rounded-sm",
-                      isActive
-                        ? "text-ouro bg-ouro/10"
-                        : "text-white/70 hover:text-white hover:bg-white/5"
-                    )}
-                    aria-current={isActive ? "page" : undefined}
-                  >
-                    {item.label}
-                  </a>
+                  {hasChildren ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={() => setExpandedMobileItem(isExpanded ? null : item.href)}
+                        className={cn(
+                          "w-full flex items-center justify-between px-4 py-3 text-sm font-semibold",
+                          "transition-colors duration-200 rounded-sm",
+                          isActive ? "text-ouro bg-ouro/10" : "text-white/70 hover:text-white hover:bg-white/5"
+                        )}
+                      >
+                        {item.label}
+                        <ChevronDown size={14} className={cn("transition-transform duration-200", isExpanded && "rotate-180")} />
+                      </button>
+                      {isExpanded && (
+                        <ul className="pl-4 mt-1 flex flex-col gap-1">
+                          {item.children!.map((child) => (
+                            <li key={child.href}>
+                              <a
+                                href={child.href}
+                                onClick={(e) => { e.preventDefault(); handleNavClick(child.href) }}
+                                className="block px-4 py-2 text-sm text-white/60 hover:text-white hover:bg-white/5 transition-colors rounded-sm"
+                              >
+                                {child.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </>
+                  ) : (
+                    <a
+                      href={item.href}
+                      onClick={(e) => { e.preventDefault(); handleNavClick(item.href) }}
+                      className={cn(
+                        "block px-4 py-3 text-sm font-semibold",
+                        "transition-colors duration-200 rounded-sm",
+                        isActive
+                          ? "text-ouro bg-ouro/10"
+                          : "text-white/70 hover:text-white hover:bg-white/5"
+                      )}
+                      aria-current={isActive ? "page" : undefined}
+                    >
+                      {item.label}
+                    </a>
+                  )}
                 </li>
               )
             })}
