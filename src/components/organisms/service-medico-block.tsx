@@ -84,7 +84,7 @@ export function ServiceMedicoBlock({
               </BodyText>
             )}
             <div className="pt-2">
-              <Button variant="primary" size="lg" href={ctaHref}>
+              <Button variant="primary" size="lg" href={ctaHref} asAnchor={!ctaHref.startsWith("http")}>
                 {ctaLabel}
               </Button>
             </div>
