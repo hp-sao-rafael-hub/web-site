@@ -105,6 +105,7 @@ export function Heading({
         levelStyles[Tag],
         colorStyles[color],
         alignStyles[align],
+        "text-balance",
         className
       )}
       style={maxWidth ? { maxWidth } : undefined}

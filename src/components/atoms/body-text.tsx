@@ -69,7 +69,7 @@ export function BodyText({
   return (
     <Tag
       className={cn(
-        "leading-relaxed",
+        "leading-relaxed text-pretty",
         colorStyles[color],
         sizeStyles[size],
         weightStyles[weight],
