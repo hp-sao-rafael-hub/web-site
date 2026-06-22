@@ -47,7 +47,7 @@ export const SERVICOS_DATA = {
       description:
         "Tecnologia de ponta para aceleração da recuperação e prevenção de complicações pós-cirúrgicas.",
       icon: "activity",
-      image: "/assets/images/servicos/hiperbarica_2.jpg",
+      image: "/para-cirurgioes-parceiros/images/hiperbarica.jpg",
       href: "/servicos/hiperbarica",
     },
     {

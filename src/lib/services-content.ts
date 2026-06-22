@@ -954,9 +954,9 @@ const HIPERBARICA: ServiceDetailData = {
     description:
       "Câmaras individuais transparentes, equipe capacitada e integração com os demais setores do hospital tornam a sua sessão segura e confortável.",
     images: [
-      { src: "/assets/images/servicos/hiperbarica.jpeg", alt: "Câmara hiperbárica monoplace transparente" },
-      { src: "/assets/images/servicos/hiperbarica.jpeg", alt: "Sala de terapia hiperbárica do Hospital São Rafael" },
-      { src: "/assets/images/servicos/hiperbarica.jpeg", alt: "Equipe de enfermagem acompanhando a sessão" },
+      { src: "/para-cirurgioes-parceiros/images/hiperbarica.jpg", alt: "Câmara hiperbárica monoplace transparente" },
+      { src: "/para-cirurgioes-parceiros/images/hiperbarica.jpg", alt: "Sala de terapia hiperbárica do Hospital São Rafael" },
+      { src: "/para-cirurgioes-parceiros/images/hiperbarica.jpg", alt: "Equipe de enfermagem acompanhando a sessão" },
     ],
     features: [
       { icon: "check-circle", title: "5 câmaras monoplace transparentes", description: "Câmaras individuais com visão ampla do ambiente" },
