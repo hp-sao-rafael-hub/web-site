@@ -112,7 +112,7 @@ function ServiceCardIcon({ title, description, icon, onLearnMore, ctaLabel, href
   return (
     <article
       className={cn(
-        "group flex flex-col bg-white p-8 rounded-xl border border-neutral-100",
+        "group flex flex-col bg-white p-6 rounded-xl border border-neutral-100",
         "transition-all duration-300 ease-in-out",
         "hover:-translate-y-1 hover:shadow-lg",
         className

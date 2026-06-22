@@ -53,14 +53,14 @@ export function ServiceIndicationsBlock({
 
         <ul
           role="list"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {items.map((item) => (
             <li
               key={item.id}
               className={cn(
                 "flex flex-col gap-3 p-6 rounded-xl bg-white",
-                "border border-charcoal/5",
+                "border border-neutral-100",
                 "transition-colors hover:border-ouro/30",
                 item.highlighted && "ring-2 ring-ouro/20"
               )}
