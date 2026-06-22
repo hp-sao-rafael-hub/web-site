@@ -43,7 +43,7 @@ export function ServiceMedicoBlock({
       id={sectionId}
       aria-labelledby={`${sectionId}-heading`}
       className={cn(
-        "w-full py-20 lg:py-28 scroll-mt-24",
+        "w-full py-20 lg:py-30 scroll-mt-24",
         "bg-charcoal relative overflow-hidden",
         className
       )}
