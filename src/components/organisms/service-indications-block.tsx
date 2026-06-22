@@ -76,7 +76,7 @@ export function ServiceIndicationsBlock({
               <Heading as="h3" className="!text-lg lg:!text-xl">
                 {item.title}
               </Heading>
-              <BodyText color="muted" size="sm" className="line-clamp-3">
+              <BodyText color="muted" size="sm">
                 {item.description}
               </BodyText>
             </li>
