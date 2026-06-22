@@ -243,7 +243,7 @@ export function Header({
                     href={item.href}
                     isActive={activeSection === sectionId}
                     onClick={() => handleNavClick(item.href)}
-                    className={cn("px-3 py-1.5 rounded-lg", hasChildren ? "inline-flex items-center gap-1" : undefined)}
+                    className={cn("px-3 py-1.5 rounded-lg inline-flex items-center", hasChildren ? "gap-1" : undefined)}
                   >
                     {item.label}
                     {hasChildren && <ChevronDown size={12} className={cn("transition-transform duration-200", openDropdown === item.href && "rotate-180")} />}
