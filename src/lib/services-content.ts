@@ -765,9 +765,9 @@ const IMD: ServiceDetailData = {
   ],
   hero: {
     kicker: "INSTITUTO MÉDICO E DIAGNÓSTICO",
-    headline: "Consultas e exames reunidos em um só lugar, integrados à sua cirurgia.",
+    headline: "Tecnologia de ponta, especialistas e diagnóstico exclusivo.",
     subheadline:
-      "Consultas com especialistas, exames de imagem, laboratório, check-up e terapia hiperbárica em um único instituto, integrado ao centro cirúrgico e com atendimento exclusivamente particular.",
+      "O IMD reúne consultas, exames de imagem de última geração, laboratório e check-up em um único instituto particular. Laudo em até 24h e prontuário totalmente integrado ao centro cirúrgico do Hospital São Rafael.",
     backgroundImage: "/assets/images/servicos/imd2.png",
     overlayClassName: "bg-gradient-to-b from-charcoal/50 via-charcoal/40 to-charcoal/65",
     pills: [
@@ -814,6 +814,7 @@ const IMD: ServiceDetailData = {
       { icon: "activity", title: "Agilidade no diagnóstico", description: "Da avaliação ao procedimento, sem espera entre as etapas." },
     ],
     ctaLabel: "Falar com Relacionamento Médico",
+    ctaHref: "/para-cirurgioes-parceiros/",
   },
   galleryBlock: {
     kicker: "ESTRUTURA",
@@ -831,7 +832,7 @@ const IMD: ServiceDetailData = {
       { icon: "check-circle", title: "Integrado ao centro cirúrgico", description: "Diagnóstico e procedimento conectados pelo prontuário digital" },
       { icon: "check-circle", title: "Atendimento particular", description: "Agendamento ágil e acolhimento em cada etapa" },
     ],
-    cta: { label: "Falar com Atendimento", href: "#contato" },
+    cta: { label: "Falar com Atendimento", href: "https://wa.me/message/NZIPXRZ4SKUHM1" },
   },
   highlights: {
     kicker: "NÚMEROS QUE COMPROVAM",

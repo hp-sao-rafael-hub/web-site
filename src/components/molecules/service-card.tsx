@@ -81,10 +81,10 @@ function ServiceCardImage({ title, description, image, imageAlt, onLearnMore, ct
 
       {/* Conteúdo */}
       <div className="flex flex-col flex-1 p-6 gap-3">
-        <Heading as="h3" color="default" className="line-clamp-2">
+        <Heading as="h3" color="default">
           {title}
         </Heading>
-        <BodyText color="muted" size="sm" className="flex-1 line-clamp-3">
+        <BodyText color="muted" size="sm" className="flex-1">
           {description}
         </BodyText>
         {!hideCta && (underConstruction ? (
@@ -131,7 +131,7 @@ function ServiceCardIcon({ title, description, icon, onLearnMore, ctaLabel, href
       <Heading as="h3" color="default" className="mb-2">
         {title}
       </Heading>
-      <BodyText color="muted" size="sm" className="mb-4 line-clamp-3">
+      <BodyText color="muted" size="sm" className="mb-4">
         {description}
       </BodyText>
       {!hideCta && (underConstruction ? (
