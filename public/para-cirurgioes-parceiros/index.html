@@ -3,6 +3,7 @@
 <html lang="pt-BR"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="../favicon.png" type="image/png">
 <title>HSR para Cirurgiões: Um hospital que trata você como parceiro</title>
 <meta name="description" content="Hospital São Rafael em BH: 22 salas, CME própria, OPME interno, academia médica e jornada integrada. Agende sua visita técnica.">
 <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
@@ -1257,6 +1258,25 @@
   @media (max-width:460px){ .galeria-grid{ grid-template-columns:1fr; } }
   .assinatura-comercial { margin-top:14px; font-size:13.5px; color:var(--txt-soft); letter-spacing:.01em; }
   .assinatura-comercial strong { color:var(--azul); font-weight:700; }
+
+  /* ── Para o Médico: icon cards (estilo Especialidades) ── */
+  .espec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .espec-card{background:var(--bg-2);border:1px solid rgba(0,148,192,.18);border-radius:16px;padding:32px 26px;display:flex;flex-direction:column;gap:14px;transition:all .3s}
+  .espec-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.35);border-color:var(--azul)}
+  .espec-icon{width:48px;height:48px;background:rgba(0,148,192,.12);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .espec-icon svg{width:22px;height:22px;stroke:var(--azul-light);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .espec-tag{font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--azul-light)}
+  .espec-card h3{font-size:18px;color:#fff;font-weight:700;line-height:1.25;margin:0}
+  .espec-card p{font-size:14px;color:var(--txt-soft);line-height:1.65;margin:0;flex:1}
+  @media(max-width:900px){.espec-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:560px){.espec-grid{grid-template-columns:1fr}}
+
+  /* ── Assinatura mais sutil ── */
+  .assinatura-comercial{margin-top:8px !important;font-size:12px !important;color:var(--txt-dim) !important;letter-spacing:.01em}
+  .assinatura-comercial strong{color:var(--txt-soft) !important;font-weight:600 !important}
+
+  /* ── Desktop section spacing ── */
+  @media(min-width:1024px){section.block:not(.tight){padding:100px 0}}
 </style>
 </head>
 <body>
@@ -1723,50 +1743,38 @@
       <h2>Muito além da sala cirúrgica, <em>para quem opera aqui</em>.</h2>
       <p>Benefícios exclusivos para médicos credenciados ao Hospital São Rafael.</p>
     </div>
-    <div class="dif-grid dif-grid-4">
-      <div class="dif-card animate-in tilt-3d" style="opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;">
-        <div class="dif-img"><img class="dif-img-fill" src="images/para-medico/relacionamento.png" alt="Relacionamento" style="object-position:10% top;transform:scale(1.15);" /></div>
-        <div class="dif-overlay"></div>
-        <div class="dif-body">
-          <p class="dif-desc">Canal direto com a equipe comercial e operacional do HSR para agendamentos, suporte e comunicados em tempo&nbsp;real.</p>
-          <div class="dif-foot">
-            <div class="tag">Relacionamento</div>
-            <h3>Grupo de WhatsApp exclusivo</h3>
-          </div>
+    <div class="espec-grid">
+      <div class="espec-card animate-in" style="opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;">
+        <div class="espec-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
+        <div class="espec-tag">Relacionamento</div>
+        <h3>Grupo de WhatsApp exclusivo</h3>
+        <p>Canal direto com a equipe comercial e operacional do HSR para agendamentos, suporte e comunicados em tempo real.</p>
       </div>
-      <div class="dif-card animate-in tilt-3d" style="opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;">
-        <div class="dif-img"><img class="dif-img-fill" src="images/para-medico/simulacao-orcamento.png" alt="Simulação de orçamento" style="object-position:85% 65%;" /></div>
-        <div class="dif-overlay"></div>
-        <div class="dif-body">
-          <p class="dif-desc">Apresentamos uma simulação completa de custos antes de qualquer comprometimento, para que você e seu paciente tenham total previsibilidade financeira.</p>
-          <div class="dif-foot">
-            <div class="tag">Transparência</div>
-            <h3>Simulação de orçamento</h3>
-          </div>
+      <div class="espec-card animate-in" style="opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;">
+        <div class="espec-icon">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         </div>
+        <div class="espec-tag">Transparência</div>
+        <h3>Simulação de orçamento</h3>
+        <p>Apresentamos uma simulação completa de custos antes de qualquer comprometimento, para total previsibilidade financeira.</p>
       </div>
-      <div class="dif-card animate-in tilt-3d" style="opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;">
-        <div class="dif-img"><img class="dif-img-fill" src="images/para-medico/capacitacao.png" alt="Capacitação" style="object-position:25% center;" /></div>
-        <div class="dif-overlay"></div>
-        <div class="dif-body">
-          <p class="dif-desc">Suporte técnico e treinamento no próprio HSR para integração com equipamentos, equipes e fluxos operacionais do hospital.</p>
-          <div class="dif-foot">
-            <div class="tag">Capacitação</div>
-            <h3>Treinamento in loco</h3>
-          </div>
+      <div class="espec-card animate-in" style="opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;">
+        <div class="espec-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
         </div>
+        <div class="espec-tag">Capacitação</div>
+        <h3>Treinamento in loco</h3>
+        <p>Suporte técnico e treinamento no próprio HSR para integração com equipamentos, equipes e fluxos operacionais do hospital.</p>
       </div>
-      <div class="dif-card animate-in tilt-3d" style="opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;">
-        <div class="dif-img"><img class="dif-img-fill" src="images/para-medico/credenciamento.png" alt="Credenciamento" style="object-position:center 15%;transform:scale(1.4);" /></div>
-        <div class="dif-overlay"></div>
-        <div class="dif-body">
-          <p class="dif-desc">Processo simplificado e conduzido pela equipe comercial. Sem burocracia desnecessária: do primeiro contato à primeira&nbsp;cirurgia.</p>
-          <div class="dif-foot">
-            <div class="tag">Agilidade</div>
-            <h3>Credenciamento direto</h3>
-          </div>
+      <div class="espec-card animate-in" style="opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s;">
+        <div class="espec-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
+        <div class="espec-tag">Agilidade</div>
+        <h3>Credenciamento direto</h3>
+        <p>Processo simplificado e conduzido pela equipe comercial. Sem burocracia: do primeiro contato à primeira cirurgia.</p>
       </div>
     </div>
   </div>
@@ -1813,7 +1821,7 @@
     <div class="block-title">
       <div class="kicker">Próximo passo</div>
       <h2>Agende sua <em>visita técnica ao HSR</em>.</h2>
-      <p>Preenchimento em menos de 1 minuto. Entraremos em contato para agendar sua visita técnica.</p>
+      <p>Preenchimento em menos de 1 minuto.<br>Entraremos em contato para agendar sua visita técnica.</p>
       <p class="assinatura-comercial">Atendimento conduzido por <strong>Simone Ramos</strong>, Comercial do Hospital São Rafael.</p>
     </div>
     <div class="form-card">
@@ -1845,7 +1853,7 @@
           <input id="f_cidade" name="cidade" type="text" placeholder="Ex: Belo Horizonte" required="">
         </div>
         <div class="success-msg">Cadastro recebido. Entraremos em contato para agendar sua visita técnica.</div>
-        <button type="submit" class="btn btn-primary btn-mouse-glow btn-shimmer">Quero agendar minha visita técnica</button>
+        <button type="submit" class="btn btn-primary btn-mouse-glow btn-shimmer">Agende uma visita</button>
         <p class="form-meta">Seus dados são tratados com rigor da <a href="https://hsr-git-preview-lp-medicos-accelleras-projects.vercel.app/medicos.html?_vercel_share=UaHN8svIstxWiCscdnX4L7ypJmyqvnyD#">LGPD</a>. Nenhum contato comercial sem sua autorização.</p>
       </form>
     </div>
