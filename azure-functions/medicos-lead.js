@@ -1,0 +1,53 @@
+const { app } = require('@azure/functions');
+
+app.http('medicos-lead', {
+    methods: ['POST', 'OPTIONS'],
+    authLevel: 'anonymous',
+    handler: async (request, context) => {
+        const cors = {
+            'Access-Control-Allow-Origin': '*',
+            'Content-Type': 'application/json'
+        };
+
+        if (request.method === 'OPTIONS') {
+            return { status: 200, headers: cors };
+        }
+
+        let body;
+        try { body = await request.json(); } catch { body = {}; }
+
+        const { nome, whatsapp, especialidade, cidade, utm_source } = body;
+
+        if (!nome || !whatsapp) {
+            return { status: 400, headers: cors, body: JSON.stringify({ error: 'campos obrigatorios ausentes' }) };
+        }
+
+        const lead = {
+            name: nome,
+            phone: whatsapp,
+            source: (utm_source || 'LP B2B HSR') + (especialidade ? ' | ' + especialidade : ''),
+            address: { city: cidade || '', country: 'BR' }
+        };
+
+        try {
+            const r = await fetch('https://api.g1.datacrazy.io/api/v1/leads', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + process.env.DATACRAZY_TOKEN,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(lead)
+            });
+            const txt = await r.text();
+            context.log('DataCrazy:', r.status, txt);
+            return {
+                status: r.ok ? 200 : 502,
+                headers: cors,
+                body: JSON.stringify(r.ok ? { ok: true } : { error: txt })
+            };
+        } catch (e) {
+            context.log.error(e.message);
+            return { status: 500, headers: cors, body: JSON.stringify({ error: e.message }) };
+        }
+    }
+});
