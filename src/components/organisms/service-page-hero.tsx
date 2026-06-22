@@ -63,7 +63,10 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
       {/* Overlay gradiente escuro */}
       <div
         aria-hidden="true"
-        className="absolute inset-0 bg-gradient-to-b from-charcoal/80 via-charcoal/70 to-charcoal/90"
+        className={cn(
+          "absolute inset-0",
+          data.overlayClassName ?? "bg-gradient-to-b from-charcoal/80 via-charcoal/70 to-charcoal/90"
+        )}
       />
 
       {/* Breadcrumb overlay no topo do hero */}
