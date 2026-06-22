@@ -63,13 +63,13 @@ export function ServiceRelatedBlock({
                 rel="noopener noreferrer"
                 className={cn(
                   "group flex flex-col h-full rounded-xl overflow-hidden bg-white",
-                  "border border-charcoal/5",
+                  "border border-neutral-100",
                   "transition-all duration-300",
                   "hover:border-ouro/40 hover:shadow-lg",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
                 )}
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative h-48 flex-shrink-0 overflow-hidden">
                   <Image
                     src={item.image}
                     alt={item.title}
@@ -87,7 +87,7 @@ export function ServiceRelatedBlock({
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-2 p-5 flex-1">
+                <div className="flex flex-col gap-2 p-6 flex-1">
                   <Heading as="h3" className="!text-lg lg:!text-xl">
                     {item.title}
                   </Heading>

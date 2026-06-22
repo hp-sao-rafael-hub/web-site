@@ -69,7 +69,7 @@ export function ProductCard({
     >
       {/* Imagem ou ícone */}
       {image ? (
-        <div className="relative h-40 overflow-hidden rounded-t-xl">
+        <div className="relative h-48 flex-shrink-0 overflow-hidden rounded-t-xl">
           <Image
             src={image}
             alt={title}
