@@ -162,7 +162,11 @@ export function ServiceDetailTemplate({
       {/* 5. Highlights / métricas — posição padrão (antes da jornada) */}
       {!highlightsAfterJourney && (
         <div id="numeros" className="scroll-mt-24">
-          <ServiceHighlights data={highlights} reserveRightGutter />
+          <ServiceHighlights
+            data={highlights}
+            reserveRightGutter
+            className={journey && !protocols ? "pb-0" : undefined}
+          />
         </div>
       )}
 
@@ -174,7 +178,11 @@ export function ServiceDetailTemplate({
       {/* 7. Jornada */}
       {journey && (
         <>
-          <ServiceJourneyBlock data={journey} sectionId="jornada" />
+          <ServiceJourneyBlock
+            data={journey}
+            sectionId="jornada"
+            className={!highlightsAfterJourney && !protocols ? "pt-10 lg:pt-16" : undefined}
+          />
           <ServiceInlineCta
             kicker="PRONTO PARA COMEÇAR?"
             headline="Agende sua avaliação e dê o próximo passo."
