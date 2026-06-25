@@ -34,7 +34,7 @@ export function ServiceMedicoBlock({
     benefits,
     documentation,
     ctaLabel = "Falar com Relacionamento Médico",
-    ctaHref = "https://wa.me/message/NZIPXRZ4SKUHM1",
+    ctaHref = "https://wa.me/5531972391902",
     note,
   } = data
 

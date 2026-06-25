@@ -49,7 +49,7 @@ const ctas = [
   {
     key: "atendimento_whatsapp",
     label: "Falar com Atendimento",
-    url: "https://wa.me/message/NZIPXRZ4SKUHM1",
+    url: "https://wa.me/5531971511855",
     description: "Canal principal paciente — WhatsApp agendamento/dúvidas",
   },
   {

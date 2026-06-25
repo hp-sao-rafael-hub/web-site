@@ -832,7 +832,7 @@ const IMD: ServiceDetailData = {
       { icon: "check-circle", title: "Integrado ao centro cirúrgico", description: "Diagnóstico e procedimento conectados pelo prontuário digital" },
       { icon: "check-circle", title: "Atendimento particular", description: "Agendamento ágil e acolhimento em cada etapa" },
     ],
-    cta: { label: "Falar com Atendimento", href: "https://wa.me/message/NZIPXRZ4SKUHM1" },
+    cta: { label: "Falar com Atendimento", href: "https://wa.me/5531971511855" },
   },
   highlights: {
     kicker: "NÚMEROS QUE COMPROVAM",
