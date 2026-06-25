@@ -17,7 +17,7 @@ interface ServiceStickyCtaProps {
 }
 
 export function ServiceStickyCta({
-  whatsappHref = "https://wa.me/message/NZIPXRZ4SKUHM1",
+  whatsappHref = "https://wa.me/5531971511855",
 }: ServiceStickyCtaProps) {
   const [visible, setVisible] = useState(false)
 

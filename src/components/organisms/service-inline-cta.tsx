@@ -27,7 +27,7 @@ export function ServiceInlineCta({
   kicker = "FALE COM A EQUIPE",
   headline,
   description,
-  whatsappHref = "https://wa.me/message/NZIPXRZ4SKUHM1",
+  whatsappHref = "https://wa.me/5531971511855",
   whatsappLabel = "Falar no WhatsApp",
   variant = "creme",
   className,

@@ -70,7 +70,7 @@ function SpecialtyModalContent({ item }: { item: EspecialidadeItem }) {
       {/* CTA */}
       <div className="pt-4 border-t border-charcoal/10">
         <a
-          href="https://wa.me/message/NZIPXRZ4SKUHM1"
+          href="https://wa.me/5531971511855"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(

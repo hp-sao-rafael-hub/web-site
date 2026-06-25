@@ -28,7 +28,7 @@ interface ServiceSidebarNavProps extends BaseComponentProps {
 // -----------------------------------------------------------------------------
 export function ServiceSidebarNav({
   sections,
-  whatsappHref = "https://wa.me/message/NZIPXRZ4SKUHM1",
+  whatsappHref = "https://wa.me/5531971511855",
   className,
 }: ServiceSidebarNavProps) {
   const [activeId, setActiveId] = useState<string>(sections[0]?.id ?? "")
