@@ -8,8 +8,9 @@
 "use client"
 
 import { useState, useEffect, useRef, useCallback } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, ArrowRight, MessageCircle } from "lucide-react"
 import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
 import { cn } from "@/lib/utils"
 import { Kicker } from "@/components/atoms/kicker"
 import { Heading } from "@/components/atoms/heading"
@@ -68,18 +69,34 @@ function SpecialtyModalContent({ item }: { item: EspecialidadeItem }) {
       )}
 
       {/* CTA */}
-      <div className="pt-4 border-t border-charcoal/10">
-        <a
-          href="https://wa.me/5531971511855"
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="pt-4 border-t border-charcoal/10 flex flex-col sm:flex-row gap-3">
+        {/* Primário: página completa da especialidade */}
+        <Link
+          href={`/especialidades/${item.id}`}
           className={cn(
-            "inline-flex items-center justify-center px-6 py-3 rounded-full",
+            "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full",
             "bg-ouro text-white font-bold text-sm",
             "transition-colors duration-300 hover:bg-ouro-hover",
             "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
           )}
         >
+          Ver página da especialidade
+          <ArrowRight size={16} aria-hidden />
+        </Link>
+
+        {/* Secundário: WhatsApp direto */}
+        <a
+          href="https://wa.me/5531971511855"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full",
+            "bg-white text-charcoal font-bold text-sm ring-1 ring-charcoal/15",
+            "transition-colors duration-300 hover:bg-neutral-50",
+            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
+          )}
+        >
+          <MessageCircle size={16} aria-hidden />
           {t("modalCtaLabel")}
         </a>
       </div>
