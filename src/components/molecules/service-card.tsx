@@ -141,9 +141,17 @@ function ServiceCardIcon({ title, description, icon, onLearnMore, ctaLabel, href
         {description}
       </BodyText>
 
-      {/* Affordance de link (card inteiro clicável) */}
+      {/* Affordance de link — cara de botão p/ deixar claro que o card é clicável */}
       {linkLabel && (
-        <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-bold text-marrom">
+        <span
+          className={cn(
+            "mt-auto inline-flex w-fit items-center gap-2 rounded-full px-4 py-2",
+            "text-sm font-bold text-marrom",
+            "ring-1 ring-ouro/40 bg-ouro/5",
+            "transition-colors duration-300",
+            "group-hover:bg-ouro group-hover:text-white group-hover:ring-ouro"
+          )}
+        >
           {linkLabel}
           <ArrowRight
             size={16}
