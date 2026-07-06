@@ -40,7 +40,7 @@ export interface EspecialidadeExamItem {
   description?: string
 }
 
-/** Bloco "exames que você agenda aqui" — coração da conversão da LP. */
+/** Bloco "exames que você agenda aqui", coração da conversão da LP. */
 export interface EspecialidadeExamsData {
   kicker: string
   headline: string
@@ -56,7 +56,7 @@ export interface EspecialidadeLPData {
   termo: string
   /** SEO */
   meta: { title: string; description: string }
-  /** Hero fullscreen (reusa ServicePageHero — CTA WhatsApp já embutido) */
+ /** Hero fullscreen (reusa ServicePageHero, CTA WhatsApp já embutido) */
   hero: ServiceHeroData
   /** "O que é / pra quem" (reusa ServiceIntroBlock) */
   intro: ServiceIntroBlockData
@@ -64,7 +64,7 @@ export interface EspecialidadeLPData {
   exams: EspecialidadeExamsData
   /** "Quando procurar" (reusa ServiceIndicationsBlock) */
   indications: ServiceIndicationsData
-  /** "Por que HSR" — prova INSTITUCIONAL (reusa ServiceHighlights) */
+ /** "Por que HSR", prova INSTITUCIONAL (reusa ServiceHighlights) */
   whyHsr: ServiceHighlightsData
   /** FAQ curto (reusa FAQSection) */
   faq: FAQData
@@ -94,7 +94,7 @@ const OVERLAY_DOC =
   "bg-gradient-to-t from-charcoal/90 via-charcoal/55 to-charcoal/30 " +
   "lg:bg-gradient-to-r lg:from-charcoal/90 lg:via-charcoal/60 lg:to-charcoal/20"
 
-/** Prova institucional do HSR — igual para todas as especialidades. */
+/** Prova institucional do HSR, igual para todas as especialidades. */
 const WHY_HSR: ServiceHighlightsData = {
   kicker: "POR QUE O HOSPITAL SÃO RAFAEL?",
   headline: "Estrutura de referência a favor do seu cuidado.",
@@ -153,7 +153,7 @@ function buildFaq(termo: string): FAQData {
         id: "faq-pedido",
         question: "Preciso de encaminhamento ou pedido médico?",
         answer:
-          "Para a consulta, não. Para alguns exames pode ser necessário pedido médico — fale com nossa equipe pelo WhatsApp que orientamos conforme o seu caso.",
+ "Para a consulta, não. Para alguns exames pode ser necessário pedido médico, fale com nossa equipe pelo WhatsApp que orientamos conforme o seu caso.",
       },
       {
         id: "faq-prazo",
@@ -184,7 +184,7 @@ const ORTOPEDIA: EspecialidadeLPData = {
     kicker: "ORTOPEDIA",
     headline: "Dor no joelho, quadril ou coluna? Agende sua avaliação com ortopedista.",
     subheadline:
-      "Consulta, exames de imagem e cirurgia de ortopedia num só lugar. Atendimento particular, ágil e humano — do diagnóstico à recuperação.",
+ "Consulta, exames de imagem e cirurgia de ortopedia num só lugar. Atendimento particular, ágil e humano, do diagnóstico à recuperação.",
     backgroundImage: PLACEHOLDER_HERO,
     pills: [
       "Consulta com ortopedista",
@@ -197,15 +197,15 @@ const ORTOPEDIA: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Ortopedia: cuidado completo para ossos, articulações e coluna.",
     paragraphs: [
-      "A ortopedia trata dores e lesões de ossos, músculos, articulações e coluna — de um desconforto que não passa a uma fratura ou desgaste que limita o dia a dia. No Hospital São Rafael, você encontra consulta, exames e cirurgia no mesmo complexo.",
-      "Ao concentrar avaliação, diagnóstico e procedimento num só endereço, o resultado do exame já alimenta o seu prontuário — sem repetir exame e sem correr de uma clínica para outra.",
+ "A ortopedia trata dores e lesões de ossos, músculos, articulações e coluna, de um desconforto que não passa a uma fratura ou desgaste que limita o dia a dia. No Hospital São Rafael, você encontra consulta, exames e cirurgia no mesmo complexo.",
+ "Ao concentrar avaliação, diagnóstico e procedimento num só endereço, o resultado do exame já alimenta o seu prontuário, sem repetir exame e sem correr de uma clínica para outra.",
     ],
   },
   exams: {
     kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta, exames e procedimentos de ortopedia num só endereço.",
     description:
-      "Estrutura completa para avaliar, diagnosticar e tratar — sem deslocamento entre clínicas.",
+ "Estrutura completa para avaliar, diagnosticar e tratar, sem deslocamento entre clínicas.",
     items: [
       { title: "Consulta com ortopedista", description: "Avaliação do seu caso e orientação do próximo passo." },
       { title: "Exames de imagem", description: "Raio-X, ultrassom e ressonância para diagnóstico preciso." },
@@ -256,7 +256,7 @@ const CARDIOLOGIA: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Cardiologia: prevenção, diagnóstico e cuidado do coração.",
     paragraphs: [
-      "A cardiologia avalia e cuida da saúde do coração e da circulação — de um check-up preventivo ao acompanhamento de quem já convive com pressão alta, arritmia ou risco cardíaco. No Hospital São Rafael, consulta, exames e procedimentos ficam no mesmo lugar.",
+ "A cardiologia avalia e cuida da saúde do coração e da circulação, de um check-up preventivo ao acompanhamento de quem já convive com pressão alta, arritmia ou risco cardíaco. No Hospital São Rafael, consulta, exames e procedimentos ficam no mesmo lugar.",
       "Com centro cirúrgico cardiovascular e UTI de alta complexidade, avaliação e tratamento seguem uma jornada contínua, com resultados integrados ao seu prontuário.",
     ],
   },
@@ -316,7 +316,7 @@ const NEUROCIRURGIA: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Neurocirurgia: tratamento da coluna, cérebro e nervos.",
     paragraphs: [
-      "A neurocirurgia cuida de doenças da coluna e do sistema nervoso — de uma hérnia de disco que causa dor e formigamento a casos que exigem cirurgia cerebral. No Hospital São Rafael, avaliação, exames e procedimento ficam integrados.",
+ "A neurocirurgia cuida de doenças da coluna e do sistema nervoso, de uma hérnia de disco que causa dor e formigamento a casos que exigem cirurgia cerebral. No Hospital São Rafael, avaliação, exames e procedimento ficam integrados.",
       "Sempre que possível, a equipe usa técnicas minimamente invasivas, com monitoração neurofisiológica durante a cirurgia para mais segurança.",
     ],
   },
@@ -376,7 +376,7 @@ const UROLOGIA: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Urologia: saúde da próstata, rins, bexiga e vias urinárias.",
     paragraphs: [
-      "A urologia cuida do trato urinário e da saúde do homem — de um check-up de próstata ao tratamento de cálculo renal, infecções de repetição e alterações urinárias. No Hospital São Rafael, consulta, exame e cirurgia ficam integrados.",
+ "A urologia cuida do trato urinário e da saúde do homem, de um check-up de próstata ao tratamento de cálculo renal, infecções de repetição e alterações urinárias. No Hospital São Rafael, consulta, exame e cirurgia ficam integrados.",
       "A equipe prioriza técnicas endoscópicas e laparoscópicas, minimamente invasivas, para recuperação mais rápida e mais qualidade de vida.",
     ],
   },
@@ -434,7 +434,7 @@ const GINECOLOGIA: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Ginecologia: cuidado integral da saúde da mulher.",
     paragraphs: [
-      "A ginecologia acompanha a saúde da mulher em todas as fases — de consultas de rotina ao tratamento de miomas, endometriose e outras condições que afetam o bem-estar e a qualidade de vida. No Hospital São Rafael, consulta, exame e cirurgia ficam integrados.",
+ "A ginecologia acompanha a saúde da mulher em todas as fases, de consultas de rotina ao tratamento de miomas, endometriose e outras condições que afetam o bem-estar e a qualidade de vida. No Hospital São Rafael, consulta, exame e cirurgia ficam integrados.",
       "As cirurgias priorizam a via laparoscópica, minimamente invasiva, o que costuma significar menos dor e recuperação mais rápida, em ambiente hospitalar estruturado.",
     ],
   },
@@ -494,7 +494,7 @@ const DERMATOLOGIA: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Dermatologia cirúrgica: cuidado com lesões e tumores de pele.",
     paragraphs: [
-      "A dermatologia cirúrgica avalia e trata lesões de pele — de uma pinta que mudou de cor ou tamanho à remoção de tumores cutâneos. No Hospital São Rafael, o diagnóstico histopatológico é integrado ao próprio complexo.",
+ "A dermatologia cirúrgica avalia e trata lesões de pele, de uma pinta que mudou de cor ou tamanho à remoção de tumores cutâneos. No Hospital São Rafael, o diagnóstico histopatológico é integrado ao próprio complexo.",
       "Isso significa um fluxo ágil entre avaliação, biópsia e cirurgia, sem repetir etapas e sem correr entre clínicas diferentes.",
     ],
   },
@@ -554,7 +554,7 @@ const CIRURGIA_GERAL: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Cirurgia geral: tratamento de doenças do abdome.",
     paragraphs: [
-      "A cirurgia geral trata condições do abdome — de uma pedra na vesícula ou hérnia que incomoda ao tratamento do refluxo que não melhora com remédio. No Hospital São Rafael, avaliação, exames e cirurgia ficam integrados.",
+ "A cirurgia geral trata condições do abdome, de uma pedra na vesícula ou hérnia que incomoda ao tratamento do refluxo que não melhora com remédio. No Hospital São Rafael, avaliação, exames e cirurgia ficam integrados.",
       "As cirurgias priorizam a via laparoscópica, minimamente invasiva, com suporte de UTI e anestesiologia para casos de maior complexidade.",
     ],
   },
@@ -614,7 +614,7 @@ const CIRURGIA_PLASTICA: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Cirurgia plástica estética e reconstrutiva.",
     paragraphs: [
-      "A cirurgia plástica engloba procedimentos estéticos e reconstrutivos — de cirurgias que harmonizam o corpo à reconstrução após uma mastectomia. No Hospital São Rafael, tudo acontece em ambiente hospitalar de alta complexidade.",
+ "A cirurgia plástica engloba procedimentos estéticos e reconstrutivos, de cirurgias que harmonizam o corpo à reconstrução após uma mastectomia. No Hospital São Rafael, tudo acontece em ambiente hospitalar de alta complexidade.",
       "A integração com mastologia e oncologia permite uma abordagem oncoplástica completa, com foco em resultados naturais e na segurança do procedimento.",
     ],
   },
@@ -674,7 +674,7 @@ const CIRURGIA_VASCULAR: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Cirurgia vascular: saúde das artérias e veias.",
     paragraphs: [
-      "A cirurgia vascular cuida da circulação — de varizes e sensação de peso nas pernas ao tratamento de aneurismas e obstruções arteriais. No Hospital São Rafael, avaliação, exames e tratamento ficam integrados.",
+ "A cirurgia vascular cuida da circulação, de varizes e sensação de peso nas pernas ao tratamento de aneurismas e obstruções arteriais. No Hospital São Rafael, avaliação, exames e tratamento ficam integrados.",
       "A estrutura permite abordagem endovascular e cirurgia aberta, escolhendo a técnica mais adequada para cada caso, com foco em segurança e recuperação.",
     ],
   },
@@ -734,7 +734,7 @@ const CABECA_PESCOCO: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Cirurgia de cabeça e pescoço: tireoide, pescoço e glândulas.",
     paragraphs: [
-      "A especialidade trata condições da região da cabeça e pescoço — de um nódulo na tireoide a tumores e alterações das glândulas salivares. No Hospital São Rafael, avaliação, exames e cirurgia ficam integrados.",
+ "A especialidade trata condições da região da cabeça e pescoço, de um nódulo na tireoide a tumores e alterações das glândulas salivares. No Hospital São Rafael, avaliação, exames e cirurgia ficam integrados.",
       "Com equipe multidisciplinar e suporte de microcirurgia no próprio complexo, casos que exigem reconstrução são conduzidos com segurança.",
     ],
   },
@@ -794,7 +794,7 @@ const MASTOLOGIA: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Mastologia: cuidado com a saúde da mama.",
     paragraphs: [
-      "A mastologia cuida da saúde da mama — de um nódulo ou exame alterado ao tratamento cirúrgico com abordagem oncoplástica, que busca preservar forma e função. No Hospital São Rafael, avaliação, biópsia e cirurgia ficam integradas.",
+ "A mastologia cuida da saúde da mama, de um nódulo ou exame alterado ao tratamento cirúrgico com abordagem oncoplástica, que busca preservar forma e função. No Hospital São Rafael, avaliação, biópsia e cirurgia ficam integradas.",
       "Com equipe integrada à oncologia e suporte psicológico, o cuidado acontece em ambiente humanizado, acompanhando cada etapa do tratamento.",
     ],
   },
@@ -854,7 +854,7 @@ const OTORRINO: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Otorrinolaringologia: ouvido, nariz e garganta.",
     paragraphs: [
-      "A otorrinolaringologia trata condições de ouvido, nariz e garganta — de uma sinusite de repetição e desvio de septo que atrapalham a respiração a amígdalas e problemas de audição. No Hospital São Rafael, avaliação e cirurgia ficam integradas.",
+ "A otorrinolaringologia trata condições de ouvido, nariz e garganta, de uma sinusite de repetição e desvio de septo que atrapalham a respiração a amígdalas e problemas de audição. No Hospital São Rafael, avaliação e cirurgia ficam integradas.",
       "As cirurgias usam técnicas modernas, muitas por via endoscópica, com foco em resultado funcional e no menor tempo possível de internação.",
     ],
   },
@@ -914,7 +914,7 @@ const CLINICA_DOR: EspecialidadeLPData = {
     kicker: "O QUE É?",
     headline: "Clínica da Dor: tratamento de dores crônicas e persistentes.",
     paragraphs: [
-      "A Clínica da Dor cuida de quem convive com dor que não passa — dor lombar, neuropatias, fibromialgia e dor persistente após cirurgia. No Hospital São Rafael, a avaliação é multidisciplinar e integrada.",
+ "A Clínica da Dor cuida de quem convive com dor que não passa, dor lombar, neuropatias, fibromialgia e dor persistente após cirurgia. No Hospital São Rafael, a avaliação é multidisciplinar e integrada.",
       "O tratamento pode incluir procedimentos minimamente invasivos guiados por imagem, como bloqueios e infiltrações, buscando alívio da dor e mais qualidade de vida.",
     ],
   },
