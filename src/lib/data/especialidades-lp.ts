@@ -96,7 +96,7 @@ const OVERLAY_DOC =
 
 /** Prova institucional do HSR — igual para todas as especialidades. */
 const WHY_HSR: ServiceHighlightsData = {
-  kicker: "POR QUE O HOSPITAL SÃO RAFAEL",
+  kicker: "POR QUE O HOSPITAL SÃO RAFAEL?",
   headline: "Estrutura de referência a favor do seu cuidado.",
   items: [
     {
@@ -194,7 +194,7 @@ const ORTOPEDIA: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Ortopedia: cuidado completo para ossos, articulações e coluna.",
     paragraphs: [
       "A ortopedia trata dores e lesões de ossos, músculos, articulações e coluna — de um desconforto que não passa a uma fratura ou desgaste que limita o dia a dia. No Hospital São Rafael, você encontra consulta, exames e cirurgia no mesmo complexo.",
@@ -202,7 +202,7 @@ const ORTOPEDIA: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta, exames e procedimentos de ortopedia num só endereço.",
     description:
       "Estrutura completa para avaliar, diagnosticar e tratar — sem deslocamento entre clínicas.",
@@ -216,7 +216,7 @@ const ORTOPEDIA: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "É hora de agendar se você sente:",
     intro: "Sinais que merecem avaliação de um ortopedista. Na dúvida, fale com nossa equipe.",
     items: [
@@ -253,7 +253,7 @@ const CARDIOLOGIA: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Cardiologia: prevenção, diagnóstico e cuidado do coração.",
     paragraphs: [
       "A cardiologia avalia e cuida da saúde do coração e da circulação — de um check-up preventivo ao acompanhamento de quem já convive com pressão alta, arritmia ou risco cardíaco. No Hospital São Rafael, consulta, exames e procedimentos ficam no mesmo lugar.",
@@ -261,7 +261,7 @@ const CARDIOLOGIA: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta, exames do coração e procedimentos cardiológicos.",
     description: "Do diagnóstico ao tratamento, com estrutura hospitalar completa.",
     items: [
@@ -274,7 +274,7 @@ const CARDIOLOGIA: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "É hora de agendar se você percebe:",
     intro: "Sinais que merecem avaliação cardiológica. Na dúvida, fale com nossa equipe.",
     items: [
@@ -313,7 +313,7 @@ const NEUROCIRURGIA: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Neurocirurgia: tratamento da coluna, cérebro e nervos.",
     paragraphs: [
       "A neurocirurgia cuida de doenças da coluna e do sistema nervoso — de uma hérnia de disco que causa dor e formigamento a casos que exigem cirurgia cerebral. No Hospital São Rafael, avaliação, exames e procedimento ficam integrados.",
@@ -321,7 +321,7 @@ const NEUROCIRURGIA: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta, exames e cirurgia de coluna e sistema nervoso.",
     description: "Diagnóstico e tratamento com estrutura hospitalar de alta complexidade.",
     items: [
@@ -334,7 +334,7 @@ const NEUROCIRURGIA: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "É hora de agendar se você sente:",
     intro: "Sinais que merecem avaliação neurocirúrgica. Na dúvida, fale com nossa equipe.",
     items: [
@@ -373,7 +373,7 @@ const UROLOGIA: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Urologia: saúde da próstata, rins, bexiga e vias urinárias.",
     paragraphs: [
       "A urologia cuida do trato urinário e da saúde do homem — de um check-up de próstata ao tratamento de cálculo renal, infecções de repetição e alterações urinárias. No Hospital São Rafael, consulta, exame e cirurgia ficam integrados.",
@@ -381,7 +381,7 @@ const UROLOGIA: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta, exames e cirurgia urológica num só endereço.",
     description: "Do diagnóstico ao tratamento, com estrutura hospitalar completa.",
     items: [
@@ -394,7 +394,7 @@ const UROLOGIA: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "É hora de agendar se você percebe:",
     intro: "Sinais que merecem avaliação urológica. Na dúvida, fale com nossa equipe.",
     items: [
@@ -431,7 +431,7 @@ const GINECOLOGIA: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Ginecologia: cuidado integral da saúde da mulher.",
     paragraphs: [
       "A ginecologia acompanha a saúde da mulher em todas as fases — de consultas de rotina ao tratamento de miomas, endometriose e outras condições que afetam o bem-estar e a qualidade de vida. No Hospital São Rafael, consulta, exame e cirurgia ficam integrados.",
@@ -439,7 +439,7 @@ const GINECOLOGIA: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta, exames e cirurgia ginecológica num só endereço.",
     description: "Do diagnóstico ao tratamento, com cuidado humanizado.",
     items: [
@@ -452,7 +452,7 @@ const GINECOLOGIA: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "É hora de agendar se você percebe:",
     intro: "Sinais que merecem avaliação ginecológica. Na dúvida, fale com nossa equipe.",
     items: [
@@ -491,7 +491,7 @@ const DERMATOLOGIA: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Dermatologia cirúrgica: cuidado com lesões e tumores de pele.",
     paragraphs: [
       "A dermatologia cirúrgica avalia e trata lesões de pele — de uma pinta que mudou de cor ou tamanho à remoção de tumores cutâneos. No Hospital São Rafael, o diagnóstico histopatológico é integrado ao próprio complexo.",
@@ -499,7 +499,7 @@ const DERMATOLOGIA: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta, biópsia e cirurgia de pele num só endereço.",
     description: "Diagnóstico e tratamento integrados, com histopatologia no local.",
     items: [
@@ -512,7 +512,7 @@ const DERMATOLOGIA: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "É hora de agendar se você percebe:",
     intro: "Sinais que merecem avaliação dermatológica. Na dúvida, fale com nossa equipe.",
     items: [
@@ -551,7 +551,7 @@ const CIRURGIA_GERAL: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Cirurgia geral: tratamento de doenças do abdome.",
     paragraphs: [
       "A cirurgia geral trata condições do abdome — de uma pedra na vesícula ou hérnia que incomoda ao tratamento do refluxo que não melhora com remédio. No Hospital São Rafael, avaliação, exames e cirurgia ficam integrados.",
@@ -559,7 +559,7 @@ const CIRURGIA_GERAL: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta e cirurgia abdominal num só endereço.",
     description: "Do diagnóstico ao tratamento, com estrutura hospitalar completa.",
     items: [
@@ -572,7 +572,7 @@ const CIRURGIA_GERAL: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "É hora de agendar se você percebe:",
     intro: "Sinais que merecem avaliação cirúrgica. Na dúvida, fale com nossa equipe.",
     items: [
@@ -611,7 +611,7 @@ const CIRURGIA_PLASTICA: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Cirurgia plástica estética e reconstrutiva.",
     paragraphs: [
       "A cirurgia plástica engloba procedimentos estéticos e reconstrutivos — de cirurgias que harmonizam o corpo à reconstrução após uma mastectomia. No Hospital São Rafael, tudo acontece em ambiente hospitalar de alta complexidade.",
@@ -619,7 +619,7 @@ const CIRURGIA_PLASTICA: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta e cirurgia plástica em ambiente hospitalar.",
     description: "Procedimentos estéticos e reconstrutivos com segurança.",
     items: [
@@ -632,7 +632,7 @@ const CIRURGIA_PLASTICA: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "Agende sua avaliação se você quer:",
     intro: "Motivos comuns para uma consulta de cirurgia plástica. Fale com nossa equipe.",
     items: [
@@ -671,7 +671,7 @@ const CIRURGIA_VASCULAR: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Cirurgia vascular: saúde das artérias e veias.",
     paragraphs: [
       "A cirurgia vascular cuida da circulação — de varizes e sensação de peso nas pernas ao tratamento de aneurismas e obstruções arteriais. No Hospital São Rafael, avaliação, exames e tratamento ficam integrados.",
@@ -679,7 +679,7 @@ const CIRURGIA_VASCULAR: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta, exames e tratamento vascular num só endereço.",
     description: "Do diagnóstico ao tratamento das artérias e veias.",
     items: [
@@ -692,7 +692,7 @@ const CIRURGIA_VASCULAR: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "É hora de agendar se você percebe:",
     intro: "Sinais que merecem avaliação vascular. Na dúvida, fale com nossa equipe.",
     items: [
@@ -731,7 +731,7 @@ const CABECA_PESCOCO: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Cirurgia de cabeça e pescoço: tireoide, pescoço e glândulas.",
     paragraphs: [
       "A especialidade trata condições da região da cabeça e pescoço — de um nódulo na tireoide a tumores e alterações das glândulas salivares. No Hospital São Rafael, avaliação, exames e cirurgia ficam integrados.",
@@ -739,7 +739,7 @@ const CABECA_PESCOCO: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta, exames e cirurgia num só endereço.",
     description: "Do diagnóstico ao tratamento da região de cabeça e pescoço.",
     items: [
@@ -752,7 +752,7 @@ const CABECA_PESCOCO: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "É hora de agendar se você percebe:",
     intro: "Sinais que merecem avaliação. Na dúvida, fale com nossa equipe.",
     items: [
@@ -791,7 +791,7 @@ const MASTOLOGIA: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Mastologia: cuidado com a saúde da mama.",
     paragraphs: [
       "A mastologia cuida da saúde da mama — de um nódulo ou exame alterado ao tratamento cirúrgico com abordagem oncoplástica, que busca preservar forma e função. No Hospital São Rafael, avaliação, biópsia e cirurgia ficam integradas.",
@@ -799,7 +799,7 @@ const MASTOLOGIA: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta, exames e cirurgia da mama num só endereço.",
     description: "Do diagnóstico ao tratamento, com cuidado humanizado.",
     items: [
@@ -812,7 +812,7 @@ const MASTOLOGIA: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "É hora de agendar se você percebe:",
     intro: "Sinais que merecem avaliação. Na dúvida, fale com nossa equipe.",
     items: [
@@ -851,7 +851,7 @@ const OTORRINO: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Otorrinolaringologia: ouvido, nariz e garganta.",
     paragraphs: [
       "A otorrinolaringologia trata condições de ouvido, nariz e garganta — de uma sinusite de repetição e desvio de septo que atrapalham a respiração a amígdalas e problemas de audição. No Hospital São Rafael, avaliação e cirurgia ficam integradas.",
@@ -859,7 +859,7 @@ const OTORRINO: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Consulta e cirurgia de ouvido, nariz e garganta.",
     description: "Do diagnóstico ao tratamento, com estrutura hospitalar completa.",
     items: [
@@ -872,7 +872,7 @@ const OTORRINO: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "É hora de agendar se você percebe:",
     intro: "Sinais que merecem avaliação. Na dúvida, fale com nossa equipe.",
     items: [
@@ -911,7 +911,7 @@ const CLINICA_DOR: EspecialidadeLPData = {
     ],
   },
   intro: {
-    kicker: "O QUE É",
+    kicker: "O QUE É?",
     headline: "Clínica da Dor: tratamento de dores crônicas e persistentes.",
     paragraphs: [
       "A Clínica da Dor cuida de quem convive com dor que não passa — dor lombar, neuropatias, fibromialgia e dor persistente após cirurgia. No Hospital São Rafael, a avaliação é multidisciplinar e integrada.",
@@ -919,7 +919,7 @@ const CLINICA_DOR: EspecialidadeLPData = {
     ],
   },
   exams: {
-    kicker: "O QUE VOCÊ AGENDA AQUI",
+    kicker: "O QUE VOCÊ AGENDA AQUI?",
     headline: "Avaliação e procedimentos para tratamento da dor.",
     description: "Abordagem multidisciplinar da dor crônica, num só endereço.",
     items: [
@@ -932,7 +932,7 @@ const CLINICA_DOR: EspecialidadeLPData = {
     ],
   },
   indications: {
-    kicker: "QUANDO PROCURAR",
+    kicker: "QUANDO PROCURAR?",
     headline: "É hora de agendar se você convive com:",
     intro: "Situações que merecem avaliação especializada da dor. Fale com nossa equipe.",
     items: [
