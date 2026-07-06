@@ -86,10 +86,13 @@ const PLACEHOLDER_HERO = "/assets/images/servicos/centro-cirurgico-v2.jpg"
 // Foto real do médico da especialidade (parede IMD). Ver public/assets/images/especialidades/.
 const docHero = (slug: string) => `/assets/images/especialidades/${slug}.jpg`
 
-// Overlay direcional p/ heros com médico: escurece à esquerda (texto) e
-// clareia à direita (médico), mantendo legibilidade + rosto visível.
+// Overlay do hero com médico, responsivo:
+//  - mobile: gradiente de baixo p/ cima (texto no rodapé legível, rosto no topo)
+//  - desktop (lg+): direcional esquerda→direita (texto à esquerda escuro,
+//    médico à direita mais claro)
 const OVERLAY_DOC =
-  "bg-gradient-to-r from-charcoal/90 via-charcoal/60 to-charcoal/20"
+  "bg-gradient-to-t from-charcoal/90 via-charcoal/55 to-charcoal/30 " +
+  "lg:bg-gradient-to-r lg:from-charcoal/90 lg:via-charcoal/60 lg:to-charcoal/20"
 
 /** Prova institucional do HSR — igual para todas as especialidades. */
 const WHY_HSR: ServiceHighlightsData = {
