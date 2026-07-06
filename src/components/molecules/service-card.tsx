@@ -10,6 +10,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import { ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Heading } from "@/components/atoms/heading"
 import { BodyText } from "@/components/atoms/body-text"
@@ -42,6 +43,11 @@ interface ServiceCardProps extends BaseComponentProps {
   underConstruction?: boolean
   /** Oculta o CTA completamente — sem badge, sem botão */
   hideCta?: boolean
+  /**
+   * Affordance de link (ex "Ver especialidade") renderizada como span
+   * não-interativo — para quando o card inteiro já é um link.
+   */
+  linkLabel?: string
 }
 
 // -----------------------------------------------------------------------------
@@ -108,11 +114,11 @@ function ServiceCardImage({ title, description, image, imageAlt, onLearnMore, ct
 // -----------------------------------------------------------------------------
 // COMPONENTE — Variante com ícone
 // -----------------------------------------------------------------------------
-function ServiceCardIcon({ title, description, icon, onLearnMore, ctaLabel, href, underConstruction, hideCta, className }: ServiceCardProps) {
+function ServiceCardIcon({ title, description, icon, onLearnMore, ctaLabel, href, underConstruction, hideCta, linkLabel, className }: ServiceCardProps) {
   return (
     <article
       className={cn(
-        "group flex flex-col bg-white p-6 rounded-xl border border-neutral-100",
+        "group flex flex-col h-full bg-white p-6 rounded-xl border border-neutral-100",
         "transition-all duration-300 ease-in-out",
         "hover:-translate-y-1 hover:shadow-lg",
         className
@@ -121,7 +127,7 @@ function ServiceCardIcon({ title, description, icon, onLearnMore, ctaLabel, href
       {/* Ícone */}
       {icon && (
         <div className="mb-4 inline-flex w-fit">
-          <div className="p-3 bg-ouro/10 rounded-xl">
+          <div className="p-3 bg-ouro/10 rounded-xl group-hover:bg-ouro/20 transition-colors">
             <Icon name={resolveIconName(icon)} size={22} color="marrom" />
           </div>
         </div>
@@ -134,6 +140,27 @@ function ServiceCardIcon({ title, description, icon, onLearnMore, ctaLabel, href
       <BodyText color="muted" size="sm" className="mb-4">
         {description}
       </BodyText>
+
+      {/* Affordance de link — cara de botão p/ deixar claro que o card é clicável */}
+      {linkLabel && (
+        <span
+          className={cn(
+            "mt-auto inline-flex w-fit items-center gap-2 rounded-full px-4 py-2",
+            "text-sm font-bold text-marrom",
+            "ring-1 ring-ouro/40 bg-ouro/5",
+            "transition-colors duration-300",
+            "group-hover:bg-ouro group-hover:text-white group-hover:ring-ouro"
+          )}
+        >
+          {linkLabel}
+          <ArrowRight
+            size={16}
+            aria-hidden
+            className="transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </span>
+      )}
+
       {!hideCta && (underConstruction ? (
         <UnderConstruction />
       ) : (
