@@ -18,6 +18,8 @@ export interface ServiceHeroData {
   backgroundImage: string
   pills: string[]
   overlayClassName?: string
+  /** CSS object-position da imagem de fundo (ex "72% 50%"). Default "center". */
+  imagePosition?: string
 }
 
 export interface ServiceGalleryImage {
@@ -769,7 +771,8 @@ const IMD: ServiceDetailData = {
     subheadline:
       "O IMD reúne consultas, exames de imagem de última geração, laboratório e check-up em um único instituto particular. Laudo em até 24h e prontuário totalmente integrado ao centro cirúrgico do Hospital São Rafael.",
     backgroundImage: "/assets/images/servicos/imd2.png",
-    overlayClassName: "bg-gradient-to-r from-charcoal/85 via-charcoal/50 to-transparent",
+    overlayClassName:
+      "bg-gradient-to-t from-charcoal via-charcoal/55 to-transparent lg:bg-gradient-to-r lg:from-charcoal lg:from-10% lg:via-charcoal/65 lg:via-70% lg:to-transparent",
     pills: [
       "14 Especialidades",
       "Consultas e Exames",
