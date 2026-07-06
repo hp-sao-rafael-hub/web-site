@@ -279,6 +279,7 @@ export async function HomeTemplate() {
       <SpecialtyGrid
         data={especialidadesData}
         hideCta
+        className="!pb-12 lg:!pb-16"
       />
 
       {/* ================================================================= */}
@@ -287,6 +288,7 @@ export async function HomeTemplate() {
       {/* ================================================================= */}
       <JourneyTimeline
         data={jornadaData}
+        className="!pt-8 lg:!pt-10"
       />
 
       {/* ================================================================= */}
