@@ -48,7 +48,7 @@ export function ServicosCarousel({
 
   const resetTimer = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current)
-    intervalRef.current = setInterval(() => navigate(1), INTERVAL_MS)
+    intervalRef.current = setInterval(() => navigate(VISIBLE), INTERVAL_MS)
   }, [navigate])
 
   useEffect(() => {
@@ -89,7 +89,7 @@ export function ServicosCarousel({
         <div className="relative px-10 lg:px-12">
           {/* Seta esquerda */}
           <button
-            onClick={() => { navigate(-1); resetTimer() }}
+            onClick={() => { navigate(-VISIBLE); resetTimer() }}
             aria-label="Item anterior"
             className={cn(
               "absolute left-0 top-1/2 -translate-y-1/2 z-10",
@@ -125,7 +125,7 @@ export function ServicosCarousel({
 
           {/* Seta direita */}
           <button
-            onClick={() => { navigate(1); resetTimer() }}
+            onClick={() => { navigate(VISIBLE); resetTimer() }}
             aria-label="Próximo item"
             className={cn(
               "absolute right-0 top-1/2 -translate-y-1/2 z-10",

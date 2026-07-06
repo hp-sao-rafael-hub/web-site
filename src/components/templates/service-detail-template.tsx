@@ -126,7 +126,11 @@ export function ServiceDetailTemplate({
       )}
 
       {/* Hero (breadcrumb renderizado como overlay interno) */}
-      <ServicePageHero data={hero} breadcrumbItems={breadcrumbItems} />
+      <ServicePageHero
+        data={hero}
+        breadcrumbItems={breadcrumbItems}
+        pills2x2={data.slug === "imd"}
+      />
 
       {/* 1. Intro long-form */}
       {intro && <ServiceIntroBlock data={intro} sectionId="intro" />}
