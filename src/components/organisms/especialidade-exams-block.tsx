@@ -35,7 +35,7 @@ export function EspecialidadeExamsBlock({
       id={sectionId}
       aria-labelledby="exames-heading"
       ref={ref as React.RefObject<HTMLElement>}
-      className={cn("w-full bg-white py-20 lg:py-28 scroll-mt-24", className)}
+      className={cn("w-full bg-white pt-10 pb-20 lg:pt-12 lg:pb-28 scroll-mt-24", className)}
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Cabeçalho */}

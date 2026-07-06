@@ -63,8 +63,8 @@ export function EspecialidadeLPTemplate({
       {/* 1. Hero — CTA WhatsApp único já embutido no organism */}
       <ServicePageHero data={hero} />
 
-      {/* 2. O que é / pra quem */}
-      <ServiceIntroBlock data={intro} sectionId="sobre" />
+      {/* 2. O que é / pra quem (pb reduzido — cola melhor no bloco de exames) */}
+      <ServiceIntroBlock data={intro} sectionId="sobre" className="!pb-10 lg:!pb-14" />
 
       {/* 3. Exames agendáveis (a oferta) */}
       <EspecialidadeExamsBlock data={exams} />
