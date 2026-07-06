@@ -78,7 +78,11 @@ export function EspecialidadeLPTemplate({
       />
 
       {/* 5. Quando procurar (indicações) */}
-      <ServiceIndicationsBlock data={indications} sectionId="quando-procurar" />
+      <ServiceIndicationsBlock
+        data={indications}
+        sectionId="quando-procurar"
+        reserveRightGutter={false}
+      />
 
       {/* 6. CTA */}
       <ServiceInlineCta

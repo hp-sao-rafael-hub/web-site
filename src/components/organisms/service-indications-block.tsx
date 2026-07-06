@@ -19,6 +19,8 @@ import type { ServiceIndicationsData } from "@/lib/services-content"
 interface ServiceIndicationsBlockProps extends BaseComponentProps {
   data: ServiceIndicationsData
   sectionId?: string
+  /** Reservar gutter direito p/ TOC sidebar (xl+). Default true (páginas de serviço). */
+  reserveRightGutter?: boolean
 }
 
 // -----------------------------------------------------------------------------
@@ -27,6 +29,7 @@ interface ServiceIndicationsBlockProps extends BaseComponentProps {
 export function ServiceIndicationsBlock({
   data,
   sectionId = "indicacoes",
+  reserveRightGutter = true,
   className,
 }: ServiceIndicationsBlockProps) {
   const { kicker, headline, intro, items, note } = data
@@ -37,7 +40,12 @@ export function ServiceIndicationsBlock({
       aria-labelledby={`${sectionId}-heading`}
       className={cn("w-full py-20 lg:py-30 bg-creme scroll-mt-24", className)}
     >
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 xl:pr-[260px] 2xl:pr-[300px]">
+      <div
+        className={cn(
+          "max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8",
+          reserveRightGutter && "xl:pr-[260px] 2xl:pr-[300px]"
+        )}
+      >
         <header className="flex flex-col gap-4 max-w-[760px] mb-12 lg:mb-16">
           <Kicker color="cobre">{kicker}</Kicker>
           <Heading as="h2" id={`${sectionId}-heading`}>
@@ -53,7 +61,7 @@ export function ServiceIndicationsBlock({
 
         <ul
           role="list"
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {items.map((item) => (
             <li
