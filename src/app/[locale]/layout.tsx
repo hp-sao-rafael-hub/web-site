@@ -7,7 +7,7 @@
 
 import type { Metadata, Viewport } from "next"
 import { SITE_METADATA, SCHEMA_DATA, NAV_ITEMS, NAV_CTA } from "@/lib/constants"
-import { SiteHeader } from "@/components/organisms/site-header"
+import { ConditionalSiteHeader } from "@/components/molecules/conditional-site-header"
 import FacebookPixel from "@/components/FacebookPixel"
 import { LangSuggestBanner } from "@/components/molecules/lang-suggest-banner"
 import { NextIntlClientProvider } from 'next-intl'
@@ -154,8 +154,9 @@ export default async function RootLayout({
     <NextIntlClientProvider messages={messages}>
       <SchemaJsonLd />
 
-      {/* Header — fora do <main> para semântica correta */}
-      <SiteHeader
+      {/* Header — fora do <main> para semântica correta.
+          Oculto nas LPs de especialidade (header minimalista próprio). */}
+      <ConditionalSiteHeader
         navItems={translatedNavItems}
         cta={navCta}
       />
