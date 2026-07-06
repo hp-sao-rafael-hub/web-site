@@ -28,12 +28,14 @@ interface ServicePageHeroProps extends BaseComponentProps {
   data: ServiceHeroData
   /** Trilha de navegação exibida como overlay no topo do hero */
   breadcrumbItems?: BreadcrumbItem[]
+  /** Força as pills em grade 2x2 (2 em cima, 2 embaixo) em todos os breakpoints */
+  pills2x2?: boolean
 }
 
 // -----------------------------------------------------------------------------
 // COMPONENTE
 // -----------------------------------------------------------------------------
-export function ServicePageHero({ data, className, breadcrumbItems }: ServicePageHeroProps) {
+export function ServicePageHero({ data, className, breadcrumbItems, pills2x2 = false }: ServicePageHeroProps) {
   const { ref, hasIntersected } = useIntersection({ threshold: 0.1, once: true })
 
   const { kicker, headline, subheadline, backgroundImage, pills } = data
@@ -154,7 +156,9 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
           {pills.length > 0 && (
             <div
               className={cn(
-                "grid grid-cols-2 lg:flex lg:flex-wrap gap-1.5 lg:gap-2",
+                pills2x2
+                  ? "grid grid-cols-2 w-fit gap-1.5 lg:gap-2"
+                  : "grid grid-cols-2 lg:flex lg:flex-wrap gap-1.5 lg:gap-2",
                 "transition-all duration-700 delay-300",
                 hasIntersected ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               )}
