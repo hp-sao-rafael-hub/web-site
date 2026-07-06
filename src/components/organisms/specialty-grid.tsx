@@ -8,17 +8,15 @@
 "use client"
 
 import { useState, useEffect, useRef, useCallback } from "react"
-import { ChevronLeft, ChevronRight, ArrowRight, MessageCircle } from "lucide-react"
-import { useTranslations } from "next-intl"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Link } from "@/i18n/navigation"
 import { cn } from "@/lib/utils"
 import { Kicker } from "@/components/atoms/kicker"
 import { Heading } from "@/components/atoms/heading"
 import { BodyText } from "@/components/atoms/body-text"
 import { ServiceCard } from "@/components/molecules/service-card"
-import { ModalOverlay } from "@/components/organisms/modal-overlay"
 import { useIntersection } from "@/hooks/use-intersection"
-import type { BaseComponentProps, EspecialidadesData, EspecialidadeItem } from "@/types"
+import type { BaseComponentProps, EspecialidadesData } from "@/types"
 
 const VISIBLE = 3
 const INTERVAL_MS = 6000
@@ -32,84 +30,9 @@ interface SpecialtyGridProps extends BaseComponentProps {
 }
 
 // -----------------------------------------------------------------------------
-// CONTEÚDO INTERNO DO MODAL DE ESPECIALIDADE
-// -----------------------------------------------------------------------------
-function SpecialtyModalContent({ item }: { item: EspecialidadeItem }) {
-  const t = useTranslations("especialidades")
-  return (
-    <div className="flex flex-col gap-6">
-      {/* Descrição */}
-      <BodyText color="muted">{item.description}</BodyText>
-
-      {/* Procedimentos (se houver) */}
-      {item.procedures && item.procedures.length > 0 ? (
-        <div>
-          <h3 className="text-sm font-extrabold uppercase tracking-kicker text-charcoal/50 mb-4">
-            {t("modalProceduresTitle")}
-          </h3>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2" role="list">
-            {item.procedures.map((procedure) => (
-              <li
-                key={procedure}
-                className="flex items-center gap-2 text-sm text-charcoal/80"
-              >
-                <span
-                  className="w-1 h-1 rounded-full bg-ouro flex-shrink-0"
-                  aria-hidden
-                />
-                {procedure}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : (
-        <p className="text-sm text-charcoal/40 italic">
-          {t("modalProceduresPending")}
-        </p>
-      )}
-
-      {/* CTA */}
-      <div className="pt-4 border-t border-charcoal/10 flex flex-col sm:flex-row gap-3">
-        {/* Primário: página completa da especialidade */}
-        <Link
-          href={`/especialidades/${item.id}`}
-          className={cn(
-            "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full",
-            "bg-ouro text-white font-bold text-sm",
-            "transition-colors duration-300 hover:bg-ouro-hover",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
-          )}
-        >
-          Ver página da especialidade
-          <ArrowRight size={16} aria-hidden />
-        </Link>
-
-        {/* Secundário: WhatsApp direto */}
-        <a
-          href="https://wa.me/5531971511855"
-          target="_blank"
-          rel="noopener noreferrer"
-          className={cn(
-            "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full",
-            "bg-white text-charcoal font-bold text-sm ring-1 ring-charcoal/15",
-            "transition-colors duration-300 hover:bg-neutral-50",
-            "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro"
-          )}
-        >
-          <MessageCircle size={16} aria-hidden />
-          {t("modalCtaLabel")}
-        </a>
-      </div>
-    </div>
-  )
-}
-
-// -----------------------------------------------------------------------------
 // COMPONENTE PRINCIPAL
 // -----------------------------------------------------------------------------
-export function SpecialtyGrid({ data, hideCta, className }: SpecialtyGridProps) {
-  const t = useTranslations("especialidades")
-  const [activeSpecialty, setActiveSpecialty] = useState<EspecialidadeItem | null>(null)
+export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
   const [current, setCurrent] = useState(0)
   const [fading, setFading] = useState(false)
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -196,17 +119,22 @@ export function SpecialtyGrid({ data, hideCta, className }: SpecialtyGridProps) 
               )}
             >
               {visibleItems.map((item, index) => (
-                <div key={`${item.id}-${index}`} className="min-h-[220px]">
+                <Link
+                  key={`${item.id}-${index}`}
+                  href={`/especialidades/${item.id}`}
+                  aria-label={`Ver especialidade: ${item.title}`}
+                  className="block min-h-[220px] rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro focus-visible:ring-offset-2"
+                >
                   <ServiceCard
                     title={item.title}
                     description={item.description}
                     icon={item.icon}
                     variant="icon-only"
-                    ctaLabel={t("viewProcedures")}
-                    onLearnMore={() => setActiveSpecialty(item)}
-                    hideCta={hideCta}
+                    linkLabel="Ver especialidade"
+                    hideCta
+                    className="h-full"
                   />
-                </div>
+                </Link>
               ))}
             </div>
 
@@ -231,18 +159,6 @@ export function SpecialtyGrid({ data, hideCta, className }: SpecialtyGridProps) 
           </p>
         </div>
       </section>
-
-      {/* Modal de especialidade */}
-      <ModalOverlay
-        isOpen={activeSpecialty !== null}
-        onClose={() => setActiveSpecialty(null)}
-        title={activeSpecialty?.title ?? ""}
-        maxWidth="lg"
-      >
-        {activeSpecialty && (
-          <SpecialtyModalContent item={activeSpecialty} />
-        )}
-      </ModalOverlay>
     </>
   )
 }
