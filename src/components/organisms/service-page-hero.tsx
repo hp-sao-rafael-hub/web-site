@@ -195,7 +195,7 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
             >
               Falar no WhatsApp
             </Button>
-            <p className="text-xs text-white/65 leading-snug max-w-[360px]">
+            <p className="text-[10px] lg:text-[11px] text-white/65 leading-snug max-w-[360px]">
               Avaliação inicial sem compromisso · Resposta em até 1 hora útil
             </p>
           </div>
