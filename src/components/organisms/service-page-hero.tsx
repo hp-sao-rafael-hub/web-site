@@ -56,7 +56,8 @@ export function ServicePageHero({ data, className, breadcrumbItems }: ServicePag
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center"
+        className="object-cover"
+        style={{ objectPosition: data.imagePosition ?? "center" }}
         aria-hidden="true"
       />
 

@@ -301,6 +301,7 @@ const NEUROCIRURGIA: EspecialidadeLPData = {
       "Avaliação, exames de imagem e cirurgia de coluna e sistema nervoso, com técnicas minimamente invasivas sempre que possível. Atendimento particular.",
     backgroundImage: docHero("neurocirurgia"),
     overlayClassName: OVERLAY_DOC,
+    imagePosition: "72% 50%",
     pills: [
       "Consulta com neurocirurgião",
       "Cirurgia minimamente invasiva",
@@ -360,6 +361,7 @@ const UROLOGIA: EspecialidadeLPData = {
       "Consulta, exames e cirurgia urológica com técnicas minimamente invasivas e foco em recuperação rápida. Atendimento particular.",
     backgroundImage: docHero("urologia"),
     overlayClassName: OVERLAY_DOC,
+    imagePosition: "72% 50%",
     pills: [
       "Consulta com urologista",
       "Exames urológicos",
@@ -477,6 +479,7 @@ const DERMATOLOGIA: EspecialidadeLPData = {
       "Avaliação, biópsia e cirurgia de pele com diagnóstico integrado no próprio complexo hospitalar. Fluxo ágil entre exame e procedimento. Atendimento particular.",
     backgroundImage: docHero("dermatologia"),
     overlayClassName: OVERLAY_DOC,
+    imagePosition: "72% 50%",
     pills: [
       "Consulta com dermatologista",
       "Biópsia e histopatologia",
@@ -536,6 +539,7 @@ const CIRURGIA_GERAL: EspecialidadeLPData = {
       "Avaliação e cirurgia abdominal por laparoscopia ou aberta, com integração de UTI e anestesiologia para casos complexos. Atendimento particular.",
     backgroundImage: docHero("cirurgia-geral"),
     overlayClassName: OVERLAY_DOC,
+    imagePosition: "72% 50%",
     pills: [
       "Consulta com cirurgião geral",
       "Cirurgia por laparoscopia",
@@ -595,6 +599,7 @@ const CIRURGIA_PLASTICA: EspecialidadeLPData = {
       "Avaliação e procedimentos estéticos e reconstrutivos em centro cirúrgico de alta complexidade, com equipe especializada. Atendimento particular.",
     backgroundImage: docHero("cirurgia-plastica"),
     overlayClassName: OVERLAY_DOC,
+    imagePosition: "72% 50%",
     pills: [
       "Consulta com cirurgião plástico",
       "Ambiente hospitalar",
@@ -654,6 +659,7 @@ const CIRURGIA_VASCULAR: EspecialidadeLPData = {
       "Avaliação, exames e tratamento de doenças das artérias e veias, com abordagem endovascular e cirúrgica. Atendimento particular.",
     backgroundImage: docHero("cirurgia-vascular"),
     overlayClassName: OVERLAY_DOC,
+    imagePosition: "72% 50%",
     pills: [
       "Consulta com cirurgião vascular",
       "Exames vasculares",
@@ -713,6 +719,7 @@ const CABECA_PESCOCO: EspecialidadeLPData = {
       "Avaliação, exames e cirurgia da tireoide e da região do pescoço, com equipe multidisciplinar integrada. Atendimento particular.",
     backgroundImage: docHero("cabeca-pescoco"),
     overlayClassName: OVERLAY_DOC,
+    imagePosition: "72% 50%",
     pills: [
       "Consulta especializada",
       "Cirurgia de tireoide",
@@ -772,6 +779,7 @@ const MASTOLOGIA: EspecialidadeLPData = {
       "Avaliação, biópsia e cirurgia da mama com abordagem que preserva forma e função, em ambiente humanizado. Atendimento particular.",
     backgroundImage: docHero("mastologia"),
     overlayClassName: OVERLAY_DOC,
+    imagePosition: "72% 50%",
     pills: [
       "Consulta com mastologista",
       "Biópsia mamária",
@@ -831,6 +839,7 @@ const OTORRINO: EspecialidadeLPData = {
       "Avaliação e cirurgia de ouvido, nariz e garganta com técnicas modernas e mínimo tempo de internação. Atendimento particular.",
     backgroundImage: docHero("otorrinolaringologia"),
     overlayClassName: OVERLAY_DOC,
+    imagePosition: "72% 50%",
     pills: [
       "Consulta com otorrino",
       "Cirurgia de nariz e garganta",
@@ -890,6 +899,7 @@ const CLINICA_DOR: EspecialidadeLPData = {
       "Avaliação multidisciplinar e tratamento intervencionista de dores persistentes, com procedimentos guiados por imagem. Atendimento particular.",
     backgroundImage: docHero("clinica-dor"),
     overlayClassName: OVERLAY_DOC,
+    imagePosition: "72% 50%",
     pills: [
       "Avaliação multidisciplinar",
       "Procedimentos guiados por imagem",

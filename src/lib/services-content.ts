@@ -18,6 +18,8 @@ export interface ServiceHeroData {
   backgroundImage: string
   pills: string[]
   overlayClassName?: string
+  /** CSS object-position da imagem de fundo (ex "72% 50%"). Default "center". */
+  imagePosition?: string
 }
 
 export interface ServiceGalleryImage {
