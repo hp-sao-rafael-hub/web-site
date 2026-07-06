@@ -770,7 +770,8 @@ const IMD: ServiceDetailData = {
     headline: "Tecnologia de ponta, especialistas e diagnóstico exclusivo.",
     subheadline:
       "O IMD reúne consultas, exames de imagem de última geração, laboratório e check-up em um único instituto particular. Laudo em até 24h e prontuário totalmente integrado ao centro cirúrgico do Hospital São Rafael.",
-    backgroundImage: "/assets/images/servicos/imd2.png",
+    backgroundImage: "/assets/images/servicos/imd-hero.jpg",
+    imagePosition: "70% 50%",
     overlayClassName:
       "bg-gradient-to-t from-charcoal via-charcoal/55 to-transparent lg:bg-gradient-to-r lg:from-charcoal lg:from-10% lg:via-charcoal/65 lg:via-70% lg:to-transparent",
     pills: [
