@@ -139,16 +139,15 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
                     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro focus-visible:ring-offset-2"
                   )}
                 >
-                  {/* Foto do médico (ou fallback de ícone) */}
-                  <div className="relative h-48 bg-creme overflow-hidden">
+                  {/* Foto do médico (original, centralizada) ou fallback de ícone */}
+                  <div className="relative aspect-square bg-creme overflow-hidden">
                     {COM_FOTO.has(item.id) ? (
                       <Image
-                        src={`/assets/images/especialidades/${item.id}.jpg`}
+                        src={`/assets/images/especialidades-card/${item.id}.jpg`}
                         alt={`Especialista em ${item.title} — Hospital São Rafael`}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        style={{ objectPosition: "72% 50%" }}
+                        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
                       />
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center bg-charcoal/90">
