@@ -8,15 +8,24 @@
 "use client"
 
 import { useState, useEffect, useRef, useCallback } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import Image from "next/image"
+import { ChevronLeft, ChevronRight, ArrowRight, Check } from "lucide-react"
 import { Link } from "@/i18n/navigation"
 import { cn } from "@/lib/utils"
 import { Kicker } from "@/components/atoms/kicker"
 import { Heading } from "@/components/atoms/heading"
 import { BodyText } from "@/components/atoms/body-text"
-import { ServiceCard } from "@/components/molecules/service-card"
+import { Icon, resolveIconName } from "@/components/atoms/icon"
 import { useIntersection } from "@/hooks/use-intersection"
 import type { BaseComponentProps, EspecialidadesData } from "@/types"
+
+// Especialidades COM foto de médico (public/assets/images/especialidades/<id>.jpg).
+// As demais (ortopedia, cardiologia, ginecologia) caem no fallback de ícone.
+const COM_FOTO = new Set([
+  "cabeca-pescoco", "neurocirurgia", "cirurgia-geral", "urologia",
+  "otorrinolaringologia", "dermatologia", "cirurgia-vascular",
+  "cirurgia-plastica", "mastologia", "clinica-dor",
+])
 
 const VISIBLE = 3
 const INTERVAL_MS = 6000
@@ -123,17 +132,51 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
                   key={`${item.id}-${index}`}
                   href={`/especialidades/${item.id}`}
                   aria-label={`Ver especialidade: ${item.title}`}
-                  className="block min-h-[220px] rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro focus-visible:ring-offset-2"
+                  className={cn(
+                    "group flex flex-col h-full overflow-hidden rounded-2xl bg-white",
+                    "ring-1 ring-cobre/12 shadow-[0_2px_10px_rgba(46,46,46,.04)]",
+                    "transition-all duration-300 hover:-translate-y-1 hover:shadow-lg",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro focus-visible:ring-offset-2"
+                  )}
                 >
-                  <ServiceCard
-                    title={item.title}
-                    description={item.description}
-                    icon={item.icon}
-                    variant="icon-only"
-                    linkLabel="Ver especialidade"
-                    hideCta
-                    className="h-full"
-                  />
+                  {/* Foto do médico (ou fallback de ícone) */}
+                  <div className="relative h-48 bg-creme overflow-hidden">
+                    {COM_FOTO.has(item.id) ? (
+                      <Image
+                        src={`/assets/images/especialidades/${item.id}.jpg`}
+                        alt={`Especialista em ${item.title} — Hospital São Rafael`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        style={{ objectPosition: "72% 50%" }}
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center bg-charcoal/90">
+                        <Icon name={resolveIconName(item.icon)} size={44} color="ouro" />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Corpo: título + tópicos + CTA */}
+                  <div className="flex flex-col flex-1 gap-4 p-6">
+                    <Heading as="h3" className="!text-xl">
+                      {item.title}
+                    </Heading>
+
+                    <ul role="list" className="flex flex-col gap-2">
+                      {item.procedures.slice(0, 4).map((proc) => (
+                        <li key={proc} className="flex items-start gap-2.5 text-sm text-charcoal/75 leading-snug">
+                          <Check size={16} className="mt-0.5 shrink-0 text-ouro" aria-hidden />
+                          <span>{proc}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <span className="mt-auto inline-flex w-fit items-center gap-2 rounded-full px-4 py-2 text-sm font-bold text-marrom ring-1 ring-ouro/40 bg-ouro/5 transition-colors group-hover:bg-ouro group-hover:text-white group-hover:ring-ouro">
+                      Ver especialidade
+                      <ArrowRight size={16} aria-hidden className="transition-transform duration-300 group-hover:translate-x-1" />
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>

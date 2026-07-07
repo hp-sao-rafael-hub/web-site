@@ -24,7 +24,6 @@ import { StatsBar } from "@/components/organisms/stats-bar"
 import { ContentBlock } from "@/components/organisms/content-block"
 import { CardGrid } from "@/components/organisms/card-grid"
 import { ServicosCarousel } from "@/components/organisms/servicos-carousel"
-import { SpecialtyGrid } from "@/components/organisms/specialty-grid"
 import { ProductsSection } from "@/components/organisms/products-section"
 import { JourneyTimeline } from "@/components/organisms/journey-timeline"
 import { B2BSection } from "@/components/organisms/b2b-section"
@@ -37,7 +36,6 @@ import {
   DIFERENCIAIS_DATA,
   IMD_SECTION_DATA,
   SERVICOS_DATA,
-  ESPECIALIDADES_DATA,
   PRODUTOS_DATA,
   JORNADA_DATA,
   B2B_DATA,
@@ -49,7 +47,6 @@ import type {
   HeroData,
   StatsData,
   ContentBlockData,
-  EspecialidadesData,
   ProdutosData,
   JornadaData,
   B2BData,
@@ -63,14 +60,13 @@ import type {
 // COMPONENTE
 // -----------------------------------------------------------------------------
 export async function HomeTemplate() {
-  const [tHero, tStats, tFooter, tDiferenciais, tServicos, tB2B, tEspec, tProdutos, tJornada, tFaq] = await Promise.all([
+  const [tHero, tStats, tFooter, tDiferenciais, tServicos, tB2B, tProdutos, tJornada, tFaq] = await Promise.all([
     getTranslations("hero"),
     getTranslations("stats"),
     getTranslations("footer"),
     getTranslations("diferenciais"),
     getTranslations("servicos"),
     getTranslations("b2b"),
-    getTranslations("especialidades"),
     getTranslations("produtos"),
     getTranslations("jornada"),
     getTranslations("faq"),
@@ -173,18 +169,6 @@ export async function HomeTemplate() {
     })),
   }
 
-  const especialidadesData: EspecialidadesData = {
-    kicker: tEspec("kicker"),
-    headline: tEspec("headline"),
-    description: tEspec("description"),
-    items: ESPECIALIDADES_DATA.items.map((item) => ({
-      ...item,
-      title: tEspec(`items.${item.id}.title`),
-      description: tEspec(`items.${item.id}.description`),
-      procedures: tEspec.raw(`items.${item.id}.procedures`) as string[],
-    })),
-  }
-
   const servicosItems: ServiceItem[] = SERVICOS_DATA.items.map((item) => ({
     ...item,
     title: tServicos(`items.${item.id}.title`),
@@ -273,22 +257,11 @@ export async function HomeTemplate() {
       />
 
       {/* ================================================================= */}
-      {/* DOBRA 6 — ESPECIALIDADES (parte do IMD)                           */}
-      {/* Grid com modais de detalhamento por especialidade                 */}
-      {/* ================================================================= */}
-      <SpecialtyGrid
-        data={especialidadesData}
-        hideCta
-        className="!pb-12 lg:!pb-16"
-      />
-
-      {/* ================================================================= */}
       {/* DOBRA 7 — COMPLEXO INTEGRADO (Jornada)                           */}
       {/* Timeline do diagnóstico à alta. Links para serviços por etapa     */}
       {/* ================================================================= */}
       <JourneyTimeline
         data={jornadaData}
-        className="!pt-8 lg:!pt-10"
       />
 
       {/* ================================================================= */}
