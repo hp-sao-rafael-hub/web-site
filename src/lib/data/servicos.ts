@@ -30,7 +30,7 @@ export const SERVICOS_DATA = {
       description:
         "O IMD do Hospital São Rafael reúne consultas e exames em um só lugar, com mais precisão, agilidade e muito mais conforto.",
       icon: "microscope",
-      image: "/assets/images/servicos/imd2.png",
+      image: "/assets/images/servicos/imd2.jpg",
       href: "/servicos/imd",
     },
     {
