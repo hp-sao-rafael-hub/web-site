@@ -44,7 +44,7 @@ export function B2BSection({ data, className }: B2BSectionProps) {
     once: true,
   })
 
-  const { kicker, headline, subheadline, features, testimonials, ctaPrimary, cta } = data
+  const { kicker, headline, subheadline, features, testimonials, ctaPrimary } = data
 
   // --- Carrossel de depoimentos --------------------------------------------
   const [activeIndex, setActiveIndex] = useState(0)
@@ -132,9 +132,6 @@ export function B2BSection({ data, className }: B2BSectionProps) {
                 {ctaPrimary.label}
               </Button>
             )}
-            <Button variant="outline" size="md" href={cta.href}>
-              {cta.label}
-            </Button>
           </div>
         </div>
 

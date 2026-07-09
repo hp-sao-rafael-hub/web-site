@@ -179,7 +179,6 @@ export interface B2BData {
   features: B2BFeature[]
   testimonials: TestimonialItem[]
   ctaPrimary?: NavCTA
-  cta: NavCTA
 }
 
 // -----------------------------------------------------------------------------
