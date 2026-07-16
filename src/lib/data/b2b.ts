@@ -79,8 +79,4 @@ export const B2B_DATA = {
     label: "Saiba mais",
     href: "/para-cirurgioes-parceiros/",
   },
-  cta: {
-    label: "Falar com Relacionamento Médico",
-    href: "https://wa.me/5531972391902",
-  },
 } as const

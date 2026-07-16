@@ -74,7 +74,6 @@ export async function HomeTemplate() {
 
   const heroCta = { label: tHero("ctaLabel"), href: HERO_DATA.ctaPrimary.href }
   const b2bCtaPrimary = { label: tB2B("ctaPrimaryLabel"), href: B2B_DATA.ctaPrimary.href }
-  const b2bCta = { label: tB2B("ctaLabel"), href: B2B_DATA.cta.href }
 
   const heroData: HeroData = {
     kicker: tHero("kicker"),
@@ -191,7 +190,6 @@ export async function HomeTemplate() {
       role: tB2B(`testimonials.${tst.id}.role`),
     })),
     ctaPrimary: b2bCtaPrimary,
-    cta: b2bCta,
   }
   const faqData: FAQData = {
     kicker: tFaq("kicker"),
