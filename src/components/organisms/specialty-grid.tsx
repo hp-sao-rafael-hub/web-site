@@ -19,12 +19,13 @@ import { Icon, resolveIconName } from "@/components/atoms/icon"
 import { useIntersection } from "@/hooks/use-intersection"
 import type { BaseComponentProps, EspecialidadesData } from "@/types"
 
-// Especialidades COM foto de médico (public/assets/images/especialidades/<id>.jpg).
-// As demais (ortopedia, cardiologia, ginecologia) caem no fallback de ícone.
+// Especialidades COM foto de médico (public/assets/images/especialidades-card/<id>.jpg).
+// Todas as 13 têm foto; o fallback de ícone fica só como rede de segurança.
 const COM_FOTO = new Set([
   "cabeca-pescoco", "neurocirurgia", "cirurgia-geral", "urologia",
   "otorrinolaringologia", "dermatologia", "cirurgia-vascular",
   "cirurgia-plastica", "mastologia", "clinica-dor",
+  "ortopedia", "cardiologia", "ginecologia",
 ])
 
 const VISIBLE = 3
