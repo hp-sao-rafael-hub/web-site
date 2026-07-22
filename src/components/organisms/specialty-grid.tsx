@@ -19,12 +19,13 @@ import { Icon, resolveIconName } from "@/components/atoms/icon"
 import { useIntersection } from "@/hooks/use-intersection"
 import type { BaseComponentProps, EspecialidadesData } from "@/types"
 
-// Especialidades COM foto de médico (public/assets/images/especialidades/<id>.jpg).
-// As demais (ortopedia, cardiologia, ginecologia) caem no fallback de ícone.
+// Especialidades COM foto de médico (public/assets/images/especialidades-card/<id>.jpg).
+// Todas as 13 têm foto; o fallback de ícone fica só como rede de segurança.
 const COM_FOTO = new Set([
   "cabeca-pescoco", "neurocirurgia", "cirurgia-geral", "urologia",
   "otorrinolaringologia", "dermatologia", "cirurgia-vascular",
   "cirurgia-plastica", "mastologia", "clinica-dor",
+  "ortopedia", "cardiologia", "ginecologia",
 ])
 
 const VISIBLE = 3
@@ -51,15 +52,23 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
   const { kicker, headline, description, items } = data
   const total = items.length
 
+  // Início máximo de uma página: fixa a última no fim da lista, sem envolver
+  // o começo. Com total não múltiplo de VISIBLE, a última página sobrepõe um
+  // pouco a anterior — mas a janela nunca mistura fim + começo (ex.: 13, 1, 2).
+  const maxStart = Math.max(0, total - VISIBLE)
+
   const navigate = useCallback(
     (delta: number) => {
       setFading(true)
       setTimeout(() => {
-        setCurrent(c => ((c + delta) % total + total) % total)
+        setCurrent(c => {
+          if (delta > 0) return c >= maxStart ? 0 : Math.min(c + delta, maxStart)
+          return c <= 0 ? maxStart : Math.max(c + delta, 0)
+        })
         setFading(false)
       }, 200)
     },
-    [total]
+    [maxStart]
   )
 
   const resetTimer = useCallback(() => {
