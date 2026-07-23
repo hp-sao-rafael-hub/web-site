@@ -91,6 +91,10 @@ export function ServiceDetailTemplate({
   // schemaType vindo do dado tem prioridade sobre o default da prop
   const resolvedSchemaType = data.schemaType ?? schemaType
 
+  // WhatsApp do serviço: IMD (e afins) definem o próprio; demais serviços do
+  // hospital caem no número do hospital. Propagado a todos os CTAs desta página.
+  const serviceWhatsapp = data.whatsapp ?? "https://wa.me/5531996445370"
+
   // Label curto p/ 3º nível do breadcrumb (evita wrap em mobile e cobertura do H1).
   // Prioridade: kicker (title-case) → slug formatado.
   const breadcrumbShortLabel = hero.kicker
@@ -122,7 +126,7 @@ export function ServiceDetailTemplate({
 
       {/* TOC flutuante (desktop XL+) */}
       {navSections && navSections.length > 0 && (
-        <ServiceSidebarNav sections={navSections} />
+        <ServiceSidebarNav sections={navSections} whatsappHref={serviceWhatsapp} />
       )}
 
       {/* Hero (breadcrumb renderizado como overlay interno) */}
@@ -130,6 +134,7 @@ export function ServiceDetailTemplate({
         data={hero}
         breadcrumbItems={breadcrumbItems}
         pills2x2={data.slug === "imd"}
+        whatsappHref={serviceWhatsapp}
       />
 
       {/* 1. Intro long-form */}
@@ -149,6 +154,7 @@ export function ServiceDetailTemplate({
             headline="Fale com nossa equipe e entenda se esse é o caminho para você."
             description="Atendimento humano, rápido e particular. Tire suas dúvidas com a equipe responsável e descubra se o tratamento se aplica ao seu quadro clínico."
             variant="creme"
+            whatsappHref={serviceWhatsapp}
           />
         </>
       )}
@@ -192,6 +198,7 @@ export function ServiceDetailTemplate({
             headline="Agende sua avaliação e dê o próximo passo."
             description="Nossa equipe de relacionamento orienta cada etapa, do primeiro contato à finalização do tratamento. Atendimento exclusivamente particular, com agilidade e acolhimento."
             variant="charcoal"
+            whatsappHref={serviceWhatsapp}
           />
         </>
       )}
@@ -227,6 +234,7 @@ export function ServiceDetailTemplate({
         headline="Converse direto com a equipe, sem compromisso."
         description="Mesmo após a leitura, é normal restarem questões específicas sobre o seu caso. Fale com a gente pelo canal de sua preferência."
         variant="creme"
+        whatsappHref={serviceWhatsapp}
       />
 
       {/* 10. Conteúdo relacionado */}
@@ -249,7 +257,7 @@ export function ServiceDetailTemplate({
       <Footer data={FOOTER_DATA as unknown as FooterData} />
 
       {/* Sticky CTA mobile — sempre acessível durante a leitura */}
-      <ServiceStickyCta />
+      <ServiceStickyCta whatsappHref={serviceWhatsapp} />
     </>
   )
 }

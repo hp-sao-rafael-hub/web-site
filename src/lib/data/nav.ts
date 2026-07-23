@@ -11,5 +11,5 @@ export const NAV_ITEMS = [
 
 export const NAV_CTA = {
   label: "Falar com Atendimento",
-  href: "https://wa.me/5531971511855",
+  href: "https://wa.me/5531996445370",
 } as const

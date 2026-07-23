@@ -6,7 +6,7 @@ export const HERO_DATA = {
   ],
   ctaPrimary: {
     label: "Falar com Atendimento",
-    href: "https://wa.me/5531971511855",
+    href: "https://wa.me/5531996445370",
   },
   video: {
     src: "/assets/video/hero-hsr.mp4",

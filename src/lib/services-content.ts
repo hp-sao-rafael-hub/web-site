@@ -218,6 +218,8 @@ export interface ServiceReferenceItem {
 
 export interface ServiceDetailData {
   slug: string
+  /** WhatsApp de atendimento (URL wa.me). Default no template = número do hospital. IMD sobrescreve com o número próprio. */
+  whatsapp?: string
   meta: {
     title: string
     description: string
@@ -749,6 +751,7 @@ const INTERNACAO: ServiceDetailData = {
 
 const IMD: ServiceDetailData = {
   slug: "imd",
+  whatsapp: "https://wa.me/5531971511855",
   meta: {
     title: "IMD | Instituto Médico e Diagnóstico do Hospital São Rafael",
     description:

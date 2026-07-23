@@ -30,12 +30,14 @@ interface ServicePageHeroProps extends BaseComponentProps {
   breadcrumbItems?: BreadcrumbItem[]
   /** Força as pills em grade 2x2 (2 em cima, 2 embaixo) em todos os breakpoints */
   pills2x2?: boolean
+  /** URL wa.me do CTA. Default = número IMD/LP; páginas de serviço do hospital sobrescrevem. */
+  whatsappHref?: string
 }
 
 // -----------------------------------------------------------------------------
 // COMPONENTE
 // -----------------------------------------------------------------------------
-export function ServicePageHero({ data, className, breadcrumbItems, pills2x2 = false }: ServicePageHeroProps) {
+export function ServicePageHero({ data, className, breadcrumbItems, pills2x2 = false, whatsappHref = "https://wa.me/5531971511855" }: ServicePageHeroProps) {
   const { ref, hasIntersected } = useIntersection({ threshold: 0.1, once: true })
 
   const { kicker, headline, subheadline, backgroundImage, pills } = data
@@ -194,7 +196,7 @@ export function ServicePageHero({ data, className, breadcrumbItems, pills2x2 = f
             <Button
               variant="primary"
               size="lg"
-              href="https://wa.me/5531971511855"
+              href={whatsappHref}
               className="!whitespace-nowrap w-full sm:w-auto justify-center"
             >
               Falar no WhatsApp
