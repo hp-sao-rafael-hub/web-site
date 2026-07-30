@@ -2022,12 +2022,22 @@
     fetch('https://lp-medicos-leads-hsr-ewdgh3bzhscvaedt.brazilsouth-01.azurewebsites.net/api/medicos-lead',{
       method:'POST',
       mode:'no-cors',
+      keepalive:true,   /* sobrevive ao redirect abaixo */
       headers:{'Content-Type':'text/plain'},
       body:JSON.stringify(payload)
     }).catch(function(e){console.error('[lead_crm_error]',e)});
 
     form.querySelector('.success-msg').classList.add('show');
     form.querySelectorAll('input,select,button').forEach(el=>el.disabled=true);
+
+    /* Redireciona para a página de obrigado. Repassa UTMs + form_id na query
+       (sem dados pessoais) para o GTM ler do lado de lá.
+       Delay de 700ms dá tempo das tags do GTM dispararem antes da navegação. */
+    const thanksQs=new URLSearchParams(params);
+    thanksQs.set('form_id',payload.form_id);
+    setTimeout(function(){
+      location.href='/para-cirurgioes-parceiros/obrigado/?'+thanksQs.toString();
+    },700);
     return false;
   }
 
