@@ -22,6 +22,8 @@ export const GOOGLE_ADS = {
   conversionId: process.env.NEXT_PUBLIC_GOOGLE_ADS_ID ?? "",
   /** Label da ação de conversão "clique no WhatsApp" */
   whatsappLabel: process.env.NEXT_PUBLIC_GADS_WHATSAPP_LABEL ?? "",
+  /** Label da ação de conversão "envio de formulário" */
+  formLabel: process.env.NEXT_PUBLIC_GADS_FORM_LABEL ?? "",
 }
 
 export interface WhatsAppConversionMeta {
@@ -73,6 +75,72 @@ export function trackWhatsAppConversion(meta: WhatsAppConversionMeta = {}): void
     if (w.gtag && GOOGLE_ADS.conversionId && GOOGLE_ADS.whatsappLabel) {
       w.gtag("event", "conversion", {
         send_to: `${GOOGLE_ADS.conversionId}/${GOOGLE_ADS.whatsappLabel}`,
+      })
+    }
+  } catch {
+    /* noop */
+  }
+}
+
+// -----------------------------------------------------------------------------
+// CONVERSÃO — envio de formulário de lead
+// -----------------------------------------------------------------------------
+
+export interface FormLeadMeta {
+  /** Origem do formulário (ex "imd") — separa as fontes no CRM e no GTM */
+  origem: string
+  /** Identificador da instância do formulário na página (ex "imd-agendar") */
+  formId?: string
+  /** Especialidade/procedimento escolhido — atribuição por interesse */
+  specialty?: string
+  /** Cidade/estado informado — segmentação geográfica */
+  city?: string
+}
+
+/**
+ * Dispara a conversão de envio de formulário em todas as plataformas presentes.
+ * Seguro para SSR (no-op fora do browser) e nunca lança.
+ *
+ * Só trafegam metadados: nome, telefone e e-mail NÃO vão para o dataLayer nem
+ * para os pixels — dados pessoais seguem apenas para o CRM, via backend.
+ */
+export function trackFormLead(meta: FormLeadMeta): void {
+  if (typeof window === "undefined") return
+
+  const w = window as unknown as {
+    fbq?: (...args: unknown[]) => void
+    gtag?: (...args: unknown[]) => void
+    dataLayer?: unknown[]
+  }
+
+  const payload = {
+    content_name: meta.specialty ?? "nao_informado",
+    content_category: "form_lead",
+    origem: meta.origem,
+    form_id: meta.formId,
+    city: meta.city,
+  }
+
+  // Meta Pixel — evento Lead
+  try {
+    w.fbq?.("track", "Lead", payload)
+  } catch {
+    /* noop */
+  }
+
+  // GTM / dataLayer
+  try {
+    w.dataLayer = w.dataLayer || []
+    w.dataLayer.push({ event: "form_lead", ...payload })
+  } catch {
+    /* noop */
+  }
+
+  // Google Ads — só se configurado
+  try {
+    if (w.gtag && GOOGLE_ADS.conversionId && GOOGLE_ADS.formLabel) {
+      w.gtag("event", "conversion", {
+        send_to: `${GOOGLE_ADS.conversionId}/${GOOGLE_ADS.formLabel}`,
       })
     }
   } catch {

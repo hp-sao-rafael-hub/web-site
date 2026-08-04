@@ -36,6 +36,7 @@ import { ServiceProtocolsBlock } from "@/components/organisms/service-protocols-
 import { ServiceJourneyBlock } from "@/components/organisms/service-journey-block"
 import { ServiceRelatedBlock } from "@/components/organisms/service-related-block"
 import { ServiceInlineCta } from "@/components/organisms/service-inline-cta"
+import { ServiceLeadForm } from "@/components/organisms/service-lead-form"
 import { ServiceMedicoBlock } from "@/components/organisms/service-medico-block"
 import { ServiceAcompanhanteBlock } from "@/components/organisms/service-acompanhante-block"
 import { ServiceReferencesBlock } from "@/components/organisms/service-references-block"
@@ -81,6 +82,7 @@ export function ServiceDetailTemplate({
     protocols,
     journey,
     acompanhante,
+    leadForm,
     testimonials,
     faq,
     related,
@@ -193,13 +195,23 @@ export function ServiceDetailTemplate({
             sectionId="jornada"
             className={!highlightsAfterJourney && !protocols ? "pt-10 lg:pt-16" : undefined}
           />
-          <ServiceInlineCta
-            kicker="PRONTO PARA COMEÇAR?"
-            headline="Agende sua avaliação e dê o próximo passo."
-            description="Nossa equipe de relacionamento orienta cada etapa, do primeiro contato à finalização do tratamento. Atendimento exclusivamente particular, com agilidade e acolhimento."
-            variant="charcoal"
-            whatsappHref={serviceWhatsapp}
-          />
+          {/* Formulário de captação quando a página define um; senão, CTA WhatsApp */}
+          {leadForm ? (
+            <ServiceLeadForm
+              data={leadForm}
+              sectionId="agendar"
+              variant="creme"
+              whatsappHref={serviceWhatsapp}
+            />
+          ) : (
+            <ServiceInlineCta
+              kicker="PRONTO PARA COMEÇAR?"
+              headline="Agende sua avaliação e dê o próximo passo."
+              description="Nossa equipe de relacionamento orienta cada etapa, do primeiro contato à finalização do tratamento. Atendimento exclusivamente particular, com agilidade e acolhimento."
+              variant="charcoal"
+              whatsappHref={serviceWhatsapp}
+            />
+          )}
         </>
       )}
 

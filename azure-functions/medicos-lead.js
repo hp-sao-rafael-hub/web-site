@@ -17,18 +17,27 @@ app.http('medicos-lead', {
         try { body = await request.json(); }
         catch { try { body = JSON.parse(await request.text()); } catch { body = {}; } }
 
-        const { nome, whatsapp, especialidade, cidade, utm_source } = body;
+        const { nome, whatsapp, email, especialidade, cidade, origem, utm_source } = body;
 
         if (!nome || !whatsapp) {
             return { status: 400, headers: cors, body: JSON.stringify({ error: 'campos obrigatorios ausentes' }) };
         }
 
+        // Rotulo de origem por formulario. 'lp-medicos' mantem o valor historico
+        // para nao quebrar a segmentacao ja existente no CRM.
+        const ORIGENS = {
+            'lp-medicos': 'LP B2B HSR',
+            'imd': 'Site HSR | IMD'
+        };
+
         const lead = {
             name: nome,
             phone: whatsapp,
-            source: (utm_source || 'LP B2B HSR') + (especialidade ? ' | ' + especialidade : ''),
+            source: (utm_source || ORIGENS[origem] || 'LP B2B HSR') + (especialidade ? ' | ' + especialidade : ''),
             address: { city: cidade || '', country: 'BR' }
         };
+
+        if (email) lead.email = email;
 
         try {
             const r = await fetch('https://api.g1.datacrazy.io/api/v1/leads', {

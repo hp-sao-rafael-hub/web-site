@@ -216,6 +216,28 @@ export interface ServiceReferenceItem {
 // TYPE PRINCIPAL — campos novos opcionais (retrocompat)
 // -----------------------------------------------------------------------------
 
+export interface ServiceLeadFormData {
+  kicker: string
+  headline: string
+  description?: string
+  /** Texto do botão de envio. Default "Quero agendar". */
+  submitLabel?: string
+  /** Título da confirmação inline pós-envio */
+  successTitle?: string
+  /** Corpo da confirmação inline pós-envio */
+  successMessage?: string
+  /** Aviso de LGPD sob o formulário */
+  note?: string
+  /** Origem do lead no CRM/GTM (ex "imd"). Separa as fontes de captação. */
+  origem: string
+  /** Identificador da instância do formulário — permite medir posições distintas */
+  formId?: string
+  /** Endpoint de captação. Default = Azure Function de leads do HSR. */
+  endpoint?: string
+  /** Opções extras do select, além das especialidades (exames, check-up, outro) */
+  extraOptions?: string[]
+}
+
 export interface ServiceDetailData {
   slug: string
   /** WhatsApp de atendimento (URL wa.me). Default no template = número do hospital. IMD sobrescreve com o número próprio. */
@@ -243,6 +265,8 @@ export interface ServiceDetailData {
   journey?: ServiceJourneyData
   /** Bloco p/ acompanhante/família — decisor sombra, principal em internação/alimentação */
   acompanhante?: ServiceAcompanhanteBlockData
+  /** Formulário de captação. Quando presente, substitui o CTA inline pós-jornada. */
+  leadForm?: ServiceLeadFormData
   testimonials: ServiceTestimonialsData
   faq: FAQData
   /** Conteúdo relacionado (cross-link outros serviços) */
@@ -764,6 +788,7 @@ const IMD: ServiceDetailData = {
     { id: "infraestrutura", label: "Estrutura" },
     { id: "numeros", label: "Números" },
     { id: "jornada", label: "Como funciona" },
+    { id: "agendar", label: "Agende sua consulta" },
     { id: "depoimentos", label: "Depoimentos" },
     { id: "faq", label: "Perguntas frequentes" },
     { id: "para-o-medico", label: "Para o médico" },
@@ -861,6 +886,26 @@ const IMD: ServiceDetailData = {
       { number: "03", title: "Atendimento no IMD", description: "Consultas com especialistas e exames realizados no mesmo instituto, sem deslocamento entre endereços." },
       { number: "04", title: "Laudo e integração", description: "Resultados disponíveis em até 24 horas, registrados no prontuário digital e acessíveis ao médico assistente." },
       { number: "05", title: "Continuidade do cuidado", description: "Diagnóstico conectado ao centro cirúrgico: do IMD direto para o planejamento cirúrgico, sem retrabalho." },
+    ],
+  },
+  leadForm: {
+    kicker: "AGENDE SUA CONSULTA",
+    headline: "Comece pelo primeiro passo: fale com a nossa equipe.",
+    description:
+      "Preencha os dados abaixo e nossa equipe de relacionamento entra em contato para organizar sua consulta ou exame — com orientação de preparo, documentos e o melhor horário para você.",
+    submitLabel: "Quero agendar",
+    successTitle: "Recebemos seu contato.",
+    successMessage:
+      "Nossa equipe de relacionamento entra em contato pelo WhatsApp em até 1 hora útil para confirmar sua consulta ou exame e orientar o preparo necessário.",
+    origem: "imd",
+    formId: "imd-agendar",
+    extraOptions: [
+      "Oftalmologia",
+      "Check-up completo",
+      "Exames de imagem",
+      "Exames laboratoriais",
+      "Avaliação pré-operatória",
+      "Ainda não sei / Outro",
     ],
   },
   testimonials: {
