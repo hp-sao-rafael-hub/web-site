@@ -2,7 +2,7 @@
   "name": "lp-medicos-leads-hsr",
   "version": "1.0.0",
   "description": "Azure Function de captação de leads do Hospital São Rafael (LP B2B + formulário do IMD) → CRM DataCrazy",
-  "main": "medicos-lead.js",
+  "main": "src/functions/*.js",
   "private": true,
   "dependencies": {
     "@azure/functions": "^4.5.0"

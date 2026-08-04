@@ -29,7 +29,9 @@ Recebe o POST dos formulários de captação e cria o lead no CRM DataCrazy.
 
 | Item | Valor |
 |---|---|
-| **Function App** | `lp-medicos-leads-hsr…` (Brazil South) |
+| **Function App** | `lp-medicos-leads-hsr` (Brazil South) |
+| **Resource group** | `rg-hsp-sao-rafael` |
+| **Plano** | **Flex Consumption** · runtime Node 22 |
 | **Função** | `medicos-lead` |
 | **Endpoint** | `https://lp-medicos-leads-hsr-ewdgh3bzhscvaedt.brazilsouth-01.azurewebsites.net/api/medicos-lead` |
 | **Destino** | `https://api.g1.datacrazy.io/api/v1/leads` |
@@ -66,7 +68,27 @@ az login                        # com a conta que enxerga o Function App
 ```
 
 O script usa só o Azure CLI (dispensa o Functions Core Tools): monta o pacote com
-`node_modules` embutido, publica por zip deploy e valida o endpoint no fim.
+`node_modules` embutido, publica, aguarda o processamento e valida o endpoint no fim.
+
+### Cuidado com o plano — Flex Consumption
+
+Este app roda em **Flex Consumption**, onde os comandos usuais de deploy **não funcionam**:
+
+| Comando | Resultado |
+|---|---|
+| `az functionapp deployment source config-zip` | não suportado no Flex |
+| `az functionapp deploy --type zip` | **HTTP 415** Unsupported Media Type |
+| `POST /api/publish` no SCM + token AAD | ✅ funciona |
+
+O script detecta o plano (pela presença de `properties.functionAppConfig` no recurso ARM)
+e escolhe o caminho certo sozinho: `/api/publish` no Flex, `config-zip` no clássico.
+A autenticação é por token AAD porque o Flex vem com basic auth desabilitado.
+
+### Layout do pacote
+
+Em produção os handlers ficam em `src/functions/`, conforme o `main` do `package.json`.
+No repo eles ficam na raiz de `azure-functions/`; o script reorganiza no empacotamento.
+**Não mude um sem o outro.**
 
 ```bash
 DRY_RUN=1 ./scripts/deploy-function.sh          # empacota sem publicar
@@ -95,8 +117,9 @@ Use para alterações pequenas, como a de um arquivo só.
 
 ## 5. Caminho C — Cloud Shell
 
-Método usado nos deploys anteriores, antes de existir o script do §3. No Cloud Shell (bash), montar a estrutura que o
-runtime Node v4 exige:
+Método usado nos deploys anteriores, antes de existir o script do §3. Exige o Functions
+Core Tools (`func`), que **não** está instalado nesta máquina — no Cloud Shell já vem.
+Montar a estrutura que o runtime Node v4 exige:
 
 ```bash
 mkdir -p ~/hsr-func/src/functions && cd ~/hsr-func

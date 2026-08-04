@@ -79,7 +79,12 @@ BUILD="$(mktemp -d)"
 trap 'rm -rf "$BUILD"' EXIT
 
 info "Preparando o pacote…"
-cp "$SRC/host.json" "$SRC/package.json" "$SRC"/*.js "$BUILD/"
+# O layout do pacote espelha o que roda em produção: handlers em
+# src/functions/, conforme o "main" do package.json. No repo os handlers ficam
+# na raiz de azure-functions/ para manter os caminhos da documentação.
+mkdir -p "$BUILD/src/functions"
+cp "$SRC/host.json" "$SRC/package.json" "$BUILD/"
+cp "$SRC"/*.js "$BUILD/src/functions/"
 [[ -f "$SRC/.funcignore" ]] && cp "$SRC/.funcignore" "$BUILD/"
 
 # node_modules vai no zip: dispensa build remoto e torna o deploy reprodutível
@@ -96,20 +101,63 @@ if [[ "${DRY_RUN:-}" == "1" ]]; then
   exit 0
 fi
 
+# ── Identificação do plano ───────────────────────────────────────────────────
+# Flex Consumption e plano clássico publicam por caminhos diferentes. O Flex se
+# identifica pela presença de properties.functionAppConfig no recurso ARM.
+SUB_ID="$(az account show --query id -o tsv)"
+SITE_JSON="$(az rest --method get \
+  --url "https://management.azure.com/subscriptions/$SUB_ID/resourceGroups/$RG/providers/Microsoft.Web/sites/$APP?api-version=2023-12-01" \
+  -o json 2>/dev/null)"
+
+read -r IS_FLEX HOST SCM_HOST <<<"$(printf '%s' "$SITE_JSON" | python3 -c "
+import sys, json
+p = json.load(sys.stdin).get('properties', {})
+host = p.get('defaultHostName', '')
+scm = next((h for h in (p.get('enabledHostNames') or []) if '.scm.' in h), '')
+if not scm and host:                       # deriva o SCM quando não vem listado
+    a, _, b = host.partition('.')
+    scm = f'{a}.scm.{b}'
+print('flex' if p.get('functionAppConfig') else 'classic', host, scm)
+")"
+
+URL="https://$HOST$ENDPOINT_PATH"
+
 # ── Publicação ───────────────────────────────────────────────────────────────
-info "Publicando… (pode levar 1-2 min)"
-az functionapp deployment source config-zip \
-  --name "$APP" \
-  --resource-group "$RG" \
-  --src "$ZIP" \
-  --build-remote false \
-  --output none
+info "Publicando… (plano: $IS_FLEX · pode levar 1-2 min)"
+
+if [[ "$IS_FLEX" == "flex" ]]; then
+  # Em Flex Consumption, 'deployment source config-zip' não funciona e
+  # 'az functionapp deploy' devolve 415. O caminho suportado é o endpoint
+  # /api/publish do SCM, autenticado por token AAD (basic auth vem desabilitado).
+  TOKEN="$(az account get-access-token --resource https://management.core.windows.net/ --query accessToken -o tsv)"
+
+  CODE="$(curl -s -o /dev/null -w '%{http_code}' -X POST \
+    "https://$SCM_HOST/api/publish?RemoteBuild=false" \
+    -H "Authorization: Bearer $TOKEN" \
+    -H "Content-Type: application/zip" \
+    --data-binary "@$ZIP" --max-time 300)"
+
+  [[ "$CODE" =~ ^20[02]$ ]] || { red "Publicação recusada (HTTP $CODE)."; exit 1; }
+  info "Pacote aceito (HTTP $CODE). Aguardando o processamento…"
+
+  # status do Kudu: 3 = falha, 4 = sucesso
+  for _ in $(seq 1 20); do
+    ST="$(curl -s -H "Authorization: Bearer $TOKEN" \
+      "https://$SCM_HOST/api/deployments/latest" --max-time 40 2>/dev/null \
+      | python3 -c "import sys,json;print(json.load(sys.stdin).get('status',''))" 2>/dev/null || echo "")"
+    [[ "$ST" == "4" ]] && break
+    [[ "$ST" == "3" ]] && { red "Deploy falhou (status 3). Veja https://$SCM_HOST/api/deployments/latest"; exit 1; }
+    sleep 12
+  done
+  [[ "$ST" == "4" ]] || { red "Deploy não confirmou sucesso (último status: ${ST:-desconhecido})."; exit 1; }
+else
+  az functionapp deployment source config-zip \
+    --name "$APP" --resource-group "$RG" --src "$ZIP" --output none
+fi
 
 grn "Publicado."
 
 # ── Verificação ──────────────────────────────────────────────────────────────
-HOST="$(az functionapp show --name "$APP" --resource-group "$RG" --query defaultHostName -o tsv)"
-URL="https://$HOST$ENDPOINT_PATH"
 
 info "Aguardando o restart…"
 for i in $(seq 1 12); do
