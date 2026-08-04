@@ -12,12 +12,14 @@ Os workflows em `.github/workflows/` (`azure-deploy.yml`, `azure-static-web-apps
 `azure-static-web-apps-purple-dune-012e88a0f.yml`) publicam apenas o site estático —
 todos declaram `api_location: ""`.
 
-A pasta `azure-functions/` é **cópia de referência** do código que roda no Function App,
-versionada desde `364356c` ("adiciona código Azure Function no repo para deploy via
-Cloud Shell"). Ela não contém `host.json` nem `package.json`, então não é publicável
-como está: a estrutura mínima é montada na hora do deploy (ver §4).
+A pasta `azure-functions/` guarda o projeto completo da function — `medicos-lead.js`,
+`host.json`, `package.json` e `.funcignore` — e é publicada por
+`scripts/deploy-function.sh` (§3).
 
-> Para eliminar este passo manual, ver §7 — Automação futura.
+> Historicamente a pasta era só uma cópia de referência do código, deployada à mão pelo
+> Cloud Shell (`364356c`). A estrutura publicável e o script foram adicionados depois.
+
+> Para eliminar de vez o passo manual, ver §8 — Automação futura.
 
 ---
 
@@ -56,7 +58,27 @@ Já configuradas no Function App, **não mudam entre deploys**:
 
 ---
 
-## 3. Caminho A — Portal (mais simples)
+## 3. Caminho A — Script do repo (recomendado)
+
+```bash
+az login                        # com a conta que enxerga o Function App
+./scripts/deploy-function.sh    # descobre o app, empacota e publica
+```
+
+O script usa só o Azure CLI (dispensa o Functions Core Tools): monta o pacote com
+`node_modules` embutido, publica por zip deploy e valida o endpoint no fim.
+
+```bash
+DRY_RUN=1 ./scripts/deploy-function.sh          # empacota sem publicar
+./scripts/deploy-function.sh <APP> <RG>         # alvo explícito
+```
+
+Se ele não achar o app, é sinal de que a conta logada não tem acesso — o próprio erro
+lista os apps visíveis e como trocar de conta/assinatura.
+
+---
+
+## 4. Caminho B — Portal (alteração pontual)
 
 Use para alterações pequenas, como a de um arquivo só.
 
@@ -67,13 +89,13 @@ Use para alterações pequenas, como a de um arquivo só.
 5. **Save** — o restart é automático, leva alguns segundos
 
 > **Editor somente leitura?** O app está publicado em modo pacote
-> (`WEBSITE_RUN_FROM_PACKAGE=1`) e o portal não permite editar. Use o Caminho B.
+> (`WEBSITE_RUN_FROM_PACKAGE=1`) e o portal não permite editar. Use o Caminho A (script) ou o C (Cloud Shell).
 
 ---
 
-## 4. Caminho B — Cloud Shell
+## 5. Caminho C — Cloud Shell
 
-Método usado nos deploys anteriores. No Cloud Shell (bash), montar a estrutura que o
+Método usado nos deploys anteriores, antes de existir o script do §3. No Cloud Shell (bash), montar a estrutura que o
 runtime Node v4 exige:
 
 ```bash
@@ -109,7 +131,7 @@ func azure functionapp publish <NOME-DO-FUNCTION-APP> --javascript
 
 ---
 
-## 5. Validação pós-deploy
+## 6. Validação pós-deploy
 
 ```bash
 curl -X POST "https://lp-medicos-leads-hsr-ewdgh3bzhscvaedt.brazilsouth-01.azurewebsites.net/api/medicos-lead" \
@@ -136,7 +158,7 @@ Logs em tempo real: portal → Function App → **Log stream**, ou
 
 ---
 
-## 6. Contrato do payload
+## 7. Contrato do payload
 
 A function aceita `application/json` e `text/plain` (o segundo evita preflight CORS).
 
@@ -165,19 +187,20 @@ Sem `nome` ou `whatsapp`, retorna `400`.
 
 ---
 
-## 7. Automação futura
+## 8. Automação futura
 
-Para eliminar o passo manual, adicionar ao repo:
+A estrutura publicável já está no repo. Falta só o workflow:
 
-- `host.json`, `package.json` e `.funcignore` dentro de `azure-functions/`
-- Workflow com `Azure/functions-action@v1`, autenticado pelo secret
-  `AZURE_FUNCTIONAPP_PUBLISH_PROFILE` (baixado em Function App → **Get publish profile**)
+- `Azure/functions-action@v1`, autenticado pelo secret `AZURE_FUNCTIONAPP_PUBLISH_PROFILE`
+  (baixado em Function App → **Get publish profile**)
+- Gatilho restrito a mudanças em `azure-functions/**`, para não republicar a function a
+  cada alteração do site
 
-Assim a function passa a ser publicada junto com o site a cada push na `main`.
+Assim a function passaria a ser publicada sozinha a cada push na `main`.
 
 ---
 
-## 8. Ordem ao subir formulário novo
+## 9. Ordem ao subir formulário novo
 
 Publicar a function **antes** do merge do PR que sobe o formulário. Na ordem inversa,
 os leads captados entre o merge e o deploy chegam sem os campos novos — nada quebra,

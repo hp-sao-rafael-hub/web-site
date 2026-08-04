@@ -62,3 +62,9 @@ supabase/.branches/
 # Matéria-prima; o que vai pro site é o JPG tratado em public/assets/images/.
 src/assets/images/doutores-imd/
 
+# --- Artefatos do deploy da Azure Function ---
+# Gerados por scripts/deploy-function.sh; o fonte é azure-functions/.
+function-deploy.zip
+azure-functions/node_modules/
+azure-functions/package-lock.json
+
