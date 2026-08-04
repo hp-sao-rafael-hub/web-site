@@ -200,7 +200,7 @@ export function ServiceDetailTemplate({
             <ServiceLeadForm
               data={leadForm}
               sectionId="agendar"
-              variant="creme"
+              variant="white"
               whatsappHref={serviceWhatsapp}
             />
           ) : (

@@ -226,9 +226,23 @@ export function ServiceLeadForm({
   // ── Estilos derivados da variante ──────────────────────────────────────────
   const sectionBg = isDark ? "bg-charcoal" : variant === "white" ? "bg-white" : "bg-creme"
 
+  // Quando a seção anterior compartilha o mesmo fundo (a jornada também é creme),
+  // as duas leem como um bloco só. Na variante "white" a própria troca de
+  // superfície separa; nas demais, uma borda no topo — como no
+  // ServiceReferencesBlock.
+  const topDivider = isDark
+    ? "border-t border-white/10"
+    : variant === "white"
+      ? ""
+      : "border-t border-cobre/20"
+
+  // O card sempre contrasta com o fundo da seção: creme sobre branco,
+  // branco sobre creme.
   const cardStyles = isDark
     ? "bg-white/5 ring-1 ring-white/10"
-    : "bg-white ring-1 ring-cobre/15 shadow-[0_2px_8px_rgba(46,46,46,0.04)]"
+    : variant === "white"
+      ? "bg-creme ring-1 ring-cobre/15"
+      : "bg-white ring-1 ring-cobre/15 shadow-[0_2px_8px_rgba(46,46,46,0.04)]"
 
   const labelStyles = cn(
     "block text-xs font-semibold uppercase tracking-wide mb-2",
@@ -252,7 +266,7 @@ export function ServiceLeadForm({
     <section
       id={sectionId}
       aria-labelledby={`${sectionId}-heading`}
-      className={cn("w-full py-20 lg:py-30 scroll-mt-24", sectionBg, className)}
+      className={cn("w-full py-20 lg:py-30 scroll-mt-24", sectionBg, topDivider, className)}
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 xl:pr-[260px] 2xl:pr-[300px]">
         <div
