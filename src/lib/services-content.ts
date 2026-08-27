@@ -390,7 +390,7 @@ const CENTRO_CIRURGICO: ServiceDetailData = {
     headline: "Da consulta à alta, cada etapa coordenada.",
     steps: [
       { number: "01", title: "Consulta e indicação médica", description: "Seu médico indica o procedimento e orienta sobre os próximos passos e documentação necessária." },
-      { number: "02", title: "Indicação e exames pré-operatórios", description: "Realização dos exames necessários no IMD integrado, sem deslocamento entre endereços." },
+      { number: "02", title: "Indicação e exames pré-operatórios", description: "Organização dos exames necessários no IMD integrado, quando disponíveis e indicados pela equipe." },
       { number: "03", title: "Avaliação pré-anestésica", description: "Consulta com o anestesiologista para personalizar o protocolo anestésico e mitigar riscos." },
       { number: "04", title: "Admissão", description: "Você é recebido e preparado para o procedimento com calma e segurança." },
       { number: "05", title: "Procedimento cirúrgico", description: "A cirurgia é realizada em uma das 22 salas equipadas, com equipe alinhada ao seu procedimento." },
@@ -652,7 +652,7 @@ const INTERNACAO: ServiceDetailData = {
   journey: {
     kicker: "SUA JORNADA",
     headline: "Cada etapa pensada para a sua recuperação.",
-    intro: "Da chegada à alta, você é acompanhado em um único complexo, sem deslocamento entre endereços.",
+    intro: "Da chegada à alta, você recebe orientações organizadas no mesmo complexo, conforme o planejamento do seu caso.",
     steps: [
       { number: "01", title: "Acolhimento", description: "Recepção e orientação sobre cada etapa da sua permanência." },
       { number: "02", title: "Admissão no quarto", description: "Acomodação na suíte, com apresentação da estrutura e da equipe." },
@@ -786,7 +786,7 @@ const IMD: ServiceDetailData = {
     headline: "Um instituto pensado para reunir todo o seu diagnóstico.",
     paragraphs: [
       "O Instituto Médico e Diagnóstico (IMD) do Hospital São Rafael reúne consultas, exames de imagem, laboratório e check-up em um mesmo espaço, com atendimento exclusivamente particular.",
-      "Por funcionar dentro do mesmo complexo do centro cirúrgico, o IMD conecta avaliação, diagnóstico e procedimento em uma jornada contínua: os resultados e laudos alimentam o prontuário digital, sem repetição de exames e sem deslocamento entre endereços.",
+      "Por funcionar dentro do mesmo complexo do centro cirúrgico, o IMD pode apoiar a conexão entre avaliação, diagnóstico e procedimento. Resultados e laudos podem ser consultados pela equipe autorizada, e a necessidade de novos exames depende da avaliação do caso.",
       "Os laudos ficam disponíveis em até 24 horas, dando agilidade para a próxima etapa do seu cuidado.",
     ],
   },
@@ -855,7 +855,7 @@ const IMD: ServiceDetailData = {
     steps: [
       { number: "01", title: "Agendamento direto", description: "Agende pelo WhatsApp ou pelo time de relacionamento. Nossa equipe orienta sobre preparo, documentos e horário." },
       { number: "02", title: "Preparo orientado", description: "Você recebe todas as instruções específicas para cada consulta ou exame, com clareza e antecedência." },
-      { number: "03", title: "Atendimento no IMD", description: "Consultas com especialistas e exames realizados no mesmo instituto, sem deslocamento entre endereços." },
+      { number: "03", title: "Atendimento no IMD", description: "Consultas com especialistas e exames disponíveis no mesmo instituto, conforme agenda e indicação." },
       { number: "04", title: "Laudo e integração", description: "Resultados disponíveis em até 24 horas, registrados no prontuário digital e acessíveis ao médico assistente." },
       { number: "05", title: "Continuidade do cuidado", description: "Diagnóstico conectado ao centro cirúrgico: do IMD direto para o planejamento cirúrgico, sem retrabalho." },
     ],
@@ -875,7 +875,7 @@ const IMD: ServiceDetailData = {
       { id: "imd-faq-1", question: "O atendimento do IMD é particular?", answer: "Sim. O Instituto Médico e Diagnóstico atende exclusivamente em regime particular. Nossa equipe de relacionamento orienta sobre valores, preparo e agendamento de cada consulta ou exame." },
       { id: "imd-faq-2", question: "Em quanto tempo recebo o resultado dos exames?", answer: "Os laudos ficam disponíveis em até 24 horas, conforme o tipo de exame. Os resultados são registrados no prontuário digital, o que dá agilidade para a próxima etapa do seu cuidado." },
       { id: "imd-faq-3", question: "Como agendar uma consulta ou exame?", answer: "O agendamento é feito pelo WhatsApp. Nossa equipe de relacionamento orienta sobre o preparo necessário, os documentos e o melhor horário para você." },
-      { id: "imd-faq-4", question: "O IMD é integrado ao centro cirúrgico?", answer: "Sim. O IMD funciona dentro do mesmo complexo do centro cirúrgico. Consultas, exames e laudos alimentam o prontuário digital, sem repetição de exames e sem deslocamento entre endereços." },
+      { id: "imd-faq-4", question: "O IMD é integrado ao centro cirúrgico?", answer: "Sim. O IMD funciona dentro do mesmo complexo do centro cirúrgico. Quando autorizado e aplicável, o acesso a consultas, exames e laudos pode apoiar a continuidade do cuidado. A equipe define se novos exames são necessários." },
       { id: "imd-faq-5", question: "Quais especialidades são atendidas?", answer: "São 14 especialidades: Cardiologia, Cabeça e Pescoço, Dermatologia, Urologia, Ginecologia, Mastologia, Cirurgia Geral, Neurocirurgia, Ortopedia, Cirurgia Plástica, Cirurgia Vascular, Otorrinolaringologia, Oftalmologia e Clínica da Dor." },
       { id: "imd-faq-6", question: "Quais exames o IMD realiza?", answer: "O IMD realiza tomografia computadorizada, ultrassonografia, raio-X digital, exames laboratoriais, ECG, ecocardiograma, teste ergométrico e outros exames conforme indicação médica. Todos os resultados são integrados ao prontuário digital." },
       { id: "imd-faq-7", question: "Posso fazer o pré-operatório no IMD?", answer: "Sim. O IMD é o local ideal para a avaliação pré-operatória: consultas com especialistas e todos os exames necessários são realizados no mesmo instituto, com os resultados integrados ao prontuário do centro cirúrgico. Nossa equipe coordena o agendamento de cada etapa." },

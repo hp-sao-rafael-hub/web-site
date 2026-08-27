@@ -13,6 +13,7 @@ import {
   getServiceDataBySlug,
 } from "@/lib/structure-service-data"
 import { routing } from "@/i18n/routing"
+import { SITE_METADATA } from "@/lib/data/meta"
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>
@@ -28,7 +29,7 @@ export async function generateStaticParams() {
 export const dynamicParams = false
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params
+  const { locale, slug } = await params
   const service = await getServiceDataBySlug(slug)
 
   if (!service) {
@@ -40,6 +41,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: service.meta.title,
     description: service.meta.description,
+    alternates: {
+      canonical: `${SITE_METADATA.url}/${locale}/servicos/${slug}`,
+    },
     openGraph: {
       title: service.meta.title,
       description: service.meta.description,
@@ -65,5 +69,10 @@ export default async function ServicePage({ params }: PageProps) {
     notFound()
   }
 
-  return <ServiceDetailTemplate data={service} />
+  return (
+    <ServiceDetailTemplate
+      data={service}
+      canonicalUrl={`${SITE_METADATA.url}/${locale}/servicos/${slug}`}
+    />
+  )
 }

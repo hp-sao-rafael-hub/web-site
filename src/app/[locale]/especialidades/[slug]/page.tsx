@@ -14,6 +14,7 @@ import {
   getEspecialidadeLPBySlug,
 } from "@/lib/structure-especialidade-lp"
 import { routing } from "@/i18n/routing"
+import { SITE_METADATA } from "@/lib/data/meta"
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>
@@ -29,7 +30,7 @@ export async function generateStaticParams() {
 export const dynamicParams = false
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params
+  const { locale, slug } = await params
   const lp = await getEspecialidadeLPBySlug(slug)
 
   if (!lp) {
@@ -39,6 +40,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: lp.meta.title,
     description: lp.meta.description,
+    alternates: {
+      canonical: `${SITE_METADATA.url}/${locale}/especialidades/${slug}`,
+    },
     openGraph: {
       title: lp.meta.title,
       description: lp.meta.description,
@@ -64,5 +68,10 @@ export default async function EspecialidadeLPPage({ params }: PageProps) {
     notFound()
   }
 
-  return <EspecialidadeLPTemplate data={lp} />
+  return (
+    <EspecialidadeLPTemplate
+      data={lp}
+      canonicalUrl={`${SITE_METADATA.url}/${locale}/especialidades/${slug}`}
+    />
+  )
 }

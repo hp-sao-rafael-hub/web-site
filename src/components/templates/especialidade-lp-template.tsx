@@ -36,6 +36,7 @@ import { Footer } from "@/components/organisms/footer"
 import { FOOTER_DATA } from "@/lib/constants"
 import type { FooterData } from "@/types"
 import type { EspecialidadeLPData } from "@/lib/data/especialidades-lp"
+import { SITE_METADATA } from "@/lib/data/meta"
 
 interface EspecialidadeLPTemplateProps {
   data: EspecialidadeLPData
@@ -45,7 +46,7 @@ interface EspecialidadeLPTemplateProps {
 
 export function EspecialidadeLPTemplate({
   data,
-  canonicalUrl = `https://hsr-xi.vercel.app/especialidades/${data.slug}`,
+  canonicalUrl = `${SITE_METADATA.url}/especialidades/${data.slug}`,
 }: EspecialidadeLPTemplateProps) {
   const { hero, intro, exams, indications, whyHsr, testimonials, faq } = data
 

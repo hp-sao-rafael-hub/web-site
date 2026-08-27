@@ -46,6 +46,7 @@ import { FOOTER_DATA, ESPECIALIDADES_DATA } from "@/lib/constants"
 import { SpecialtyGrid } from "@/components/organisms/specialty-grid"
 import type { ServiceDetailData } from "@/lib/services-content"
 import type { FooterData, EspecialidadesData } from "@/types"
+import { SITE_METADATA } from "@/lib/data/meta"
 
 const IMD_ESPECIALIDADES = ESPECIALIDADES_DATA as unknown as EspecialidadesData
 
@@ -65,7 +66,7 @@ interface ServiceDetailTemplateProps {
 // -----------------------------------------------------------------------------
 export function ServiceDetailTemplate({
   data,
-  canonicalUrl = `https://hsr-xi.vercel.app/servicos/${data.slug}`,
+  canonicalUrl = `${SITE_METADATA.url}/servicos/${data.slug}`,
   schemaType = "MedicalClinic",
 }: ServiceDetailTemplateProps) {
   const {

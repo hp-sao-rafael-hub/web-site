@@ -8,15 +8,15 @@
 // =============================================================================
 
 import type { EspecialidadeLPData } from "@/lib/data/especialidades-lp"
+import { SITE_METADATA } from "@/lib/data/meta"
 
-const SITE_URL = "https://hsr-xi.vercel.app"
+const SITE_URL = SITE_METADATA.url
 
 const HSR_HOSPITAL = {
   "@type": "Hospital",
   "@id": `${SITE_URL}/#hospital`,
   name: "Hospital São Rafael",
   url: SITE_URL,
-  telephone: "+55-31-2517-0000",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Av. Raja Gabáglia, 1380",

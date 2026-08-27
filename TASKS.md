@@ -5,6 +5,34 @@
 
 ---
 
+## Registro — Correções SEO seguras (27/08/2026)
+
+### Concluído nesta etapa
+
+- [x] Removidas promessas absolutas da metadata principal, incluindo “maior estrutura”, “tecnologia de ponta” e “recuperação completa”.
+- [x] Ajustada a copy do IMD para não garantir ausência de repetição de exames ou de deslocamentos.
+- [x] Ajustada a descrição geral dos serviços e da terapia hiperbárica para linguagem condicional e dependente de avaliação médica.
+- [x] Removido “procedimentos realizados com sucesso” dos indicadores; o rótulo agora descreve apenas procedimentos realizados.
+- [x] Removido telefone fictício dos schemas de páginas e do schema global.
+- [x] Substituído o domínio de homologação `hsr-xi.vercel.app` nos schemas e templates pelo domínio configurado em `SITE_METADATA.url`.
+- [x] Adicionado canonical absoluto por idioma nas rotas existentes de serviços e especialidades, sem alterar URLs públicas.
+- [x] Passado o mesmo canonical por idioma para os schemas JSON-LD dessas páginas.
+- [x] Validação de erros estáticos concluída sem erros nos arquivos alterados.
+
+### Ainda pendente de confirmação
+
+- [ ] Confirmar domínio oficial antes de retirar a marca `[PENDENTE CLIENTE]` de `SITE_METADATA.url`.
+- [ ] Confirmar salas, leitos, procedimentos, equipamentos, UTI, CME, laboratório e demais dados institucionais.
+- [ ] Revisar claims restantes em `services-content.ts`, `especialidades.ts`, `especialidades-lp.ts`, `faq.ts` e `messages/pt.json`.
+- [ ] Escolher entre traduzir integralmente `/en/` ou redirecionar/remover essa versão.
+- [ ] Definir a arquitetura final `/hospital`, `/imd`, `/cirurgias-e-procedimentos`, `/medicos` e `/para-medicos`.
+- [ ] Criar mapa definitivo de redirects 301 a partir das URLs reais indexadas.
+- [ ] Criar sitemap e robots.txt depois da decisão final de URLs e idiomas.
+- [ ] Validar CRM, RQE, médicos, fotos, depoimentos, preços, horários, formulários e consentimentos LGPD.
+- [ ] Instalar dependências e executar `npm run build`; `next` não estava instalado e `npm ci` excedeu dois minutos sem saída nesta sessão. Repetir no ambiente com acesso ao registry.
+
+---
+
 ## HSR — Site Geral (Institucional)
 **Repo:** `hp-sao-rafael-hub/web-site` · **Branch ativa:** `dev`
 

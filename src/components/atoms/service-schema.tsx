@@ -7,6 +7,7 @@
 // =============================================================================
 
 import type { ServiceDetailData } from "@/lib/services-content"
+import { SITE_METADATA } from "@/lib/data/meta"
 
 // -----------------------------------------------------------------------------
 // TYPES
@@ -26,11 +27,10 @@ interface ServiceSchemaProps {
 // -----------------------------------------------------------------------------
 const HSR_ORGANIZATION = {
   "@type": "Hospital",
-  "@id": "https://hsr-xi.vercel.app/#hospital",
+  "@id": `${SITE_METADATA.url}/#hospital`,
   name: "Hospital São Rafael",
-  url: "https://hsr-xi.vercel.app",
-  telephone: "+55-31-2517-0000",
-  image: "https://hsr-xi.vercel.app/og-image.png",
+  url: SITE_METADATA.url,
+  image: `${SITE_METADATA.url}${SITE_METADATA.ogImage}`,
   address: {
     "@type": "PostalAddress",
     streetAddress: "Av. Raja Gabáglia, 1380",
