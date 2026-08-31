@@ -2,7 +2,7 @@ export const DIFERENCIAIS_DATA = {
   kicker: "RIGOR CIENTÍFICO E CONFORTO",
   headline: "Excelência comprovada em cada detalhe do cuidado.",
   description: [
-    "No Hospital São Rafael, tecnologia de ponta e rigor técnico se unem a uma estrutura hospitalar completa para oferecer segurança, conforto e precisão em todas as etapas.",
+    "No Hospital São Rafael, rigor técnico e estrutura hospitalar completa se unem para apoiar segurança, conforto e precisão em cada etapa do cuidado.",
     "Com o suporte do nosso Instituto Médico e Diagnóstico integrado, você realiza consultas, exames e procedimentos com fluidez, qualidade e atenção individualizada.",
   ],
   ctas: [

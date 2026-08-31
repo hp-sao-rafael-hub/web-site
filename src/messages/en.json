@@ -205,9 +205,9 @@
     "kicker": "SPECIALTIES",
     "headline": "Excellence in every area of practice.",
     "description": "Discover the specialties offered at Hospital São Rafael's Medical and Diagnostic Institute.",
-    "viewProcedures": "View procedures",
-    "modalProceduresTitle": "Procedures performed",
-    "modalProceduresPending": "[CLIENT PENDING] Procedure list will be available soon.",
+    "viewProcedures": "Learn about this specialty",
+    "modalProceduresTitle": "Procedures in this specialty",
+    "modalProceduresPending": "Procedure list will be available soon.",
     "modalCtaLabel": "Book appointment",
     "items": {
       "ortopedia": {

@@ -18,6 +18,9 @@
 - [x] Adicionado canonical absoluto por idioma nas rotas existentes de serviços e especialidades, sem alterar URLs públicas.
 - [x] Passado o mesmo canonical por idioma para os schemas JSON-LD dessas páginas.
 - [x] Validação de erros estáticos concluída sem erros nos arquivos alterados.
+- [x] Ajustado o copy do diferencial e do IMD para linguagem mais neutra e menos promissória.
+- [x] Atualizado o rótulo de estatísticas e CTAs de especialidades para evitar afirmações absolutas e promessas de procedimentos.
+- [x] Correções de copy aplicadas diretamente na branch `dev`.
 
 ### Ainda pendente de confirmação
 
@@ -42,7 +45,7 @@
 - [ ] **Hiperbárica** — substituir fotos dos cards pela foto do card "Apoio à Recuperação"
 - [ ] **Navbar** — verificar alinhamento vertical, corrigir desalinhamento do item "IMD" (dropdown)
 - [ ] **Links globais** — todos os botões/links devem abrir em nova aba (`target="_blank"`)
-- [ ] **Seção Especialidades** — remover botão "Ver procedimentos" dos cards
+- [x] **Seção Especialidades** — remover botão "Ver procedimentos" dos cards
 - [ ] **Seção Estrutura Hospitalar** — padronizar tamanho dos cards, fotos e texto (simetria)
 
 ---

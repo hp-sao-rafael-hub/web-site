@@ -767,9 +767,9 @@ const IMD: ServiceDetailData = {
   ],
   hero: {
     kicker: "INSTITUTO MÉDICO E DIAGNÓSTICO",
-    headline: "Tecnologia de ponta, especialistas e diagnóstico exclusivo.",
+    headline: "Estrutura tecnológica, especialistas e diagnóstico integrado.",
     subheadline:
-      "O IMD reúne consultas, exames de imagem de última geração, laboratório e check-up em um único instituto particular. Laudo em até 24h e prontuário totalmente integrado ao centro cirúrgico do Hospital São Rafael.",
+      "O IMD reúne consultas, exames de imagem, laboratório e check-up em um único instituto particular. Laudo em até 24h e prontuário integrado ao centro cirúrgico do Hospital São Rafael, conforme a indicação e a avaliação da equipe responsável.",
     backgroundImage: "/assets/images/servicos/imd-hero.jpg",
     imagePosition: "50% 45%",
     overlayClassName:

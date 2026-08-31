@@ -42,7 +42,7 @@
     "headline": "A segurança da sua cirurgia, medida em resultados reais.",
     "items": {
       "cirurgias": {
-        "label": "Procedimentos realizados com sucesso",
+        "label": "Procedimentos realizados",
         "description": "Experiência comprovada de uma equipe médica e multidisciplinar altamente capacitada."
       },
       "salas": {
@@ -205,9 +205,9 @@
     "kicker": "ESPECIALIDADES",
     "headline": "Excelência em cada área de atuação.",
     "description": "Conheça as especialidades atendidas no Instituto Médico e Diagnóstico do Hospital São Rafael.",
-    "viewProcedures": "Ver procedimentos",
-    "modalProceduresTitle": "Procedimentos realizados",
-    "modalProceduresPending": "[PENDENTE CLIENTE] Lista de procedimentos será disponibilizada em breve.",
+    "viewProcedures": "Conheça a especialidade",
+    "modalProceduresTitle": "Procedimentos desta especialidade",
+    "modalProceduresPending": "Lista de procedimentos será disponibilizada em breve.",
     "modalCtaLabel": "Agendar consulta",
     "items": {
       "ortopedia": {
