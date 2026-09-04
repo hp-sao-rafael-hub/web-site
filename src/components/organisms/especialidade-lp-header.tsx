@@ -31,7 +31,7 @@ export function EspecialidadeLPHeader({
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-16 lg:h-20 flex items-center justify-between gap-4">
         <Link
           href="/"
-          aria-label="Hospital São Rafael — página inicial"
+          aria-label="Hospital São Rafael, página inicial"
           className="shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ouro rounded"
         >
           <Logo height={38} />

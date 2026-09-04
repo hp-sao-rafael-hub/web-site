@@ -47,7 +47,7 @@ export function EspecialidadeLPSchema({
       isPartOf: { "@id": `${SITE_URL}/#website` },
       about: {
         "@type": "MedicalClinic",
-        name: `${data.termo} — Hospital São Rafael`,
+        name: `${data.termo} no Hospital São Rafael`,
         medicalSpecialty: data.termo,
         parentOrganization: HSR_HOSPITAL,
         availableService: data.exams.items.map((exam) => ({

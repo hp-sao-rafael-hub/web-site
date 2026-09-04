@@ -55,7 +55,7 @@ export const metadata: Metadata = {
         url: SITE_METADATA.ogImage,
         width: 1200,
         height: 630,
-        alt: "Hospital São Rafael — Centro de Cirurgias Eletivas Particulares",
+        alt: "Hospital São Rafael: Centro de Cirurgias Eletivas Particulares",
       },
     ],
   },

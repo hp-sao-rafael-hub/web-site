@@ -54,7 +54,7 @@ export const PRIVACY_POLICY_DATA: LegalPageData = {
       title: "2. Encarregado de Proteção de Dados (DPO)",
       body: [
         "Em atendimento ao art. 41 da LGPD, o Hospital São Rafael disponibiliza canal direto para o titular exercer seus direitos e esclarecer dúvidas sobre tratamento de dados pessoais.",
-        "Contato do Encarregado: [PENDENTE CLIENTE — nome do DPO designado]. E-mail provisório para assuntos de privacidade: relacionamentocliente@hospitalsaorafael.com.",
+        "Contato do Encarregado: [PENDENTE CLIENTE, nome do DPO designado]. E-mail provisório para assuntos de privacidade: relacionamentocliente@hospitalsaorafael.com.",
       ],
     },
     {

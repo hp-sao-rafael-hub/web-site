@@ -553,7 +553,7 @@ const INTERNACAO: ServiceDetailData = {
         id: "preparo",
         title: "Como se preparar",
         paragraphs: [
-          "Traga documentos pessoais (RG e CPF) e o pedido médico de internação. Roupas confortáveis são recomendadas. Itens de higiene pessoal e entretenimento podem ser trazidos. Para cirurgias com jejum, siga rigorosamente as instruções do seu médico — nossa equipe reforça as orientações no contato prévio.",
+          "Traga documentos pessoais (RG e CPF) e o pedido médico de internação. Roupas confortáveis são recomendadas. Itens de higiene pessoal e entretenimento podem ser trazidos. Para cirurgias com jejum, siga rigorosamente as instruções do seu médico; nossa equipe reforça as orientações no contato prévio.",
         ],
       },
       {
@@ -685,7 +685,7 @@ const INTERNACAO: ServiceDetailData = {
       { number: "03", title: "Centro cirúrgico", description: "Encaminhamento ao bloco para o seu procedimento, no mesmo complexo." },
       { number: "04", title: "Recuperação (SRPA)", description: "Acompanhamento na sala de recuperação pós-anestésica." },
       { number: "05", title: "Retorno à internação", description: "Volta ao quarto para a recuperação, com a equipe de enfermagem por perto." },
-      { number: "06", title: "Unidade de Transição e Hiperbárica (quando indicada)", description: "Quando indicado pelo médico, o paciente segue para a Unidade de Transição e pode realizar sessões de Terapia Hiperbárica para acelerar a recuperação — tudo no mesmo complexo, sem deslocamento." },
+      { number: "06", title: "Unidade de Transição e Hiperbárica (quando indicada)", description: "Quando indicado pelo médico, o paciente segue para a Unidade de Transição e pode realizar sessões de Terapia Hiperbárica para acelerar a recuperação, tudo no mesmo complexo, sem deslocamento." },
       { number: "07", title: "Alta", description: "Alta com orientações claras para a continuidade do cuidado em casa." },
     ],
   },
@@ -892,7 +892,7 @@ const IMD: ServiceDetailData = {
     kicker: "AGENDE SUA CONSULTA",
     headline: "Comece pelo primeiro passo: fale com a nossa equipe.",
     description:
-      "Preencha os dados abaixo e nossa equipe de relacionamento entra em contato para organizar sua consulta ou exame — com orientação de preparo, documentos e o melhor horário para você.",
+      "Preencha os dados abaixo e nossa equipe de relacionamento entra em contato para organizar sua consulta ou exame, com orientação de preparo, documentos e o melhor horário para você.",
     submitLabel: "Quero agendar",
     successTitle: "Recebemos seu contato.",
     successMessage:

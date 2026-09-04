@@ -55,7 +55,7 @@ export const ESPECIALIDADES_DATA = {
       id: "urologia",
       title: "Urologia",
       description:
-        "Diagnóstico e tratamento endoscópico e laparoscópico de patologias urológicas — próstata, rins, bexiga e vias urinárias. Estrutura completa para prostatectomia, nefrectomia, cistoscopia e litotripsia com equipamentos de última geração. Abordagem minimamente invasiva com foco em recuperação rápida e qualidade de vida.",
+        "Diagnóstico e tratamento endoscópico e laparoscópico de patologias urológicas: próstata, rins, bexiga e vias urinárias. Estrutura completa para prostatectomia, nefrectomia, cistoscopia e litotripsia com equipamentos de última geração. Abordagem minimamente invasiva com foco em recuperação rápida e qualidade de vida.",
       icon: "stethoscope",
       procedures: [
         "Prostatectomia",
@@ -199,6 +199,36 @@ export const ESPECIALIDADES_DATA = {
         "Procedimentos minimamente invasivos",
         "Manejo da dor crônica",
         "Avaliação multidisciplinar",
+      ],
+    },
+    {
+      id: "cirurgia-geral-2",
+      title: "Cirurgia Geral",
+      description:
+        "Cirurgias abdominais de média e alta complexidade por via laparoscópica e aberta. Do planejamento ao pós-operatório, a equipe cobre colecistectomia, herniorrafias, ressecções intestinais e cirurgia antirrefluxo. Integração com UTI e equipe de anestesiologia para casos complexos.",
+      icon: "scissors",
+      procedures: [
+        "Colecistectomia",
+        "Apendicectomia",
+        "Herniorrafia inguinal e ventral",
+        "Ressecção intestinal",
+        "Fundoplicatura",
+        "Cirurgia de refluxo gastroesofágico",
+      ],
+    },
+    {
+      id: "urologia-2",
+      title: "Urologia",
+      description:
+        "Diagnóstico e tratamento endoscópico e laparoscópico de patologias urológicas: próstata, rins, bexiga e vias urinárias. Estrutura completa para prostatectomia, nefrectomia, cistoscopia e litotripsia com equipamentos de última geração. Abordagem minimamente invasiva com foco em recuperação rápida e qualidade de vida.",
+      icon: "stethoscope",
+      procedures: [
+        "Prostatectomia",
+        "Nefrectomia",
+        "Litotripsia e ureteroscopia",
+        "Cistoscopia e RTU",
+        "Cirurgia de cálculos renais",
+        "Cirurgia de cálculos renais",
       ],
     },
     // [PENDENTE CLIENTE] Completar lista com todas as especialidades do documento de 13/mar
