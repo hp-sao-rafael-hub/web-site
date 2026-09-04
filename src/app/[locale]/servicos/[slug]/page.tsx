@@ -78,7 +78,7 @@ export default async function ServicePage({ params }: PageProps) {
   return (
     <ServiceDetailTemplate
       data={service}
-      canonicalUrl={`${SITE_METADATA.url}/${locale}/servicos/${slug}`}
+      canonicalUrl={`${SITE_URL}/${locale}/servicos/${slug}/`}
     />
   )
 }

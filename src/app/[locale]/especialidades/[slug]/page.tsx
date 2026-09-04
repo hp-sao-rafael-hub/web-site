@@ -77,7 +77,7 @@ export default async function EspecialidadeLPPage({ params }: PageProps) {
   return (
     <EspecialidadeLPTemplate
       data={lp}
-      canonicalUrl={`${SITE_METADATA.url}/${locale}/especialidades/${slug}`}
+      canonicalUrl={`${SITE_URL}/${locale}/especialidades/${slug}/`}
     />
   )
 }
