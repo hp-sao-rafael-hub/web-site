@@ -7,7 +7,7 @@
 // =============================================================================
 
 import type { ServiceDetailData } from "@/lib/services-content"
-import { SITE_METADATA } from "@/lib/data/meta"
+import { SITE_URL } from "@/lib/data/meta"
 
 // -----------------------------------------------------------------------------
 // TYPES
@@ -27,10 +27,10 @@ interface ServiceSchemaProps {
 // -----------------------------------------------------------------------------
 const HSR_ORGANIZATION = {
   "@type": "Hospital",
-  "@id": `${SITE_METADATA.url}/#hospital`,
+  "@id": `${SITE_URL}/#hospital`,
   name: "Hospital São Rafael",
-  url: SITE_METADATA.url,
-  image: `${SITE_METADATA.url}${SITE_METADATA.ogImage}`,
+  url: SITE_URL,
+  image: `${SITE_URL}/og-image.png`,
   address: {
     "@type": "PostalAddress",
     streetAddress: "Av. Raja Gabáglia, 1380",

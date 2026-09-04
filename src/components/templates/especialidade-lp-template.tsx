@@ -34,9 +34,9 @@ import { EspecialidadeLPSchema } from "@/components/atoms/especialidade-lp-schem
 import { Footer } from "@/components/organisms/footer"
 
 import { FOOTER_DATA } from "@/lib/constants"
+import { SITE_URL } from "@/lib/data/meta"
 import type { FooterData } from "@/types"
 import type { EspecialidadeLPData } from "@/lib/data/especialidades-lp"
-import { SITE_METADATA } from "@/lib/data/meta"
 
 interface EspecialidadeLPTemplateProps {
   data: EspecialidadeLPData
@@ -46,7 +46,7 @@ interface EspecialidadeLPTemplateProps {
 
 export function EspecialidadeLPTemplate({
   data,
-  canonicalUrl = `${SITE_METADATA.url}/especialidades/${data.slug}`,
+  canonicalUrl = `${SITE_URL}/especialidades/${data.slug}`,
 }: EspecialidadeLPTemplateProps) {
   const { hero, intro, exams, indications, whyHsr, testimonials, faq } = data
 

@@ -8,9 +8,7 @@
 // =============================================================================
 
 import type { EspecialidadeLPData } from "@/lib/data/especialidades-lp"
-import { SITE_METADATA } from "@/lib/data/meta"
-
-const SITE_URL = SITE_METADATA.url
+import { SITE_URL } from "@/lib/data/meta"
 
 const HSR_HOSPITAL = {
   "@type": "Hospital",

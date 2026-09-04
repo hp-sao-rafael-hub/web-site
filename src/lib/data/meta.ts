@@ -1,8 +1,12 @@
+const PRODUCTION_SITE_URL = "https://hospitalsaorafael.com"
+
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || PRODUCTION_SITE_URL).replace(/\/+$/, "")
+
 export const SITE_METADATA = {
   title: "Hospital São Rafael | Centro de Cirurgias Eletivas Particulares - BH",
   description:
     "Hospital particular em Belo Horizonte para cirurgias programadas, com consultas, exames, internação e acompanhamento conforme a necessidade de cada caso.",
-  url: "https://hospitalsaorafael.com", // [PENDENTE CLIENTE] URL final do domínio
+  url: SITE_URL,
   ogImage: "/og-image.png",
   locale: "pt_BR",
   type: "website",
