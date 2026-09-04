@@ -13,7 +13,7 @@ import {
   getServiceDataBySlug,
 } from "@/lib/structure-service-data"
 import { routing } from "@/i18n/routing"
-import { SITE_METADATA } from "@/lib/data/meta"
+import { SITE_URL } from "@/lib/data/meta"
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>
@@ -42,11 +42,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: service.meta.title,
     description: service.meta.description,
     alternates: {
-      canonical: `${SITE_METADATA.url}/${locale}/servicos/${slug}`,
+      canonical: `/${locale}/servicos/${slug}/`,
     },
     openGraph: {
       title: service.meta.title,
       description: service.meta.description,
+      url: `${SITE_URL}/${locale}/servicos/${slug}/`,
       images: [
         {
           url: service.hero.backgroundImage,
@@ -55,6 +56,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           alt: service.hero.headline,
         },
       ],
+    },
+    robots: {
+      index: locale !== "en",
+      follow: true,
+      googleBot: { index: locale !== "en", follow: true },
     },
   }
 }

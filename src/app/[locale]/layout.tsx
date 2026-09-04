@@ -18,8 +18,6 @@ export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }))
 }
 
-const BCP47: Record<string, string> = { pt: "pt-BR", en: "en-US" }
-
 const NAV_KEY_BY_HREF: Record<string, string> = {
   "#hero": "inicio",
   "#diferenciais": "diferenciais",
@@ -81,15 +79,6 @@ export const metadata: Metadata = {
 
   icons: {
     icon: "/favicon.png",
-  },
-
-  alternates: {
-    canonical: SITE_METADATA.url,
-    languages: {
-      "pt-BR": `${SITE_METADATA.url}/pt`,
-      "en-US": `${SITE_METADATA.url}/en`,
-      "x-default": `${SITE_METADATA.url}/pt`,
-    },
   },
 
   verification: {

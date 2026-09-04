@@ -7,7 +7,7 @@
 // =============================================================================
 
 import type { ServiceDetailData } from "@/lib/services-content"
-import { SITE_URL } from "@/lib/data/meta"
+import { APPOINTMENT_PHONE, SITE_PHONE, SITE_URL } from "@/lib/data/meta"
 
 // -----------------------------------------------------------------------------
 // TYPES
@@ -30,7 +30,13 @@ const HSR_ORGANIZATION = {
   "@id": `${SITE_URL}/#hospital`,
   name: "Hospital São Rafael",
   url: SITE_URL,
+  telephone: SITE_PHONE,
   image: `${SITE_URL}/og-image.png`,
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: APPOINTMENT_PHONE,
+    contactType: "appointment scheduling",
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "Av. Raja Gabáglia, 1380",
@@ -80,7 +86,7 @@ function buildBreadcrumb(slug: string, title: string, baseUrl: string) {
         "@type": "ListItem",
         position: 3,
         name: title,
-        item: `${baseUrl}/servicos/${slug}`,
+        item: `${baseUrl}/servicos/${slug}/`,
       },
     ],
   }

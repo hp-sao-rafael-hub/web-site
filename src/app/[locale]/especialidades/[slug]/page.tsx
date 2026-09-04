@@ -14,7 +14,7 @@ import {
   getEspecialidadeLPBySlug,
 } from "@/lib/structure-especialidade-lp"
 import { routing } from "@/i18n/routing"
-import { SITE_METADATA } from "@/lib/data/meta"
+import { SITE_URL } from "@/lib/data/meta"
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>
@@ -41,11 +41,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: lp.meta.title,
     description: lp.meta.description,
     alternates: {
-      canonical: `${SITE_METADATA.url}/${locale}/especialidades/${slug}`,
+      canonical: `/${locale}/especialidades/${slug}/`,
     },
     openGraph: {
       title: lp.meta.title,
       description: lp.meta.description,
+      url: `${SITE_URL}/${locale}/especialidades/${slug}/`,
       images: [
         {
           url: lp.hero.backgroundImage,
@@ -54,6 +55,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           alt: lp.hero.headline,
         },
       ],
+    },
+    robots: {
+      index: locale !== "en",
+      follow: true,
+      googleBot: { index: locale !== "en", follow: true },
     },
   }
 }

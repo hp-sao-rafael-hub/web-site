@@ -8,13 +8,19 @@
 // =============================================================================
 
 import type { EspecialidadeLPData } from "@/lib/data/especialidades-lp"
-import { SITE_URL } from "@/lib/data/meta"
+import { APPOINTMENT_PHONE, SITE_PHONE, SITE_URL } from "@/lib/data/meta"
 
 const HSR_HOSPITAL = {
   "@type": "Hospital",
   "@id": `${SITE_URL}/#hospital`,
   name: "Hospital São Rafael",
   url: SITE_URL,
+  telephone: SITE_PHONE,
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: APPOINTMENT_PHONE,
+    contactType: "appointment scheduling",
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "Av. Raja Gabáglia, 1380",
@@ -57,12 +63,12 @@ export function EspecialidadeLPSchema({
     {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Início", item: SITE_URL },
+        { "@type": "ListItem", position: 1, name: "Início", item: `${SITE_URL}/` },
         {
           "@type": "ListItem",
           position: 2,
           name: "Especialidades",
-          item: `${SITE_URL}/especialidades`,
+          item: `${SITE_URL}/especialidades/`,
         },
         { "@type": "ListItem", position: 3, name: data.termo, item: canonicalUrl },
       ],

@@ -66,7 +66,7 @@ interface ServiceDetailTemplateProps {
 // -----------------------------------------------------------------------------
 export function ServiceDetailTemplate({
   data,
-  canonicalUrl = `${SITE_URL}/servicos/${data.slug}`,
+  canonicalUrl = `${SITE_URL}/servicos/${data.slug}/`,
   schemaType = "MedicalClinic",
 }: ServiceDetailTemplateProps) {
   const {

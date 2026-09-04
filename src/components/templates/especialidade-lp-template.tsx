@@ -46,7 +46,7 @@ interface EspecialidadeLPTemplateProps {
 
 export function EspecialidadeLPTemplate({
   data,
-  canonicalUrl = `${SITE_URL}/especialidades/${data.slug}`,
+  canonicalUrl = `${SITE_URL}/especialidades/${data.slug}/`,
 }: EspecialidadeLPTemplateProps) {
   const { hero, intro, exams, indications, whyHsr, testimonials, faq } = data
 

@@ -1,3 +1,5 @@
+import { SITE_PHONE } from "./meta"
+
 export const FOOTER_DATA = {
   description:
     "Excelência em saúde com infraestrutura completa e atendimento humanizado em Belo Horizonte.",
@@ -46,6 +48,6 @@ export const FOOTER_DATA = {
   ],
   emergency: {
     label: "Urgências pós-cirúrgicas", // [PENDENTE CLIENTE] Validar texto — hospital eletivo, sem pronto-socorro
-    href: "tel:+553125170000",
+    href: `tel:${SITE_PHONE}`,
   },
 } as const
