@@ -3,28 +3,9 @@ import Script from "next/script"
 import "./globals.css"
 
 const montserrat = localFont({
-  src: [
-    {
-      path: "../../public/fonts/Fontspring-DEMO-artegra_sans-sc-400-regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Fontspring-DEMO-artegra_sans-sc-600-semibold.otf",
-      weight: "600",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Fontspring-DEMO-artegra_sans-sc-700-bold.otf",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../../public/fonts/Fontspring-DEMO-artegra_sans-sc-800-extrabold.otf",
-      weight: "800",
-      style: "normal",
-    },
-  ],
+  src: "../../public/fonts/Montserrat-Variable.ttf",
+  weight: "100 900",
+  style: "normal",
   variable: "--font-montserrat",
   display: "swap",
 })
