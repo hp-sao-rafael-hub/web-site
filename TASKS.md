@@ -5,6 +5,12 @@
 
 ---
 
+## Registro — PR publicado para main (08/09/2026)
+
+- [x] 2026-09-08 — [[03-empresa/pessoas/equipe/enzo|Enzo]] publicou a branch `seo-p0-integration` no remoto e abriu o Pull Request [#16](https://github.com/hp-sao-rafael-hub/web-site/pull/16) com destino `main`, reunindo a restauração das fotos dos médicos do IMD, os ajustes de SEO e a fonte Montserrat local. Evidência: push concluído e PR criado no GitHub. Pendência: revisão e aprovação do PR; vault do Obsidian indisponível, portanto não houve sincronização externa.
+
+---
+
 ## Registro — Commit e tentativa de abertura do PR (08/09/2026)
 
 - [x] 2026-09-08 — [[03-empresa/pessoas/equipe/enzo|Enzo]] consolidou a correção das fotos do IMD no commit local `2cdb392` (`fix(imd): restore physician photos in specialty cards`), com 19 arquivos alterados, incluindo 15 imagens e os ajustes de dados, tipos e componente. Validação anterior preservada: build concluído, rota do IMD em `200`, 15 imagens em `200` e `git diff --check` sem erros. O `push` para `origin/seo-p0-integration` foi tentado, mas bloqueado pela revisão de segurança por envolver envio de código/imagens ao repositório remoto GitHub; nenhum PR foi aberto. Pendência/bloqueio: aguardar autorização explícita para publicar no destino remoto; `AGENTS.md` permanece fora do commit.
