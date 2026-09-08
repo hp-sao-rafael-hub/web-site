@@ -5,6 +5,39 @@
 
 ---
 
+## Registro — Commit e tentativa de abertura do PR (08/09/2026)
+
+- [x] 2026-09-08 — [[03-empresa/pessoas/equipe/enzo|Enzo]] consolidou a correção das fotos do IMD no commit local `2cdb392` (`fix(imd): restore physician photos in specialty cards`), com 19 arquivos alterados, incluindo 15 imagens e os ajustes de dados, tipos e componente. Validação anterior preservada: build concluído, rota do IMD em `200`, 15 imagens em `200` e `git diff --check` sem erros. O `push` para `origin/seo-p0-integration` foi tentado, mas bloqueado pela revisão de segurança por envolver envio de código/imagens ao repositório remoto GitHub; nenhum PR foi aberto. Pendência/bloqueio: aguardar autorização explícita para publicar no destino remoto; `AGENTS.md` permanece fora do commit.
+
+---
+
+## Registro — Restauração das fotos dos médicos do IMD (08/09/2026)
+
+- [x] 2026-09-08 — [[03-empresa/pessoas/equipe/enzo|Enzo]] corrigiu os cards de especialidades do IMD para utilizarem diretamente as fotos da pasta `public/assets/images/medicos/prontas pra LP`, adicionou o mapeamento individual de imagens e textos alternativos, reintroduziu os cards adicionais de Cirurgia Geral e Urologia e restaurou a foto de Neurocirurgia ausente na pasta recebida. Arquivos de código afetados: `src/types/index.ts`, `src/lib/data/especialidades.ts` e `src/components/organisms/specialty-grid.tsx`. Validação: `npm.cmd run build` concluído com sucesso; rota `/pt/servicos/imd/` respondeu `200`; referências das fotos foram encontradas no HTML; 15 URLs de imagens responderam `200`; `git diff --check` sem erros. Observações: o build exibiu apenas avisos preexistentes de lint/Tailwind e export estático. O localhost corrigido está ativo em `http://localhost:3000`. Pendência/bloqueio: alterações ainda não foram commitadas nem abertas em PR; vault do Obsidian indisponível, portanto não houve sincronização externa.
+
+---
+
+## Registro — Inicialização do localhost (08/09/2026)
+
+- [x] 2026-09-08 — [[03-empresa/pessoas/equipe/enzo|Enzo]] iniciou o servidor de desenvolvimento do site com `npm.cmd run dev` após o alias `npm` ser bloqueado pela política de execução do PowerShell. Validação: Next.js iniciou na porta 3000 e informou `http://localhost:3000` e `http://192.168.0.62:3000`; processo permanece ativo nesta sessão. Não houve alteração de código. Pendências/bloqueios: o navegador não foi aberto automaticamente e o vault do Obsidian não está disponível para sincronização externa.
+
+---
+
+## Registro — Análise das últimas mudanças (08/09/2026)
+
+- [x] 2026-09-08 — [[03-empresa/pessoas/equipe/enzo|Enzo]] analisou o estado do workspace e o histórico Git; confirmou que não há alterações de código não commitadas, identificou `TASKS.md` como arquivo local modificado e `AGENTS.md` como não rastreado, e revisou os commits `866f096`, `bec3259`, `a31cce0` e `f1fbd40`. Validação: `git status`, `git log`, `git show` e diffs dos arquivos afetados. Pendência/bloqueio: o vault e a integração do Obsidian não estão disponíveis; este registro é apenas o espelho local e não houve sincronização externa.
+
+---
+
+## Registro — Regra canônica de logs do Codex (04/09/2026)
+
+- [x] 2026-09-04 — [[03-empresa/pessoas/equipe/enzo|Enzo]] definiu que toda rodada finalizada de ajustes ou implementações deve ser registrada no log do Obsidian conforme o padrão existente, sempre com a identificação do executor, resumo completo do trabalho, validações, evidências, pendências e bloqueios.
+- [x] 2026-09-04 — [[03-empresa/pessoas/equipe/enzo|Enzo]] pediu que o Codex trate essa regra como canônica; ela foi persistida em `AGENTS.md` para orientar as próximas rodadas.
+- [x] 2026-09-04 — [[03-empresa/pessoas/equipe/enzo|Enzo]] e Codex verificaram o workspace, a documentação e o histórico recente; não foi localizado vault/log do Obsidian nem uma integração conectada nesta sessão. Não houve alteração de produto nem evidência de validação visual nesta rodada.
+- [x] 2026-09-04 — [[03-empresa/pessoas/equipe/enzo|Enzo]] solicitou a localização da última atualização do Hospital no Obsidian; foi validado que o último registro local está neste `TASKS.md` (linhas 8–12) e que a última atualização de código é o commit `866f096` (`fix(seo): align route URLs in dev integration`, 18:09, branch `dev`). Pendência/bloqueio: o vault e a integração do Obsidian não estão disponíveis nesta sessão; nenhum log externo foi sincronizado.
+
+---
+
 ## Registro — Correções SEO seguras (27/08/2026)
 
 ### Concluído nesta etapa

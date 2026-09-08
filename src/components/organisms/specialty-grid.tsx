@@ -28,6 +28,20 @@ const COM_FOTO = new Set([
   "ortopedia", "cardiologia", "ginecologia",
 ])
 
+// Cards que duplicam o conteúdo de outra especialidade (ex.: segundo médico da
+// mesma área) apontam para a página da especialidade original.
+const HREF_OVERRIDE: Record<string, string> = {
+  "urologia-2": "urologia",
+  "cirurgia-geral-2": "cirurgia-geral",
+}
+
+// As fotos têm enquadramentos diferentes. Estes dois cards precisam de um
+// pequeno zoom para manter o médico centralizado no formato quadrado.
+const FOTO_FORA_DE_CENTRO: Record<string, string> = {
+  "cirurgia-plastica": "scale-[1.3] origin-[68%_45%] group-hover:scale-[1.4]",
+  "cirurgia-vascular": "scale-[1.3] origin-[72%_45%] group-hover:scale-[1.4]",
+}
+
 const VISIBLE = 3
 const INTERVAL_MS = 6000
 
@@ -139,7 +153,7 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
               {visibleItems.map((item, index) => (
                 <Link
                   key={`${item.id}-${index}`}
-                  href={`/especialidades/${item.id}`}
+                  href={`/especialidades/${HREF_OVERRIDE[item.id] ?? item.id}`}
                   aria-label={`Ver especialidade: ${item.title}`}
                   className={cn(
                     "group flex flex-col h-full overflow-hidden rounded-2xl bg-white",
@@ -150,13 +164,16 @@ export function SpecialtyGrid({ data, className }: SpecialtyGridProps) {
                 >
                   {/* Foto do médico (original, centralizada) ou fallback de ícone */}
                   <div className="relative aspect-square bg-creme overflow-hidden">
-                    {COM_FOTO.has(item.id) ? (
+                    {item.image || COM_FOTO.has(item.id) ? (
                       <Image
-                        src={`/assets/images/especialidades-card/${item.id}.jpg`}
-                        alt={`Especialista em ${item.title} — Hospital São Rafael`}
+                        src={item.image ?? `/assets/images/especialidades-card/${item.id}.jpg`}
+                        alt={item.imageAlt ?? `Especialista em ${item.title} — Hospital São Rafael`}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                        className={cn(
+                          "object-cover object-center transition-transform duration-500 group-hover:scale-105",
+                          FOTO_FORA_DE_CENTRO[item.id]
+                        )}
                       />
                     ) : (
                       <div className="absolute inset-0 flex items-center justify-center bg-charcoal/90">

@@ -12,6 +12,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Equipe especializada em artroscopia, artroplastias totais e cirurgias da coluna vertebral com técnicas minimamente invasivas. Centro cirúrgico equipado com arcos cirúrgicos dedicados, implantes de última geração e protocolos de recuperação acelerada (ERAS). Indicado para cirurgias eletivas de joelho, quadril, ombro e tratamento de fraturas complexas.",
       icon: "bone",
+      image: "/assets/images/medicos/prontas pra LP/DR. GABRIEL MIURA.png",
+      imageAlt: "Dr. Gabriel Miura — Ortopedia",
       procedures: [
         "Artroplastia total de joelho",
         "Artroplastia total de quadril",
@@ -27,6 +29,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Suporte cardiológico completo para avaliação de risco pré-operatório, monitoramento durante a internação e acompanhamento pós-cirúrgico. A equipe realiza cateterismo, angioplastia, implante de marcapasso e cirurgia de revascularização miocárdica. Estrutura com centro cirúrgico cardiovascular e UTI de alta complexidade.",
       icon: "heart-pulse",
+      image: "/assets/images/medicos/prontas pra LP/Dr rodrigo cardoso.png",
+      imageAlt: "Dr. Rodrigo Cardoso — Cardiologia",
       procedures: [
         "Cateterismo cardíaco",
         "Angioplastia coronária",
@@ -42,6 +46,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Tratamento cirúrgico de patologias do sistema nervoso central e periférico, com foco em hérnia discal, tumores cerebrais e estenose do canal vertebral. Abordagem minimamente invasiva sempre que possível, com monitoração neurofisiológica intraoperatória. Referência para casos de coluna cervical, lombar e neurocirurgia oncológica.",
       icon: "brain",
+      image: "/assets/images/medicos/prontas pra LP/neurocirurgia.png",
+      imageAlt: "Médico do IMD — Neurocirurgia",
       procedures: [
         "Ressecção de tumores cerebrais",
         "Cirurgia minimamente invasiva da coluna",
@@ -57,6 +63,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Diagnóstico e tratamento endoscópico e laparoscópico de patologias urológicas — próstata, rins, bexiga e vias urinárias. Estrutura completa para prostatectomia, nefrectomia, cistoscopia e litotripsia com equipamentos de última geração. Abordagem minimamente invasiva com foco em recuperação rápida e qualidade de vida.",
       icon: "stethoscope",
+      image: "/assets/images/medicos/prontas pra LP/DR TÁCITO GUIMARÃES Urologista.png",
+      imageAlt: "Dr. Tácito Guimarães — Urologia",
       procedures: [
         "Prostatectomia",
         "Nefrectomia",
@@ -72,6 +80,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Cirurgias ginecológicas por via laparoscópica com mínima invasão e recuperação acelerada. Especialidade completa para histerectomia, miomectomia, tratamento cirúrgico de endometriose e correção de prolapso pélvico. Ambiente hospitalar estruturado para cirurgias de alta complexidade com cuidado humanizado.",
       icon: "uterus",
+      image: "/assets/images/medicos/prontas pra LP/Dr Wilson Eustaquio - GINECOLOGISTA.png",
+      imageAlt: "Dr. Wilson Eustaquio — Ginecologia",
       procedures: [
         "Histerectomia laparoscópica",
         "Miomectomia",
@@ -87,6 +97,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Cirurgia dermatológica com diagnóstico histopatológico integrado no próprio complexo hospitalar. Especialidade indicada para exérese de lesões cutâneas, cirurgia de Mohs para carcinomas e reconstruções cutâneas após ressecção oncológica. Fluxo ágil entre diagnóstico, biópsia e procedimento cirúrgico.",
       icon: "scan",
+      image: "/assets/images/medicos/prontas pra LP/DRA ANA ROBERTA ROCHA.png",
+      imageAlt: "Dra. Ana Roberta Rocha — Dermatologia",
       procedures: [
         "Exérese de lesões cutâneas",
         "Cirurgia de Mohs",
@@ -102,6 +114,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Cirurgias abdominais de média e alta complexidade por via laparoscópica e aberta. Do planejamento ao pós-operatório, a equipe cobre colecistectomia, herniorrafias, ressecções intestinais e cirurgia antirrefluxo. Integração com UTI e equipe de anestesiologia para casos complexos.",
       icon: "scissors",
+      image: "/assets/images/medicos/prontas pra LP/DR RODRIGO NANKRAN.png",
+      imageAlt: "Dr. Rodrigo Nankran — Cirurgia Geral",
       procedures: [
         "Colecistectomia",
         "Apendicectomia",
@@ -117,6 +131,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Procedimentos estéticos e reconstrutivos com resultados naturais e seguros em ambiente hospitalar de alta complexidade. Equipe especializada em mamoplastias, rinoplastia, lipoaspiração e reconstrução mamária pós-mastectomia. Integração com mastologia e oncologia para abordagem oncoplástica completa.",
       icon: "sparkles",
+      image: "/assets/images/medicos/prontas pra LP/DRA DANIELLA RIBEIRO.png",
+      imageAlt: "Dra. Daniella Ribeiro — Cirurgia Plástica",
       procedures: [
         "Mamoplastia de aumento e redução",
         "Rinoplastia",
@@ -132,6 +148,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Tratamento de patologias arteriais e venosas com abordagem endovascular e cirurgia aberta. Estrutura com angiógrafo intraoperatório para revascularização de membros, correção de aneurismas e tratamento de insuficiência venosa crônica. Equipe experiente em fístulas arteriovenosas e angioplastia periférica.",
       icon: "waves",
+      image: "/assets/images/medicos/prontas pra LP/DRA CAMILA CAETANO.png",
+      imageAlt: "Dra. Camila Caetano — Cirurgia Vascular",
       procedures: [
         "Revascularização arterial",
         "Correção de aneurisma",
@@ -147,6 +165,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Ressecções oncológicas e reconstruções complexas da região craniofacial com equipe multidisciplinar integrada. Especialidade completa para tireoidectomia, paratireoidectomia, esvaziamento cervical e tumores parotídeos. Reconstrução por retalhos microvascularizados com suporte de microcirurgia no próprio complexo.",
       icon: "user",
+      image: "/assets/images/medicos/prontas pra LP/Dr Fabio Satake.png",
+      imageAlt: "Dr. Fabio Satake — Cabeça e Pescoço",
       procedures: [
         "Tireoidectomia total e parcial",
         "Paratireoidectomia",
@@ -162,6 +182,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Diagnóstico e tratamento cirúrgico de patologias da mama com abordagem oncoplástica que preserva forma e função. Equipe integrada com oncologia para nodulectomia, mastectomia, biópsia guiada e reconstrução mamária. Ambiente humanizado com suporte psicológico e acompanhamento em cada etapa do tratamento.",
       icon: "ribbon",
+      image: "/assets/images/medicos/prontas pra LP/DRA LÍVIA PAULUCCI.png",
+      imageAlt: "Dra. Lívia Paulucci — Mastologia",
       procedures: [
         "Nodulectomia",
         "Setorectomia",
@@ -177,6 +199,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Cirurgias do ouvido, nariz e garganta com técnicas modernas e estrutura hospitalar completa. Indicada para septoplastia, amigdalectomia, cirurgias endoscópicas nasossinusais (CENS) e procedimentos otológicos como timpanoplastia. Foco em resultados funcionais com mínimo tempo de internação.",
       icon: "ear",
+      image: "/assets/images/medicos/prontas pra LP/DR VINICIUS ANTUNES.png",
+      imageAlt: "Dr. Vinicius Antunes — Otorrinolaringologia",
       procedures: [
         "Septoplastia",
         "Amigdalectomia",
@@ -192,6 +216,8 @@ export const ESPECIALIDADES_DATA = {
       description:
         "Avaliação multidisciplinar e tratamento intervencionista de dores agudas e crônicas refratárias. Procedimentos guiados por imagem como bloqueios anestésicos, infiltrações, radiofrequência e neuroestimulação. Indicada para dor lombar, neuropatias, fibromialgia e manejo pós-cirúrgico de dor persistente.",
       icon: "syringe",
+      image: "/assets/images/medicos/prontas pra LP/DRA LUCIANA GUIMARÃES.png",
+      imageAlt: "Dra. Luciana Guimarães — Clínica da Dor",
       procedures: [
         "Bloqueios anestésicos",
         "Infiltrações guiadas",
@@ -199,6 +225,40 @@ export const ESPECIALIDADES_DATA = {
         "Procedimentos minimamente invasivos",
         "Manejo da dor crônica",
         "Avaliação multidisciplinar",
+      ],
+    },
+    {
+      id: "cirurgia-geral-2",
+      title: "Cirurgia Geral",
+      description:
+        "Cirurgias abdominais de média e alta complexidade por via laparoscópica e aberta. Do planejamento ao pós-operatório, a equipe cobre colecistectomia, herniorrafias, ressecções intestinais e cirurgia antirrefluxo. Integração com UTI e equipe de anestesiologia para casos complexos.",
+      icon: "scissors",
+      image: "/assets/images/medicos/prontas pra LP/DRA ANA CAROLINA ABREU cirurgia geral.png",
+      imageAlt: "Dra. Ana Carolina Abreu — Cirurgia Geral",
+      procedures: [
+        "Colecistectomia",
+        "Apendicectomia",
+        "Herniorrafia inguinal e ventral",
+        "Ressecção intestinal",
+        "Fundoplicatura",
+        "Cirurgia de refluxo gastroesofágico",
+      ],
+    },
+    {
+      id: "urologia-2",
+      title: "Urologia",
+      description:
+        "Diagnóstico e tratamento endoscópico e laparoscópico de patologias urológicas: próstata, rins, bexiga e vias urinárias. Estrutura completa para prostatectomia, nefrectomia, cistoscopia e litotripsia com equipamentos de última geração. Abordagem minimamente invasiva com foco em recuperação rápida e qualidade de vida.",
+      icon: "stethoscope",
+      image: "/assets/images/medicos/prontas pra LP/Dr guilherme valente.png",
+      imageAlt: "Dr. Guilherme Valente — Urologia",
+      procedures: [
+        "Prostatectomia",
+        "Nefrectomia",
+        "Litotripsia e ureteroscopia",
+        "Cistoscopia e RTU",
+        "Cirurgia de cálculos renais",
+        "Cirurgia de cálculos renais",
       ],
     },
     // [PENDENTE CLIENTE] Completar lista com todas as especialidades do documento de 13/mar
