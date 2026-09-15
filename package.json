@@ -9,7 +9,8 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test:functions": "node --test azure-functions/test"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.95.1",

@@ -1,6 +1,7 @@
 # 07 — Deploy da Azure Function de Leads
 
-> Guia operacional para publicar alterações em `azure-functions/medicos-lead.js`.
+> Guia operacional para publicar alterações em `azure-functions/medicos-lead.js` e
+> `azure-functions/outubro-rosa-lead.js`.
 > **Este deploy é manual e independente do deploy do site.** Um push na `main`
 > publica o site no Azure Static Web Apps e **não** toca na function.
 
@@ -12,9 +13,10 @@ Os workflows em `.github/workflows/` (`azure-deploy.yml`, `azure-static-web-apps
 `azure-static-web-apps-purple-dune-012e88a0f.yml`) publicam apenas o site estático —
 todos declaram `api_location: ""`.
 
-A pasta `azure-functions/` guarda o projeto completo da function — `medicos-lead.js`,
-`host.json`, `package.json` e `.funcignore` — e é publicada por
-`scripts/deploy-function.sh` (§3).
+A pasta `azure-functions/` guarda o projeto completo do Function App — `medicos-lead.js`,
+`outubro-rosa-lead.js`, `host.json`, `package.json` e `.funcignore` — e é publicada por
+`scripts/deploy-function.sh` (§3). As duas functions vivem no mesmo Function App e são
+publicadas juntas: não há como fazer deploy de uma sem redeployar a outra.
 
 > Historicamente a pasta era só uma cópia de referência do código, deployada à mão pelo
 > Cloud Shell (`364356c`). A estrutura publicável e o script foram adicionados depois.
@@ -55,8 +57,38 @@ az functionapp list -o table
 
 Já configuradas no Function App, **não mudam entre deploys**:
 
-- `DATACRAZY_TOKEN` — bearer da API do CRM
-- `DATACRAZY_WEBHOOK` — webhook opcional, disparado após criar o lead
+- `DATACRAZY_TOKEN` — bearer da API do CRM (compartilhado entre `medicos-lead` e
+  `outubro-rosa-lead`)
+- `DATACRAZY_WEBHOOK` — webhook opcional de `medicos-lead`, disparado após criar o lead
+
+---
+
+## 2.1 Função `outubro-rosa-lead` (campanha Outubro Rosa)
+
+Segunda function no mesmo Function App, adicionada para a LP da campanha Outubro Rosa
+(`hp-sao-rafael-hub/Lp-outubro-rosa`). Reaproveita o Function App já existente
+(`lp-medicos-leads-hsr`, `rg-hsp-sao-rafael`, Flex Consumption) em vez de criar um
+recurso novo — **não altera `medicos-lead.js` nem o rótulo `lp-medicos`**.
+
+| Item | Valor |
+|---|---|
+| **Endpoint** | `https://lp-medicos-leads-hsr-ewdgh3bzhscvaedt.brazilsouth-01.azurewebsites.net/api/outubro-rosa-lead` |
+| **Origem do frontend** | LP publicada em `outubrorosa.hospitalsaorafael.com.br` (Static Web App exclusivo da campanha) |
+| **Campos aceitos** | `nome`, `whatsapp`, `procedimento` (`mastopexia-com-protese` \| `mastopexia-sem-protese` \| `mamoplastia-de-aumento`), `consentimento` (obrigatório `true`), `submission_id`, `page_url`, `utm_source`, `utm_medium`, `utm_campaign`, honeypot `website` |
+| **Fluxo no CRM** | Se `OUTUBRO_ROSA_DATACRAZY_WEBHOOK_URL` estiver definida, usa o webhook. Senão, cria o lead via API e, se `OUTUBRO_ROSA_DATACRAZY_STAGE_ID` estiver definida, cria também o negócio na etapa configurada. |
+
+### Variáveis de ambiente exclusivas de `outubro-rosa-lead`
+
+Namespaced com o prefixo `OUTUBRO_ROSA_` para nunca colidir com as variáveis do
+`medicos-lead`:
+
+- `OUTUBRO_ROSA_ALLOWED_ORIGINS` — origens permitidas (CORS), separadas por vírgula
+- `OUTUBRO_ROSA_DATACRAZY_WEBHOOK_URL` — webhook privado da campanha (opcional)
+- `OUTUBRO_ROSA_DATACRAZY_STAGE_ID` — etapa do CRM para criar o negócio (opcional)
+- `OUTUBRO_ROSA_DATACRAZY_ATTENDANT_ID` — atendente responsável (opcional)
+
+Testes locais: `npm run test:functions` (roda `node --test azure-functions/test`,
+inclui os 7 casos de `outubro-rosa-lead.test.js`).
 
 ---
 
@@ -205,8 +237,12 @@ Sem `nome` ou `whatsapp`, retorna `400`.
 | `imd` | `Site HSR \| IMD` |
 | ausente/desconhecida | `LP B2B HSR` (fallback) |
 
-> Ao adicionar um novo formulário, inclua o rótulo no mapa `ORIGENS` da function.
-> **Não altere o rótulo de `lp-medicos`** — quebraria a segmentação histórica no CRM.
+> Ao adicionar um novo formulário **do mesmo domínio de leads B2B/IMD**, inclua o rótulo
+> no mapa `ORIGENS` desta function. **Não altere o rótulo de `lp-medicos`** — quebraria a
+> segmentação histórica no CRM. Para uma campanha com regras próprias (procedimento,
+> consentimento obrigatório, etapa/negócio no CRM), prefira uma function nova no mesmo
+> Function App, como `outubro-rosa-lead` (§2.1) — não force esses campos dentro do
+> contrato simples de `medicos-lead`.
 
 ---
 

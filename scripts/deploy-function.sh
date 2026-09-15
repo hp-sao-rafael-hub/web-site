@@ -169,6 +169,14 @@ for i in $(seq 1 12); do
     echo "  curl -X POST \"$URL\" \\"
     echo "    -H 'Content-Type: application/json' \\"
     echo "    -d '{\"nome\":\"TESTE DEPLOY\",\"whatsapp\":\"(31) 9 0000-0000\",\"email\":\"teste@exemplo.com\",\"especialidade\":\"Cardiologia\",\"cidade\":\"Belo Horizonte / MG\",\"origem\":\"imd\"}'"
+
+    OUTUBRO_ROSA_URL="https://$HOST/api/outubro-rosa-lead"
+    OUTUBRO_ROSA_CODE="$(curl -s -o /dev/null -w '%{http_code}' -X OPTIONS "$OUTUBRO_ROSA_URL" --max-time 20 || echo 000)"
+    if [[ "$OUTUBRO_ROSA_CODE" == "200" ]]; then
+      grn "Endpoint no ar: $OUTUBRO_ROSA_URL  (CORS OPTIONS 200)"
+    else
+      ylw "outubro-rosa-lead ainda não respondeu 200 (último status: $OUTUBRO_ROSA_CODE)."
+    fi
     exit 0
   fi
   sleep 10
