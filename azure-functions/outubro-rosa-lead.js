@@ -1,6 +1,8 @@
 const { app } = require('@azure/functions');
+const crypto = require('node:crypto');
 
 const DATACRAZY_API_URL = 'https://api.g1.datacrazy.io/api/v1';
+const META_GRAPH_API_URL = 'https://graph.facebook.com/v20.0';
 const SOURCE_LABEL = 'LP Outubro Rosa HSR';
 const REQUEST_TIMEOUT_MS = 10000;
 
@@ -57,6 +59,40 @@ function normalizePageUrl(value) {
 
 function extractLeadId(payload) {
   return payload?.id || payload?.lead?.id || payload?.data?.id || null;
+}
+
+function hashForMeta(value) {
+  return crypto.createHash('sha256').update(value.trim().toLowerCase()).digest('hex');
+}
+
+async function postMetaCapi({ phone, pageUrl, submissionId }, pixelId, accessToken, fetchImpl) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+  try {
+    const event = {
+      event_name: 'Lead',
+      event_time: Math.floor(Date.now() / 1000),
+      event_id: submissionId || undefined,
+      action_source: 'website',
+      event_source_url: pageUrl || undefined,
+      user_data: {
+        ph: [hashForMeta(phone.replace('+', ''))],
+      },
+    };
+    const response = await fetchImpl(`${META_GRAPH_API_URL}/${pixelId}/events`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ data: [event], access_token: accessToken }),
+      signal: controller.signal,
+    });
+    if (!response.ok) {
+      const error = new Error('meta_capi_request_failed');
+      error.status = response.status;
+      throw error;
+    }
+  } finally {
+    clearTimeout(timeout);
+  }
 }
 
 async function postDataCrazy(path, payload, token, fetchImpl) {
@@ -179,10 +215,27 @@ async function handleOutubroRosaLead(request, context, dependencies = {}) {
   if (pageUrl) lead.sourceReferral = { sourceUrl: pageUrl };
   if (attendantId) lead.attendant = { id: attendantId };
 
+  const metaPixelId = sanitizeText(env.OUTUBRO_ROSA_META_PIXEL_ID, 60);
+  const metaCapiToken = sanitizeText(env.OUTUBRO_ROSA_META_CAPI_TOKEN, 1000);
+
+  async function reportToMetaCapi() {
+    if (!metaPixelId || !metaCapiToken) return;
+    try {
+      await postMetaCapi({ phone, pageUrl, submissionId }, metaPixelId, metaCapiToken, fetchImpl);
+      context.log('Lead Outubro Rosa reportado à Meta CAPI.');
+    } catch (error) {
+      context.log.error('Falha ao reportar lead Outubro Rosa à Meta CAPI.', {
+        status: error.status || null,
+        type: error.name,
+      });
+    }
+  }
+
   try {
     if (webhookUrl) {
       await postDataCrazyWebhook(webhookPayload, webhookUrl, fetchImpl);
       context.log('Lead Outubro Rosa enviado ao webhook do DataCrazy.');
+      await reportToMetaCapi();
       return jsonResponse(200, { ok: true }, headers);
     }
 
@@ -203,6 +256,7 @@ async function handleOutubroRosaLead(request, context, dependencies = {}) {
     }
 
     context.log('Lead Outubro Rosa registrado no DataCrazy.', { businessCreated });
+    await reportToMetaCapi();
     return jsonResponse(200, { ok: true }, headers);
   } catch (error) {
     context.log.error('Falha ao registrar lead Outubro Rosa no DataCrazy.', {
@@ -224,4 +278,5 @@ module.exports = {
   PROCEDURES,
   handleOutubroRosaLead,
   normalizeBrazilianPhone,
+  hashForMeta,
 };

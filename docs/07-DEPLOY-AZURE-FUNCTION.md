@@ -86,9 +86,17 @@ Namespaced com o prefixo `OUTUBRO_ROSA_` para nunca colidir com as variáveis do
 - `OUTUBRO_ROSA_DATACRAZY_WEBHOOK_URL` — webhook privado da campanha (opcional)
 - `OUTUBRO_ROSA_DATACRAZY_STAGE_ID` — etapa do CRM para criar o negócio (opcional)
 - `OUTUBRO_ROSA_DATACRAZY_ATTENDANT_ID` — atendente responsável (opcional)
+- `OUTUBRO_ROSA_META_PIXEL_ID` — ID do Meta Pixel da campanha (opcional)
+- `OUTUBRO_ROSA_META_CAPI_TOKEN` — token de acesso da Meta Conversions API (opcional,
+  **segredo sensível** — só no Azure, nunca no frontend nem no repositório)
+
+Quando as duas variáveis da Meta estão configuradas, a function reporta um evento
+`Lead` server-side à Meta CAPI (telefone hasheado em SHA-256, `event_id` =
+`submission_id`) logo após confirmar o lead no DataCrazy. Falha nesse envio só é
+logada — não afeta a resposta ao formulário nem o registro no CRM.
 
 Testes locais: `npm run test:functions` (roda `node --test azure-functions/test`,
-inclui os 7 casos de `outubro-rosa-lead.test.js`).
+inclui os 9 casos de `outubro-rosa-lead.test.js`).
 
 ---
 

@@ -1,6 +1,6 @@
 const assert = require('node:assert/strict');
 const test = require('node:test');
-const { handleOutubroRosaLead, normalizeBrazilianPhone } = require('../outubro-rosa-lead');
+const { handleOutubroRosaLead, normalizeBrazilianPhone, hashForMeta } = require('../outubro-rosa-lead');
 
 function createContext() {
   const entries = [];
@@ -147,6 +147,56 @@ test('cria negócio na etapa configurada sem alterar outras funções', async ()
     attendantId: 'atendente-outubro-rosa',
     externalId: validBody.submission_id,
   });
+});
+
+test('reporta o lead à Meta CAPI com o telefone hasheado, sem expor o token', async () => {
+  const calls = [];
+  const env = {
+    ...baseEnv,
+    OUTUBRO_ROSA_META_PIXEL_ID: 'pixel-de-teste',
+    OUTUBRO_ROSA_META_CAPI_TOKEN: 'capi-token-de-teste',
+  };
+
+  const result = await handleOutubroRosaLead(
+    createRequest(validBody),
+    createContext(),
+    {
+      env,
+      fetchImpl: async (url, options) => {
+        calls.push({ url, options });
+        return response(201, { id: 'lead-1' });
+      },
+    },
+  );
+
+  assert.equal(result.status, 200);
+  assert.equal(calls.length, 2);
+  assert.equal(calls[1].url, 'https://graph.facebook.com/v20.0/pixel-de-teste/events');
+  const payload = JSON.parse(calls[1].options.body);
+  assert.equal(payload.access_token, 'capi-token-de-teste');
+  assert.equal(payload.data[0].event_name, 'Lead');
+  assert.equal(payload.data[0].event_id, validBody.submission_id);
+  assert.equal(payload.data[0].user_data.ph[0], hashForMeta('5531999999999'));
+  assert.notEqual(payload.data[0].user_data.ph[0], '5531999999999');
+});
+
+test('não quebra o registro do lead quando a Meta CAPI falha', async () => {
+  const env = {
+    ...baseEnv,
+    OUTUBRO_ROSA_META_PIXEL_ID: 'pixel-de-teste',
+    OUTUBRO_ROSA_META_CAPI_TOKEN: 'capi-token-de-teste',
+  };
+
+  const result = await handleOutubroRosaLead(
+    createRequest(validBody),
+    createContext(),
+    {
+      env,
+      fetchImpl: async (url) => (url.includes('graph.facebook.com') ? response(500, {}) : response(201, { id: 'lead-1' })),
+    },
+  );
+
+  assert.equal(result.status, 200);
 });
 
 test('não devolve detalhes internos quando o DataCrazy falha', async () => {
