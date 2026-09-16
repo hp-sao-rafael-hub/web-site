@@ -35,6 +35,20 @@ function jsonResponse(status, body, headers) {
   return { status, headers, body: JSON.stringify(body) };
 }
 
+function logError(context, message, details) {
+  if (typeof context?.error === 'function') {
+    context.error(message, details);
+    return;
+  }
+
+  if (typeof context?.log?.error === 'function') {
+    context.log.error(message, details);
+    return;
+  }
+
+  if (typeof context?.log === 'function') context.log(message, details);
+}
+
 function sanitizeText(value, maxLength) {
   return typeof value === 'string' ? value.trim().slice(0, maxLength) : '';
 }
@@ -175,7 +189,7 @@ async function handleOutubroRosaLead(request, context, dependencies = {}) {
   const token = sanitizeText(env.DATACRAZY_TOKEN, 500);
   const webhookUrl = sanitizeText(env.OUTUBRO_ROSA_DATACRAZY_WEBHOOK_URL, 2000);
   if ((!token && !webhookUrl) || typeof fetchImpl !== 'function') {
-    context.log.error('Configuração do DataCrazy ausente na função Outubro Rosa.');
+    logError(context, 'Configuração do DataCrazy ausente na função Outubro Rosa.');
     return jsonResponse(500, { ok: false, error: 'integration_not_configured' }, headers);
   }
 
@@ -224,7 +238,7 @@ async function handleOutubroRosaLead(request, context, dependencies = {}) {
       await postMetaCapi({ phone, pageUrl, submissionId }, metaPixelId, metaCapiToken, fetchImpl);
       context.log('Lead Outubro Rosa reportado à Meta CAPI.');
     } catch (error) {
-      context.log.error('Falha ao reportar lead Outubro Rosa à Meta CAPI.', {
+      logError(context, 'Falha ao reportar lead Outubro Rosa à Meta CAPI.', {
         status: error.status || null,
         type: error.name,
       });
@@ -245,7 +259,7 @@ async function handleOutubroRosaLead(request, context, dependencies = {}) {
     if (stageId) {
       const leadId = extractLeadId(leadResult);
       if (!leadId) {
-        context.log.error('DataCrazy não retornou o ID necessário para criar o negócio da campanha.');
+        logError(context, 'DataCrazy não retornou o ID necessário para criar o negócio da campanha.');
         return jsonResponse(502, { ok: false, error: 'crm_stage_not_created' }, headers);
       }
       const business = { leadId, stageId };
@@ -259,7 +273,7 @@ async function handleOutubroRosaLead(request, context, dependencies = {}) {
     await reportToMetaCapi();
     return jsonResponse(200, { ok: true }, headers);
   } catch (error) {
-    context.log.error('Falha ao registrar lead Outubro Rosa no DataCrazy.', {
+    logError(context, 'Falha ao registrar lead Outubro Rosa no DataCrazy.', {
       status: error.status || null,
       type: error.name,
     });
