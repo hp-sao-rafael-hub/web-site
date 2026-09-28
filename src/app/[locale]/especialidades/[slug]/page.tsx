@@ -14,6 +14,7 @@ import {
   getEspecialidadeLPBySlug,
 } from "@/lib/structure-especialidade-lp"
 import { routing } from "@/i18n/routing"
+import { SITE_URL } from "@/lib/data/meta"
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>
@@ -29,7 +30,7 @@ export async function generateStaticParams() {
 export const dynamicParams = false
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params
+  const { locale, slug } = await params
   const lp = await getEspecialidadeLPBySlug(slug)
 
   if (!lp) {
@@ -39,9 +40,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: lp.meta.title,
     description: lp.meta.description,
+    alternates: {
+      canonical: `/${locale}/especialidades/${slug}/`,
+    },
     openGraph: {
       title: lp.meta.title,
       description: lp.meta.description,
+      url: `${SITE_URL}/${locale}/especialidades/${slug}/`,
       images: [
         {
           url: lp.hero.backgroundImage,
@@ -50,6 +55,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           alt: lp.hero.headline,
         },
       ],
+    },
+    robots: {
+      index: locale !== "en",
+      follow: true,
+      googleBot: { index: locale !== "en", follow: true },
     },
   }
 }
@@ -64,5 +74,10 @@ export default async function EspecialidadeLPPage({ params }: PageProps) {
     notFound()
   }
 
-  return <EspecialidadeLPTemplate data={lp} />
+  return (
+    <EspecialidadeLPTemplate
+      data={lp}
+      canonicalUrl={`${SITE_URL}/${locale}/especialidades/${slug}/`}
+    />
+  )
 }

@@ -5,16 +5,16 @@ export const STATS_DATA = {
       id: "cirurgias",
       value: 12000,
       prefix: "+",
-      label: "Procedimentos realizados com sucesso",
+      label: "Procedimentos realizados",
       description:
-        "Experiência comprovada de uma equipe médica e multidisciplinar altamente capacitada.",
+        "Número institucional que deve ser atualizado com período, fonte e metodologia aprovados.",
     },
     {
       id: "salas",
       value: 22,
       label: "Salas Cirúrgicas",
       description:
-        "Equipadas com tecnologia de última geração para atender os mais diversos procedimentos eletivos com total previsibilidade.",
+        "Quantidade e recursos devem ser apresentados conforme os procedimentos confirmados pela instituição.",
     },
     {
       id: "investimento",
@@ -32,7 +32,7 @@ export const STATS_DATA = {
       label: "Sessões de Hiperbárica",
       // [PENDENTE CLIENTE] Número em levantamento — valor simbólico provisório
       description:
-        "Sessões realizadas para acelerar a recuperação e prevenir complicações pós-cirúrgicas com tecnologia de oxigenoterapia hiperbárica.",
+        "Número institucional sujeito a atualização e validação pela equipe responsável pelo serviço.",
     },
   ],
 } as const

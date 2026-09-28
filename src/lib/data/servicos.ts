@@ -4,13 +4,13 @@ export const SERVICOS_DATA = {
   kicker: "ESTRUTURA HOSPITALAR",
   headline: "Infraestrutura completa em um único complexo integrado.",
   description:
-    "Tudo o que o seu procedimento exige, integrado no mesmo complexo, sem dispersão, sem deslocamento, sem atrito.",
+    "Serviços organizados no mesmo complexo para apoiar procedimentos programados, conforme a necessidade de cada caso.",
   items: [
     {
       id: "centro-cirurgico",
       title: "Centro Cirúrgico",
       description:
-        "22 salas equipadas com tecnologia de última geração para os mais diversos procedimentos cirúrgicos eletivos.",
+        "Salas e recursos organizados para os procedimentos cirúrgicos eletivos confirmados pela instituição.",
       icon: "scalpel",
       image: "/assets/images/servicos/centro-cirurgico-v2.jpg",
       href: "/servicos/centro-cirurgico",
@@ -45,7 +45,7 @@ export const SERVICOS_DATA = {
       id: "hiperbarica",
       title: "Terapia Hiperbárica",
       description:
-        "Tecnologia de ponta para aceleração da recuperação e prevenção de complicações pós-cirúrgicas.",
+        "Tratamento complementar disponível para indicações clínicas específicas e avaliação médica.",
       icon: "activity",
       image: "/para-cirurgioes-parceiros/images/hiperbarica.jpg",
       href: "/servicos/hiperbarica",
