@@ -888,26 +888,6 @@ const IMD: ServiceDetailData = {
       { number: "05", title: "Continuidade do cuidado", description: "Diagnóstico conectado ao centro cirúrgico: do IMD direto para o planejamento cirúrgico, sem retrabalho." },
     ],
   },
-  leadForm: {
-    kicker: "AGENDE SUA CONSULTA",
-    headline: "Comece pelo primeiro passo: fale com a nossa equipe.",
-    description:
-      "Preencha os dados abaixo e nossa equipe de relacionamento entra em contato para organizar sua consulta ou exame — com orientação de preparo, documentos e o melhor horário para você.",
-    submitLabel: "Quero agendar",
-    successTitle: "Recebemos seu contato.",
-    successMessage:
-      "Nossa equipe de relacionamento entra em contato pelo WhatsApp em até 1 hora útil para confirmar sua consulta ou exame e orientar o preparo necessário.",
-    origem: "imd",
-    formId: "imd-agendar",
-    extraOptions: [
-      "Oftalmologia",
-      "Check-up completo",
-      "Exames de imagem",
-      "Exames laboratoriais",
-      "Avaliação pré-operatória",
-      "Ainda não sei / Outro",
-    ],
-  },
   testimonials: {
     headline: "O que dizem nossos pacientes",
     items: [

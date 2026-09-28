@@ -243,18 +243,18 @@ export function EspecialidadeLeadForm({
       aria-labelledby="especialidade-form-heading"
       className={cn("w-full scroll-mt-24 bg-creme py-20 lg:py-30", className)}
     >
-      <div className="mx-auto max-w-[920px] px-4 sm:px-6 lg:px-8">
-        <div className="mb-10 flex flex-col items-center gap-5 text-center lg:mb-12">
+      <div className="mx-auto grid max-w-[1280px] items-start gap-10 px-4 sm:px-6 lg:grid-cols-[minmax(0,0.85fr)_minmax(520px,1.15fr)] lg:gap-16 lg:px-8">
+        <div className="flex flex-col gap-5 lg:sticky lg:top-28">
           <Kicker color="cobre">FALE COM A GENTE</Kicker>
           <Heading as="h2" id="especialidade-form-heading" className="!text-3xl lg:!text-4xl">
             Agende seu atendimento em {specialtyName}.
           </Heading>
           <span aria-hidden className="block h-0.5 w-12 bg-cobre" />
-          <p className="max-w-[680px] text-base leading-relaxed text-charcoal/75 lg:text-lg">
+          <p className="max-w-[560px] text-base leading-relaxed text-charcoal/75 lg:text-lg">
             Preencha seus dados. Nossa equipe entrará em contato pelo WhatsApp para orientar os
             próximos passos do seu atendimento particular.
           </p>
-          <div className="flex max-w-[680px] items-start gap-3 rounded-2xl border border-cobre/15 bg-white/60 p-4 text-left text-sm leading-relaxed text-charcoal/65">
+          <div className="flex max-w-[560px] items-start gap-3 rounded-2xl border border-cobre/15 bg-white/60 p-4 text-sm leading-relaxed text-charcoal/65">
             <LockKeyhole className="mt-0.5 shrink-0 text-cobre" size={18} aria-hidden />
             <span>
               Seus dados seguem com segurança apenas para a equipe responsável pelo atendimento.
