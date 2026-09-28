@@ -95,6 +95,8 @@ export interface FormLeadMeta {
   specialty?: string
   /** Cidade/estado informado — segmentação geográfica */
   city?: string
+  /** ID compartilhado com a Meta CAPI para deduplicar o evento Lead */
+  eventId?: string
 }
 
 /**
@@ -123,7 +125,7 @@ export function trackFormLead(meta: FormLeadMeta): void {
 
   // Meta Pixel — evento Lead
   try {
-    w.fbq?.("track", "Lead", payload)
+    w.fbq?.("track", "Lead", payload, meta.eventId ? { eventID: meta.eventId } : undefined)
   } catch {
     /* noop */
   }
