@@ -39,6 +39,9 @@ import { SITE_URL } from "@/lib/data/meta"
 import type { FooterData } from "@/types"
 import type { EspecialidadeLPData } from "@/lib/data/especialidades-lp"
 
+const IMD_WHATSAPP_URL =
+  "https://wa.me/5531971511855?text=Ol%C3%A1%2C%20vim%20pelo%20formul%C3%A1rio%20do%20IMD%2C%20gostaria%20de%20saber%20mais%21"
+
 interface EspecialidadeLPTemplateProps {
   data: EspecialidadeLPData
   /** URL canônica (schema JSON-LD) */
@@ -60,10 +63,10 @@ export function EspecialidadeLPTemplate({
       <WhatsAppTracker specialty={data.termo} />
 
       {/* Header minimalista (sem nav) — reduz distração p/ tráfego pago */}
-      <EspecialidadeLPHeader />
+      <EspecialidadeLPHeader whatsappHref={IMD_WHATSAPP_URL} />
 
       {/* 1. Hero — CTA WhatsApp único já embutido no organism */}
-      <ServicePageHero data={hero} pills2x2 />
+      <ServicePageHero data={hero} pills2x2 whatsappHref={IMD_WHATSAPP_URL} />
 
       {/* 2. O que é / pra quem (pb reduzido — cola melhor no bloco de exames) */}
       <ServiceIntroBlock data={intro} sectionId="sobre" className="!pb-10 lg:!pb-14" />
@@ -77,6 +80,7 @@ export function EspecialidadeLPTemplate({
         headline="Fale agora com nossa equipe e agende sua avaliação."
         description="Atendimento particular, humano e rápido. Resposta em até 1 hora útil."
         variant="creme"
+        whatsappHref={IMD_WHATSAPP_URL}
       />
 
       {/* 5. Quando procurar (indicações) */}
@@ -92,6 +96,7 @@ export function EspecialidadeLPTemplate({
         headline="Descubra se é hora de agendar sua avaliação."
         description="Sem compromisso. Nossa equipe orienta o próximo passo conforme o seu caso."
         variant="charcoal"
+        whatsappHref={IMD_WHATSAPP_URL}
       />
 
       {/* 7. Por que HSR (prova institucional) */}
@@ -112,11 +117,15 @@ export function EspecialidadeLPTemplate({
       </div>
 
       {/* 10. Formulário compartilhado — especialidade fixa conforme a página */}
-      <EspecialidadeLeadForm specialtySlug={data.slug} specialtyName={data.termo} />
+      <EspecialidadeLeadForm
+        specialtySlug={data.slug}
+        specialtyName={data.termo}
+        whatsappHref={IMD_WHATSAPP_URL}
+      />
 
       {/* Footer + sticky CTA mobile */}
       <Footer data={FOOTER_DATA as unknown as FooterData} />
-      <ServiceStickyCta />
+      <ServiceStickyCta whatsappHref={IMD_WHATSAPP_URL} />
     </>
   )
 }
