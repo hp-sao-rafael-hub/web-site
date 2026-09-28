@@ -120,6 +120,8 @@ Variáveis exclusivas:
 
 - `ESPECIALIDADES_ALLOWED_ORIGINS` — origens CORS explícitas, separadas por vírgula;
 - `ESPECIALIDADES_SOURCE_LABEL` — padrão `Site HSR | IMD`;
+- `ESPECIALIDADES_BOARD_KEY` — funil de destino no payload do webhook; padrão `comercial`;
+- `ESPECIALIDADES_DEAL_VALUE` — valor numérico opcional do negócio; sem configuração envia `null`;
 - `ESPECIALIDADES_DATACRAZY_WEBHOOK_URL` — webhook privado opcional;
 - `ESPECIALIDADES_DATACRAZY_STAGE_ID` — etapa opcional para criar negócio;
 - `ESPECIALIDADES_DATACRAZY_ATTENDANT_ID` — atendente opcional;

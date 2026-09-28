@@ -247,6 +247,10 @@ async function handleEspecialidadesLead(request, context, dependencies = {}) {
   }
 
   const sourceLabel = sanitizeText(env.ESPECIALIDADES_SOURCE_LABEL, 120) || "Site HSR | IMD"
+  const boardKey = sanitizeText(env.ESPECIALIDADES_BOARD_KEY, 80) || "comercial"
+  const configuredValue = Number(env.ESPECIALIDADES_DEAL_VALUE)
+  const dealValue =
+    Number.isFinite(configuredValue) && configuredValue >= 0 ? configuredValue : null
   const utmSource = sanitizeText(body.utm_source, 80)
   const submissionId = sanitizeText(body.submission_id, 100)
   const stageId = sanitizeText(env.ESPECIALIDADES_DATACRAZY_STAGE_ID, 100)
@@ -256,34 +260,37 @@ async function handleEspecialidadesLead(request, context, dependencies = {}) {
     .join(" | ")
 
   const webhookPayload = {
-    name,
-    nome: name,
-    phone,
-    whatsapp: phone,
-    email: email || null,
-    city,
-    cidade: city,
-    specialty,
-    especialidade: specialty,
-    specialtySlug,
-    especialidadeSlug: specialtySlug,
-    tag: specialty,
+    title: `${name} - ${specialty}`,
+    value: dealValue,
+    board_key: boardKey,
+    contact: {
+      name,
+      email: email || null,
+      phone,
+      city,
+      source: sourceLabel,
+    },
+    specialty: {
+      name: specialty,
+      slug: specialtySlug,
+    },
     tags: [specialty],
-    source,
-    pageUrl,
-    submissionId: submissionId || null,
-    consent: true,
-    consentimento: true,
-    consentedAt,
-    consentidoEm: consentedAt,
-    privacyPolicyVersion: privacyVersion,
-    politicaVersao: privacyVersion,
-    utm: {
-      source: utmSource || null,
-      medium: sanitizeText(body.utm_medium, 80) || null,
-      campaign: sanitizeText(body.utm_campaign, 120) || null,
-      content: sanitizeText(body.utm_content, 120) || null,
-      term: sanitizeText(body.utm_term, 120) || null,
+    consent: {
+      granted: true,
+      at: consentedAt,
+      policy_version: privacyVersion,
+    },
+    attribution: {
+      source,
+      page_url: pageUrl,
+      submission_id: submissionId || null,
+      utm: {
+        source: utmSource || null,
+        medium: sanitizeText(body.utm_medium, 80) || null,
+        campaign: sanitizeText(body.utm_campaign, 120) || null,
+        content: sanitizeText(body.utm_content, 120) || null,
+        term: sanitizeText(body.utm_term, 120) || null,
+      },
     },
   }
 
