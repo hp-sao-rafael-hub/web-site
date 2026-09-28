@@ -10,6 +10,7 @@ import { setRequestLocale } from "next-intl/server"
 import { LegalPageTemplate } from "@/components/templates/legal-page-template"
 import { PRIVACY_POLICY_DATA } from "@/lib/legal-content"
 import { routing } from "@/i18n/routing"
+import { SITE_URL } from "@/lib/data/meta"
 
 interface PageProps {
   params: Promise<{ locale: string }>
@@ -26,16 +27,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description:
       "Como o Hospital São Rafael coleta, utiliza, armazena e protege os dados pessoais dos visitantes deste site, em conformidade com a LGPD.",
     alternates: {
-      canonical: `/${locale}/privacidade`,
-      languages: {
-        "pt-BR": "/pt/privacidade",
-        "en-US": "/en/privacidade",
-        "x-default": "/pt/privacidade",
-      },
+      canonical: `/${locale}/privacidade/`,
+    },
+    openGraph: {
+      url: `${SITE_URL}/${locale}/privacidade/`,
     },
     robots: {
-      index: true,
+      index: locale !== "en",
       follow: true,
+      googleBot: { index: locale !== "en", follow: true },
     },
   }
 }

@@ -7,6 +7,7 @@
 // =============================================================================
 
 import type { ServiceDetailData } from "@/lib/services-content"
+import { APPOINTMENT_PHONE, SITE_PHONE, SITE_URL } from "@/lib/data/meta"
 
 // -----------------------------------------------------------------------------
 // TYPES
@@ -26,11 +27,16 @@ interface ServiceSchemaProps {
 // -----------------------------------------------------------------------------
 const HSR_ORGANIZATION = {
   "@type": "Hospital",
-  "@id": "https://hsr-xi.vercel.app/#hospital",
+  "@id": `${SITE_URL}/#hospital`,
   name: "Hospital São Rafael",
-  url: "https://hsr-xi.vercel.app",
-  telephone: "+55-31-2517-0000",
-  image: "https://hsr-xi.vercel.app/og-image.png",
+  url: SITE_URL,
+  telephone: SITE_PHONE,
+  image: `${SITE_URL}/og-image.png`,
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: APPOINTMENT_PHONE,
+    contactType: "appointment scheduling",
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: "Av. Raja Gabáglia, 1380",
@@ -80,7 +86,7 @@ function buildBreadcrumb(slug: string, title: string, baseUrl: string) {
         "@type": "ListItem",
         position: 3,
         name: title,
-        item: `${baseUrl}/servicos/${slug}`,
+        item: `${baseUrl}/servicos/${slug}/`,
       },
     ],
   }

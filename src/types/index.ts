@@ -94,6 +94,8 @@ export interface EspecialidadeItem {
   description: string
   icon: string
   procedures: string[]
+  image?: string
+  imageAlt?: string
 }
 
 export interface EspecialidadesData {

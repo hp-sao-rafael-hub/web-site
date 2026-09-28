@@ -3,7 +3,7 @@ export const IMD_SECTION_DATA = {
   headline: "Consultas e exames reunidos em um só lugar, integrados à sua cirurgia.",
   description: [
     "O Instituto Médico e Diagnóstico (IMD) do Hospital São Rafael reúne consultas, exames de imagem, laboratório e check-up em um mesmo espaço, com atendimento exclusivamente particular.",
-    "Por funcionar dentro do mesmo complexo do centro cirúrgico, o IMD conecta avaliação, diagnóstico e procedimento em uma jornada contínua: resultados e laudos alimentam o prontuário digital, sem repetição de exames e sem deslocamento entre endereços.",
+    "Por funcionar dentro do mesmo complexo do centro cirúrgico, o IMD pode apoiar a conexão entre avaliação, diagnóstico e procedimento. O acesso a resultados e a necessidade de novos exames dependem da autorização e da avaliação da equipe responsável.",
   ],
   ctas: [
     { label: "Conheça o IMD", href: "/servicos/imd" },

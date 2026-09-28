@@ -44,6 +44,7 @@ import { ServiceStickyCta } from "@/components/molecules/service-sticky-cta"
 import { ServiceSchema } from "@/components/atoms/service-schema"
 
 import { FOOTER_DATA, ESPECIALIDADES_DATA } from "@/lib/constants"
+import { SITE_URL } from "@/lib/data/meta"
 import { SpecialtyGrid } from "@/components/organisms/specialty-grid"
 import type { ServiceDetailData } from "@/lib/services-content"
 import type { FooterData, EspecialidadesData } from "@/types"
@@ -66,7 +67,7 @@ interface ServiceDetailTemplateProps {
 // -----------------------------------------------------------------------------
 export function ServiceDetailTemplate({
   data,
-  canonicalUrl = `https://hsr-xi.vercel.app/servicos/${data.slug}`,
+  canonicalUrl = `${SITE_URL}/servicos/${data.slug}/`,
   schemaType = "MedicalClinic",
 }: ServiceDetailTemplateProps) {
   const {

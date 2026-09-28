@@ -1,10 +1,11 @@
-import { Montserrat } from "next/font/google"
+import localFont from "next/font/local"
 import Script from "next/script"
 import "./globals.css"
 
-const montserrat = Montserrat({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700", "800"],
+const montserrat = localFont({
+  src: "../../public/fonts/Montserrat-Variable.ttf",
+  weight: "100 900",
+  style: "normal",
   variable: "--font-montserrat",
   display: "swap",
 })
