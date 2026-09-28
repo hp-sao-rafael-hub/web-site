@@ -1,7 +1,7 @@
 # 07 — Deploy da Azure Function de Leads
 
-> Guia operacional para publicar alterações em `azure-functions/medicos-lead.js` e
-> `azure-functions/outubro-rosa-lead.js`.
+> Guia operacional para publicar alterações em `azure-functions/medicos-lead.js`,
+> `azure-functions/outubro-rosa-lead.js` e `azure-functions/especialidades-lead.js`.
 > **Este deploy é manual e independente do deploy do site.** Um push na `main`
 > publica o site no Azure Static Web Apps e **não** toca na function.
 
@@ -29,15 +29,15 @@ publicadas juntas: não há como fazer deploy de uma sem redeployar a outra.
 
 Recebe o POST dos formulários de captação e cria o lead no CRM DataCrazy.
 
-| Item | Valor |
-|---|---|
-| **Function App** | `lp-medicos-leads-hsr` (Brazil South) |
-| **Resource group** | `rg-hsp-sao-rafael` |
-| **Plano** | **Flex Consumption** · runtime Node 22 |
-| **Função** | `medicos-lead` |
-| **Endpoint** | `https://lp-medicos-leads-hsr-ewdgh3bzhscvaedt.brazilsouth-01.azurewebsites.net/api/medicos-lead` |
-| **Destino** | `https://api.g1.datacrazy.io/api/v1/leads` |
-| **Auth** | `anonymous` (CORS liberado, trata `OPTIONS`) |
+| Item               | Valor                                                                                             |
+| ------------------ | ------------------------------------------------------------------------------------------------- |
+| **Function App**   | `lp-medicos-leads-hsr` (Brazil South)                                                             |
+| **Resource group** | `rg-hsp-sao-rafael`                                                                               |
+| **Plano**          | **Flex Consumption** · runtime Node 22                                                            |
+| **Função**         | `medicos-lead`                                                                                    |
+| **Endpoint**       | `https://lp-medicos-leads-hsr-ewdgh3bzhscvaedt.brazilsouth-01.azurewebsites.net/api/medicos-lead` |
+| **Destino**        | `https://api.g1.datacrazy.io/api/v1/leads`                                                        |
+| **Auth**           | `anonymous` (CORS liberado, trata `OPTIONS`)                                                      |
 
 Confirme o nome exato do app antes de publicar — o sufixo `-ewdgh3bzhscvaedt` da URL é
 hostname gerado, não necessariamente parte do nome:
@@ -48,10 +48,10 @@ az functionapp list -o table
 
 ### Consumidores do endpoint
 
-| Origem | Onde vive | `origem` enviada |
-|---|---|---|
-| LP B2B de médicos | `public/para-cirurgioes-parceiros/index.html` | `lp-medicos` |
-| Formulário do IMD | `src/components/organisms/service-lead-form.tsx` | `imd` |
+| Origem            | Onde vive                                        | `origem` enviada |
+| ----------------- | ------------------------------------------------ | ---------------- |
+| LP B2B de médicos | `public/para-cirurgioes-parceiros/index.html`    | `lp-medicos`     |
+| Formulário do IMD | `src/components/organisms/service-lead-form.tsx` | `imd`            |
 
 ### Variáveis de ambiente
 
@@ -70,12 +70,12 @@ Segunda function no mesmo Function App, adicionada para a LP da campanha Outubro
 (`lp-medicos-leads-hsr`, `rg-hsp-sao-rafael`, Flex Consumption) em vez de criar um
 recurso novo — **não altera `medicos-lead.js` nem o rótulo `lp-medicos`**.
 
-| Item | Valor |
-|---|---|
-| **Endpoint** | `https://lp-medicos-leads-hsr-ewdgh3bzhscvaedt.brazilsouth-01.azurewebsites.net/api/outubro-rosa-lead` |
-| **Origem do frontend** | LP publicada em `outubrorosa.hospitalsaorafael.com.br` (Static Web App exclusivo da campanha) |
-| **Campos aceitos** | `nome`, `whatsapp`, `procedimento` (`mastopexia-com-protese` \| `mastopexia-sem-protese` \| `mamoplastia-de-aumento`), `consentimento` (obrigatório `true`), `submission_id`, `page_url`, `utm_source`, `utm_medium`, `utm_campaign`, honeypot `website` |
-| **Fluxo no CRM** | Se `OUTUBRO_ROSA_DATACRAZY_WEBHOOK_URL` estiver definida, usa o webhook. Senão, cria o lead via API e, se `OUTUBRO_ROSA_DATACRAZY_STAGE_ID` estiver definida, cria também o negócio na etapa configurada. |
+| Item                   | Valor                                                                                                                                                                                                                                                    |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Endpoint**           | `https://lp-medicos-leads-hsr-ewdgh3bzhscvaedt.brazilsouth-01.azurewebsites.net/api/outubro-rosa-lead`                                                                                                                                                   |
+| **Origem do frontend** | LP publicada em `outubrorosa.hospitalsaorafael.com.br` (Static Web App exclusivo da campanha)                                                                                                                                                            |
+| **Campos aceitos**     | `nome`, `whatsapp`, `procedimento` (`mastopexia-com-protese` \| `mastopexia-sem-protese` \| `mamoplastia-de-aumento`), `consentimento` (obrigatório `true`), `submission_id`, `page_url`, `utm_source`, `utm_medium`, `utm_campaign`, honeypot `website` |
+| **Fluxo no CRM**       | Se `OUTUBRO_ROSA_DATACRAZY_WEBHOOK_URL` estiver definida, usa o webhook. Senão, cria o lead via API e, se `OUTUBRO_ROSA_DATACRAZY_STAGE_ID` estiver definida, cria também o negócio na etapa configurada.                                                |
 
 ### Variáveis de ambiente exclusivas de `outubro-rosa-lead`
 
@@ -95,8 +95,43 @@ Quando as duas variáveis da Meta estão configuradas, a function reporta um eve
 `submission_id`) logo após confirmar o lead no DataCrazy. Falha nesse envio só é
 logada — não afeta a resposta ao formulário nem o registro no CRM.
 
-Testes locais: `npm run test:functions` (roda `node --test azure-functions/test`,
-inclui os 9 casos de `outubro-rosa-lead.test.js`).
+Testes locais: `npm run test:functions` (executa todos os arquivos `*.test.js` de
+`azure-functions/test`).
+
+---
+
+## 2.2 Função `especialidades-lead` (13 LPs do IMD)
+
+Endpoint compartilhado pelas páginas `/[locale]/especialidades/[slug]`. A especialidade
+é exibida como valor fixo e o servidor confere simultaneamente o slug, o rótulo e a rota
+de origem contra uma lista fechada das 13 especialidades. Isso impede que a alteração do
+campo hidden no navegador crie uma origem arbitrária no CRM.
+
+| Item                | Valor                                                                                                    |
+| ------------------- | -------------------------------------------------------------------------------------------------------- | --- | --------------- | --------- |
+| **Endpoint**        | `https://lp-medicos-leads-hsr-ewdgh3bzhscvaedt.brazilsouth-01.azurewebsites.net/api/especialidades-lead` |
+| **Frontend**        | `src/components/organisms/especialidade-lead-form.tsx`                                                   |
+| **Composição**      | `src/components/templates/especialidade-lp-template.tsx`                                                 |
+| **Campos pessoais** | nome, WhatsApp, e-mail opcional e cidade                                                                 |
+| **Auditoria**       | consentimento, data/hora, versão da política, página, UTMs e `submission_id`                             |
+| **Origem padrão**   | `Site HSR                                                                                                | IMD | <Especialidade> | <Cidade>` |
+
+Variáveis exclusivas:
+
+- `ESPECIALIDADES_ALLOWED_ORIGINS` — origens CORS explícitas, separadas por vírgula;
+- `ESPECIALIDADES_SOURCE_LABEL` — padrão `Site HSR | IMD`;
+- `ESPECIALIDADES_DATACRAZY_WEBHOOK_URL` — webhook privado opcional;
+- `ESPECIALIDADES_DATACRAZY_STAGE_ID` — etapa opcional para criar negócio;
+- `ESPECIALIDADES_DATACRAZY_ATTENDANT_ID` — atendente opcional;
+- `ESPECIALIDADES_META_PIXEL_ID` e `ESPECIALIDADES_META_CAPI_TOKEN` — Meta CAPI opcional.
+
+O frontend pode sobrescrever apenas a URL pública da Function por
+`NEXT_PUBLIC_ESPECIALIDADES_LEAD_API_URL`. Tokens e webhooks nunca usam prefixo
+`NEXT_PUBLIC_` e permanecem exclusivamente no Azure.
+
+Antes de publicar o frontend, cadastrar as origens na configuração da Function e no CORS
+da Function App, publicar a Function e validar um lead controlado com read-back no
+DataCrazy. Não usar `*` em produção.
 
 ---
 
@@ -114,11 +149,11 @@ O script usa só o Azure CLI (dispensa o Functions Core Tools): monta o pacote c
 
 Este app roda em **Flex Consumption**, onde os comandos usuais de deploy **não funcionam**:
 
-| Comando | Resultado |
-|---|---|
-| `az functionapp deployment source config-zip` | não suportado no Flex |
-| `az functionapp deploy --type zip` | **HTTP 415** Unsupported Media Type |
-| `POST /api/publish` no SCM + token AAD | ✅ funciona |
+| Comando                                       | Resultado                           |
+| --------------------------------------------- | ----------------------------------- |
+| `az functionapp deployment source config-zip` | não suportado no Flex               |
+| `az functionapp deploy --type zip`            | **HTTP 415** Unsupported Media Type |
+| `POST /api/publish` no SCM + token AAD        | ✅ funciona                         |
 
 O script detecta o plano (pela presença de `properties.functionAppConfig` no recurso ARM)
 e escolhe o caminho certo sozinho: `/api/publish` no Flex, `config-zip` no clássico.
@@ -225,24 +260,24 @@ Logs em tempo real: portal → Function App → **Log stream**, ou
 
 A function aceita `application/json` e `text/plain` (o segundo evita preflight CORS).
 
-| Campo | Obrigatório | Destino no CRM |
-|---|---|---|
-| `nome` | ✅ | `name` |
-| `whatsapp` | ✅ | `phone` |
-| `email` | — | `email` (omitido se vazio) |
-| `especialidade` | — | sufixo de `source` |
-| `cidade` | — | `address.city` |
-| `origem` | — | rótulo de `source` (ver tabela abaixo) |
-| `utm_source` | — | tem prioridade sobre `origem` no `source` |
+| Campo           | Obrigatório | Destino no CRM                            |
+| --------------- | ----------- | ----------------------------------------- |
+| `nome`          | ✅          | `name`                                    |
+| `whatsapp`      | ✅          | `phone`                                   |
+| `email`         | —           | `email` (omitido se vazio)                |
+| `especialidade` | —           | sufixo de `source`                        |
+| `cidade`        | —           | `address.city`                            |
+| `origem`        | —           | rótulo de `source` (ver tabela abaixo)    |
+| `utm_source`    | —           | tem prioridade sobre `origem` no `source` |
 
 Sem `nome` ou `whatsapp`, retorna `400`.
 
 ### Rótulos de origem
 
-| `origem` | `source` no CRM |
-|---|---|
-| `lp-medicos` | `LP B2B HSR` |
-| `imd` | `Site HSR \| IMD` |
+| `origem`             | `source` no CRM         |
+| -------------------- | ----------------------- |
+| `lp-medicos`         | `LP B2B HSR`            |
+| `imd`                | `Site HSR \| IMD`       |
 | ausente/desconhecida | `LP B2B HSR` (fallback) |
 
 > Ao adicionar um novo formulário **do mesmo domínio de leads B2B/IMD**, inclua o rótulo

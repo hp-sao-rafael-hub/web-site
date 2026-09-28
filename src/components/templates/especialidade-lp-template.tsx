@@ -24,6 +24,7 @@ import { WhatsAppTracker } from "@/components/molecules/whatsapp-tracker"
 import { ServicePageHero } from "@/components/organisms/service-page-hero"
 import { ServiceIntroBlock } from "@/components/organisms/service-intro-block"
 import { EspecialidadeExamsBlock } from "@/components/organisms/especialidade-exams-block"
+import { EspecialidadeLeadForm } from "@/components/organisms/especialidade-lead-form"
 import { ServiceIndicationsBlock } from "@/components/organisms/service-indications-block"
 import { ServiceInlineCta } from "@/components/organisms/service-inline-cta"
 import { ServiceHighlights } from "@/components/organisms/service-highlights"
@@ -110,13 +111,8 @@ export function EspecialidadeLPTemplate({
         <FAQSection data={faq} background="white" />
       </div>
 
-      {/* 10. CTA final antes do footer */}
-      <ServiceInlineCta
-        kicker="PRONTO PARA AGENDAR?"
-        headline="Dê o próximo passo pela sua saúde."
-        description="Converse direto com a equipe pelo WhatsApp, sem compromisso."
-        variant="charcoal"
-      />
+      {/* 10. Formulário compartilhado — especialidade fixa conforme a página */}
+      <EspecialidadeLeadForm specialtySlug={data.slug} specialtyName={data.termo} />
 
       {/* Footer + sticky CTA mobile */}
       <Footer data={FOOTER_DATA as unknown as FooterData} />

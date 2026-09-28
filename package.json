@@ -10,7 +10,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "format": "prettier --write .",
-    "test:functions": "node --test azure-functions/test"
+    "test:functions": "node --test azure-functions/test/*.test.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.95.1",

@@ -172,10 +172,18 @@ for i in $(seq 1 12); do
 
     OUTUBRO_ROSA_URL="https://$HOST/api/outubro-rosa-lead"
     OUTUBRO_ROSA_CODE="$(curl -s -o /dev/null -w '%{http_code}' -X OPTIONS "$OUTUBRO_ROSA_URL" --max-time 20 || echo 000)"
-    if [[ "$OUTUBRO_ROSA_CODE" == "200" ]]; then
-      grn "Endpoint no ar: $OUTUBRO_ROSA_URL  (CORS OPTIONS 200)"
+    if [[ "$OUTUBRO_ROSA_CODE" =~ ^20[04]$ ]]; then
+      grn "Endpoint no ar: $OUTUBRO_ROSA_URL  (CORS OPTIONS $OUTUBRO_ROSA_CODE)"
     else
-      ylw "outubro-rosa-lead ainda não respondeu 200 (último status: $OUTUBRO_ROSA_CODE)."
+      ylw "outubro-rosa-lead ainda não respondeu 200/204 (último status: $OUTUBRO_ROSA_CODE)."
+    fi
+
+    ESPECIALIDADES_URL="https://$HOST/api/especialidades-lead"
+    ESPECIALIDADES_CODE="$(curl -s -o /dev/null -w '%{http_code}' -X OPTIONS "$ESPECIALIDADES_URL" --max-time 20 || echo 000)"
+    if [[ "$ESPECIALIDADES_CODE" =~ ^20[04]$ ]]; then
+      grn "Endpoint no ar: $ESPECIALIDADES_URL  (CORS OPTIONS $ESPECIALIDADES_CODE)"
+    else
+      ylw "especialidades-lead ainda não respondeu 200/204 (último status: $ESPECIALIDADES_CODE)."
     fi
     exit 0
   fi
