@@ -168,10 +168,33 @@ test("webhook preserva consentimento, especialidade, UTMs e submission id", asyn
   assert.equal(result.status, 200)
   const payload = JSON.parse(calls[0].options.body)
   assert.equal(payload.especialidadeSlug, "cardiologia")
+  assert.equal(payload.tag, "Cardiologia")
+  assert.deepEqual(payload.tags, ["Cardiologia"])
   assert.equal(payload.consentidoEm, validBody.consentido_em)
   assert.equal(payload.politicaVersao, validBody.politica_versao)
   assert.equal(payload.submissionId, validBody.submission_id)
   assert.equal(payload.utm.term, validBody.utm_term)
+})
+
+test("usa API autenticada como contingência quando o webhook falha", async () => {
+  const calls = []
+  const env = {
+    ...baseEnv,
+    ESPECIALIDADES_DATACRAZY_WEBHOOK_URL: "https://api.datacrazy.io/webhook/inativo",
+  }
+  const result = await handleEspecialidadesLead(createRequest(validBody), createContext(), {
+    env,
+    fetchImpl: async (url, options) => {
+      calls.push({ url, options })
+      return url.includes("/webhook/")
+        ? response(404, { message: "Not Found" })
+        : response(201, { id: "lead-fallback-1" })
+    },
+  })
+  assert.equal(result.status, 200)
+  assert.equal(calls.length, 2)
+  assert.match(calls[1].url, /\/leads$/)
+  assert.equal(JSON.parse(calls[1].options.body).name, validBody.nome)
 })
 
 test("cria negócio com externalId quando etapa está configurada", async () => {

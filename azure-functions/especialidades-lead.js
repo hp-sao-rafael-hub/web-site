@@ -267,6 +267,8 @@ async function handleEspecialidadesLead(request, context, dependencies = {}) {
     especialidade: specialty,
     specialtySlug,
     especialidadeSlug: specialtySlug,
+    tag: specialty,
+    tags: [specialty],
     source,
     pageUrl,
     submissionId: submissionId || null,
@@ -312,10 +314,18 @@ async function handleEspecialidadesLead(request, context, dependencies = {}) {
 
   try {
     if (webhookUrl) {
-      await postWebhook(webhookPayload, webhookUrl, fetchImpl)
-      context.log("Lead de especialidade enviado ao webhook do DataCrazy.")
-      await reportToMeta()
-      return jsonResponse(200, { ok: true }, headers)
+      try {
+        await postWebhook(webhookPayload, webhookUrl, fetchImpl)
+        context.log("Lead de especialidade enviado ao webhook do DataCrazy.")
+        await reportToMeta()
+        return jsonResponse(200, { ok: true }, headers)
+      } catch (webhookError) {
+        if (!token) throw webhookError
+        logError(context, "Webhook do DataCrazy indisponível; usando API de contingência.", {
+          status: webhookError.status || null,
+          type: webhookError.name,
+        })
+      }
     }
 
     const leadResult = await postDataCrazy("/leads", lead, token, fetchImpl)
