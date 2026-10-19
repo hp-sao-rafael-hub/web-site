@@ -10,7 +10,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "format": "prettier --write .",
-    "test:functions": "node --test azure-functions/test/*.test.js"
+    "test:functions": "node --test azure-functions/test/*.test.js",
+    "test:imd-thank-you": "node --import tsx --test tests/imd-lead-*.test.ts",
+    "test:imd-browser": "npm run build && node scripts/check-imd-thank-you.cjs"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.95.1",

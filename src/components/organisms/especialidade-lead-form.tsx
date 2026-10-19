@@ -1,13 +1,16 @@
 "use client"
 
 import { useId, useRef, useState } from "react"
+import { useLocale } from "next-intl"
+import { useRouter } from "next/navigation"
 import { CheckCircle2, LockKeyhole, MessageCircle, Send } from "lucide-react"
 
 import { Button } from "@/components/atoms/button"
 import { Heading } from "@/components/atoms/heading"
 import { Kicker } from "@/components/atoms/kicker"
 import { Link } from "@/i18n/navigation"
-import { trackFormLead } from "@/lib/tracking"
+import { trackConfirmedImdLead } from "@/lib/tracking"
+import { imdThankYouUrl, saveImdReceipt, type ImdLeadReceipt } from "@/lib/imd-lead-receipt"
 import { cn } from "@/lib/utils"
 
 const PRODUCTION_ENDPOINT =
@@ -125,6 +128,8 @@ export function EspecialidadeLeadForm({
   className,
 }: EspecialidadeLeadFormProps) {
   const uid = useId()
+  const locale = useLocale() === "en" ? "en" : "pt"
+  const router = useRouter()
   const submissionIdRef = useRef<string | null>(null)
   const [values, setValues] = useState<FormValues>(EMPTY_VALUES)
   const [errors, setErrors] = useState<FieldErrors>({})
@@ -192,31 +197,32 @@ export function EspecialidadeLeadForm({
       })
 
       const result = (await response.json().catch(() => ({}))) as { ok?: boolean; error?: string }
-      if (!response.ok || !result.ok) {
+      if (!response.ok || result.ok !== true) {
         const requestError = new Error(result.error || "crm_error")
         requestError.name = result.error || "crm_error"
         throw requestError
       }
 
-      trackFormLead({
-        origem: "imd-especialidades",
-        formId: "especialidade-agendar",
-        specialty: specialtyName,
-        city: values.cidade.trim(),
-        eventId: submissionId,
-      })
-      pushDataLayer("generate_lead", {
-        form_id: "especialidade-agendar",
-        especialidade: specialtyName,
-        especialidade_slug: specialtySlug,
-        event_id: submissionId,
-        ...utms,
-      })
+      const receipt: ImdLeadReceipt = {
+        version: 1, eventId: submissionId, specialtySlug, specialtyName,
+        sourcePath: `/${locale}/especialidades/${specialtySlug}/`,
+        locale, createdAt: Date.now(), utms,
+      }
+      let saved = false
+      try { saved = saveImdReceipt(receipt, window.sessionStorage) } catch { /* Storage can be disabled. */ }
+      if (!saved) {
+        await trackConfirmedImdLead({
+          origem: "imd-especialidades", formId: "especialidade-agendar",
+          specialty: specialtyName, specialtySlug, sourcePath: receipt.sourcePath,
+          eventId: submissionId, utms,
+        })
+      }
 
       submissionIdRef.current = null
       setValues(EMPTY_VALUES)
       setErrors({})
       setState("success")
+      router.push(imdThankYouUrl(receipt, window.location.href))
     } catch (error) {
       const reason = error instanceof Error && error.name === "AbortError" ? "timeout" : "crm_error"
       pushDataLayer("form_error", {

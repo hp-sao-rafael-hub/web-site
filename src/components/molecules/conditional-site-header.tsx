@@ -22,7 +22,7 @@ export function ConditionalSiteHeader({ navItems, cta }: ConditionalSiteHeaderPr
 
   // Esconde o header institucional nas LPs de especialidade.
   // Ex: /pt/especialidades/ortopedia, /en/especialidades/cardiologia
-  if (pathname && /\/especialidades\/[^/]+/.test(pathname)) {
+  if (pathname && (/\/especialidades\/[^/]+/.test(pathname) || /^\/(pt|en)\/imd\/obrigado\/?$/.test(pathname))) {
     return null
   }
 
