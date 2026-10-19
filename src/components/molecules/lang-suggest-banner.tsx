@@ -29,7 +29,9 @@ export function LangSuggestBanner() {
 
   useEffect(() => {
     if (typeof window === "undefined") return
-    if (sessionStorage.getItem(STORAGE_KEY)) return
+    try {
+      if (sessionStorage.getItem(STORAGE_KEY)) return
+    } catch { /* Language suggestions must not break a storage-disabled visit. */ }
 
     const browserLang = (navigator.language || "").toLowerCase()
     const prefersEn = browserLang.startsWith("en")
@@ -39,17 +41,17 @@ export function LangSuggestBanner() {
     else if (prefersPt && locale === "en") setTarget("pt")
   }, [locale])
 
-  if (!target) return null
+  if (!target || /^\/imd\/obrigado\/?$/.test(pathname)) return null
 
   const copy = COPY[target]
 
   const dismiss = () => {
-    sessionStorage.setItem(STORAGE_KEY, "1")
+    try { sessionStorage.setItem(STORAGE_KEY, "1") } catch { /* Continue without persistence. */ }
     setTarget(null)
   }
 
   const accept = () => {
-    sessionStorage.setItem(STORAGE_KEY, "1")
+    try { sessionStorage.setItem(STORAGE_KEY, "1") } catch { /* Continue without persistence. */ }
     router.replace(pathname, { locale: target })
   }
 

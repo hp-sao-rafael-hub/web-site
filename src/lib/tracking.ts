@@ -97,6 +97,9 @@ export interface FormLeadMeta {
   city?: string
   /** ID compartilhado com a Meta CAPI para deduplicar o evento Lead */
   eventId?: string
+  specialtySlug?: string
+  sourcePath?: string
+  utms?: Record<string, string>
 }
 
 /**
@@ -121,6 +124,9 @@ export function trackFormLead(meta: FormLeadMeta): void {
     origem: meta.origem,
     form_id: meta.formId,
     city: meta.city,
+    ...(meta.eventId ? { event_id: meta.eventId } : {}),
+    ...(meta.specialtySlug ? { especialidade_slug: meta.specialtySlug } : {}),
+    ...(meta.sourcePath ? { pagina_origem: meta.sourcePath } : {}),
   }
 
   // Meta Pixel — evento Lead
@@ -143,9 +149,56 @@ export function trackFormLead(meta: FormLeadMeta): void {
     if (w.gtag && GOOGLE_ADS.conversionId && GOOGLE_ADS.formLabel) {
       w.gtag("event", "conversion", {
         send_to: `${GOOGLE_ADS.conversionId}/${GOOGLE_ADS.formLabel}`,
+        ...(meta.eventId ? { transaction_id: meta.eventId } : {}),
       })
     }
   } catch {
     /* noop */
   }
+}
+
+function retryImdMetaLead(meta: FormLeadMeta): void {
+  const w = window as typeof window & { fbq?: (...args: unknown[]) => void }
+  const deadline = Date.now() + 1500
+  const sendWhenReady = () => {
+    if (w.fbq) {
+      try {
+        w.fbq("track", "Lead", {
+          content_name: meta.specialty ?? "nao_informado", content_category: "form_lead",
+          origem: meta.origem, form_id: meta.formId, event_id: meta.eventId,
+          especialidade_slug: meta.specialtySlug, pagina_origem: meta.sourcePath,
+        }, { eventID: meta.eventId })
+      } catch { /* Conversion delivery must never affect confirmed CRM success. */ }
+    } else if (Date.now() < deadline) {
+      window.setTimeout(sendWhenReady, 50)
+    }
+  }
+  window.setTimeout(sendWhenReady, 50)
+}
+
+/** One confirmed specialty submission; legacy platform ownership is preserved. */
+export async function trackConfirmedImdLead(meta: FormLeadMeta): Promise<void> {
+  if (typeof window === "undefined") return
+  const w = window as typeof window & { fbq?: (...args: unknown[]) => void; dataLayer?: unknown[] }
+  const attribution = Object.fromEntries(
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"]
+      .filter(key => typeof meta.utms?.[key] === "string")
+      .map(key => [key, meta.utms![key]]),
+  )
+  try {
+    w.dataLayer = w.dataLayer || []
+    w.dataLayer.push({
+      event: "generate_lead", origem: meta.origem, form_id: meta.formId,
+      especialidade: meta.specialty, especialidade_slug: meta.specialtySlug,
+      pagina_origem: meta.sourcePath, event_id: meta.eventId, ...attribution,
+    })
+  } catch { /* A third-party tag failure must not turn CRM success into an error. */ }
+  const pixelReady = typeof w.fbq === "function"
+  const confirmedMeta: FormLeadMeta = {
+    origem: meta.origem, formId: meta.formId, specialty: meta.specialty,
+    specialtySlug: meta.specialtySlug, sourcePath: meta.sourcePath, eventId: meta.eventId,
+  }
+  // Dispatch legacy dataLayer/Google calls immediately, independently of Pixel readiness.
+  trackFormLead(confirmedMeta)
+  if (!pixelReady) retryImdMetaLead(confirmedMeta)
 }
