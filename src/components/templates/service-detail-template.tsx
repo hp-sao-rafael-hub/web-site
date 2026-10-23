@@ -1,3 +1,5 @@
+import { HSR_WHATSAPP_URL } from "@/lib/tintim"
+
 // =============================================================================
 // SERVICE-DETAIL-TEMPLATE.TSX — Template | Hospital São Rafael
 // =============================================================================
@@ -96,7 +98,7 @@ export function ServiceDetailTemplate({
 
   // WhatsApp do serviço: IMD (e afins) definem o próprio; demais serviços do
   // hospital caem no número do hospital. Propagado a todos os CTAs desta página.
-  const serviceWhatsapp = data.whatsapp ?? "https://wa.me/5531996445370"
+  const serviceWhatsapp = data.whatsapp ?? HSR_WHATSAPP_URL
 
   // Label curto p/ 3º nível do breadcrumb (evita wrap em mobile e cobertura do H1).
   // Prioridade: kicker (title-case) → slug formatado.

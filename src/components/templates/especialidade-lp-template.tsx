@@ -39,8 +39,7 @@ import { SITE_URL } from "@/lib/data/meta"
 import type { FooterData } from "@/types"
 import type { EspecialidadeLPData } from "@/lib/data/especialidades-lp"
 
-const IMD_WHATSAPP_URL =
-  "https://wa.me/5531971511855?text=Ol%C3%A1%2C%20vim%20pelo%20formul%C3%A1rio%20do%20IMD%2C%20gostaria%20de%20saber%20mais%21"
+import { IMD_WHATSAPP_URL } from "@/lib/tintim"
 
 interface EspecialidadeLPTemplateProps {
   data: EspecialidadeLPData

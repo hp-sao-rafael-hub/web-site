@@ -1,3 +1,5 @@
+import { IMD_WHATSAPP_URL } from "@/lib/tintim"
+
 // =============================================================================
 // SERVICE-INLINE-CTA.TSX — Organismo | Hospital São Rafael
 // =============================================================================
@@ -27,7 +29,7 @@ export function ServiceInlineCta({
   kicker = "FALE COM A EQUIPE",
   headline,
   description,
-  whatsappHref = "https://wa.me/5531971511855",
+  whatsappHref = IMD_WHATSAPP_URL,
   whatsappLabel = "Falar no WhatsApp",
   variant = "creme",
   className,

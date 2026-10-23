@@ -13,7 +13,7 @@
 import { useEffect } from "react"
 import { trackWhatsAppConversion } from "@/lib/tracking"
 
-const WHATSAPP_RE = /wa\.me|api\.whatsapp\.com|whatsapp:/i
+const WHATSAPP_RE = /wa\.me|api\.whatsapp\.com|whatsapp:|https:\/\/tintim\.link\/whatsapp\//i
 
 interface WhatsAppTrackerProps {
   /** Especialidade da LP — usada na atribuição da conversão */

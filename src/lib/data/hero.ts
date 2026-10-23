@@ -1,3 +1,5 @@
+import { HSR_WHATSAPP_URL } from "@/lib/tintim"
+
 export const HERO_DATA = {
   kicker: "Cirurgias eletivas multiespecialidades particulares",
   headline: "Alta performance em saúde com acolhimento que eleva a sua experiência.",
@@ -6,7 +8,7 @@ export const HERO_DATA = {
   ],
   ctaPrimary: {
     label: "Falar com Atendimento",
-    href: "https://wa.me/5531996445370",
+    href: HSR_WHATSAPP_URL,
   },
   video: {
     src: "/assets/video/hero-hsr.mp4",

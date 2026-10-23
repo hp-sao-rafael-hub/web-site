@@ -1,3 +1,5 @@
+import { HSR_WHATSAPP_URL } from "@/lib/tintim"
+
 export const NAV_ITEMS = [
   { label: "Início", href: "#hero" },
   { label: "Diferenciais", href: "#diferenciais" },
@@ -11,5 +13,5 @@ export const NAV_ITEMS = [
 
 export const NAV_CTA = {
   label: "Falar com Atendimento",
-  href: "https://wa.me/5531996445370",
+  href: HSR_WHATSAPP_URL,
 } as const

@@ -8,6 +8,8 @@
 
 "use client"
 
+import { IMD_WHATSAPP_URL } from "@/lib/tintim"
+
 import { useEffect, useState } from "react"
 import { MessageCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -17,7 +19,7 @@ interface ServiceStickyCtaProps {
 }
 
 export function ServiceStickyCta({
-  whatsappHref = "https://wa.me/5531971511855",
+  whatsappHref = IMD_WHATSAPP_URL,
 }: ServiceStickyCtaProps) {
   const [visible, setVisible] = useState(false)
 

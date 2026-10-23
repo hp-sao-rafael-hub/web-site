@@ -1,5 +1,7 @@
 "use client"
 
+import { IMD_WHATSAPP_URL } from "@/lib/tintim"
+
 // =============================================================================
 // SERVICE-LEAD-FORM.TSX — Organismo | Hospital São Rafael
 // =============================================================================
@@ -126,7 +128,7 @@ export function ServiceLeadForm({
   data,
   sectionId = "agendar",
   variant = "creme",
-  whatsappHref = "https://wa.me/5531971511855",
+  whatsappHref = IMD_WHATSAPP_URL,
   className,
 }: ServiceLeadFormProps) {
   const {

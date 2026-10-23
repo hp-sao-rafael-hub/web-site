@@ -8,6 +8,8 @@
 
 "use client"
 
+import { IMD_WHATSAPP_URL } from "@/lib/tintim"
+
 import { useEffect, useState } from "react"
 import { MessageCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -28,7 +30,7 @@ interface ServiceSidebarNavProps extends BaseComponentProps {
 // -----------------------------------------------------------------------------
 export function ServiceSidebarNav({
   sections,
-  whatsappHref = "https://wa.me/5531971511855",
+  whatsappHref = IMD_WHATSAPP_URL,
   className,
 }: ServiceSidebarNavProps) {
   const [activeId, setActiveId] = useState<string>(sections[0]?.id ?? "")

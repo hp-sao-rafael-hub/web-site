@@ -1,5 +1,7 @@
 "use client"
 
+import { IMD_WHATSAPP_URL } from "@/lib/tintim"
+
 import { useId, useRef, useState } from "react"
 import { useLocale } from "next-intl"
 import { useRouter } from "next/navigation"
@@ -124,7 +126,7 @@ function resolveEndpoint(): string {
 export function EspecialidadeLeadForm({
   specialtySlug,
   specialtyName,
-  whatsappHref = "https://wa.me/5531971511855",
+  whatsappHref = IMD_WHATSAPP_URL,
   className,
 }: EspecialidadeLeadFormProps) {
   const uid = useId()

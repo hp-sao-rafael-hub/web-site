@@ -5,6 +5,18 @@
 
 ---
 
+## Registro — Integração Tintim na main local (23/10/2026)
+
+- [x] 2026-10-23 — [[03-empresa/pessoas/equipe/enzo|Enzo]] sincronizou `web-site` com `origin/main` em `2786e33006a3d9dbf13904568f29ebba4e9f35df` por fast-forward e preservou o trabalho preexistente no stash `00421e6eb5df3b06d6f0d9787d3e344fd1fec5ed` e no backup `hsr-sync-backups/20261023T195734Z-153326/`. O Codex confirmou que a árvore de arquivos desse commit é idêntica à base `35f494e` do worktree IMD e transportou somente a integração Tintim: `src/lib/tintim.ts`, `src/components/TintimTracking.tsx`, CTAs e páginas HSR/IMD, quatro HTMLs estáticos e dois arquivos de teste. Validação na `main` local: 48 testes aprovados, TypeScript sem erros, build com export de 45 páginas concluído e `git diff --check` sem erros. Teste de navegador executado pelo usuário fora do sandbox: PASS nos 13 formulários, IDs estáveis, navegação, falha/nova tentativa, armazenamento bloqueado, inglês, noindex e larguras 320/390/1440 px; serviços externos simulados e nenhum lead real. Pendências: navegador continua bloqueado dentro desta execução por `setsockopt: Operation not permitted`; acesso de rede indisponível nesta execução, portanto o commit efetivamente publicado no domínio e os deploys não foram confirmados; validação no painel Tintim e no CRM depende de publicação autorizada. Comparação pública executada pelo usuário: `https://www.hospitalsaorafael.com/pt/` respondeu HTTP 200 via Vercel, com título e oito primeiros títulos iguais ao build local e 100% de semelhança no texto visível; HTML público sem script Tintim. O SHA e a branch do deploy Vercel continuam sem comprovação. Alterações ainda não commitadas, enviadas ou publicadas. Registro no Secondbrain adiado a pedido do usuário; esta entrada é o espelho auditável local.
+
+---
+
+## Registro — Auditoria final Tintim (23/10/2026)
+
+- [x] 2026-10-23 — [[03-empresa/pessoas/equipe/enzo|Enzo]] conferiu os códigos das quatro contas e os links fornecidos pelo gestor nas cinco páginas Realizza, nas três páginas Felipe e nas quatro páginas HTML estáticas HSR, além das rotas Next.js HSR/IMD. Validações: script uma vez por HTML e no body, 24 CTAs estáticos Realizza, links específicos da parceria, 48 testes HSR/IMD e suítes locais Realizza/Felipe aprovados; build HSR e navegador HSR/IMD aprovados na rodada anterior. Pendências reais: testes de navegador Realizza/Felipe em execução externa ainda sem resultado; dois CTAs de Relacionamento Médico em Centro Cirúrgico/Hiperbárica continuam no número dedicado `wa.me/5531972391902`, pois o briefing não forneceu link Tintim para esse canal; as LPs do Felipe contêm links WhatsApp preexistentes apesar de o briefing dizer que não há botão, e o script sozinho não comprova rastreamento de conversas ou envio de formulário ao Tintim. Evidência: `tintim-final-audit-2026-10-23.json`. Nenhuma publicação ou validação no painel Tintim. Registro no Secondbrain adiado pelo usuário; espelho local.
+
+---
+
 ## Registro — PR publicado para main (08/09/2026)
 
 - [x] 2026-09-08 — [[03-empresa/pessoas/equipe/enzo|Enzo]] publicou a branch `seo-p0-integration` no remoto e abriu o Pull Request [#16](https://github.com/hp-sao-rafael-hub/web-site/pull/16) com destino `main`, reunindo a restauração das fotos dos médicos do IMD, os ajustes de SEO e a fonte Montserrat local. Evidência: push concluído e PR criado no GitHub. Pendência: revisão e aprovação do PR; vault do Obsidian indisponível, portanto não houve sincronização externa.

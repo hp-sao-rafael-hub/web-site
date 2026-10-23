@@ -12,6 +12,7 @@
     "format": "prettier --write .",
     "test:functions": "node --test azure-functions/test/*.test.js",
     "test:imd-thank-you": "node --import tsx --test tests/imd-lead-*.test.ts",
+    "test:tintim": "node --import tsx --test tests/tintim.test.ts tests/tintim-components.test.cjs",
     "test:imd-browser": "npm run build && node scripts/check-imd-thank-you.cjs"
   },
   "dependencies": {

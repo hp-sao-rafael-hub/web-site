@@ -1,5 +1,6 @@
 import localFont from "next/font/local"
 import Script from "next/script"
+import { TintimTracking } from "@/components/TintimTracking"
 import "./globals.css"
 
 const montserrat = localFont({
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className={`${montserrat.className} bg-creme text-charcoal antialiased`}
         suppressHydrationWarning
       >
+        <TintimTracking />
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe

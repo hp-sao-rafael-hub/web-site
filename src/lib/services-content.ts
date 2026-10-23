@@ -5,6 +5,7 @@
 // Cada entrada segue o ServiceDetailData interface.
 // =============================================================================
 
+import { IMD_WHATSAPP_URL } from "@/lib/tintim"
 import type { FAQData } from "@/types"
 
 // -----------------------------------------------------------------------------
@@ -240,7 +241,7 @@ export interface ServiceLeadFormData {
 
 export interface ServiceDetailData {
   slug: string
-  /** WhatsApp de atendimento (URL wa.me). Default no template = número do hospital. IMD sobrescreve com o número próprio. */
+  /** Link rastreável do WhatsApp de atendimento. O IMD sobrescreve o destino padrão do hospital. */
   whatsapp?: string
   meta: {
     title: string
@@ -775,7 +776,7 @@ const INTERNACAO: ServiceDetailData = {
 
 const IMD: ServiceDetailData = {
   slug: "imd",
-  whatsapp: "https://wa.me/5531971511855",
+  whatsapp: IMD_WHATSAPP_URL,
   meta: {
     title: "IMD | Instituto Médico e Diagnóstico do Hospital São Rafael",
     description:
@@ -864,7 +865,7 @@ const IMD: ServiceDetailData = {
       { icon: "check-circle", title: "Integrado ao centro cirúrgico", description: "Diagnóstico e procedimento conectados pelo prontuário digital" },
       { icon: "check-circle", title: "Atendimento particular", description: "Agendamento ágil e acolhimento em cada etapa" },
     ],
-    cta: { label: "Falar com Atendimento", href: "https://wa.me/5531971511855" },
+    cta: { label: "Falar com Atendimento", href: IMD_WHATSAPP_URL },
   },
   highlights: {
     kicker: "NÚMEROS QUE COMPROVAM",

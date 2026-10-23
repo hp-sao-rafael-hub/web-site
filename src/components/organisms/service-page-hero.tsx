@@ -8,6 +8,8 @@
 
 "use client"
 
+import { IMD_WHATSAPP_URL } from "@/lib/tintim"
+
 import Image from "next/image"
 import Link from "next/link"
 import { ChevronRight } from "lucide-react"
@@ -30,14 +32,14 @@ interface ServicePageHeroProps extends BaseComponentProps {
   breadcrumbItems?: BreadcrumbItem[]
   /** Força as pills em grade 2x2 (2 em cima, 2 embaixo) em todos os breakpoints */
   pills2x2?: boolean
-  /** URL wa.me do CTA. Default = número IMD/LP; páginas de serviço do hospital sobrescrevem. */
+  /** Link rastreável do CTA. Default = IMD/LP; páginas de serviço do hospital sobrescrevem. */
   whatsappHref?: string
 }
 
 // -----------------------------------------------------------------------------
 // COMPONENTE
 // -----------------------------------------------------------------------------
-export function ServicePageHero({ data, className, breadcrumbItems, pills2x2 = false, whatsappHref = "https://wa.me/5531971511855" }: ServicePageHeroProps) {
+export function ServicePageHero({ data, className, breadcrumbItems, pills2x2 = false, whatsappHref = IMD_WHATSAPP_URL }: ServicePageHeroProps) {
   const { ref, hasIntersected } = useIntersection({ threshold: 0.1, once: true })
 
   const { kicker, headline, subheadline, backgroundImage, pills } = data

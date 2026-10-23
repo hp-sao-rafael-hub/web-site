@@ -17,7 +17,7 @@
 // Depoimento de paciente só se REAL, consentido e sóbrio → campo opcional,
 // omitido por padrão. Prova social default = institucional.
 //
-// WhatsApp único: https://wa.me/5531971511855 (hardcoded nos organisms
+// WhatsApp único: IMD_WHATSAPP_URL em @/lib/tintim (compartilhado pelos organisms
 // reutilizados — ServicePageHero / ServiceInlineCta / ServiceStickyCta).
 // =============================================================================
 

@@ -11,6 +11,7 @@
 import { usePathname } from "next/navigation"
 import { SiteHeader } from "@/components/organisms/site-header"
 import type { NavItem, NavCTA } from "@/types"
+import { IMD_TINTIM_ACCOUNT, IMD_WHATSAPP_URL, tintimAccountForPath } from "@/lib/tintim"
 
 interface ConditionalSiteHeaderProps {
   navItems: NavItem[]
@@ -26,5 +27,9 @@ export function ConditionalSiteHeader({ navItems, cta }: ConditionalSiteHeaderPr
     return null
   }
 
-  return <SiteHeader navItems={navItems} cta={cta} />
+  const pageCta = tintimAccountForPath(pathname) === IMD_TINTIM_ACCOUNT
+    ? { ...cta, href: IMD_WHATSAPP_URL }
+    : cta
+
+  return <SiteHeader navItems={navItems} cta={pageCta} />
 }

@@ -8,6 +8,8 @@
 
 "use client"
 
+import { IMD_WHATSAPP_URL } from "@/lib/tintim"
+
 import Link from "next/link"
 import { MessageCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
@@ -18,7 +20,7 @@ interface EspecialidadeLPHeaderProps {
 }
 
 export function EspecialidadeLPHeader({
-  whatsappHref = "https://wa.me/5531971511855",
+  whatsappHref = IMD_WHATSAPP_URL,
 }: EspecialidadeLPHeaderProps) {
   return (
     <header
